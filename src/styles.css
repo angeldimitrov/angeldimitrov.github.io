@@ -7,4 +7,78 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Enhanced focus indicators for better accessibility */
+  *:focus {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+  }
+  
+  /* Custom focus ring for Tailwind components */
+  .focus\:ring-primary:focus {
+    --tw-ring-color: #3B82F6;
+  }
+}
+
+@layer components {
+  /* Improved terminal text readability on mobile */
+  .terminal-text {
+    font-size: 0.875rem;
+  }
+  
+  @media (max-width: 640px) {
+    .terminal-text {
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .terminal-text {
+      font-size: 0.7rem;
+      line-height: 1.6;
+    }
+  }
+  
+  /* Enhanced mobile navigation animations */
+  #mobile-menu {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #mobile-menu.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  #mobile-menu:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Improved hover and focus states */
+  .nav-link:focus,
+  .nav-link:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Better contrast for gradient text on various backgrounds */
+  .gradient-text-accessible {
+    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Enhanced CTA button consistency */
+  .cta-primary {
+    background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .cta-primary:hover,
+  .cta-primary:focus {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
 }
