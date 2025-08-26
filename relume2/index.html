@@ -16,169 +16,69 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- D3.js for animations -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  
-  <!-- Hero Styles -->
-  <style>
-    /* Hero Section */
-    .hero {
-      background: #0f172a;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Background Grid Pattern */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-d3-network::before {
-      display: none;
-    }
-
-    #agent-network-d3 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: fadeInUp 1s ease;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Global CTA Button Styles */
-    .btn-primary {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: linear-gradient(to right, #2563EB, #9333EA);
-      color: white;
-      font-weight: bold;
-      border-radius: 0.75rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      transform: translateY(0);
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(to right, #1D4ED8, #7C2D12);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: transparent;
-      color: #404040;
-      font-weight: 600;
-      border: 2px solid #D4D4D4;
-      border-radius: 0.75rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-      border-color: #737373;
-      background: #FAFAFA;
-    }
-
-    .btn-secondary-dark {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: transparent;
-      color: white;
-      font-weight: 600;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 0.75rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary-dark:hover {
-      border-color: rgba(255, 255, 255, 0.6);
-      background: rgba(255, 255, 255, 0.1);
-    }
-  </style>
-  
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur-sm">
-  <div class="container">
-    <div class="flex min-h-16 items-center justify-center px-[5%] md:min-h-18 lg:px-0">
-      <div class="flex items-center space-x-8">
-        <a
-          href="#"
-          class="text-md lg:text-base font-medium hover:text-primary transition-colors"
-          >Home</a
-        ><a
-          href="#"
-          class="text-md lg:text-base font-medium hover:text-primary transition-colors"
-          >Services</a
-        ><a
-          href="#"
-          class="text-md lg:text-base font-medium hover:text-primary transition-colors"
-          >About Me</a
-        >
+<!-- Premium Navigation -->
+<nav class="nav-glass sticky top-0 z-50 w-full border-b border-neutral-200/50">
+  <div class="container lg:flex lg:items-center lg:justify-between">
+    <div
+      class="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0"
+    >
+      <a href="#"
+        ><img
+          src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
+          alt="Logo image" /></a
+      ><button
+        class="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden"
+      >
+        <span class="my-[3px] h-0.5 w-6 bg-black"></span
+        ><span class="my-[3px] h-0.5 w-6 bg-black"></span
+        ><span class="my-[3px] h-0.5 w-6 bg-black"></span>
+      </button>
+    </div>
+    <div
+      class="overflow-hidden px-[5%] lg:flex lg:items-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]"
+      style="height:var(--height-closed, 0)"
+    >
+      <a
+        href="#"
+        class="nav-link block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+        >Home</a
+      ><a
+        href="#"
+        class="nav-link block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+        >Services</a
+      ><a
+        href="#"
+        class="nav-link block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+        >About Me</a
+      >
+      <div class="mt-6 flex flex-col items-center gap-4 lg:mt-0 lg:ml-4 lg:flex-row">
+        <button class="btn btn-primary" title="Book a Call">
+          Book a Call
+        </button>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- Hero Section with D3.js Agent Network -->
-<section class="hero hero-d3-network min-h-screen flex items-center relative overflow-hidden">
-  <!-- D3.js Agent Network Container -->
-  <div id="agent-network-d3"></div>
-  
-  <div class="container relative z-10">
-    <div class="hero-content text-center text-white">
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-        <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Ship Faster with AI-Native Development</span>
+<!-- Premium Hero Section -->
+<section class="hero-enhanced section-dark relative overflow-hidden py-24 md:py-32 lg:py-40">
+  <div class="container">
+    <div class="mx-auto w-full max-w-3xl text-center">
+      <h1 class="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
+        Ship Faster with AI-Native Development
       </h1>
-      <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light">
-        Transform your engineering workflow with strategic AI integration. Save time, reduce costs, and accelerate delivery.
+      <p class="text-lg md:text-xl text-neutral-400">
+        Transform your engineering workflow with strategic AI integration. Save
+        time, reduce costs, and accelerate delivery.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <button class="btn-primary">
-          Schedule a Consultation
+      <div class="mt-8 flex items-center justify-center gap-x-4 md:mt-10">
+        <button class="btn btn-primary" title="Book a Call">
+          Book a Call
         </button>
-        
-        <button class="btn-secondary-dark">
+        <button class="btn btn-secondary-dark" title="Learn More">
           Learn More
         </button>
       </div>
@@ -236,7 +136,7 @@
       <div
         class="grid grid-cols-1 items-start justify-center gap-y-12 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12"
       >
-        <div class="flex w-full flex-col">
+        <div class="value-card flex w-full flex-col">
           <div class="mb-3 md:mb-4 flex justify-start">
             <div class="icon-container">
               <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -254,7 +154,7 @@
             without sacrificing quality.
           </p>
         </div>
-        <div class="flex w-full flex-col">
+        <div class="value-card flex w-full flex-col">
           <div class="mb-3 md:mb-4 flex justify-start">
             <div class="icon-container">
               <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -272,7 +172,7 @@
             customer impact.
           </p>
         </div>
-        <div class="flex w-full flex-col">
+        <div class="value-card flex w-full flex-col">
           <div class="mb-3 md:mb-4 flex justify-start">
             <div class="icon-container">
               <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -301,7 +201,7 @@
       class="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20"
     >
       <div>
-        <p class="mb-3 font-semibold md:mb-4">AI Team</p>
+        <p class="mb-3 font-semibold md:mb-4">Team</p>
         <h1 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
           Your Complete AI Development Team
         </h1>
@@ -352,14 +252,17 @@
           </li>
         </ul>
         <div class="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-          <button class="btn btn-primary" title="Schedule a Consultation">
-            Schedule a Consultation
+          <button class="btn btn-primary" title="Book a Call">
+            Book a Call
           </button>
         </div>
       </div>
       <div>
         <!-- AI Team Coordination Terminal -->
         <div class="relative">
+          <div class="absolute -top-4 -left-4 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold text-sm">8</span>
+          </div>
           <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-2xl border border-gray-700">
             <!-- Terminal Header -->
             <div class="flex items-center justify-between mb-6">
@@ -374,9 +277,9 @@
             <!-- Multi-Agent Content -->
             <div class="font-mono text-sm space-y-2">
               <div class="flex items-center">
-                <span class="text-emerald-500">➜</span>
+                <span class="text-green-400">➜</span>
                 <span class="text-gray-300 ml-2">ai-team</span>
-                <span class="text-amber-400 ml-2">deploy</span>
+                <span class="text-yellow-400 ml-2">deploy</span>
                 <span class="text-blue-300 ml-2">"E-commerce checkout feature"</span>
               </div>
               <div class="border-l-2 border-blue-600/30 pl-4 space-y-2 mt-4">
@@ -420,7 +323,7 @@
                 </svg>
                 All agents working in parallel - coordinating via shared context...
               </div>
-              <div class="text-emerald-500 font-semibold mt-4 flex items-center">
+              <div class="text-green-400 font-semibold mt-4 flex items-center">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
@@ -454,7 +357,7 @@
       <div
         class="grid grid-cols-1 items-start justify-center gap-y-12 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12"
       >
-        <div class="flex w-full flex-col">
+        <div class="service-card flex w-full flex-col">
           <div class="mb-3 md:mb-4 flex justify-start">
             <div class="icon-container">
               <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -474,7 +377,7 @@
             that align with your business goals.
           </p>
         </div>
-        <div class="flex w-full flex-col">
+        <div class="service-card flex w-full flex-col">
           <div class="mb-3 md:mb-4 flex justify-start">
             <div class="icon-container">
               <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -494,7 +397,7 @@
             adoption.
           </p>
         </div>
-        <div class="flex w-full flex-col">
+        <div class="service-card flex w-full flex-col">
           <div class="mb-3 md:mb-4 flex justify-start">
             <div class="icon-container">
               <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -516,8 +419,8 @@
         </div>
       </div>
       <div class="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-        <button class="btn-primary" title="Schedule a Consultation">
-          Schedule a Consultation
+        <button class="btn btn-primary" title="Book a Call">
+          Book a Call
         </button>
       </div>
     </div>
@@ -533,7 +436,7 @@
       <div class="order-1 md:order-1">
         <img
           src="../assets/images/portrait_retouched.jpg"
-          class="w-full max-w-xs mx-auto md:max-w-full rounded-xl object-cover shadow-lg"
+          class="portrait-premium w-full max-w-xs mx-auto md:max-w-full object-cover"
           alt="Angel Dimitrov - AI Development Consultant"
         />
       </div>
@@ -573,7 +476,7 @@
     </div>
     <div class="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-8 lg:gap-16">
       <div
-        class="flex h-full max-w-lg flex-col items-start justify-start text-left"
+        class="testimonial-card flex h-full max-w-lg flex-col items-start justify-start text-left"
       >
         <blockquote class="text-md leading-[1.4] font-bold md:text-xl text-white">
           “Angel transformed our development process, cutting delivery time by
@@ -605,7 +508,7 @@
         </div>
       </div>
       <div
-        class="flex h-full max-w-lg flex-col items-start justify-start text-left"
+        class="testimonial-card flex h-full max-w-lg flex-col items-start justify-start text-left"
       >
         <blockquote class="text-md leading-[1.4] font-bold md:text-xl text-white">
           “The AI agent pilot provided measurable productivity gains and
@@ -657,8 +560,8 @@
           team&#x27;s workflows.
         </p>
         <div class="mt-6 flex flex-wrap gap-4 md:mt-8">
-          <button class="btn btn-primary" title="Schedule a Consultation">
-            Schedule a Consultation
+          <button class="btn btn-primary" title="Book a Call">
+            Book a Call
           </button>
         </div>
       </div>
@@ -689,278 +592,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-// D3.js Agent Network Visualization
-function initializeAgentNetwork() {
-  const container = d3.select("#agent-network-d3");
-  if (container.empty()) return;
-
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-
-  // Clear previous SVG
-  container.selectAll("*").remove();
-
-  const svg = container.append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .style("position", "absolute")
-    .style("top", "0")
-    .style("left", "0")
-    .style("pointer-events", "none")
-    .style("z-index", "1");
-
-  // Create clipping mask to hide lines/signals inside circles
-  const defs = svg.append("defs");
-  const clipPath = defs.append("clipPath")
-    .attr("id", "agent-mask");
-  
-  // Add background rectangle
-  clipPath.append("rect")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("fill", "white");
-
-  // Agent data with roles and initial positions (bigger sizes)
-  const agents = [
-    { id: 'pm', role: 'PM', size: 35, color: '#64748B' },
-    { id: 'backend', role: 'BE', size: 40, color: '#64748B' },
-    { id: 'frontend', role: 'FE', size: 38, color: '#64748B' },
-    { id: 'qa', role: 'QA', size: 32, color: '#64748B' },
-    { id: 'devops', role: 'Ops', size: 34, color: '#64748B' },
-    { id: 'security', role: 'Sec', size: 30, color: '#64748B' }
-  ];
-
-  // Position agents equally spread around center (hero text area)
-  const centerX = width * 0.5;
-  const centerY = height * 0.5;
-  const radius = 450;
-  
-  agents.forEach((agent, index) => {
-    // Equal spacing around circle
-    const angle = (index / agents.length) * Math.PI * 2;
-    agent.x = centerX + Math.cos(angle) * radius;
-    agent.y = centerY + Math.sin(angle) * radius;
-    // Very slow orbital movement
-    agent.angle = angle;
-    agent.angularVelocity = 0.0002; // Even slower rotation
-  });
-
-  // Connection data - ensure each agent connects to at least 2 others
-  const connections = [
-    // PM connections (3 total)
-    { source: 'pm', target: 'backend' },
-    { source: 'pm', target: 'frontend' },
-    { source: 'pm', target: 'qa' },
-    // Backend connections (3 total)
-    { source: 'backend', target: 'devops' },
-    { source: 'backend', target: 'security' },
-    // Frontend connections (3 total)
-    { source: 'frontend', target: 'qa' },
-    { source: 'frontend', target: 'devops' },
-    // QA connections (2 total)
-    { source: 'qa', target: 'security' },
-    // DevOps connections (2 total)
-    { source: 'devops', target: 'security' },
-    // Security has connections from others (3 total)
-  ];
-
-  // Add agent circles to clipping mask (black holes in white background)
-  const maskCircles = clipPath.selectAll(".mask-circle")
-    .data(agents)
-    .enter()
-    .append("circle")
-    .attr("class", "mask-circle")
-    .attr("cx", d => d.x)
-    .attr("cy", d => d.y)
-    .attr("r", d => d.size)
-    .attr("fill", "black");
-
-  // Create a container for clipped elements (lines and signals)
-  const clippedGroup = svg.append("g")
-    .attr("clip-path", "url(#agent-mask)");
-
-  // Create connections inside clipped group
-  const lines = clippedGroup.selectAll(".connection")
-    .data(connections)
-    .enter()
-    .append("line")
-    .attr("class", "connection")
-    .attr("stroke", "#64748B")
-    .attr("stroke-width", 1)
-    .attr("opacity", 0.15);
-
-  // Create agent circles (these will be on top, unclipped)
-  const agentGroups = svg.selectAll(".agent")
-    .data(agents)
-    .enter()
-    .append("g")
-    .attr("class", "agent");
-
-  // Agent circles - solid background to hide grid and signals
-  agentGroups.append("circle")
-    .attr("r", d => d.size)
-    .attr("fill", "#0f172a")
-    .attr("fill-opacity", 1)
-    .attr("stroke", "#64748B")
-    .attr("stroke-width", 1)
-    .attr("stroke-opacity", 0.15);
-
-  // Agent labels
-  agentGroups.append("text")
-    .attr("text-anchor", "middle")
-    .attr("dy", "0.35em")
-    .attr("fill", "#94A3B8")
-    .attr("font-family", "Inter, sans-serif")
-    .attr("font-size", "10px")
-    .attr("font-weight", "500")
-    .attr("opacity", 0.3)
-    .text(d => d.role);
-
-  // Animation function - smooth orbital movement
-  function animate() {
-    agents.forEach(agent => {
-      // Update angle for smooth orbital movement
-      agent.angle += agent.angularVelocity;
-      
-      // Calculate new position based on angle
-      agent.x = centerX + Math.cos(agent.angle) * radius;
-      agent.y = centerY + Math.sin(agent.angle) * radius;
-    });
-
-    // Update agent positions
-    agentGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
-
-    // Update mask circle positions
-    maskCircles
-      .attr("cx", d => d.x)
-      .attr("cy", d => d.y);
-
-    // Update connection lines
-    lines
-      .attr("x1", d => agents.find(a => a.id === d.source).x)
-      .attr("y1", d => agents.find(a => a.id === d.source).y)
-      .attr("x2", d => agents.find(a => a.id === d.target).x)
-      .attr("y2", d => agents.find(a => a.id === d.target).y);
-
-    requestAnimationFrame(animate);
-  }
-
-  // Start animation
-  animate();
-
-  // Animated data flow with moving agents - bidirectional and slower
-  function animateDataFlow() {
-    connections.forEach((conn, index) => {
-      // Forward direction
-      setTimeout(() => {
-        const sourceAgent = agents.find(a => a.id === conn.source);
-        const targetAgent = agents.find(a => a.id === conn.target);
-        
-        const pulse = clippedGroup.append("circle")
-          .attr("cx", sourceAgent.x)
-          .attr("cy", sourceAgent.y)
-          .attr("r", 2)
-          .attr("fill", "#94A3B8")
-          .attr("opacity", 0.6);
-
-        function updatePulse() {
-          const currentTime = Date.now();
-          const startTime = currentTime;
-          const duration = 4500; // Even slower - increased to 4500ms
-          
-          function movePulse() {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Get current positions of source and target
-            const currentSourceX = sourceAgent.x;
-            const currentSourceY = sourceAgent.y;
-            const currentTargetX = targetAgent.x;
-            const currentTargetY = targetAgent.y;
-            
-            // Interpolate position
-            const x = currentSourceX + (currentTargetX - currentSourceX) * progress;
-            const y = currentSourceY + (currentTargetY - currentSourceY) * progress;
-            
-            pulse.attr("cx", x).attr("cy", y).attr("opacity", 0.6 * (1 - progress));
-            
-            if (progress < 1) {
-              requestAnimationFrame(movePulse);
-            } else {
-              pulse.remove();
-            }
-          }
-          
-          movePulse();
-        }
-        
-        updatePulse();
-      }, index * 800); // Even slower stagger
-
-      // Reverse direction
-      setTimeout(() => {
-        const sourceAgent = agents.find(a => a.id === conn.target); // Reversed
-        const targetAgent = agents.find(a => a.id === conn.source); // Reversed
-        
-        const pulse = clippedGroup.append("circle")
-          .attr("cx", sourceAgent.x)
-          .attr("cy", sourceAgent.y)
-          .attr("r", 2)
-          .attr("fill", "#94A3B8")
-          .attr("opacity", 0.6);
-
-        function updatePulse() {
-          const currentTime = Date.now();
-          const startTime = currentTime;
-          const duration = 4500; // Same slower duration
-          
-          function movePulse() {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Get current positions of source and target
-            const currentSourceX = sourceAgent.x;
-            const currentSourceY = sourceAgent.y;
-            const currentTargetX = targetAgent.x;
-            const currentTargetY = targetAgent.y;
-            
-            // Interpolate position
-            const x = currentSourceX + (currentTargetX - currentSourceX) * progress;
-            const y = currentSourceY + (currentTargetY - currentSourceY) * progress;
-            
-            pulse.attr("cx", x).attr("cy", y).attr("opacity", 0.6 * (1 - progress));
-            
-            if (progress < 1) {
-              requestAnimationFrame(movePulse);
-            } else {
-              pulse.remove();
-            }
-          }
-          
-          movePulse();
-        }
-        
-        updatePulse();
-      }, index * 800 + 2000); // Offset for reverse direction
-    });
-  }
-
-  // Start data flow animation loop - even slower interval
-  animateDataFlow();
-  setInterval(animateDataFlow, 8000);
-}
-
-// Initialize agent network on load and resize
-window.addEventListener('load', () => {
-  initializeAgentNetwork();
-});
-
-window.addEventListener('resize', () => {
-  initializeAgentNetwork();
-});
-</script>
 
 </body>
 </html>
