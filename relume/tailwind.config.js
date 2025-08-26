@@ -5,6 +5,18 @@ module.exports = {
     "./*.{html,js}",
     "./src/**/*.{html,js}"
   ],
+  safelist: [
+    'bg-blue-500',
+    'bg-green-500', 
+    'bg-orange-500',
+    'w-24',
+    'h-24',
+    'w-12',
+    'h-12',
+    'rounded-xl',
+    'shadow-md',
+    'text-white'
+  ],
   theme: {
     extend: {
       colors: {

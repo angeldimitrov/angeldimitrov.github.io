@@ -78,6 +78,11 @@
     @apply mb-4 last:mb-0 leading-relaxed;
   }
   
+  /* Icon utility classes */
+  .icon-container {
+    @apply w-24 h-24 flex items-center justify-center;
+  }
+  
   /* Rounded utilities matching Relume */
   .rounded-button {
     @apply rounded-lg;
