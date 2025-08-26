@@ -246,12 +246,46 @@ The global CTA button system is designed for maximum impact and conversion, base
 }
 ```
 
+## 🎨 Gradient Text System
+
+### Gradient Text Classes
+```css
+/* Hero Style Gradient - For Dark Backgrounds */
+.gradient-text-hero {
+  background: linear-gradient(to right, #ffffff, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Light Background Gradient - For Light Backgrounds */
+.gradient-text-light {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+```
+
+### Gradient Text Usage Guidelines
+- **Hero Gradient** (`.gradient-text-hero`): White-to-purple gradient for dark backgrounds
+- **Light Gradient** (`.gradient-text-light`): Blue-to-purple gradient for light backgrounds  
+- **Strategic Application**: Apply to key section headings and important concepts only
+- **Brand Consistency**: Use sparingly to maintain impact and professionalism
+
+### Applied Gradient Locations
+- **Hero Section**: "Ship Faster with AI-Native Development" (built-in Tailwind classes)
+- **Light Sections**: "Enterprise AI Workflows", "AI Development Team", "Transform Your Development Process" 
+- **Dark Sections**: "AI-Native Development", "Succeed", section headings
+
 ## 🌗 Section Themes
 
 ### Light Sections
 ```css
 .section-light {
-  @apply bg-white;
+  @apply bg-neutral-100; /* Light gray background for subtle contrast */
 }
 
 .section-light h1,
@@ -269,10 +303,34 @@ The global CTA button system is designed for maximum impact and conversion, base
 }
 ```
 
-### Dark Sections
+### Dark Sections - Hero Style
 ```css
 .section-dark {
-  @apply bg-background-dark text-text-alternative;
+  background: #0f172a; /* Hero blue background */
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+/* Grid Pattern Overlay */
+.section-dark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-dark > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-dark h1,

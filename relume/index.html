@@ -149,6 +149,33 @@
       border-color: rgba(255, 255, 255, 0.6);
       background: rgba(255, 255, 255, 0.1);
     }
+
+    /* Dark Sections - Hero Style Background */
+    .section-dark {
+      background: #0f172a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-dark::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .section-dark > * {
+      position: relative;
+      z-index: 1;
+    }
   </style>
   
 </head>
@@ -204,7 +231,7 @@
 </section>
 
 <!-- About Section -->
-<section class="py-16 md:py-24 lg:py-32 bg-white">
+<section class="py-16 md:py-24 lg:py-32 bg-neutral-100">
   <div class="container">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.5fr] md:gap-x-12 lg:gap-x-20">
       <div>
@@ -330,24 +357,19 @@ Automate recurring processes
         <ul class="grid grid-cols-1 gap-4 py-2">
           <li class="flex self-start">
             <div class="mr-4 flex-none self-start">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                alt="Relume logo 1"
-                class="size-6"
-              />
+              <svg class="size-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
             </div>
             <span
-              >Efficiency at Scale — Agents eliminate bottlenecks in real
-              time.</span
+              >Efficiency at Scale — Agents eliminate bottlenecks in real time by working in parallel across multiple tasks and projects simultaneously.</span
             >
           </li>
           <li class="flex self-start">
             <div class="mr-4 flex-none self-start">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                alt="Relume logo 1"
-                class="size-6"
-              />
+              <svg class="size-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
             </div>
             <span
               >Quality &amp; Security — Meet enterprise standards with
@@ -356,15 +378,23 @@ Automate recurring processes
           </li>
           <li class="flex self-start">
             <div class="mr-4 flex-none self-start">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                alt="Relume logo 1"
-                class="size-6"
-              />
+              <svg class="size-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
             </div>
             <span
               >Continuous Coverage — 24/7 support for operations and
               documentation.</span
+            >
+          </li>
+          <li class="flex self-start">
+            <div class="mr-4 flex-none self-start">
+              <svg class="size-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <span
+              >Smart Monitoring — AI agents proactively detect issues and auto-respond to system events.</span
             >
           </li>
         </ul>
@@ -542,7 +572,7 @@ Automate recurring processes
 </section>
 
 <!-- About Section -->
-<section class="py-16 md:py-24 lg:py-32 bg-white">
+<section class="py-16 md:py-24 lg:py-32 bg-neutral-100">
   <div class="container">
     <div
       class="grid grid-cols-1 gap-y-12 md:grid-cols-[1fr_2fr] md:items-center md:gap-x-12 lg:gap-x-16"
@@ -658,7 +688,7 @@ Automate recurring processes
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 md:py-24 lg:py-32 bg-white">
+<section class="py-16 md:py-24 lg:py-32 bg-neutral-100">
   <div class="container">
     <div
       class="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center"
