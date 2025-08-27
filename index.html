@@ -1,1227 +1,986 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Driven Development Consulting | Transform Your Engineering Workflow</title>
-    <meta name="description" content="Strategic AI consulting for engineering leaders. Save time, reduce costs, and improve quality with AI-native developer workflows.">
-    <link rel="stylesheet" href="./dist/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Native Development Consulting</title>
+  
+  <!-- TailwindCSS Compiled Styles -->
+  <link rel="stylesheet" href="./dist/styles.css">
+  
+  <!-- For development: Uncomment to use TailwindCSS CDN -->
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- D3.js for animations -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+  <style>
+    /* ===== Base Styles ===== */
+    
+    /* Dark Section Theming */
+    .hero,
+    .section-dark {
+      background: #0f172a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid Pattern Background */
+    .hero::after,
+    .section-dark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .section-dark > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== Text Gradients ===== */
+    .gradient-text-hero {
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-light {
+      background: linear-gradient(to right, #2563eb, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== Button System ===== */
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #2563EB, #9333EA);
+      color: white;
+      font-weight: bold;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(to right, #1D4ED8, #7C2D12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: #404040;
+      font-weight: 600;
+      border: 2px solid #D4D4D4;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #737373;
+      background: #FAFAFA;
+    }
+
+    .btn-secondary-dark {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: white;
+      font-weight: 600;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary-dark:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Focus States for Accessibility */
+    .btn-primary:focus-visible,
+    .btn-secondary:focus-visible,
+    .btn-secondary-dark:focus-visible {
+      outline: 2px solid #3B82F6;
+      outline-offset: 2px;
+    }
+
+    /* ===== Hero Specific ===== */
+    #agent-network-d3 {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  
 </head>
-<body class="bg-white text-text-primary">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/98 backdrop-blur-md z-50 border-b border-gray-200 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-18">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-text-primary">AI Dev Consulting</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 font-medium px-3 py-2 rounded-md hover:bg-primary-light focus:bg-primary-light">About</a>
-                    <a href="#value" class="text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 font-medium px-3 py-2 rounded-md hover:bg-primary-light focus:bg-primary-light">Value</a>
-                    <a href="#ai-agents" class="text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 font-medium px-3 py-2 rounded-md hover:bg-primary-light focus:bg-primary-light">AI Agents</a>
-                    <a href="#services" class="text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 font-medium px-3 py-2 rounded-md hover:bg-primary-light focus:bg-primary-light">Services</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 p-2 rounded-md hover:bg-primary-light focus:bg-primary-light transition-colors" aria-label="Toggle mobile menu" aria-expanded="false">
-                        <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg" role="navigation" aria-label="Mobile navigation">
-            <div class="px-4 pt-2 pb-3 space-y-1">
-                <a href="#about" class="block px-4 py-3 text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:bg-primary-light focus:bg-primary-light rounded-md transition-colors font-medium">About</a>
-                <a href="#value" class="block px-4 py-3 text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:bg-primary-light focus:bg-primary-light rounded-md transition-colors font-medium">Value</a>
-                <a href="#ai-agents" class="block px-4 py-3 text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:bg-primary-light focus:bg-primary-light rounded-md transition-colors font-medium">AI Agents</a>
-                <a href="#services" class="block px-4 py-3 text-text-secondary hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:bg-primary-light focus:bg-primary-light rounded-md transition-colors font-medium">Services</a>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary via-accent-purple to-primary overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10" aria-hidden="true">
-            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Decorative grid pattern background">
-                <defs>
-                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-        </div>
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur-sm">
+  <div class="container">
+    <div class="flex min-h-16 items-center justify-center px-[5%] md:min-h-18 lg:px-0">
+      <div class="flex items-center space-x-8">
+        <a
+          href="#"
+          class="text-md lg:text-base font-medium hover:text-primary transition-colors"
+          >Home</a
+        ><a
+          href="#"
+          class="text-md lg:text-base font-medium hover:text-primary transition-colors"
+          >Services</a
+        ><a
+          href="#"
+          class="text-md lg:text-base font-medium hover:text-primary transition-colors"
+          >About Me</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section with D3.js Agent Network -->
+<section class="hero min-h-screen flex items-center">
+  <!-- D3.js Agent Network Container -->
+  <div id="agent-network-d3"></div>
+  
+  <div class="container">
+    <div class="hero-content text-center text-white">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+        <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Ship Faster with AI-Native Development</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light">
+        Transform your engineering workflow with strategic AI integration. Save time, reduce costs, and accelerate delivery.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button class="btn-primary">
+          Schedule a Consultation
+        </button>
         
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="text-center text-white">
-                <!-- Authority Indicator -->
-                <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-8 border border-white/20">
-                    <i class="fas fa-award mr-2 text-accent-amber"></i>
-                    AI Development Team Architecture
-                </div>
-                
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                    Ship Faster with<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-100">AI-Native Development</span>
-                </h1>
-                
-                <p class="text-xl sm:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-blue-50">
-                    Transform your engineering workflow with strategic AI integration. Deploy specialized AI agents that work in parallel across your entire development lifecycle.
-                </p>
-                
-                <!-- Enhanced CTA -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="https://calendly.com/your-link" target="_blank" class="group inline-flex items-center px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-blue-50 focus:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-white/50 transition-all duration-300 shadow-2xl hover:shadow-3xl focus:shadow-3xl transform hover:-translate-y-1 focus:-translate-y-1">
-                        <i class="fas fa-calendar-alt mr-3 group-hover:scale-110 group-focus:scale-110 transition-transform"></i>
-                        <div class="text-left">
-                            <div class="text-lg">Book Free Consultation</div>
-                            <div class="text-sm font-normal opacity-80">20 minutes • No commitment</div>
-                        </div>
-                    </a>
-                    
-                    <div class="flex items-center text-blue-100 text-sm">
-                        <i class="fas fa-check-circle mr-2 text-accent-emerald"></i>
-                        <span>Free AI workflow assessment included</span>
-                    </div>
-                </div>
-            </div>
+        <button class="btn-secondary-dark">
+          Learn More
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.5fr] md:gap-x-12 lg:gap-x-20">
+      <div>
+        <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900">
+          Not Vibe Coding –<br/><span class="gradient-text-light">Enterprise AI Workflows</span>
+        </h2>
+      </div>
+      <div>
+        <div class="prose">
+          <p class="text-lg font-medium text-neutral-800 mb-4">
+            There's a big difference between casual "vibe coding" experiments and what I offer.
+          </p>
+          <p>
+            Vibe coding is what happens when non-professionals play with AI tools to quickly spin up prototypes, test ideas, or generate snippets of code. It's fun, it's creative, and it's great for learning or hacking together small projects. But it's not built for scale, reliability, or production use.
+          </p>
+          <p>
+            AI Agent Workflows, on the other hand, are enterprise-grade systems where AI is integrated across the full development lifecycle — from planning and architecture, through implementation, testing, deployment, and monitoring. Multiple specialized agents collaborate in parallel, working under professional standards with quality checks, CI/CD pipelines, and security considerations. This isn't about "seeing what works" — it's about delivering reliable, maintainable, production-ready software at scale.
+          </p>
+          <p>
+            What I provide is not coding lessons or playground experiments. I bring structured, enterprise-level consulting: helping organizations adopt AI-native development lifecycles that cut delivery times, reduce costs, and raise quality while maintaining compliance, governance, and long-term maintainability.
+          </p>
+          <p class="text-lg font-medium text-neutral-800 mt-6">
+            In short: I don't teach vibe coding. I help you build the future of enterprise software development with AI.
+          </p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Value Proposition -->
-    <section id="value" class="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-text-primary">
-                Why Engineering Leaders Choose<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-purple">AI-Native Development</span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
-                <!-- 3x Development Velocity -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary via-blue-600 to-accent-purple rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-tachometer-alt text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">3x Development Velocity</h3>
-                        <div class="text-primary font-semibold text-lg mb-4">
-                            <i class="fas fa-chart-line mr-2"></i>200% Faster Time-to-Market
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            Eliminate development bottlenecks with parallel AI agent workflows that handle coding, testing, and deployment simultaneously.
-                        </p>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-accent-emerald font-medium">
-                            <i class="fas fa-check-circle mr-2"></i>
-                            <span class="text-sm">Features ship in hours, not weeks</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 95% Bug Reduction -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-emerald/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-emerald/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-emerald via-green-600 to-emerald-700 rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-shield-check text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">95% Bug Reduction</h3>
-                        <div class="text-accent-emerald font-semibold text-lg mb-4">
-                            <i class="fas fa-bug mr-2"></i>Zero Critical Production Issues
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            AI-powered code review, automated testing, and real-time quality monitoring prevent issues before they reach production.
-                        </p>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-accent-emerald font-medium">
-                            <i class="fas fa-check-circle mr-2"></i>
-                            <span class="text-sm">Eliminate emergency hotfixes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ship in Hours, Not Weeks -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-purple/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-purple/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-purple via-purple-600 to-indigo-700 rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-rocket text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">Ship in Hours, Not Weeks</h3>
-                        <div class="text-accent-purple font-semibold text-lg mb-4">
-                            <i class="fas fa-clock mr-2"></i>90% Reduction in Release Cycles
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            Complete features from concept to production with AI agents handling frontend, backend, testing, and deployment in parallel.
-                        </p>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-accent-emerald font-medium">
-                            <i class="fas fa-check-circle mr-2"></i>
-                            <span class="text-sm">Respond to market changes instantly</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Zero Deployment Risk -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-amber/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-amber/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-amber via-orange-500 to-red-500 rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-lock text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">Zero Deployment Risk</h3>
-                        <div class="text-accent-amber font-semibold text-lg mb-4">
-                            <i class="fas fa-shield-alt mr-2"></i>100% Safe Integration Guarantee
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            Seamlessly integrate with existing CI/CD pipelines, security protocols, and development workflows without disruption.
-                        </p>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-accent-emerald font-medium">
-                            <i class="fas fa-check-circle mr-2"></i>
-                            <span class="text-sm">No infrastructure changes required</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Why Choose Section -->
+<section class="section-dark py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="flex flex-col">
+      <div class="mb-8 md:mb-10 lg:mb-12">
+        <div class="w-full">
+          <p class="mb-3 font-semibold md:mb-4 text-neutral-400">Benefits</p>
+          <h2 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-white">
+            Why Choose <span class="gradient-text-hero">AI-Native Development</span> for Your Engineering Needs?
+          </h2>
+          <p class="md:text-md text-neutral-400">
+            Accelerate delivery, improve quality, and future-proof your engineering with AI-native workflows.
+          </p>
         </div>
-    </section>
-
-    <!-- AI Agents Section -->
-    <section id="ai-agents" class="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center px-4 py-2 bg-accent-purple/10 text-accent-purple rounded-full text-sm font-semibold mb-6">
-                    <i class="fas fa-robot mr-2"></i>
-                    Revolutionary AI Development Architecture
-                </div>
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-text-primary">
-                    Your Complete AI<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-purple to-primary">Development Team</span>
-                </h2>
-                <p class="text-xl sm:text-2xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                    Deploy 8 specialized AI agents covering every critical role: Project Management, Backend & Frontend Development, UI/UX Design, Security, DevOps, QA/Testing, and Analytics. 
-                    Each agent works in parallel to eliminate bottlenecks and accelerate delivery.
-                </p>
+      </div>
+      <div
+        class="grid grid-cols-1 items-start justify-center gap-y-12 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12"
+      >
+        <div class="flex w-full flex-col">
+          <div class="mb-3 md:mb-4 flex justify-start">
+            <div class="icon-container">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
             </div>
-
-            <!-- Enhanced Terminal Demos -->
-            <div class="space-y-8 mb-20">
-                <!-- Single Agent Demo -->
-                <div class="relative">
-                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-accent-emerald rounded-full flex items-center justify-center">
-                        <span class="text-white font-bold text-sm">1</span>
-                    </div>
-                    <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-2xl border border-gray-700">
-                        <!-- Terminal Header -->
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                            </div>
-                            <div class="text-gray-400 text-sm font-mono">AI Agent Terminal</div>
-                        </div>
-                        
-                        <!-- Terminal Content -->
-                        <div class="font-mono terminal-text space-y-3">
-                            <div class="flex items-center">
-                                <span class="text-accent-emerald">➜</span>
-                                <span class="text-gray-300 ml-2">ai-agent</span>
-                                <span class="text-accent-amber ml-2">implement</span>
-                                <span class="text-blue-300 ml-2">"Add user authentication with OAuth"</span>
-                            </div>
-                            <div class="text-gray-400 flex items-center"><i class="fas fa-search mr-2"></i>Analyzing project structure...</div>
-                            <div class="text-gray-400 flex items-center"><i class="fas fa-code mr-2"></i>Creating authentication service...</div>
-                            <div class="text-gray-400 flex items-center"><i class="fas fa-cog mr-2"></i>Setting up OAuth providers...</div>
-                            <div class="text-gray-400 flex items-center"><i class="fas fa-shield-alt mr-2"></i>Adding middleware and routes...</div>
-                            <div class="text-gray-400 flex items-center"><i class="fas fa-vial mr-2"></i>Generating comprehensive test suite...</div>
-                            <div class="text-accent-emerald font-semibold flex items-center">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                Feature complete: 12 files modified, 95% test coverage, 0 security vulnerabilities
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Multi-Agent Parallel Demo -->
-                <div class="relative">
-                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-accent-purple rounded-full flex items-center justify-center">
-                        <span class="text-white font-bold text-sm">8</span>
-                    </div>
-                    <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-2xl border border-gray-700">
-                        <!-- Terminal Header -->
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                            </div>
-                            <div class="text-gray-400 text-sm font-mono">AI Team Coordination Terminal</div>
-                        </div>
-                        
-                        <!-- Multi-Agent Content -->
-                        <div class="font-mono terminal-text space-y-2">
-                            <div class="flex items-center">
-                                <span class="text-accent-emerald">➜</span>
-                                <span class="text-gray-300 ml-2">ai-team</span>
-                                <span class="text-accent-amber ml-2">deploy</span>
-                                <span class="text-blue-300 ml-2">"E-commerce checkout feature"</span>
-                            </div>
-                            <div class="border-l-2 border-primary/30 pl-4 space-y-2 mt-4">
-                                <div class="text-primary flex items-center">
-                                    <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                    Project Manager Agent: Breaking down requirements into 8 tickets...
-                                </div>
-                                <div class="text-accent-purple flex items-center">
-                                    <div class="w-2 h-2 bg-accent-purple rounded-full mr-3"></div>
-                                    Backend Agent: Creating secure payment API endpoints...
-                                </div>
-                                <div class="text-cyan-400 flex items-center">
-                                    <div class="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
-                                    Frontend Agent: Building responsive checkout components...
-                                </div>
-                                <div class="text-pink-400 flex items-center">
-                                    <div class="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
-                                    UI/UX Designer Agent: Optimizing conversion flow and accessibility...
-                                </div>
-                                <div class="text-yellow-400 flex items-center">
-                                    <div class="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
-                                    DevOps Agent: Setting up CI/CD pipeline and monitoring...
-                                </div>
-                                <div class="text-accent-amber flex items-center">
-                                    <div class="w-2 h-2 bg-accent-amber rounded-full mr-3"></div>
-                                    QA/Testing Agent: Comprehensive testing and browser compatibility...
-                                </div>
-                                <div class="text-indigo-400 flex items-center">
-                                    <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3"></div>
-                                    Analytics Agent: Setting up conversion tracking and metrics...
-                                </div>
-                                <div class="text-red-400 flex items-center">
-                                    <div class="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
-                                    Security Agent: PCI compliance audit and vulnerability scanning...
-                                </div>
-                            </div>
-                            <div class="text-gray-400 mt-4 flex items-center">
-                                <i class="fas fa-sync fa-spin mr-2"></i>
-                                All agents working in parallel - coordinating via shared context...
-                            </div>
-                            <div class="text-accent-emerald font-semibold mt-4 flex items-center">
-                                <i class="fas fa-rocket mr-2"></i>
-                                Deployment complete: 8 agents finished in 47 minutes | 100% test coverage | A+ security rating
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <h3 class="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
+Up to 3x Development Velocity
+          </h3>
+          <p class="text-neutral-400">
+            AI agents work in parallel across planning, coding, testing, and
+            deployment. This dramatically accelerates delivery speed, enabling
+            your team to move from idea to production up to three times faster
+            without sacrificing quality.
+          </p>
+        </div>
+        <div class="flex w-full flex-col">
+          <div class="mb-3 md:mb-4 flex justify-start">
+            <div class="icon-container">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
             </div>
-
-            <!-- AI Development Team Members -->
-            <div class="mb-16">
-                <h3 class="text-4xl font-bold text-center mb-4">Meet Your AI Development Team</h3>
-                <p class="text-xl text-text-secondary text-center mb-12 max-w-3xl mx-auto">
-                    8 optimized agents covering every essential role in modern software development, from user experience design to enterprise security
-                </p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Project Manager Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary via-blue-600 to-indigo-700 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-tasks text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">Project Manager Agent</h4>
-                            <div class="text-primary font-semibold text-sm mb-4">
-                                <i class="fas fa-chart-line mr-2"></i>Coordination & Planning Excellence
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                Requirements analysis, ticket creation, sprint planning, and stakeholder coordination
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-primary font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Eliminates project bottlenecks</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Backend Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-purple/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-accent-purple/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-accent-purple via-purple-600 to-indigo-700 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-server text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">Backend Agent</h4>
-                            <div class="text-accent-purple font-semibold text-sm mb-4">
-                                <i class="fas fa-database mr-2"></i>Scalable Architecture
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                API development, database design, server logic, and microservices architecture
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-accent-purple font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Enterprise-grade reliability</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Frontend Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-palette text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">Frontend Agent</h4>
-                            <div class="text-cyan-600 font-semibold text-sm mb-4">
-                                <i class="fas fa-magic mr-2"></i>User Experience Excellence
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                UI components, responsive design, user experience, and modern frameworks
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-cyan-600 font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Converts users to customers</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- UI/UX Designer Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-pink-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-pink-500/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 via-rose-500 to-purple-600 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-paint-brush text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">UI/UX Designer Agent</h4>
-                            <div class="text-pink-600 font-semibold text-sm mb-4">
-                                <i class="fas fa-magic mr-2"></i>Design Systems Excellence
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                Design systems, user experience optimization, accessibility standards, and conversion flows
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-pink-600 font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Maximizes user engagement</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DevOps Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-yellow-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-yellow-500/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500 via-orange-500 to-red-600 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-cogs text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">DevOps Agent</h4>
-                            <div class="text-yellow-600 font-semibold text-sm mb-4">
-                                <i class="fas fa-rocket mr-2"></i>Deployment Automation
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                CI/CD pipelines, deployment automation, monitoring setup, and infrastructure
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-yellow-600 font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Instant, risk-free deployments</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Analytics Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-700 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-chart-line text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">Analytics Agent</h4>
-                            <div class="text-indigo-600 font-semibold text-sm mb-4">
-                                <i class="fas fa-tachometer-alt mr-2"></i>Performance Intelligence
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                Performance monitoring, business intelligence, user analytics, and optimization insights
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-indigo-600 font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Drives data-driven decisions</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- QA/Testing Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-500/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-vial text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">QA/Testing Agent</h4>
-                            <div class="text-amber-600 font-semibold text-sm mb-4">
-                                <i class="fas fa-shield-check mr-2"></i>Zero-Defect Guarantee
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                Unit tests, integration tests, browser testing, E2E automation, and quality assurance
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-amber-600 font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Prevents costly production bugs</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Security Agent -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-red-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                        <!-- Background Accent -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-transparent rounded-full transform translate-x-12 -translate-y-12"></div>
-                        
-                        <div class="relative">
-                            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 via-rose-600 to-pink-700 rounded-2xl mb-6 group-hover:scale-105 transition-transform shadow-xl">
-                                <i class="fas fa-shield-alt text-white text-xl"></i>
-                            </div>
-                            
-                            <h4 class="text-2xl font-bold mb-3 text-text-primary">Security Agent</h4>
-                            <div class="text-red-600 font-semibold text-sm mb-4">
-                                <i class="fas fa-lock mr-2"></i>Enterprise Security
-                            </div>
-                            
-                            <p class="text-lg text-text-secondary leading-relaxed mb-4">
-                                Security audits, vulnerability scanning, compliance checks, and penetration testing
-                            </p>
-                            
-                            <!-- Business Impact -->
-                            <div class="flex items-center text-red-600 font-medium text-sm">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                <span>Enterprise security guarantee</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <h3 class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white">
+Ship in Hours, Not Weeks
+          </h3>
+          <p class="text-neutral-400">
+            Traditional sprints take days or weeks. With AI-native workflows,
+            features can be designed, implemented, and tested in a matter of
+            hours. That means faster iterations, quicker validation, and earlier
+            customer impact.
+          </p>
+        </div>
+        <div class="flex w-full flex-col">
+          <div class="mb-3 md:mb-4 flex justify-start">
+            <div class="icon-container">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
             </div>
+          </div>
+          <h3 class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white">
+Automate recurring processes
+          </h3>
+          <p class="text-neutral-400">
+            Free your engineers from repetitive tasks like boilerplate coding,
+            regression testing, and CI/CD setups. AI automates the routine, so
+            your team can focus on innovation, architecture, and solving
+            business-critical challenges.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <!-- Complete Development Lifecycle Coverage -->
-            <div class="mb-16">
-                <h3 class="text-4xl font-bold text-center mb-4">Complete Development Lifecycle Coverage</h3>
-                <p class="text-xl text-text-secondary text-center mb-12 max-w-3xl mx-auto">
-                    Every phase handled simultaneously by specialized AI agents, eliminating traditional bottlenecks
-                </p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Planning Phase -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 text-center">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary via-blue-600 to-indigo-700 rounded-2xl mb-6 mx-auto group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-lightbulb text-white text-2xl"></i>
-                        </div>
-                        
-                        <h4 class="text-2xl font-bold mb-4 text-text-primary">Planning</h4>
-                        <div class="text-primary font-semibold text-sm mb-4">
-                            <i class="fas fa-brain mr-2"></i>Strategic Foundation
-                        </div>
-                        
-                        <ul class="text-lg text-text-secondary space-y-2 text-left">
-                            <li class="flex items-center"><i class="fas fa-check text-primary mr-3 text-sm"></i>Requirements analysis</li>
-                            <li class="flex items-center"><i class="fas fa-check text-primary mr-3 text-sm"></i>Ticket creation</li>
-                            <li class="flex items-center"><i class="fas fa-check text-primary mr-3 text-sm"></i>Architecture design</li>
-                            <li class="flex items-center"><i class="fas fa-check text-primary mr-3 text-sm"></i>Sprint planning</li>
-                        </ul>
-                    </div>
-
-                    <!-- Development Phase -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-emerald/30 transition-all duration-500 hover:-translate-y-2 text-center">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-emerald via-green-600 to-emerald-700 rounded-2xl mb-6 mx-auto group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-code text-white text-2xl"></i>
-                        </div>
-                        
-                        <h4 class="text-2xl font-bold mb-4 text-text-primary">Development</h4>
-                        <div class="text-accent-emerald font-semibold text-sm mb-4">
-                            <i class="fas fa-bolt mr-2"></i>Parallel Execution
-                        </div>
-                        
-                        <ul class="text-lg text-text-secondary space-y-2 text-left">
-                            <li class="flex items-center"><i class="fas fa-check text-accent-emerald mr-3 text-sm"></i>Parallel coding</li>
-                            <li class="flex items-center"><i class="fas fa-check text-accent-emerald mr-3 text-sm"></i>Frontend & Backend</li>
-                            <li class="flex items-center"><i class="fas fa-check text-accent-emerald mr-3 text-sm"></i>Database design</li>
-                            <li class="flex items-center"><i class="fas fa-check text-accent-emerald mr-3 text-sm"></i>API implementation</li>
-                        </ul>
-                    </div>
-
-                    <!-- Testing Phase -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-amber/30 transition-all duration-500 hover:-translate-y-2 text-center">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-amber via-yellow-500 to-orange-600 rounded-2xl mb-6 mx-auto group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-check-circle text-white text-2xl"></i>
-                        </div>
-                        
-                        <h4 class="text-2xl font-bold mb-4 text-text-primary">Testing</h4>
-                        <div class="text-amber-600 font-semibold text-sm mb-4">
-                            <i class="fas fa-shield-check mr-2"></i>Quality Assurance
-                        </div>
-                        
-                        <ul class="text-lg text-text-secondary space-y-2 text-left">
-                            <li class="flex items-center"><i class="fas fa-check text-amber-600 mr-3 text-sm"></i>Unit & Integration tests</li>
-                            <li class="flex items-center"><i class="fas fa-check text-amber-600 mr-3 text-sm"></i>E2E automation</li>
-                            <li class="flex items-center"><i class="fas fa-check text-amber-600 mr-3 text-sm"></i>Cross-browser testing</li>
-                            <li class="flex items-center"><i class="fas fa-check text-amber-600 mr-3 text-sm"></i>Performance audits</li>
-                        </ul>
-                    </div>
-
-                    <!-- Deployment Phase -->
-                    <div class="group relative bg-white p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-purple/30 transition-all duration-500 hover:-translate-y-2 text-center">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-purple via-purple-600 to-indigo-700 rounded-2xl mb-6 mx-auto group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-rocket text-white text-2xl"></i>
-                        </div>
-                        
-                        <h4 class="text-2xl font-bold mb-4 text-text-primary">Deployment</h4>
-                        <div class="text-accent-purple font-semibold text-sm mb-4">
-                            <i class="fas fa-satellite mr-2"></i>Live Operations
-                        </div>
-                        
-                        <ul class="text-lg text-text-secondary space-y-2 text-left">
-                            <li class="flex items-center"><i class="fas fa-check text-accent-purple mr-3 text-sm"></i>CI/CD pipelines</li>
-                            <li class="flex items-center"><i class="fas fa-check text-accent-purple mr-3 text-sm"></i>Live monitoring</li>
-                            <li class="flex items-center"><i class="fas fa-check text-accent-purple mr-3 text-sm"></i>Performance tracking</li>
-                            <li class="flex items-center"><i class="fas fa-check text-accent-purple mr-3 text-sm"></i>Auto-scaling & alerts</li>
-                        </ul>
-                    </div>
-                </div>
+<section id="relume" class="px-[5%] py-16 md:py-24 lg:py-28">
+  <div class="container">
+    <div
+      class="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20"
+    >
+      <div>
+        <p class="mb-3 font-semibold md:mb-4">AI Team</p>
+        <h1 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
+          Your Complete <span class="gradient-text-light">AI Development Team</span>
+        </h1>
+        <p class="mb-5 text-base md:mb-6 md:text-md">
+          AI agents act as autonomous specialists across the entire development
+          lifecycle. Tailor the mix of agents to ensure optimal speed, quality,
+          and scalability for your unique needs.
+        </p>
+        <ul class="grid grid-cols-1 gap-4 py-2">
+          <li class="flex self-start">
+            <div class="mr-4 flex-none self-start">
+              <svg class="size-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
             </div>
-
-            <!-- Proven Results Section -->
-            <div class="mb-16">
-                <h3 class="text-4xl font-bold text-center mb-4">Proven Results from Leading Companies</h3>
-                <p class="text-xl text-text-secondary text-center mb-12 max-w-4xl mx-auto">
-                    Real metrics from enterprise teams using AI-driven development workflows to accelerate delivery and improve quality
-                </p>
-                
-                <!-- Statistics Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                    <!-- Statistic 1: Time to Market -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-accent-emerald mb-2">79%</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Faster Time-to-Market</div>
-                        <div class="text-sm text-text-secondary">Rakuten: 24 days → 5 days</div>
-                    </div>
-                    
-                    <!-- Statistic 2: Execution Speed -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-accent-purple mb-2">2x</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Execution Speed</div>
-                        <div class="text-sm text-text-secondary">CRED: Features & fixes</div>
-                    </div>
-                    
-                    <!-- Statistic 3: Parallel Development -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-primary mb-2">5x</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Parallel Development</div>
-                        <div class="text-sm text-text-secondary">Rakuten: Simultaneous tasks</div>
-                    </div>
-                    
-                    <!-- Statistic 4: Engineering Speed -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-cyan-600 mb-2">30%</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Faster Engineering</div>
-                        <div class="text-sm text-text-secondary">TELUS: Code deployment</div>
-                    </div>
-                    
-                    <!-- Statistic 5: Time Savings -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-accent-amber mb-2">40 min</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Saved Per Interaction</div>
-                        <div class="text-sm text-text-secondary">TELUS: Individual productivity</div>
-                    </div>
-                    
-                    <!-- Statistic 6: Autonomous Coding -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-red-600 mb-2">7 hrs</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Autonomous Coding</div>
-                        <div class="text-sm text-text-secondary">Rakuten: Complex refactoring</div>
-                    </div>
-                    
-                    <!-- Statistic 7: Test Coverage -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2">+10%</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Test Coverage Increase</div>
-                        <div class="text-sm text-text-secondary">CRED: Existing codebases</div>
-                    </div>
-                    
-                    <!-- Statistic 8: Project Delivery -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-                        <div class="text-3xl font-bold text-pink-600 mb-2">End-to-End</div>
-                        <div class="text-lg font-semibold text-text-primary mb-1">Project Delivery</div>
-                        <div class="text-sm text-text-secondary">CRED: Complete workflows</div>
-                    </div>
-                </div>
-                
-                <!-- Customer Logos Section -->
-                <div class="text-center">
-                    <p class="text-lg font-semibold text-text-primary mb-6">Trusted by leading companies worldwide</p>
-                    <div class="flex flex-wrap justify-center items-center gap-8 mb-8">
-                        <a href="https://www.anthropic.com/customers/rakuten" target="_blank" class="text-2xl font-bold text-gray-400 hover:text-primary transition-colors">Rakuten</a>
-                        <a href="https://www.anthropic.com/customers/cred" target="_blank" class="text-2xl font-bold text-gray-400 hover:text-primary transition-colors">CRED</a>
-                        <a href="https://www.anthropic.com/customers/telus" target="_blank" class="text-2xl font-bold text-gray-400 hover:text-primary transition-colors">TELUS</a>
-                        <a href="https://www.anthropic.com/customers/" target="_blank" class="text-2xl font-bold text-gray-400 hover:text-primary transition-colors">Cubic</a>
-                        <a href="https://www.anthropic.com/customers/" target="_blank" class="text-2xl font-bold text-gray-400 hover:text-primary transition-colors">Headstart</a>
-                    </div>
-                    
-                    <!-- Call to Action -->
-                    <div class="bg-gradient-to-r from-primary/10 to-accent-purple/10 rounded-2xl p-8">
-                        <h4 class="text-2xl font-bold text-text-primary mb-4">Ready to see these results in your organization?</h4>
-                        <p class="text-lg text-text-secondary mb-6 max-w-2xl mx-auto">
-                            Discover how AI development workflows can transform your team's productivity and delivery speed
-                        </p>
-                        <a href="https://calendly.com/your-link" class="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            Book Strategy Session
-                        </a>
-                    </div>
-                </div>
+            <span
+              >Efficiency at Scale — Agents eliminate bottlenecks in real time by working in parallel across multiple tasks and projects simultaneously.</span
+            >
+          </li>
+          <li class="flex self-start">
+            <div class="mr-4 flex-none self-start">
+              <svg class="size-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <span
+              >Quality &amp; Security — Meet enterprise standards with
+              continuous testing.</span
+            >
+          </li>
+          <li class="flex self-start">
+            <div class="mr-4 flex-none self-start">
+              <svg class="size-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <span
+              >Continuous Coverage — 24/7 support for operations and
+              documentation.</span
+            >
+          </li>
+          <li class="flex self-start">
+            <div class="mr-4 flex-none self-start">
+              <svg class="size-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <span
+              >Smart Monitoring — AI agents proactively detect issues and auto-respond to system events.</span
+            >
+          </li>
+        </ul>
+        <div class="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+          <button class="btn-primary" title="Schedule a Consultation">
+            Schedule a Consultation
+          </button>
+        </div>
+      </div>
+      <div>
+        <!-- AI Team Coordination Terminal -->
+        <div class="relative">
+          <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-2xl border border-gray-700">
+            <!-- Terminal Header -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+              <div class="text-gray-400 text-sm font-mono">AI Team Coordination Terminal</div>
             </div>
             
-            <!-- Alternative List Version with Quotes -->
-            <div class="mt-20 pt-16 border-t border-gray-200">
-                <h3 class="text-3xl font-bold text-center mb-4">Customer Success Highlights</h3>
-                <p class="text-xl text-text-secondary text-center mb-12 max-w-3xl mx-auto">
-                    Direct quotes and insights from engineering teams transforming their workflows with AI
-                </p>
-                
-                <div class="max-w-4xl mx-auto space-y-6">
-                    <!-- Rakuten Quote -->
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4 flex-1">
-                                <blockquote class="text-lg text-text-secondary italic mb-3">
-                                    "We reduced our feature delivery time from 24 days to just 5 days - a 79% improvement. Claude Code achieved 7 hours of sustained autonomous coding on complex refactoring projects, allowing developers to run five tasks in parallel."
-                                </blockquote>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-semibold text-text-primary">Rakuten Engineering Team</p>
-                                        <p class="text-sm text-gray-500">E-commerce & Technology</p>
-                                    </div>
-                                    <a href="https://www.anthropic.com/customers/rakuten" target="_blank" class="text-primary hover:text-primary/80 font-medium text-sm flex items-center">
-                                        Read full story
-                                        <i class="fas fa-external-link-alt ml-2 text-xs"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- CRED Quote -->
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="w-12 h-12 bg-gradient-to-br from-accent-purple to-purple-700 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4 flex-1">
-                                <blockquote class="text-lg text-text-secondary italic mb-3">
-                                    "Our execution speed has improved by 2x, allowing us to deliver features and fixes faster. We've achieved a 10% increase in test coverage across existing codebases and can now deliver end-to-end projects independently."
-                                </blockquote>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-semibold text-text-primary">CRED Development Team</p>
-                                        <p class="text-sm text-gray-500">Fintech & Financial Services</p>
-                                    </div>
-                                    <a href="https://www.anthropic.com/customers/cred" target="_blank" class="text-primary hover:text-primary/80 font-medium text-sm flex items-center">
-                                        Read full story
-                                        <i class="fas fa-external-link-alt ml-2 text-xs"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- TELUS Quote -->
-                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="w-12 h-12 bg-gradient-to-br from-accent-emerald to-green-700 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4 flex-1">
-                                <blockquote class="text-lg text-text-secondary italic mb-3">
-                                    "Engineering teams are now shipping code 30% faster, with 40 minutes saved per AI interaction. We've empowered 57,000 team members to create 13,000+ custom AI solutions, driving over $90 million in benefits."
-                                </blockquote>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-semibold text-text-primary">TELUS Innovation Team</p>
-                                        <p class="text-sm text-gray-500">Telecommunications & Technology</p>
-                                    </div>
-                                    <a href="https://www.anthropic.com/customers/telus" target="_blank" class="text-primary hover:text-primary/80 font-medium text-sm flex items-center">
-                                        Read full story
-                                        <i class="fas fa-external-link-alt ml-2 text-xs"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Additional Success Metrics -->
-                    <div class="mt-8 grid md:grid-cols-3 gap-6">
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <div class="text-2xl font-bold text-primary mb-1">5x</div>
-                            <div class="text-sm text-gray-600">Parallel task execution</div>
-                            <div class="text-xs text-gray-500 mt-1">Rakuten</div>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <div class="text-2xl font-bold text-accent-purple mb-1">7 hrs</div>
-                            <div class="text-sm text-gray-600">Autonomous coding</div>
-                            <div class="text-xs text-gray-500 mt-1">Complex refactoring</div>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <div class="text-2xl font-bold text-accent-emerald mb-1">500K+</div>
-                            <div class="text-sm text-gray-600">Total hours saved</div>
-                            <div class="text-xs text-gray-500 mt-1">TELUS organization-wide</div>
-                        </div>
-                    </div>
+            <!-- Multi-Agent Content -->
+            <div class="font-mono text-sm space-y-2">
+              <div class="flex items-center">
+                <span class="text-emerald-500">➜</span>
+                <span class="text-gray-300 ml-2">ai-team</span>
+                <span class="text-amber-400 ml-2">deploy</span>
+                <span class="text-blue-300 ml-2">"E-commerce checkout feature"</span>
+              </div>
+              <div class="border-l-2 border-blue-600/30 pl-4 space-y-2 mt-4">
+                <div class="text-blue-400 flex items-center">
+                  <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                  Project Manager Agent: Breaking down requirements into 8 tickets...
                 </div>
+                <div class="text-purple-400 flex items-center">
+                  <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Backend Agent: Creating secure payment API endpoints...
+                </div>
+                <div class="text-cyan-400 flex items-center">
+                  <div class="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  Frontend Agent: Building responsive checkout components...
+                </div>
+                <div class="text-pink-400 flex items-center">
+                  <div class="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
+                  UI/UX Designer Agent: Optimizing conversion flow and accessibility...
+                </div>
+                <div class="text-yellow-400 flex items-center">
+                  <div class="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                  DevOps Agent: Setting up CI/CD pipeline and monitoring...
+                </div>
+                <div class="text-orange-400 flex items-center">
+                  <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                  QA/Testing Agent: Comprehensive testing and browser compatibility...
+                </div>
+                <div class="text-indigo-400 flex items-center">
+                  <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3"></div>
+                  Analytics Agent: Setting up conversion tracking and metrics...
+                </div>
+                <div class="text-red-400 flex items-center">
+                  <div class="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                  Security Agent: PCI compliance audit and vulnerability scanning...
+                </div>
+              </div>
+              <div class="text-gray-400 mt-4 flex items-center">
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                All agents working in parallel - coordinating via shared context...
+              </div>
+              <div class="text-emerald-500 font-semibold mt-4 flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                Deployment complete: 8 agents finished in 47 minutes | 100% test coverage | A+ security rating
+              </div>
             </div>
-
-            <!-- CTA for AI Agents -->
-            <div class="text-center mt-12">
-                <p class="text-xl text-gray-600 mb-6">
-                    Ready to deploy your own AI development team?
-                </p>
-                <a href="https://calendly.com/your-link" target="_blank" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-4 focus:ring-primary/50 transition transform hover:scale-105 focus:scale-105">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Book a Call
-                </a>
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-4">How I Can Help</h2>
-            <p class="text-xl text-text-secondary text-center mb-16 max-w-3xl mx-auto">
-                Executive-level consulting designed for engineering leaders ready to transform their development processes
-            </p>
-            <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
-                <!-- Strategic Advisory -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary via-blue-600 to-indigo-700 rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-compass text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">Strategic Advisory</h3>
-                        <div class="text-primary font-semibold text-lg mb-4">
-                            <i class="fas fa-brain mr-2"></i>C-Level AI Strategy
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            Get expert guidance on implementing AI-native workflows tailored to your team's needs and tech stack.
-                        </p>
-                        
-                        <!-- Benefits List -->
-                        <ul class="text-lg text-text-secondary space-y-3 mb-6">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-3"></i>Tool selection & evaluation</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-3"></i>Workflow optimization</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-3"></i>Team training strategy</li>
-                        </ul>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-primary font-medium">
-                            <i class="fas fa-rocket mr-2"></i>
-                            <span class="text-sm">ROI visible within 30 days</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pilot Implementation -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-emerald/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-emerald/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-emerald via-green-600 to-emerald-700 rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-flask text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">Pilot Implementation</h3>
-                        <div class="text-accent-emerald font-semibold text-lg mb-4">
-                            <i class="fas fa-chart-line mr-2"></i>Proven Results First
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            Test the impact of AI tools in one specific workflow with a proof of concept tailored to your needs.
-                        </p>
-                        
-                        <!-- Benefits List -->
-                        <ul class="text-lg text-text-secondary space-y-3 mb-6">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-accent-emerald mr-3"></i>Risk-free testing</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-accent-emerald mr-3"></i>Measurable results</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-accent-emerald mr-3"></i>Clear ROI demonstration</li>
-                        </ul>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-accent-emerald font-medium">
-                            <i class="fas fa-target mr-2"></i>
-                            <span class="text-sm">3x productivity in pilot workflow</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hands-on Workshop -->
-                <div class="group relative bg-white p-10 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:border-accent-purple/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                    <!-- Background Accent -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-purple/5 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-accent-purple via-purple-600 to-indigo-700 rounded-2xl mb-8 group-hover:scale-105 transition-transform shadow-xl">
-                            <i class="fas fa-users text-white text-2xl"></i>
-                        </div>
-                        
-                        <!-- Executive Headline -->
-                        <h3 class="text-3xl font-bold mb-3 text-text-primary">Hands-on Workshop</h3>
-                        <div class="text-accent-purple font-semibold text-lg mb-4">
-                            <i class="fas fa-graduation-cap mr-2"></i>Team Transformation
-                        </div>
-                        
-                        <!-- Strategic Description -->
-                        <p class="text-xl text-text-secondary leading-relaxed mb-6">
-                            1-day intensive workshop with guided examples to get your team up to speed with AI coding tools.
-                        </p>
-                        
-                        <!-- Benefits List -->
-                        <ul class="text-lg text-text-secondary space-y-3 mb-6">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-accent-purple mr-3"></i>Practical exercises</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-accent-purple mr-3"></i>Best practices</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-accent-purple mr-3"></i>Team enablement</li>
-                        </ul>
-                        
-                        <!-- Business Impact -->
-                        <div class="flex items-center text-accent-purple font-medium">
-                            <i class="fas fa-bolt mr-2"></i>
-                            <span class="text-sm">Immediate team productivity boost</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Services Section -->
+<section class="section-dark py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="flex flex-col">
+      <div class="mb-8 md:mb-10 lg:mb-12">
+        <div class="w-full">
+          <p class="mb-3 font-semibold md:mb-4 text-neutral-400">Services</p>
+          <h2 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-white">
+            How I Can Help You <span class="gradient-text-hero">Succeed</span>
+          </h2>
+          <p class="md:text-md text-neutral-400">
+            Unlock the full potential of your development team with tailored AI
+            solutions. My services are designed to enhance efficiency, quality,
+            and collaboration.
+          </p>
         </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
-                    <i class="fas fa-user-tie mr-2"></i>
-                    15+ Years Engineering Leadership Experience
-                </div>
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-text-primary">
-                    Meet Your AI Development<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-purple">Strategy Partner</span>
-                </h2>
-                <p class="text-xl sm:text-2xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                    CTO, founder, and consultant with a proven track record of scaling engineering teams from startup to enterprise level
-                </p>
+      </div>
+      <div
+        class="grid grid-cols-1 items-start justify-center gap-y-12 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12"
+      >
+        <div class="flex w-full flex-col">
+          <div class="mb-3 md:mb-4 flex justify-start">
+            <div class="icon-container">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
             </div>
-
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                <!-- Professional Image -->
-                <div class="relative">
-                    <!-- Background decoration -->
-                    <div class="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-br from-primary/20 to-accent-purple/20 rounded-full blur-3xl"></div>
-                    <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-gradient-to-br from-accent-emerald/20 to-accent-amber/20 rounded-full blur-3xl"></div>
-                    
-                    <div class="relative bg-white p-2 rounded-3xl shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-500 hover:-translate-y-2">
-                        <div class="relative overflow-hidden rounded-2xl">
-                            <img src="assets/images/portrait_retouched.jpg" alt="Angel Dimitrov - AI Development Consultant" class="w-full h-96 object-cover object-center">
-                            <!-- Professional overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        </div>
-                        
-                        <!-- Credibility badge -->
-                        <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
-                            <div class="bg-white px-6 py-3 rounded-full shadow-xl border border-gray-100 flex items-center space-x-3">
-                                <div class="flex items-center space-x-1">
-                                    <i class="fas fa-star text-accent-amber text-sm"></i>
-                                    <i class="fas fa-star text-accent-amber text-sm"></i>
-                                    <i class="fas fa-star text-accent-amber text-sm"></i>
-                                    <i class="fas fa-star text-accent-amber text-sm"></i>
-                                    <i class="fas fa-star text-accent-amber text-sm"></i>
-                                </div>
-                                <span class="text-sm font-semibold text-text-primary">Enterprise Trusted</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Professional Biography -->
-                <div class="space-y-8">
-                    <!-- Introduction -->
-                    <div class="space-y-6">
-                        <h3 class="text-3xl font-bold text-text-primary">Angel Dimitrov</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                                <i class="fas fa-crown mr-2"></i>CTO & Founder
-                            </div>
-                            <div class="inline-flex items-center px-4 py-2 bg-accent-emerald/10 text-accent-emerald rounded-full text-sm font-medium">
-                                <i class="fas fa-rocket mr-2"></i>Startup to Enterprise
-                            </div>
-                            <div class="inline-flex items-center px-4 py-2 bg-accent-purple/10 text-accent-purple rounded-full text-sm font-medium">
-                                <i class="fas fa-brain mr-2"></i>AI Strategy Expert
-                            </div>
-                        </div>
-                        
-                        <p class="text-xl text-text-secondary leading-relaxed">
-                            Over 15 years of hands-on experience building and leading engineering teams, from early-stage startups to Fortune 500 enterprises. I've successfully scaled development processes, implemented cutting-edge technologies, and delivered complex projects across diverse industries.
-                        </p>
-                    </div>
-
-                    <!-- Experience highlights -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
-                        <h4 class="text-xl font-bold text-text-primary mb-6 flex items-center">
-                            <i class="fas fa-building mr-3 text-primary"></i>
-                            Enterprise Leadership Experience
-                        </h4>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 bg-primary rounded-full"></div>
-                                <span class="text-text-secondary font-medium">Home24 (E-commerce)</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 bg-accent-purple rounded-full"></div>
-                                <span class="text-text-secondary font-medium">Zalando (Fashion Tech)</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 bg-accent-emerald rounded-full"></div>
-                                <span class="text-text-secondary font-medium">Flaconi (Beauty Tech)</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 bg-accent-amber rounded-full"></div>
-                                <span class="text-text-secondary font-medium">Rocket Internet</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 bg-cyan-500 rounded-full"></div>
-                                <span class="text-text-secondary font-medium">Schwarz Gruppe</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 bg-pink-500 rounded-full"></div>
-                                <span class="text-text-secondary font-medium">Republik (Media)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Current focus -->
-                    <div class="bg-gradient-to-br from-primary/5 via-accent-purple/5 to-accent-emerald/5 p-8 rounded-2xl border border-primary/20">
-                        <h4 class="text-xl font-bold text-text-primary mb-4 flex items-center">
-                            <i class="fas fa-target mr-3 text-accent-purple"></i>
-                            Current Mission
-                        </h4>
-                        <p class="text-lg text-text-secondary leading-relaxed">
-                            Today, I focus exclusively on helping engineering leaders harness the transformative power of AI-driven development workflows. Through strategic consulting, hands-on pilots, and comprehensive workshops, I guide organizations in accelerating delivery, reducing costs, and dramatically improving software quality.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trust indicators and metrics -->
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <div class="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl font-bold text-primary mb-2">15+</div>
-                    <div class="text-lg font-semibold text-text-primary mb-2">Years Experience</div>
-                    <div class="text-text-secondary">Engineering Leadership</div>
-                </div>
-                <div class="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl font-bold text-accent-emerald mb-2">100+</div>
-                    <div class="text-lg font-semibold text-text-primary mb-2">Projects Delivered</div>
-                    <div class="text-text-secondary">End-to-End Solutions</div>
-                </div>
-                <div class="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl font-bold text-accent-purple mb-2">6</div>
-                    <div class="text-lg font-semibold text-text-primary mb-2">Enterprise Companies</div>
-                    <div class="text-text-secondary">Leadership Roles</div>
-                </div>
-            </div>
-
-            <!-- Call to action -->
-            <div class="text-center bg-gradient-to-r from-primary/10 to-accent-purple/10 rounded-2xl p-12">
-                <h3 class="text-3xl font-bold text-text-primary mb-4">Ready to Transform Your Development Process?</h3>
-                <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-                    Let's discuss how AI-driven workflows can accelerate your team's delivery and improve software quality
-                </p>
-                <a href="https://calendly.com/your-link" target="_blank" class="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 focus:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl focus:shadow-xl transform hover:-translate-y-1 focus:-translate-y-1">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Schedule Your Strategy Session
-                </a>
-            </div>
+          </div>
+          <h3
+            class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white"
+          >
+            Strategic Advisory
+          </h3>
+          <p class="text-neutral-400">
+            Get expert guidance on selecting the right AI tools, designing
+            scalable workflows, and preparing your team for AI-native
+            development. I help you cut through the noise and choose solutions
+            that align with your business goals.
+          </p>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Curious how this fits into your org?</h2>
-            <p class="text-xl mb-8 opacity-90">
-                Let's discuss your specific challenges and explore how AI can transform your development process.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://calendly.com/your-link" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-white/50 transition shadow-lg hover:shadow-xl focus:shadow-xl transform hover:scale-105 focus:scale-105">
-                    <i class="fas fa-video mr-3"></i>
-                    Schedule a Call
-                </a>
+        <div class="flex w-full flex-col">
+          <div class="mb-3 md:mb-4 flex justify-start">
+            <div class="icon-container">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
             </div>
+          </div>
+          <h3
+            class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white"
+          >
+            Pilot Implementation
+          </h3>
+          <p class="text-neutral-400">
+            Validate the value of AI in your development process with a tailored
+            proof-of-concept. We’ll design and run a pilot workflow that
+            demonstrates measurable ROI and builds confidence for broader
+            adoption.
+          </p>
         </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p>&copy; 2024 AI Dev Consulting. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">Impressum</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">Datenschutz</a>
-                </div>
+        <div class="flex w-full flex-col">
+          <div class="mb-3 md:mb-4 flex justify-start">
+            <div class="icon-container">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
             </div>
+          </div>
+          <h3
+            class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white"
+          >
+            Hands-on Workshop
+          </h3>
+          <p class="text-neutral-400">
+            Engage your team in a focused 2-days workshop. Through practical
+            exercises and real-world examples, your developers learn how to use
+            AI effectively, adopt best practices, and accelerate delivery with
+            confidence.
+          </p>
         </div>
-    </footer>
+      </div>
+      <div class="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+        <button class="btn-primary" title="Schedule a Consultation">
+          Schedule a Consultation
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile menu toggle with accessibility improvements
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+<!-- About Section -->
+<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div
+      class="grid grid-cols-1 gap-y-12 md:grid-cols-[1fr_2fr] md:items-center md:gap-x-12 lg:gap-x-16"
+    >
+      <div class="order-1 md:order-1">
+        <img
+          src="./assets/images/portrait_retouched.jpg"
+          class="w-full max-w-xs mx-auto md:max-w-full rounded-xl object-cover shadow-lg"
+          alt="Angel Dimitrov - AI Development Consultant"
+        />
+      </div>
+      <div class="order-2 md:order-2">
+        <p class="mb-3 font-semibold md:mb-4 text-neutral-600">About</p>
+        <h1
+          class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-neutral-900"
+        >
+          Angel Dimitrov
+        </h1>
+        <p class="md:text-md text-neutral-600">
+          I'm Angel Dimitrov — CTO, founder, and consultant with 15+ years of
+          experience leading engineering teams and delivering software products.
+          I co-founded startups and ran my own agency, delivering projects
+          end-to-end. I've held leadership roles at Home24, Zalando, Flaconi,
+          Republik.gg, Rocket Internet, Schwarz Gruppe, and WR Wertstoffbörse.
+          This journey gave me experience across startups, scaleups, and
+          enterprises. My expertise spans software architecture, cloud,
+          AI-driven development, and building high-performance teams. Today, I
+          focus on helping companies adopt AI-native development workflows —
+          cutting delivery times, reducing costs, and improving quality, while
+          preparing teams for the future of software development.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Customer Testimonials Section -->
+<section class="section-dark py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="mb-12 w-full md:mb-18 lg:mb-20">
+      <h1 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-white">
+        Customer Testimonials
+      </h1>
+      <p class="md:text-md text-neutral-400">See what our clients are saying about us.</p>
+    </div>
+    <div class="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-8 lg:gap-16">
+      <div
+        class="flex h-full max-w-lg flex-col items-start justify-start text-left"
+      >
+        <blockquote class="text-md leading-[1.4] font-bold md:text-xl text-white">
+          “Angel transformed our development process, cutting delivery time by
+          40%. His expertise made the transition seamless.” — VP Engineering,
+          E-Commerce Scaleup
+        </blockquote>
+        <div
+          class="mt-6 flex w-full flex-col gap-3 md:mt-8 md:w-auto md:flex-row md:items-center md:gap-5"
+        >
+          <div>
+            <img
+              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+              alt="Testimonial avatar 1"
+              class="size-14 min-h-14 min-w-14 rounded-full object-cover"
+            />
+          </div>
+          <div class="mb-4 md:mb-0">
+            <p class="font-semibold text-white">John Doe</p>
+            <p class="text-neutral-400">VP Engineering, E-Commerce Scaleup</p>
+          </div>
+          <div class="hidden w-px self-stretch bg-black md:block"></div>
+          <div>
+            <img
+              src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
+              alt="Webflow logo 1"
+              class="max-h-12"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex h-full max-w-lg flex-col items-start justify-start text-left"
+      >
+        <blockquote class="text-md leading-[1.4] font-bold md:text-xl text-white">
+          “The AI agent pilot provided measurable productivity gains and
+          validated ROI quickly. I highly recommend their services.” — CTO, SaaS
+          Company
+        </blockquote>
+        <div
+          class="mt-6 flex w-full flex-col gap-3 md:mt-8 md:w-auto md:flex-row md:items-center md:gap-5"
+        >
+          <div>
+            <img
+              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+              alt="Testimonial avatar 1"
+              class="size-14 min-h-14 min-w-14 rounded-full object-cover"
+            />
+          </div>
+          <div class="mb-4 md:mb-0">
+            <p class="font-semibold text-white">Jane Smith</p>
+            <p class="text-neutral-400">CTO, SaaS Company</p>
+          </div>
+          <div class="hidden w-px self-stretch bg-black md:block"></div>
+          <div>
+            <img
+              src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
+              alt="Webflow logo 1"
+              class="max-h-12"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div
+      class="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center"
+    >
+      <div>
+        <h2
+          class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-neutral-900"
+        >
+          <span class="gradient-text-light">Transform Your Development Process</span>
+        </h2>
+        <p class="md:text-md text-neutral-600">
+          Let’s discuss your challenges and explore how AI can enhance your
+          team&#x27;s workflows.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4 md:mt-8">
+          <button class="btn-primary" title="Schedule a Consultation">
+            Schedule a Consultation
+          </button>
+        </div>
+      </div>
+      <div>
+        <img
+          src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
+          class="w-full rounded-image object-cover"
+          alt="Relume placeholder image"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="section-dark px-[5%] py-12 md:py-18 lg:py-20">
+  <div class="container">
+    <div
+      class="flex flex-col-reverse items-start justify-between pt-6 pb-4 text-sm md:flex-row md:items-center md:pt-8 md:pb-0"
+    >
+      <p class="mt-8 md:mt-0 text-neutral-400">© 2024 Angel Dimitrov. All rights reserved.</p>
+      <ul
+        class="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0"
+      >
+        <li class="underline"><a href="#" class="text-neutral-300 hover:text-white">Privacy Policy</a></li>
+        <li class="underline"><a href="#" class="text-neutral-300 hover:text-white">Terms of Service</a></li>
+        <li class="underline"><a href="#" class="text-neutral-300 hover:text-white">Cookies Settings</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// D3.js Agent Network Visualization
+function initializeAgentNetwork() {
+  const container = d3.select("#agent-network-d3");
+  if (container.empty()) return;
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  // Clear previous SVG
+  container.selectAll("*").remove();
+
+  const svg = container.append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("position", "absolute")
+    .style("top", "0")
+    .style("left", "0")
+    .style("pointer-events", "none")
+    .style("z-index", "1");
+
+  // Create clipping mask to hide lines/signals inside circles
+  const defs = svg.append("defs");
+  const clipPath = defs.append("clipPath")
+    .attr("id", "agent-mask");
+  
+  // Add background rectangle
+  clipPath.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("fill", "white");
+
+  // Agent data with roles and initial positions (bigger sizes)
+  const agents = [
+    { id: 'pm', role: 'PM', size: 35, color: '#64748B' },
+    { id: 'backend', role: 'BE', size: 40, color: '#64748B' },
+    { id: 'frontend', role: 'FE', size: 38, color: '#64748B' },
+    { id: 'qa', role: 'QA', size: 32, color: '#64748B' },
+    { id: 'devops', role: 'Ops', size: 34, color: '#64748B' },
+    { id: 'security', role: 'Sec', size: 30, color: '#64748B' }
+  ];
+
+  // Position agents equally spread around center (hero text area)
+  const centerX = width * 0.5;
+  const centerY = height * 0.5;
+  const radius = 450;
+  
+  agents.forEach((agent, index) => {
+    // Equal spacing around circle
+    const angle = (index / agents.length) * Math.PI * 2;
+    agent.x = centerX + Math.cos(angle) * radius;
+    agent.y = centerY + Math.sin(angle) * radius;
+    // Very slow orbital movement
+    agent.angle = angle;
+    agent.angularVelocity = 0.0002; // Even slower rotation
+  });
+
+  // Connection data - ensure each agent connects to at least 2 others
+  const connections = [
+    // PM connections (3 total)
+    { source: 'pm', target: 'backend' },
+    { source: 'pm', target: 'frontend' },
+    { source: 'pm', target: 'qa' },
+    // Backend connections (3 total)
+    { source: 'backend', target: 'devops' },
+    { source: 'backend', target: 'security' },
+    // Frontend connections (3 total)
+    { source: 'frontend', target: 'qa' },
+    { source: 'frontend', target: 'devops' },
+    // QA connections (2 total)
+    { source: 'qa', target: 'security' },
+    // DevOps connections (2 total)
+    { source: 'devops', target: 'security' },
+    // Security has connections from others (3 total)
+  ];
+
+  // Add agent circles to clipping mask (black holes in white background)
+  const maskCircles = clipPath.selectAll(".mask-circle")
+    .data(agents)
+    .enter()
+    .append("circle")
+    .attr("class", "mask-circle")
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y)
+    .attr("r", d => d.size)
+    .attr("fill", "black");
+
+  // Create a container for clipped elements (lines and signals)
+  const clippedGroup = svg.append("g")
+    .attr("clip-path", "url(#agent-mask)");
+
+  // Create connections inside clipped group
+  const lines = clippedGroup.selectAll(".connection")
+    .data(connections)
+    .enter()
+    .append("line")
+    .attr("class", "connection")
+    .attr("stroke", "#64748B")
+    .attr("stroke-width", 1)
+    .attr("opacity", 0.15);
+
+  // Create agent circles (these will be on top, unclipped)
+  const agentGroups = svg.selectAll(".agent")
+    .data(agents)
+    .enter()
+    .append("g")
+    .attr("class", "agent");
+
+  // Agent circles - solid background to hide grid and signals
+  agentGroups.append("circle")
+    .attr("r", d => d.size)
+    .attr("fill", "#0f172a")
+    .attr("fill-opacity", 1)
+    .attr("stroke", "#64748B")
+    .attr("stroke-width", 1)
+    .attr("stroke-opacity", 0.15);
+
+  // Agent labels
+  agentGroups.append("text")
+    .attr("text-anchor", "middle")
+    .attr("dy", "0.35em")
+    .attr("fill", "#94A3B8")
+    .attr("font-family", "Inter, sans-serif")
+    .attr("font-size", "10px")
+    .attr("font-weight", "500")
+    .attr("opacity", 0.3)
+    .text(d => d.role);
+
+  // Animation function - smooth orbital movement
+  function animate() {
+    agents.forEach(agent => {
+      // Update angle for smooth orbital movement
+      agent.angle += agent.angularVelocity;
+      
+      // Calculate new position based on angle
+      agent.x = centerX + Math.cos(agent.angle) * radius;
+      agent.y = centerY + Math.sin(agent.angle) * radius;
+    });
+
+    // Update agent positions
+    agentGroups.attr("transform", d => `translate(${d.x}, ${d.y})`);
+
+    // Update mask circle positions
+    maskCircles
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y);
+
+    // Update connection lines
+    lines
+      .attr("x1", d => agents.find(a => a.id === d.source).x)
+      .attr("y1", d => agents.find(a => a.id === d.source).y)
+      .attr("x2", d => agents.find(a => a.id === d.target).x)
+      .attr("y2", d => agents.find(a => a.id === d.target).y);
+
+    requestAnimationFrame(animate);
+  }
+
+  // Start animation
+  animate();
+
+  // Animated data flow with moving agents - bidirectional and slower
+  function animateDataFlow() {
+    connections.forEach((conn, index) => {
+      // Forward direction
+      setTimeout(() => {
+        const sourceAgent = agents.find(a => a.id === conn.source);
+        const targetAgent = agents.find(a => a.id === conn.target);
         
-        mobileMenuButton.addEventListener('click', function() {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden');
+        const pulse = clippedGroup.append("circle")
+          .attr("cx", sourceAgent.x)
+          .attr("cy", sourceAgent.y)
+          .attr("r", 2)
+          .attr("fill", "#94A3B8")
+          .attr("opacity", 0.6);
+
+        function updatePulse() {
+          const currentTime = Date.now();
+          const startTime = currentTime;
+          const duration = 4500; // Even slower - increased to 4500ms
+          
+          function movePulse() {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
             
-            // Update ARIA attributes for accessibility
-            mobileMenuButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+            // Get current positions of source and target
+            const currentSourceX = sourceAgent.x;
+            const currentSourceY = sourceAgent.y;
+            const currentTargetX = targetAgent.x;
+            const currentTargetY = targetAgent.y;
             
-            // Rotate hamburger icon
-            const icon = mobileMenuButton.querySelector('svg');
-            if (isHidden) {
-                icon.style.transform = 'rotate(90deg)';
+            // Interpolate position
+            const x = currentSourceX + (currentTargetX - currentSourceX) * progress;
+            const y = currentSourceY + (currentTargetY - currentSourceY) * progress;
+            
+            pulse.attr("cx", x).attr("cy", y).attr("opacity", 0.6 * (1 - progress));
+            
+            if (progress < 1) {
+              requestAnimationFrame(movePulse);
             } else {
-                icon.style.transform = 'rotate(0deg)';
+              pulse.remove();
             }
-        });
+          }
+          
+          movePulse();
+        }
+        
+        updatePulse();
+      }, index * 800); // Even slower stagger
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                const icon = mobileMenuButton.querySelector('svg');
-                icon.style.transform = 'rotate(0deg)';
-            });
-        });
+      // Reverse direction
+      setTimeout(() => {
+        const sourceAgent = agents.find(a => a.id === conn.target); // Reversed
+        const targetAgent = agents.find(a => a.id === conn.source); // Reversed
+        
+        const pulse = clippedGroup.append("circle")
+          .attr("cx", sourceAgent.x)
+          .attr("cy", sourceAgent.y)
+          .attr("r", 2)
+          .attr("fill", "#94A3B8")
+          .attr("opacity", 0.6);
 
-        // Close mobile menu when pressing Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                const icon = mobileMenuButton.querySelector('svg');
-                icon.style.transform = 'rotate(0deg)';
-                mobileMenuButton.focus();
+        function updatePulse() {
+          const currentTime = Date.now();
+          const startTime = currentTime;
+          const duration = 4500; // Same slower duration
+          
+          function movePulse() {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Get current positions of source and target
+            const currentSourceX = sourceAgent.x;
+            const currentSourceY = sourceAgent.y;
+            const currentTargetX = targetAgent.x;
+            const currentTargetY = targetAgent.y;
+            
+            // Interpolate position
+            const x = currentSourceX + (currentTargetX - currentSourceX) * progress;
+            const y = currentSourceY + (currentTargetY - currentSourceY) * progress;
+            
+            pulse.attr("cx", x).attr("cy", y).attr("opacity", 0.6 * (1 - progress));
+            
+            if (progress < 1) {
+              requestAnimationFrame(movePulse);
+            } else {
+              pulse.remove();
             }
-        });
+          }
+          
+          movePulse();
+        }
+        
+        updatePulse();
+      }, index * 800 + 2000); // Offset for reverse direction
+    });
+  }
 
-        // Smooth scroll behavior for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+  // Start data flow animation loop - even slower interval
+  animateDataFlow();
+  setInterval(animateDataFlow, 8000);
+}
+
+// Initialize agent network on load and resize
+window.addEventListener('load', () => {
+  initializeAgentNetwork();
+});
+
+window.addEventListener('resize', () => {
+  initializeAgentNetwork();
+});
+</script>
+
 </body>
 </html>
