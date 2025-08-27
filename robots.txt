@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://angeldimitrov.github.io/ai-coding/sitemap.xml
+
+# Optimize crawl budget - disallow non-essential directories
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /.github/
+Disallow: /content/
+
+# Allow important assets
+Allow: /assets/
+Allow: /dist/
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.webp
+Allow: *.svg
