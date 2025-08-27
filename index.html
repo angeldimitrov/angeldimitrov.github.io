@@ -37,8 +37,8 @@
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
       background-size: 50px 50px;
       z-index: 0;
       pointer-events: none;
@@ -70,7 +70,7 @@
       padding: 1rem 2rem;
       background: linear-gradient(to right, #2563EB, #9333EA);
       color: white;
-      font-weight: bold;
+      font-weight: 600;
       border-radius: 0.75rem;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -78,7 +78,7 @@
     }
 
     .btn-primary:hover {
-      background: linear-gradient(to right, #1D4ED8, #7C2D12);
+      background: linear-gradient(to right, #1D4ED8, #7C3AED);
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
       transform: translateY(-2px);
     }
@@ -86,35 +86,37 @@
     .btn-secondary {
       display: inline-block;
       padding: 1rem 2rem;
-      background: transparent;
+      background: #F5F5F5;
       color: #404040;
       font-weight: 600;
-      border: 2px solid #D4D4D4;
       border-radius: 0.75rem;
       text-decoration: none;
       transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
     .btn-secondary:hover {
-      border-color: #737373;
-      background: #FAFAFA;
+      background: #E5E5E5;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
     }
 
     .btn-secondary-dark {
       display: inline-block;
       padding: 1rem 2rem;
-      background: transparent;
+      background: #374151;
       color: white;
       font-weight: 600;
-      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 0.75rem;
       text-decoration: none;
       transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
     }
 
     .btn-secondary-dark:hover {
-      border-color: rgba(255, 255, 255, 0.6);
-      background: rgba(255, 255, 255, 0.1);
+      background: #4B5563;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
     }
 
     /* Focus States for Accessibility */
@@ -765,20 +767,22 @@ function initializeAgentNetwork() {
     .attr("height", height)
     .attr("fill", "white");
 
-  // Agent data with roles and initial positions (bigger sizes)
+  // Agent data with roles and initial positions - responsive sizes
+  const baseSize = Math.min(width / 15, height / 20, 40);
   const agents = [
-    { id: 'pm', role: 'PM', size: 35, color: '#64748B' },
-    { id: 'backend', role: 'BE', size: 40, color: '#64748B' },
-    { id: 'frontend', role: 'FE', size: 38, color: '#64748B' },
-    { id: 'qa', role: 'QA', size: 32, color: '#64748B' },
-    { id: 'devops', role: 'Ops', size: 34, color: '#64748B' },
-    { id: 'security', role: 'Sec', size: 30, color: '#64748B' }
+    { id: 'pm', role: 'PM', size: baseSize * 0.9, color: '#64748B' },
+    { id: 'backend', role: 'BE', size: baseSize, color: '#64748B' },
+    { id: 'frontend', role: 'FE', size: baseSize * 0.95, color: '#64748B' },
+    { id: 'qa', role: 'QA', size: baseSize * 0.8, color: '#64748B' },
+    { id: 'devops', role: 'Ops', size: baseSize * 0.85, color: '#64748B' },
+    { id: 'security', role: 'Sec', size: baseSize * 0.75, color: '#64748B' }
   ];
 
   // Position agents equally spread around center (hero text area)
   const centerX = width * 0.5;
   const centerY = height * 0.5;
-  const radius = 450;
+  // Responsive radius based on viewport size
+  const radius = Math.min(width * 0.35, height * 0.3, 450);
   
   agents.forEach((agent, index) => {
     // Equal spacing around circle
@@ -832,7 +836,7 @@ function initializeAgentNetwork() {
     .attr("class", "connection")
     .attr("stroke", "#64748B")
     .attr("stroke-width", 1)
-    .attr("opacity", 0.15);
+    .attr("opacity", 0.4);
 
   // Create agent circles (these will be on top, unclipped)
   const agentGroups = svg.selectAll(".agent")
@@ -848,17 +852,18 @@ function initializeAgentNetwork() {
     .attr("fill-opacity", 1)
     .attr("stroke", "#64748B")
     .attr("stroke-width", 1)
-    .attr("stroke-opacity", 0.15);
+    .attr("stroke-opacity", 0.4);
 
-  // Agent labels
+  // Agent labels - responsive font size
+  const fontSize = Math.min(baseSize / 3.5, 12);
   agentGroups.append("text")
     .attr("text-anchor", "middle")
     .attr("dy", "0.35em")
     .attr("fill", "#94A3B8")
     .attr("font-family", "Inter, sans-serif")
-    .attr("font-size", "10px")
+    .attr("font-size", `${fontSize}px`)
     .attr("font-weight", "500")
-    .attr("opacity", 0.3)
+    .attr("opacity", 0.6)
     .text(d => d.role);
 
   // Animation function - smooth orbital movement
@@ -906,7 +911,7 @@ function initializeAgentNetwork() {
           .attr("cy", sourceAgent.y)
           .attr("r", 2)
           .attr("fill", "#94A3B8")
-          .attr("opacity", 0.6);
+          .attr("opacity", 1.0);
 
         function updatePulse() {
           const currentTime = Date.now();
@@ -927,7 +932,7 @@ function initializeAgentNetwork() {
             const x = currentSourceX + (currentTargetX - currentSourceX) * progress;
             const y = currentSourceY + (currentTargetY - currentSourceY) * progress;
             
-            pulse.attr("cx", x).attr("cy", y).attr("opacity", 0.6 * (1 - progress));
+            pulse.attr("cx", x).attr("cy", y).attr("opacity", 1.0 * (1 - progress));
             
             if (progress < 1) {
               requestAnimationFrame(movePulse);
@@ -952,7 +957,7 @@ function initializeAgentNetwork() {
           .attr("cy", sourceAgent.y)
           .attr("r", 2)
           .attr("fill", "#94A3B8")
-          .attr("opacity", 0.6);
+          .attr("opacity", 1.0);
 
         function updatePulse() {
           const currentTime = Date.now();
@@ -973,7 +978,7 @@ function initializeAgentNetwork() {
             const x = currentSourceX + (currentTargetX - currentSourceX) * progress;
             const y = currentSourceY + (currentTargetY - currentSourceY) * progress;
             
-            pulse.attr("cx", x).attr("cy", y).attr("opacity", 0.6 * (1 - progress));
+            pulse.attr("cx", x).attr("cy", y).attr("opacity", 1.0 * (1 - progress));
             
             if (progress < 1) {
               requestAnimationFrame(movePulse);
