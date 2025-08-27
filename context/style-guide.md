@@ -123,6 +123,25 @@ text-base: 1rem;      /* 16px */
 }
 ```
 
+### Section Layout Patterns
+```css
+/* Standard Section - Consistent spacing across all sections */
+.section-standard {
+  /* Use ONLY container class for consistent margins */
+  /* ❌ AVOID: px-[5%] combined with container */
+  /* ✅ CORRECT: Use container class alone */
+}
+
+/* Example Implementation */
+<section class="py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <!-- Content -->
+  </div>
+</section>
+```
+
+**Critical Rule**: Never combine `px-[5%]` with `.container` class. The container already provides responsive padding. Using both creates inconsistent margins across sections.
+
 ### Section Spacing
 ```css
 /* Section Padding */
