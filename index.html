@@ -297,33 +297,62 @@
 <nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
   <div class="container">
     <div class="flex min-h-16 items-center justify-center px-[5%] md:min-h-18 lg:px-0">
-      <div class="flex items-center space-x-8">
+      <!-- Mobile navigation - grid layout for better fit -->
+      <div class="grid grid-cols-3 gap-x-4 gap-y-2 text-center sm:hidden">
+        <a
+          href="#benefits"
+          class="text-sm font-medium hover:text-primary transition-colors scroll-smooth px-2 py-1"
+          aria-label="Navigate to AI Development Benefits section"
+          >Benefits</a>
+        <a
+          href="#ai-team"
+          class="text-sm font-medium hover:text-primary transition-colors scroll-smooth px-2 py-1"
+          aria-label="Navigate to AI Development Team section"
+          >AI Team</a>
+        <a
+          href="#services"
+          class="text-sm font-medium hover:text-primary transition-colors scroll-smooth px-2 py-1"
+          aria-label="Navigate to Consulting Services section"
+          >Services</a>
+        <a
+          href="#about"
+          class="text-sm font-medium hover:text-primary transition-colors scroll-smooth px-2 py-1"
+          aria-label="Navigate to About Angel Dimitrov section"
+          >About me</a>
+        <a
+          href="#contact"
+          class="text-sm font-medium hover:text-primary transition-colors scroll-smooth px-2 py-1 col-span-1"
+          aria-label="Navigate to Contact section"
+          >Contact</a>
+      </div>
+      
+      <!-- Desktop navigation - horizontal layout -->
+      <div class="hidden sm:flex items-center space-x-6 md:space-x-8">
         <a
           href="#benefits"
           class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
           aria-label="Navigate to AI Development Benefits section"
-          >Benefits</a
-        ><a
+          >Benefits</a>
+        <a
           href="#ai-team"
           class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
           aria-label="Navigate to AI Development Team section"
-          >AI Team</a
-        ><a
+          >AI Team</a>
+        <a
           href="#services"
           class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
           aria-label="Navigate to Consulting Services section"
-          >Services</a
-        ><a
+          >Services</a>
+        <a
           href="#about"
           class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
           aria-label="Navigate to About Angel Dimitrov section"
-          >About me</a
-        ><a
+          >About me</a>
+        <a
           href="#contact"
           class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
           aria-label="Navigate to Contact section"
-          >Contact</a
-        >
+          >Contact</a>
       </div>
     </div>
   </div>
