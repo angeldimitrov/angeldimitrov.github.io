@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -159,6 +159,23 @@
   <style>
     /* ===== Base Styles ===== */
     
+    /* Fix horizontal scroll issues */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    
+    /* Clean mobile navigation scroll */
+    nav .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    nav .overflow-x-auto::-webkit-scrollbar {
+      display: none;
+    }
+    
     /* Dark Section Theming */
     .hero,
     .section-dark {
@@ -270,6 +287,9 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
     }
 
     .hero-content {
@@ -294,93 +314,29 @@
 <body>
 
 <!-- Navigation -->
-<nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur-sm" role="navigation" aria-label="Main navigation">
+<nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white backdrop-blur-sm" role="navigation" aria-label="Main navigation">
   <div class="container">
-    <div class="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:px-0">
-      <!-- Logo/Brand (optional - currently empty for clean look) -->
-      
-      <!-- Mobile menu button -->
-      <button 
-        id="mobile-menu-button" 
-        class="sm:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded"
-        aria-label="Toggle mobile menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="block w-6 h-0.5 bg-gray-600 transition-transform duration-300 ease-in-out" id="burger-line-1"></span>
-        <span class="block w-6 h-0.5 bg-gray-600 transition-opacity duration-300 ease-in-out" id="burger-line-2"></span>
-        <span class="block w-6 h-0.5 bg-gray-600 transition-transform duration-300 ease-in-out" id="burger-line-3"></span>
-      </button>
-      
-      <!-- Desktop navigation - horizontal layout -->
-      <div class="hidden sm:flex items-center justify-center flex-1" id="desktop-nav">
+    <div class="flex min-h-16 items-center justify-center px-[5%] md:min-h-18 lg:px-0">
+      <!-- Desktop navigation - always visible -->
+      <div class="hidden sm:flex items-center justify-center">
         <div class="flex items-center space-x-6 md:space-x-8">
-          <a
-            href="#benefits"
-            class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
-            aria-label="Navigate to AI Development Benefits section"
-            >Benefits</a>
-          <a
-            href="#ai-team"
-            class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
-            aria-label="Navigate to AI Development Team section"
-            >AI Team</a>
-          <a
-            href="#services"
-            class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
-            aria-label="Navigate to Consulting Services section"
-            >Services</a>
-          <a
-            href="#about"
-            class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
-            aria-label="Navigate to About Angel Dimitrov section"
-            >About me</a>
-          <a
-            href="#contact"
-            class="text-md lg:text-base font-medium hover:text-primary transition-colors scroll-smooth"
-            aria-label="Navigate to Contact section"
-            >Contact</a>
+          <a href="#benefits" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Benefits</a>
+          <a href="#ai-team" class="text-md lg:text-base font-medium hover:text-primary transition-colors">AI Team</a>
+          <a href="#services" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Services</a>
+          <a href="#about" class="text-md lg:text-base font-medium hover:text-primary transition-colors">About me</a>
+          <a href="#contact" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Contact</a>
         </div>
       </div>
 
-      <!-- Mobile logo - only visible on mobile -->
-      <div class="flex sm:hidden items-center flex-1 justify-center">
-        <span class="text-lg font-bold text-primary">Angel Dimitrov</span>
-      </div>
-    </div>
-    
-    <!-- Mobile menu overlay -->
-    <div 
-      id="mobile-menu" 
-      class="sm:hidden fixed inset-0 top-16 bg-white border-t border-neutral-200 transform translate-x-full transition-transform duration-300 ease-in-out z-40"
-      aria-hidden="true"
-    >
-      <div class="flex flex-col items-center justify-start pt-8 space-y-6">
-        <a
-          href="#benefits"
-          class="text-lg font-medium hover:text-primary transition-colors scroll-smooth mobile-menu-link"
-          aria-label="Navigate to AI Development Benefits section"
-          >Benefits</a>
-        <a
-          href="#ai-team"
-          class="text-lg font-medium hover:text-primary transition-colors scroll-smooth mobile-menu-link"
-          aria-label="Navigate to AI Development Team section"
-          >AI Team</a>
-        <a
-          href="#services"
-          class="text-lg font-medium hover:text-primary transition-colors scroll-smooth mobile-menu-link"
-          aria-label="Navigate to Consulting Services section"
-          >Services</a>
-        <a
-          href="#about"
-          class="text-lg font-medium hover:text-primary transition-colors scroll-smooth mobile-menu-link"
-          aria-label="Navigate to About Angel Dimitrov section"
-          >About me</a>
-        <a
-          href="#contact"
-          class="text-lg font-medium hover:text-primary transition-colors scroll-smooth mobile-menu-link"
-          aria-label="Navigate to Contact section"
-          >Contact</a>
+      <!-- Mobile navigation - simple horizontal scroll -->
+      <div class="flex sm:hidden w-full overflow-x-auto">
+        <div class="flex items-center space-x-6 px-4 min-w-max">
+          <a href="#benefits" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Benefits</a>
+          <a href="#ai-team" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">AI Team</a>
+          <a href="#services" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
+          <a href="#about" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">About me</a>
+          <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Contact</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1201,88 +1157,33 @@ function initializeAgentNetwork() {
 }
 
 
-// Mobile Menu Functionality
-function initializeMobileMenu() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-  const burgerLine1 = document.getElementById('burger-line-1');
-  const burgerLine2 = document.getElementById('burger-line-2');
-  const burgerLine3 = document.getElementById('burger-line-3');
+// Smooth scroll behavior for navigation links
+function initializeNavigation() {
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
   
-  let isMenuOpen = false;
-  
-  function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
-    
-    // Toggle menu visibility
-    if (isMenuOpen) {
-      mobileMenu.classList.remove('translate-x-full');
-      mobileMenu.classList.add('translate-x-0');
-      mobileMenu.setAttribute('aria-hidden', 'false');
-      mobileMenuButton.setAttribute('aria-expanded', 'true');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
       
-      // Animate burger to X
-      burgerLine1.style.transform = 'rotate(45deg) translateY(4px)';
-      burgerLine2.style.opacity = '0';
-      burgerLine3.style.transform = 'rotate(-45deg) translateY(-4px)';
-    } else {
-      mobileMenu.classList.remove('translate-x-0');
-      mobileMenu.classList.add('translate-x-full');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-      
-      // Animate X back to burger
-      burgerLine1.style.transform = 'rotate(0) translateY(0)';
-      burgerLine2.style.opacity = '1';
-      burgerLine3.style.transform = 'rotate(0) translateY(0)';
-    }
-  }
-  
-  function closeMenu() {
-    if (isMenuOpen) {
-      toggleMenu();
-    }
-  }
-  
-  // Event listeners
-  if (mobileMenuButton) {
-    mobileMenuButton.addEventListener('click', toggleMenu);
-  }
-  
-  // Close menu when clicking on links
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-  
-  // Close menu when clicking outside
-  if (mobileMenu) {
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) {
-        closeMenu();
+      if (targetElement) {
+        const offset = 80; // Account for sticky nav
+        const targetPosition = targetElement.offsetTop - offset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
       }
     });
-  }
-  
-  // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeMenu();
-    }
-  });
-  
-  // Handle resize - close menu if screen gets larger
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 640 && isMenuOpen) {
-      closeMenu();
-    }
   });
 }
 
 // Initialize agent network on load and resize
 window.addEventListener('load', () => {
   initializeAgentNetwork();
-  initializeMobileMenu();
+  initializeNavigation();
 });
 
 window.addEventListener('resize', () => {
