@@ -25,7 +25,7 @@
     /* Dark Section Theming */
     .hero,
     .section-dark {
-      background: #0f172a;
+      background: #1e293b;
       position: relative;
       overflow: hidden;
     }
@@ -458,7 +458,7 @@ Automate recurring processes
 <section class="section-dark py-16 md:py-24 lg:py-32">
   <div class="container">
     <div class="flex flex-col">
-      <div class="mb-8 md:mb-10 lg:mb-12">
+      <div class="mb-8 md:mb-10 lg:mb-12 text-center">
         <div class="w-full">
           <p class="mb-3 font-semibold md:mb-4 text-neutral-400">Services</p>
           <h2 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-white">
@@ -471,63 +471,60 @@ Automate recurring processes
           </p>
         </div>
       </div>
-      <div
-        class="grid grid-cols-1 items-start justify-center gap-y-12 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12"
-      >
-        <div class="flex w-full flex-col">
-          <div class="mb-3 md:mb-4 flex justify-start">
-            <div class="icon-container">
-              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-8 lg:gap-x-12">
+        <!-- Service Card 1 -->
+        <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm text-center">
+          <div class="mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
               </svg>
             </div>
+            <h3 class="text-xl font-bold md:text-2xl text-white mb-4">
+              Strategic Advisory
+            </h3>
           </div>
-          <h3
-            class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white"
-          >
-            Strategic Advisory
-          </h3>
-          <p class="text-neutral-400">
+          <p class="text-neutral-300 leading-relaxed text-left">
             Get expert guidance on selecting the right AI tools, designing
             scalable workflows, and preparing your team for AI-native
             development. I help you cut through the noise and choose solutions
             that align with your business goals.
           </p>
         </div>
-        <div class="flex w-full flex-col">
-          <div class="mb-3 md:mb-4 flex justify-start">
-            <div class="icon-container">
-              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Service Card 2 -->
+        <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm text-center">
+          <div class="mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
               </svg>
             </div>
+            <h3 class="text-xl font-bold md:text-2xl text-white mb-4">
+              Pilot Implementation
+            </h3>
           </div>
-          <h3
-            class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white"
-          >
-            Pilot Implementation
-          </h3>
-          <p class="text-neutral-400">
+          <p class="text-neutral-300 leading-relaxed text-left">
             Validate the value of AI in your development process with a tailored
-            proof-of-concept. We’ll design and run a pilot workflow that
+            proof-of-concept. We'll design and run a pilot workflow that
             demonstrates measurable ROI and builds confidence for broader
             adoption.
           </p>
         </div>
-        <div class="flex w-full flex-col">
-          <div class="mb-3 md:mb-4 flex justify-start">
-            <div class="icon-container">
-              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Service Card 3 -->
+        <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm text-center">
+          <div class="mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
               </svg>
             </div>
+            <h3 class="text-xl font-bold md:text-2xl text-white mb-4">
+              Hands-on Workshop
+            </h3>
           </div>
-          <h3
-            class="mb-3 text-xl font-bold md:mb-4 md:text-2xl text-white"
-          >
-            Hands-on Workshop
-          </h3>
-          <p class="text-neutral-400">
+          <p class="text-neutral-300 leading-relaxed text-left">
             Engage your team in a focused 2-days workshop. Through practical
             exercises and real-world examples, your developers learn how to use
             AI effectively, adopt best practices, and accelerate delivery with
@@ -535,7 +532,7 @@ Automate recurring processes
           </p>
         </div>
       </div>
-      <div class="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+      <div class="mt-8 md:mt-10 lg:mt-12 flex justify-center">
         <button class="btn-primary" title="Schedule a Consultation">
           Schedule a Consultation
         </button>
@@ -617,7 +614,7 @@ Automate recurring processes
     
     <div class="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-8 lg:gap-x-16">
       <!-- Testimonial Card 1 -->
-      <div class="bg-neutral-900/50 rounded-xl p-8 border border-neutral-800/50 backdrop-blur-sm">
+      <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm">
         <div class="mb-6">
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
@@ -636,7 +633,7 @@ Automate recurring processes
       </div>
 
       <!-- Testimonial Card 2 -->
-      <div class="bg-neutral-900/50 rounded-xl p-8 border border-neutral-800/50 backdrop-blur-sm">
+      <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm">
         <div class="mb-6">
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
@@ -809,7 +806,7 @@ function initializeAgentNetwork() {
   // Agent circles - solid background to hide grid and signals
   agentGroups.append("circle")
     .attr("r", d => d.size)
-    .attr("fill", "#0f172a")
+    .attr("fill", "#1e293b")
     .attr("fill-opacity", 1)
     .attr("stroke", "#64748B")
     .attr("stroke-width", 1)
