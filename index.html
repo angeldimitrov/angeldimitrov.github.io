@@ -551,11 +551,32 @@ Automate recurring processes
       class="grid grid-cols-1 gap-y-12 md:grid-cols-[1fr_2fr] md:items-center md:gap-x-12 lg:gap-x-16"
     >
       <div class="order-1 md:order-1">
-        <img
-          src="./assets/images/portrait_retouched.jpg"
-          class="w-full max-w-xs mx-auto md:max-w-full rounded-xl object-cover shadow-lg"
-          alt="Angel Dimitrov - AI Development Consultant"
-        />
+        <picture>
+          <source
+            sizes="(max-width: 768px) 320px, (max-width: 1024px) 640px, 800px"
+            srcset="
+              ./assets/images/portrait/portrait-320w.webp 320w,
+              ./assets/images/portrait/portrait-640w.webp 640w,
+              ./assets/images/portrait/portrait-800w.webp 800w,
+              ./assets/images/portrait/portrait-original.webp 1542w
+            "
+            type="image/webp"
+          />
+          <img
+            src="./assets/images/portrait/portrait-640w.jpg"
+            srcset="
+              ./assets/images/portrait/portrait-320w.jpg 320w,
+              ./assets/images/portrait/portrait-640w.jpg 640w,
+              ./assets/images/portrait/portrait-800w.jpg 800w,
+              ./assets/images/portrait/portrait-original.jpg 1542w
+            "
+            sizes="(max-width: 768px) 320px, (max-width: 1024px) 640px, 800px"
+            class="w-full max-w-xs mx-auto md:max-w-full rounded-xl object-cover shadow-lg"
+            alt="Angel Dimitrov - AI Development Consultant"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </div>
       <div class="order-2 md:order-2">
         <p class="mb-3 font-semibold md:mb-4 text-neutral-600">About</p>
@@ -600,27 +621,10 @@ Automate recurring processes
           40%. His expertise made the transition seamless.” — VP Engineering,
           E-Commerce Scaleup
         </blockquote>
-        <div
-          class="mt-6 flex w-full flex-col gap-3 md:mt-8 md:w-auto md:flex-row md:items-center md:gap-5"
-        >
+        <div class="mt-6 md:mt-8">
           <div>
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-              alt="Testimonial avatar 1"
-              class="size-14 min-h-14 min-w-14 rounded-full object-cover"
-            />
-          </div>
-          <div class="mb-4 md:mb-0">
             <p class="font-semibold text-white">John Doe</p>
             <p class="text-neutral-400">VP Engineering, E-Commerce Scaleup</p>
-          </div>
-          <div class="hidden w-px self-stretch bg-black md:block"></div>
-          <div>
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-              alt="Webflow logo 1"
-              class="max-h-12"
-            />
           </div>
         </div>
       </div>
@@ -632,27 +636,10 @@ Automate recurring processes
           validated ROI quickly. I highly recommend their services.” — CTO, SaaS
           Company
         </blockquote>
-        <div
-          class="mt-6 flex w-full flex-col gap-3 md:mt-8 md:w-auto md:flex-row md:items-center md:gap-5"
-        >
+        <div class="mt-6 md:mt-8">
           <div>
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-              alt="Testimonial avatar 1"
-              class="size-14 min-h-14 min-w-14 rounded-full object-cover"
-            />
-          </div>
-          <div class="mb-4 md:mb-0">
             <p class="font-semibold text-white">Jane Smith</p>
             <p class="text-neutral-400">CTO, SaaS Company</p>
-          </div>
-          <div class="hidden w-px self-stretch bg-black md:block"></div>
-          <div>
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-              alt="Webflow logo 1"
-              class="max-h-12"
-            />
           </div>
         </div>
       </div>
@@ -663,9 +650,7 @@ Automate recurring processes
 <!-- CTA Section -->
 <section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
   <div class="container">
-    <div
-      class="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center"
-    >
+    <div class="max-w-4xl mx-auto text-center">
       <div>
         <h2
           class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-neutral-900"
@@ -681,13 +666,6 @@ Automate recurring processes
             Schedule a Consultation
           </button>
         </div>
-      </div>
-      <div>
-        <img
-          src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-          class="w-full rounded-image object-cover"
-          alt="Relume placeholder image"
-        />
       </div>
     </div>
   </div>
