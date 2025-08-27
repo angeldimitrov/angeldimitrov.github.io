@@ -210,6 +210,11 @@ The global CTA button system is designed for maximum impact and conversion, base
 .card-dark {
   @apply bg-neutral-900 rounded-xl p-6 border border-neutral-800;
 }
+
+/* Enhanced Container Card - Semi-transparent with backdrop blur */
+.container-card {
+  @apply bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm;
+}
 ```
 
 ### Icon System
@@ -219,16 +224,25 @@ The global CTA button system is designed for maximum impact and conversion, base
   @apply w-24 h-24 flex items-center justify-center;
 }
 
+/* Enhanced Gradient Icon Container */
+.gradient-icon-container {
+  @apply w-16 h-16 bg-gradient-to-br rounded-full flex items-center justify-center mx-auto;
+}
+
 /* Icon Sizing */
 .icon-sm {
   @apply w-6 h-6;
 }
 
 .icon-md {
-  @apply w-12 h-12;
+  @apply w-8 h-8;
 }
 
 .icon-lg {
+  @apply w-12 h-12;
+}
+
+.icon-xl {
   @apply w-16 h-16;
 }
 
@@ -243,6 +257,19 @@ The global CTA button system is designed for maximum impact and conversion, base
 
 .icon-muted {
   @apply text-neutral-400;
+}
+
+/* Gradient Icon Variants */
+.gradient-blue-purple {
+  @apply from-blue-500 to-purple-500;
+}
+
+.gradient-emerald-blue {
+  @apply from-emerald-500 to-blue-500;
+}
+
+.gradient-purple-pink {
+  @apply from-purple-500 to-pink-500;
 }
 ```
 
@@ -306,7 +333,7 @@ The global CTA button system is designed for maximum impact and conversion, base
 ### Dark Sections - Hero Style
 ```css
 .section-dark {
-  background: #0f172a; /* Hero blue background */
+  background: #1e293b; /* Updated dark background for better container visibility */
   position: relative;
   overflow: hidden;
   color: white;
@@ -515,6 +542,31 @@ The global CTA button system is designed for maximum impact and conversion, base
 
 .service-description {
   @apply text-neutral-400;
+}
+```
+
+### Enhanced Container Pattern
+```css
+/* Container-based service/benefit cards with centered icons and mixed alignment */
+.enhanced-section-card {
+  @apply bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm text-center;
+}
+
+.enhanced-card-icon {
+  @apply w-16 h-16 bg-gradient-to-br rounded-full flex items-center justify-center mx-auto mb-6;
+}
+
+.enhanced-card-title {
+  @apply text-xl font-bold md:text-2xl text-white mb-4;
+}
+
+.enhanced-card-description {
+  @apply text-neutral-300 leading-relaxed text-left;
+}
+
+/* Spacing hierarchy for enhanced cards */
+.enhanced-card-spacing {
+  @apply mb-6; /* Icon to title spacing */
 }
 ```
 
