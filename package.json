@@ -1,12 +1,14 @@
 {
-  "name": "ai-consulting-landing",
+  "name": "relume-ai-consulting",
   "version": "1.0.0",
-  "description": "AI Consulting & Workshops Landing Page",
+  "description": "AI-Native Development Consulting Landing Page built with Relume",
   "scripts": {
     "dev": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
-    "build": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
+    "build": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "serve": "npx http-server -p 8080"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.0"
-  }
+  },
+  "dependencies": {}
 }

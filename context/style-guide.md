@@ -1,758 +1,546 @@
-# AI Consulting Landing Page Style Guide
+# Relume-Based Style Guide for AI-Native Development Consulting
 
-*Inspired by successful AI consulting leaders: McKinsey QuantumBlack, IBM Watson, Accenture AI, and high-converting boutique consultants*
+*Based on the implemented Relume index.html design system*
 
-This comprehensive style guide combines enterprise-level credibility with boutique agility, optimized for converting engineering leaders into clients.
+This style guide documents the design system implemented in the Relume-based AI consulting landing page, optimized for converting engineering leaders into clients.
 
-## 🎨 Strategic Color Psychology
+## 🎨 Color System
 
-*Colors chosen based on analysis of top-converting AI consulting firms and enterprise buyer psychology*
-
-### Primary Colors (Trust & Innovation)
+### Primary Brand Colors (Based on Relume Design System)
 ```css
-/* Enterprise Trust Colors */
---color-primary: #3B82F6;           /* Professional blue - builds trust with CTOs */
---color-primary-hover: #1E40AF;     /* Deeper authority blue */
---color-primary-light: #DBEAFE;     /* Subtle backgrounds */
+/* Primary Colors - Trust & Innovation */
+--color-primary: #3B82F6;           /* Dodger Blue - primary actions */
+--color-primary-hover: #2563EB;     /* Darker blue for hover states */
 
-/* AI Innovation Colors */
---color-accent-purple: #8B5CF6;     /* AI/Future technology associations */
---color-accent-emerald: #10B981;    /* Growth, results, success metrics */
---color-accent-amber: #F59E0B;      /* Innovation, insights, optimization */
---color-accent-rose: #EF4444;       /* Critical actions, warnings */
+/* Secondary Colors */
+--color-secondary: #10B981;         /* Mountain Meadow Green - success/growth */
+--color-secondary-hover: #059669;   /* Darker green for hover states */
+
+/* Accent Colors */
+--color-accent: #F59E0B;            /* Buttercup Orange - highlights */
+--color-accent-hover: #D97706;      /* Darker orange for hover states */
 ```
 
-### Enterprise Neutrals (Credibility & Readability)
+### Neutral Palette (Professional Enterprise Look)
 ```css
-/* Text Hierarchy (Optimized for scanning) */
---color-text-primary: #111827;      /* High-contrast headings for decision-makers */
---color-text-secondary: #374151;    /* Professional body text */
---color-text-tertiary: #6B7280;     /* Supporting information */
---color-text-muted: #9CA3AF;        /* Subtle labels and metadata */
---color-text-white: #FFFFFF;        /* High contrast on dark backgrounds */
+/* Neutral Grays */
+--neutral-50: #FAFAFA;
+--neutral-100: #F5F5F5;
+--neutral-200: #E5E5E5;
+--neutral-300: #D4D4D4;
+--neutral-400: #A3A3A3;
+--neutral-500: #737373;
+--neutral-600: #525252;
+--neutral-700: #404040;
+--neutral-800: #262626;
+--neutral-900: #171717;
+--neutral-950: #0A0A0A;
 
-/* Sophisticated Backgrounds */
---color-bg-primary: #FFFFFF;        /* Clean, premium feel */
---color-bg-secondary: #F9FAFB;      /* Subtle section separation */
---color-bg-tertiary: #F3F4F6;       /* Cards and panels */
---color-bg-dark: #1F2937;          /* Executive/tech sections */
+/* Semantic Colors */
+--border-primary: #E5E7EB;
+--background-primary: #FFFFFF;
+--background-secondary: #FAFAFA;
+--background-dark: #0A0A0A;
+--background-alternative: #171717;
+--text-primary: #171717;
+--text-secondary: #525252;
+--text-alternative: #FFFFFF;
+--text-muted: #737373;
 ```
 
-### Strategic Gradients (Enterprise + Innovation)
+## 🔤 Typography
+
+### Font System
 ```css
-/* Hero: Trust + Innovation (McKinsey QuantumBlack inspired) */
---gradient-hero: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
---gradient-hero-subtle: linear-gradient(135deg, #DBEAFE 0%, #EDE9FE 100%);
-
-/* Cards: Depth without distraction */
---gradient-card: linear-gradient(145deg, #FFFFFF 0%, #F9FAFB 100%);
---gradient-card-hover: linear-gradient(145deg, #F9FAFB 0%, #F3F4F6 100%);
-
-/* Terminal/Demo: High-tech credibility */
---gradient-terminal: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+/* Primary Font Stack - Inter (Google Fonts) */
+font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 ```
 
-## 🔤 Executive-Level Typography
-
-*Font choices optimized for C-level decision makers and technical leaders*
-
-### Strategic Font Stack
+### Typography Scale
 ```css
-/* Primary: Inter - Used by top consulting firms for clarity */
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+/* Custom Font Sizes */
+font-size: 1.125rem;  /* md - 18px */
+font-size: 7rem;      /* 9xl - 112px */
+font-size: 8rem;      /* 10xl - 128px */
 
-/* Headlines: Optional premium feel */
-font-family: 'Inter Tight', 'Inter', system-ui, sans-serif;
-
-/* Code/Terminal: Developer credibility */
-font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+/* Standard Scale */
+text-3xl: 1.875rem;   /* 30px */
+text-4xl: 2.25rem;    /* 36px */  
+text-5xl: 3rem;       /* 48px */
+text-xl: 1.25rem;     /* 20px */
+text-2xl: 1.5rem;     /* 24px */
+text-lg: 1.125rem;    /* 18px */
+text-base: 1rem;      /* 16px */
 ```
 
-### Hierarchy for Conversion (Based on McKinsey/IBM patterns)
+### Typography Hierarchy
 ```css
-/* Hero Headlines - Maximum impact for C-level attention */
-.text-hero {
-  font-size: clamp(2.5rem, 5vw, 4rem);  /* Responsive 40-64px */
-  font-weight: 700;
+/* Hero Headlines - Maximum Impact */
+.hero-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6;
   line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--color-text-primary);
-}
-
-/* Section Headlines - Authority and clarity */
-.text-section {
-  font-size: clamp(2rem, 4vw, 3rem);    /* Responsive 32-48px */
-  font-weight: 600;
-  line-height: 1.2;
   letter-spacing: -0.01em;
-  color: var(--color-text-primary);
 }
 
-/* Value Proposition - Scannable benefits */
-.text-benefit {
-  font-size: 1.5rem;                    /* 24px */
-  font-weight: 600;
-  line-height: 1.33;
-  color: var(--color-text-primary);
+/* Section Headlines - Authority and Clarity */
+.section-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-5 md:mb-6;
+  line-height: 1.2;
 }
 
-/* Body Text - Optimized for executive reading */
-.text-body-large {
-  font-size: 1.25rem;                   /* 20px - easier scanning */
+/* Subsection Titles */
+.subsection-title {
+  @apply text-xl md:text-2xl font-bold mb-3 md:mb-4;
+}
+
+/* Body Text - Optimized for Executive Reading */
+.hero-subtitle {
+  @apply text-lg md:text-xl;
   line-height: 1.6;
-  font-weight: 400;
-  color: var(--color-text-secondary);
 }
 
-.text-body {
-  font-size: 1.125rem;                  /* 18px - better than 16px for exec audience */
+.body-text {
+  @apply text-base md:text-md;
   line-height: 1.6;
-  font-weight: 400;
-  color: var(--color-text-secondary);
 }
 
-.text-supporting {
-  font-size: 1rem;                      /* 16px */
-  line-height: 1.5;
-  font-weight: 400;
-  color: var(--color-text-tertiary);
+/* Eyebrow Text */
+.eyebrow-text {
+  @apply font-semibold mb-3 md:mb-4;
+  font-size: 0.875rem;
 }
 ```
 
-## =2 Layout & Spacing
+## 📐 Layout & Spacing
 
 ### Container System
 ```css
-/* Max widths matching Stripe's approach */
-.container-narrow { max-width: 720px; }   /* Single column content */
-.container-medium { max-width: 1024px; }  /* Standard sections */
-.container-wide { max-width: 1280px; }    /* Full layouts */
-```
-
-### Spacing Scale (8px base)
-```css
-/* Consistent spacing using 8px increments */
---space-xs: 0.5rem;    /* 8px */
---space-sm: 1rem;      /* 16px */
---space-md: 1.5rem;    /* 24px */
---space-lg: 2rem;      /* 32px */
---space-xl: 3rem;      /* 48px */
---space-2xl: 4rem;     /* 64px */
---space-3xl: 6rem;     /* 96px */
---space-4xl: 8rem;     /* 128px */
+/* Main Container */
+.container {
+  @apply max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8;
+}
 ```
 
 ### Section Spacing
 ```css
-/* Vertical rhythm for sections */
-.section-padding-sm { padding: 3rem 0; }   /* Small sections */
-.section-padding-md { padding: 4rem 0; }   /* Standard sections */
-.section-padding-lg { padding: 6rem 0; }   /* Hero, major sections */
-.section-padding-xl { padding: 8rem 0; }   /* Showcase sections */
+/* Section Padding */
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+/* Hero Section */
+.hero-section {
+  @apply py-24 md:py-32 lg:py-40;
+}
+
+/* Smaller Sections */
+.section-padding-sm {
+  @apply py-12 md:py-18 lg:py-20;
+}
 ```
 
-## <� Components
-
-### Buttons
+### Grid System
 ```css
-/* Primary Button (Stripe purple) */
+/* Three Column Grid (Services, Benefits) */
+.three-col-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-x-8 md:gap-y-16 lg:gap-x-12;
+}
+
+/* Two Column Grid (About, CTA) */
+.two-col-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-12 lg:gap-x-20 md:items-center;
+}
+
+/* Asymmetric Grid (About Section) */
+.asymmetric-grid {
+  @apply grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-y-12 md:gap-x-12 lg:gap-x-16 md:items-center;
+}
+```
+
+## 🎯 Component System
+
+### Button System
+
+The global CTA button system is designed for maximum impact and conversion, based on the hero section implementation.
+
+```css
+/* Primary CTA Button - Premium Gradient Style */
 .btn-primary {
-  background: var(--color-primary);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 16px;
-  border: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  @apply px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl;
+  @apply hover:from-blue-700 hover:to-purple-700 transition-all duration-300;
+  @apply shadow-2xl hover:shadow-3xl transform hover:-translate-y-1;
 }
 
-.btn-primary:hover {
-  background: var(--color-primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(99, 91, 255, 0.25);
-}
-
-/* Secondary Button */
+/* Secondary Button (Light Background) */
 .btn-secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  padding: 11px 23px; /* -1px for border */
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  @apply px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-xl;
+  @apply hover:border-neutral-500 hover:bg-neutral-50 transition-all duration-300;
 }
 
-.btn-secondary:hover {
-  background: var(--color-primary-light);
-  transform: translateY(-1px);
+/* Secondary Button (Dark Background) */
+.btn-secondary-dark {
+  @apply px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl;
+  @apply hover:border-white/60 hover:bg-white/10 transition-all duration-300;
 }
-
-/* Button Sizes */
-.btn-sm { padding: 8px 16px; font-size: 14px; }
-.btn-lg { padding: 16px 32px; font-size: 18px; }
 ```
 
-### Cards
+#### Button Usage Guidelines
+- **Primary CTA**: Use `btn-primary` for main conversion actions (Book a Call, Schedule Consultation)
+- **Secondary Actions**: Use `btn-secondary` on light backgrounds, `btn-secondary-dark` on dark backgrounds
+- **Consistent Sizing**: All buttons use `px-8 py-4` for substantial click targets
+- **Premium Effects**: Primary buttons include gradient, shadow, and lift animations for high-impact
+- **Visual Hierarchy**: Gradient primary stands out against any secondary button style
+
+### Card System
 ```css
-/* Stripe-style card component */
+/* Base Card */
 .card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e3ebf0;
+  @apply bg-background-primary rounded-xl p-6 border border-neutral-200;
   transition: all 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  @apply shadow-lg;
   transform: translateY(-2px);
 }
 
-.card-header {
-  padding: 24px 24px 0;
-}
-
-.card-body {
-  padding: 24px;
-}
-
-.card-footer {
-  padding: 0 24px 24px;
-  margin-top: auto;
+/* Dark Card */
+.card-dark {
+  @apply bg-neutral-900 rounded-xl p-6 border border-neutral-800;
 }
 ```
 
-### Navigation
+### Icon System
 ```css
-/* Header Navigation */
-.nav-header {
-  background: white;
-  border-bottom: 1px solid #e3ebf0;
-  padding: 16px 0;
+/* Icon Container - Consistent sizing and positioning */
+.icon-container {
+  @apply w-24 h-24 flex items-center justify-center;
 }
 
-.nav-link {
-  color: var(--color-text-secondary);
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: color 0.2s ease;
+/* Icon Sizing */
+.icon-sm {
+  @apply w-6 h-6;
 }
 
-.nav-link:hover {
-  color: var(--color-primary);
-  background: var(--color-primary-light);
-}
-```
-
-### Code Blocks (for AI Agent Demos)
-```css
-/* Terminal-style code blocks */
-.code-block {
-  background: #0a2540;
-  color: #8898aa;
-  border-radius: 8px;
-  padding: 24px;
-  font-family: 'SF Mono', Monaco, monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  overflow-x: auto;
+.icon-md {
+  @apply w-12 h-12;
 }
 
-.code-prompt {
-  color: #00d924; /* Green for prompts */
+.icon-lg {
+  @apply w-16 h-16;
 }
 
-.code-output {
-  color: #ffffff; /* White for output */
-}
-
-.code-comment {
-  color: #8898aa; /* Gray for comments */
-  font-style: italic;
-}
-```
-
-## =� Responsive Design
-
-### Breakpoints
-```css
-/* Mobile-first approach */
-@media (min-width: 640px)  { /* sm */ }
-@media (min-width: 768px)  { /* md */ }
-@media (min-width: 1024px) { /* lg */ }
-@media (min-width: 1280px) { /* xl */ }
-@media (min-width: 1536px) { /* 2xl */ }
-```
-
-### Responsive Typography
-```css
-/* Hero heading responsive scaling */
-.hero-title {
-  font-size: clamp(2rem, 8vw, 3.5rem);
-  line-height: 1.1;
-}
-
-/* Body text responsive scaling */
-.hero-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
-  line-height: 1.6;
-}
-```
-
-## ( Animations & Effects
-
-### Transitions
-```css
-/* Standard transition timing */
-.transition-fast { transition: all 0.15s ease; }
-.transition-normal { transition: all 0.2s ease; }
-.transition-slow { transition: all 0.3s ease; }
-```
-
-### Hover Effects
-```css
-/* Card hover (Stripe-style) */
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* Button press effect */
-.btn:active {
-  transform: translateY(1px);
-}
-```
-
-### Loading States
-```css
-/* Subtle loading animation */
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.loading {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-```
-
-## <� Brand Elements
-
-### Logo Treatment
-- Use plenty of white space around the logo
-- Minimum size: 120px width for readability
-- On dark backgrounds: Use white version
-- On light backgrounds: Use full color version
-
-### Icons
-```css
-/* Icon styling consistent with Stripe */
-.icon {
-  width: 24px;
-  height: 24px;
-  stroke-width: 1.5;
-  color: var(--color-text-secondary);
-}
-
-.icon-large {
-  width: 48px;
-  height: 48px;
-}
-
+/* Icon Colors */
 .icon-primary {
-  color: var(--color-primary);
+  @apply text-primary;
+}
+
+.icon-white {
+  @apply text-white;
+}
+
+.icon-muted {
+  @apply text-neutral-400;
 }
 ```
 
-### Trust Indicators
+## 🎨 Gradient Text System
+
+### Gradient Text Classes
 ```css
-/* Company logos section */
-.trust-logos {
-  filter: grayscale(100%);
-  opacity: 0.6;
-  transition: all 0.3s ease;
+/* Hero Style Gradient - For Dark Backgrounds */
+.gradient-text-hero {
+  background: linear-gradient(to right, #ffffff, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
-.trust-logos:hover {
-  filter: grayscale(0%);
-  opacity: 1;
+/* Light Background Gradient - For Light Backgrounds */
+.gradient-text-light {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 ```
 
-## =� Design Principles
+### Gradient Text Usage Guidelines
+- **Hero Gradient** (`.gradient-text-hero`): White-to-purple gradient for dark backgrounds
+- **Light Gradient** (`.gradient-text-light`): Blue-to-purple gradient for light backgrounds  
+- **Strategic Application**: Apply to key section headings and important concepts only
+- **Brand Consistency**: Use sparingly to maintain impact and professionalism
 
-### 1. **Clarity First**
-- Use clear, scannable layouts
-- Plenty of white space
-- Strong visual hierarchy
+### Applied Gradient Locations
+- **Hero Section**: "Ship Faster with AI-Native Development" (built-in Tailwind classes)
+- **Light Sections**: "Enterprise AI Workflows", "AI Development Team", "Transform Your Development Process" 
+- **Dark Sections**: "AI-Native Development", "Succeed", section headings
 
-### 2. **Professional Trust**
-- Consistent spacing and alignment
-- Subtle shadows and borders
-- Conservative color usage
+## 🌗 Section Themes
 
-### 3. **Purposeful Animation**
-- Enhance usability, don't distract
-- Fast, smooth transitions
-- Meaningful hover states
-
-### 4. **Mobile Excellence**
-- Touch-friendly interactive elements (44px minimum)
-- Readable text without zoom
-- Optimized loading performance
-
-### 5. **Accessibility Standards**
-- WCAG 2.1 AA compliance
-- Sufficient color contrast (4.5:1 minimum)
-- Keyboard navigation support
-- Screen reader friendly markup
-
-## =' Implementation Notes
-
-### CSS Custom Properties
-All colors and key measurements should be defined as CSS custom properties for easy theming and maintenance.
-
-### Component Architecture
-Follow a component-first approach:
-- Reusable button styles
-- Consistent card layouts
-- Standardized form elements
-- Unified navigation patterns
-
-### Performance Considerations
-- Optimize for Core Web Vitals
-- Use efficient CSS selectors
-- Minimize layout shifts
-- Optimize for mobile-first loading
-
-## 🧠 Conversion Psychology for Engineering Leaders
-
-*Based on analysis of high-converting AI consulting firms and C-level buyer behavior*
-
-### Trust-Building Visual Patterns
+### Light Sections
 ```css
-/* Enterprise Credibility Markers */
-.trust-signal {
-  display: flex;
-  align-items: center;
-  padding: var(--space-md);
-  background: var(--gradient-card);
-  border: 1px solid var(--color-bg-tertiary);
-  border-radius: 8px;
-  font-size: var(--text-body);
-  color: var(--color-text-secondary);
+.section-light {
+  @apply bg-neutral-100; /* Light gray background for subtle contrast */
 }
 
-.trust-signal::before {
-  content: '✓';
-  color: var(--color-accent-emerald);
-  font-weight: 600;
-  margin-right: var(--space-sm);
+.section-light h1,
+.section-light h2,
+.section-light h3 {
+  @apply text-neutral-900;
 }
 
-/* Authority Positioning */
-.authority-metric {
-  text-align: center;
-  padding: var(--space-lg);
+.section-light p {
+  @apply text-neutral-600;
 }
 
-.authority-number {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1;
-}
-
-.authority-label {
-  font-size: var(--text-supporting);
-  color: var(--color-text-tertiary);
-  font-weight: 500;
+.section-light .eyebrow-text {
+  @apply text-neutral-600;
 }
 ```
 
-### AI Agent Demo Components (Core Differentiator)
+### Dark Sections - Hero Style
 ```css
-/* Multi-Agent Terminal Demo */
-.agent-demo {
-  background: var(--gradient-terminal);
-  border-radius: 12px;
-  padding: var(--space-xl);
-  margin: var(--space-xl) 0;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.agent-line {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-sm);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
-}
-
-.agent-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-sm);
-  border-radius: 50%;
-}
-
-.agent-pm { background: var(--color-accent-blue); }
-.agent-backend { background: var(--color-accent-purple); }
-.agent-frontend { background: var(--color-accent-emerald); }
-.agent-testing { background: var(--color-accent-amber); }
-
-.agent-output {
-  color: var(--color-text-white);
-  opacity: 0.9;
-}
-
-.agent-success {
-  color: var(--color-accent-emerald);
-  font-weight: 500;
-}
-```
-
-## 🎯 Strategic Content Positioning
-
-### Messaging Framework (Based on QuantumBlack/Accenture patterns)
-1. **Problem Recognition**: "Manual development processes limit engineering velocity"
-2. **Solution Visualization**: "AI agents handle parallel development workflows"  
-3. **Proof of Concept**: Terminal demos showing real agent coordination
-4. **Risk Mitigation**: "Safe integration with existing processes"
-5. **Social Proof**: Metrics and authority positioning
-
-### Conversion-Optimized Sections
-```css
-/* Hero Section - Maximum impact in 3 seconds */
-.hero-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  background: var(--gradient-hero);
+.section-dark {
+  background: #0f172a; /* Hero blue background */
+  position: relative;
+  overflow: hidden;
   color: white;
-  text-align: center;
 }
 
-/* Value Proposition - 4-column grid for scanning */
-.value-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-xl);
-  margin: var(--space-3xl) 0;
-}
-
-/* Services - Enterprise package presentation */
-.service-tier {
-  background: white;
-  border: 2px solid var(--color-bg-tertiary);
-  border-radius: 12px;
-  padding: var(--space-xl);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.service-tier:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
-}
-
-.service-featured {
-  border-color: var(--color-primary);
-  position: relative;
-}
-
-.service-featured::before {
-  content: 'Most Popular';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-primary);
-  color: white;
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-```
-
-## 💼 Enterprise Component Library
-
-### CTA Optimization (Accenture/IBM inspired)
-```css
-/* Primary CTA - Calendly integration focus */
-.cta-primary {
-  background: var(--color-primary);
-  color: white;
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.125rem;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-}
-
-.cta-primary:hover {
-  background: var(--color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
-}
-
-.cta-text-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.cta-main-text {
-  font-weight: 600;
-  font-size: 1.125rem;
-}
-
-.cta-sub-text {
-  font-weight: 400;
-  font-size: 0.875rem;
-  opacity: 0.9;
-}
-
-/* Risk-Reduction CTAs */
-.cta-risk-free {
-  position: relative;
-}
-
-.cta-risk-free::after {
-  content: 'No commitment • 20 minutes • Free insights';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: var(--space-xs);
-  font-size: 0.75rem;
-  color: var(--color-text-tertiary);
-  white-space: nowrap;
-}
-```
-
-### Social Proof Components
-```css
-/* Client Logo Wall (IBM Watson pattern) */
-.client-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-xl);
-  flex-wrap: wrap;
-  margin: var(--space-3xl) 0;
-}
-
-.client-logo {
-  height: 40px;
-  opacity: 0.6;
-  filter: grayscale(100%);
-  transition: all 0.3s ease;
-}
-
-.client-logo:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-}
-
-/* Testimonial Cards (McKinsey style) */
-.testimonial-card {
-  background: white;
-  padding: var(--space-xl);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid var(--color-primary);
-}
-
-.testimonial-quote {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-  font-style: italic;
-  margin-bottom: var(--space-md);
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.testimonial-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--gradient-card);
-}
-
-.testimonial-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.testimonial-name {
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.testimonial-role {
-  font-size: 0.875rem;
-  color: var(--color-text-tertiary);
-}
-```
-
-## 📊 Performance & Analytics Integration
-
-### Conversion Tracking Elements
-```css
-/* Heatmap-optimized sections */
-.section-trackable {
-  position: relative;
-}
-
-.section-trackable::before {
+/* Grid Pattern Overlay */
+.section-dark::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);
-  opacity: 0.1;
-}
-
-/* A/B Testing Ready Components */
-.variant-container {
-  /* Easy to swap content for testing */
-  display: block;
-}
-
-.variant-a { display: block; }
-.variant-b { display: none; }
-
-/* Analytics-friendly CTAs */
-.cta-analytics {
-  /* Includes data attributes for tracking */
-  cursor: pointer;
-  position: relative;
-}
-
-.cta-analytics::after {
-  content: attr(data-track-label);
-  position: absolute;
-  opacity: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
   pointer-events: none;
+}
+
+.section-dark > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3 {
+  @apply text-white;
+}
+
+.section-dark p {
+  @apply text-neutral-400;
+}
+
+.section-dark .eyebrow-text {
+  @apply text-neutral-400;
 }
 ```
 
-This comprehensive style guide combines the authority and trust-building patterns of enterprise consulting leaders with the conversion optimization techniques proven effective for boutique AI consultants, specifically designed for engineering decision-makers.
+## 🧩 Specialized Components
+
+### Navigation
+```css
+/* Sticky Navigation */
+.nav-header {
+  @apply sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur-sm;
+}
+
+/* Navigation Links */
+.nav-link {
+  @apply text-text-primary hover:text-primary transition-colors duration-200;
+  @apply block py-3 text-md lg:px-4 lg:py-2 lg:text-base;
+}
+```
+
+### Image System
+```css
+/* Rounded Images */
+.rounded-image {
+  @apply rounded-xl;
+}
+
+/* Portrait Images */
+.portrait-image {
+  @apply w-full max-w-xs mx-auto md:max-w-full rounded-xl object-cover shadow-lg;
+}
+```
+
+### Prose Content
+```css
+.prose {
+  @apply max-w-none text-text-secondary;
+}
+
+.prose p {
+  @apply mb-4 last:mb-0 leading-relaxed;
+}
+
+.prose p.font-medium {
+  @apply text-neutral-800;
+}
+```
+
+## 📱 Responsive Design
+
+### Breakpoint Strategy
+```css
+/* Mobile First Approach */
+/* Base: 0-640px (Mobile) */
+/* sm: 640px+ (Large Mobile) */  
+/* md: 768px+ (Tablet) */
+/* lg: 1024px+ (Desktop) */
+/* xl: 1280px+ (Large Desktop) */
+```
+
+### Responsive Patterns
+```css
+/* Responsive Grid */
+.responsive-grid {
+  @apply grid grid-cols-1 gap-y-12;
+  @apply md:grid-cols-3 md:gap-x-8 md:gap-y-16;
+  @apply lg:gap-x-12;
+}
+
+/* Responsive Text */
+.responsive-title {
+  @apply text-3xl md:text-4xl lg:text-5xl;
+}
+
+.responsive-body {
+  @apply text-lg md:text-xl;
+}
+
+/* Responsive Spacing */
+.responsive-section {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+.responsive-margin {
+  @apply mb-6 md:mb-10 lg:mb-12;
+}
+```
+
+## 🎨 Visual Effects
+
+### Shadows
+```css
+/* Button Shadow */
+.btn-shadow {
+  @apply shadow-sm hover:shadow-md;
+}
+
+/* Card Shadow */
+.card-shadow {
+  @apply shadow-lg;
+}
+
+/* Portrait Shadow */
+.portrait-shadow {
+  @apply shadow-lg;
+}
+```
+
+### Backdrop Effects
+```css
+/* Navigation Backdrop */
+.nav-backdrop {
+  @apply bg-white/95 backdrop-blur-sm;
+}
+```
+
+## 🎯 Conversion-Optimized Patterns
+
+### Hero Section Pattern
+```css
+.hero-container {
+  @apply relative overflow-hidden;
+  @apply py-24 md:py-32 lg:py-40;
+  @apply section-dark;
+}
+
+.hero-content {
+  @apply mx-auto w-full max-w-3xl text-center;
+}
+
+.hero-cta {
+  @apply mt-8 flex items-center justify-center gap-x-4 md:mt-10;
+}
+```
+
+### Value Proposition Pattern
+```css
+.value-section {
+  @apply flex flex-col;
+}
+
+.value-header {
+  @apply rb-12 mb-8 md:mb-10 lg:mb-12;
+}
+
+.value-grid {
+  @apply grid grid-cols-1 items-start justify-center gap-y-12;
+  @apply md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12;
+}
+
+.value-item {
+  @apply flex w-full flex-col;
+}
+```
+
+### Service Cards Pattern
+```css
+.service-card {
+  @apply flex w-full flex-col;
+}
+
+.service-icon {
+  @apply mb-3 md:mb-4 flex justify-start;
+}
+
+.service-title {
+  @apply mb-3 text-xl font-bold md:mb-4 md:text-2xl;
+}
+
+.service-description {
+  @apply text-neutral-400;
+}
+```
+
+## 📊 Implementation Guidelines
+
+### CSS Architecture
+1. **Base Layer**: Typography, colors, base element styles
+2. **Components Layer**: Reusable component patterns
+3. **Utilities Layer**: TailwindCSS utilities for customization
+
+### Performance Considerations
+- Use compiled CSS from TailwindCSS build process
+- Implement safelist for dynamic classes
+- Optimize images with proper sizing and formats
+- Use backdrop-blur sparingly for performance
+
+### Accessibility Standards
+- Maintain 4.5:1 contrast ratio minimum
+- Ensure all interactive elements are keyboard accessible
+- Provide proper semantic markup structure
+- Include appropriate ARIA labels where needed
+
+### Brand Consistency
+- All primary actions use `btn-primary` class
+- Section alternation: light → dark → light pattern
+- Consistent icon sizing with `.icon-container`
+- Typography hierarchy maintained across all sections
+
+This style guide provides the foundation for consistent, conversion-optimized design patterns based on the implemented Relume system, specifically tailored for AI consulting services targeting engineering leadership.
