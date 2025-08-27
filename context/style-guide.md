@@ -163,35 +163,75 @@ text-base: 1rem;      /* 16px */
 
 ### Button System
 
-The global CTA button system is designed for maximum impact and conversion, based on the hero section implementation.
+The global CTA button system is designed for maximum impact and conversion, with consistent hover effects and clean, borderless styling.
 
 ```css
 /* Primary CTA Button - Premium Gradient Style */
 .btn-primary {
-  @apply px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl;
-  @apply hover:from-blue-700 hover:to-purple-700 transition-all duration-300;
-  @apply shadow-2xl hover:shadow-3xl transform hover:-translate-y-1;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #2563EB, #9333EA);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #1D4ED8, #7C3AED);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Secondary Button (Light Background) */
 .btn-secondary {
-  @apply px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-xl;
-  @apply hover:border-neutral-500 hover:bg-neutral-50 transition-all duration-300;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #F5F5F5;
+  color: #404040;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+  background: #E5E5E5;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 }
 
 /* Secondary Button (Dark Background) */
 .btn-secondary-dark {
-  @apply px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl;
-  @apply hover:border-white/60 hover:bg-white/10 transition-all duration-300;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #374151;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary-dark:hover {
+  background: #4B5563;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 ```
 
 #### Button Usage Guidelines
-- **Primary CTA**: Use `btn-primary` for main conversion actions (Book a Call, Schedule Consultation)
+- **Primary CTA**: Use `btn-primary` for main conversion actions (Schedule Consultation)
 - **Secondary Actions**: Use `btn-secondary` on light backgrounds, `btn-secondary-dark` on dark backgrounds
-- **Consistent Sizing**: All buttons use `px-8 py-4` for substantial click targets
-- **Premium Effects**: Primary buttons include gradient, shadow, and lift animations for high-impact
-- **Visual Hierarchy**: Gradient primary stands out against any secondary button style
+- **Consistent Sizing**: All buttons use `1rem 2rem` padding for substantial click targets
+- **Premium Effects**: All buttons include shadow and lift animations for high-impact interaction
+- **Visual Hierarchy**: Gradient primary stands out against solid secondary button colors
+- **Borderless Design**: Clean, modern appearance without borders for streamlined aesthetics
+- **Consistent Hover States**: All buttons feature `translateY(-2px)` lift and enhanced shadows
 
 ### Card System
 ```css
