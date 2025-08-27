@@ -1,53 +1,67 @@
-# Services
+# How I Can Help You Succeed
 
-## Strategic Advisory
-Expert guidance on implementing AI-native workflows tailored to your organization's specific needs.
-
-### What's Included:
-- Assessment of current development processes
-- AI tool selection and evaluation
-- Workflow optimization recommendations
-- Implementation roadmap
-- Risk mitigation strategies
-- Team training and adoption plan
-
-### Ideal For:
-- CTOs and VPs of Engineering exploring AI adoption
-- Teams looking for strategic direction
-- Organizations wanting expert guidance without long-term commitments
+## Service Overview
+Unlock the full potential of your development team with tailored AI solutions. My services are designed to enhance efficiency, quality, and collaboration.
 
 ---
 
-## Pilot / Proof of Concept
-Test the impact of AI tools in one specific workflow with measurable results.
+## Strategic Advisory
+Get expert guidance on selecting the right AI tools, designing scalable workflows, and preparing your team for AI-native development. I help you cut through the noise and choose solutions that align with your business goals.
 
-### What's Included:
-- Selection of optimal pilot project
-- Tool setup and configuration
-- Hands-on implementation support
-- Performance metrics and ROI analysis
-- Scaling recommendations
-- Knowledge transfer to your team
+### Key Benefits:
+- Expert AI tool selection guidance
+- Scalable workflow design
+- Team preparation for AI-native development
+- Business goal alignment
+- Noise reduction in AI landscape
+
+### Ideal For:
+- CTOs and VPs of Engineering
+- Organizations exploring AI adoption
+- Teams needing strategic direction
+
+---
+
+## Pilot Implementation
+Validate the value of AI in your development process with a tailored proof-of-concept. We'll design and run a pilot workflow that demonstrates measurable ROI and builds confidence for broader adoption.
+
+### Key Benefits:
+- Tailored proof-of-concept development
+- Measurable ROI demonstration
+- Confidence building for broader adoption
+- Risk mitigation through testing
+- Real-world validation
 
 ### Ideal For:
 - Teams wanting to test before full adoption
-- Organizations needing to demonstrate ROI
-- Risk-averse environments requiring proof
+- Organizations needing ROI proof
+- Risk-conscious environments
 
 ---
 
 ## Hands-on Workshop
-1-day intensive workshop with guided examples to get your team operational with AI coding tools.
+Engage your team in a focused 2-day workshop. Through practical exercises and real-world examples, your developers learn how to use AI effectively, adopt best practices, and accelerate delivery with confidence.
+
+### Key Benefits:
+- 2-day intensive training program
+- Practical exercises with real examples
+- Best practices implementation
+- Confidence building for developers
+- Immediate skill application
 
 ### What's Included:
-- Introduction to AI-native development concepts
-- Live coding demonstrations
-- Hands-on exercises with real examples
-- Best practices and pitfalls to avoid
-- Q&A and troubleshooting
-- Post-workshop resources and support
+- AI-effective practices training
+- Real-world examples and exercises
+- Best practices documentation
+- Team enablement strategies
+- Post-workshop support
 
 ### Ideal For:
-- Teams ready to start using AI tools
-- Developers wanting practical experience
+- Development teams ready for AI adoption
 - Organizations prioritizing team enablement
+- Teams wanting hands-on experience
+
+---
+
+## Call to Action
+Schedule a Consultation: https://calendly.com/angel-sourcestream/30min

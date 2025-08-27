@@ -1,8 +1,27 @@
-# About Me
+# About Angel Dimitrov
 
-I'm Angel Dimitrov — CTO, founder, and consultant with over 15 years of experience in building and leading engineering teams.  
-I spent more than a decade running my own software agency, working hands-on with clients across industries and delivering complex projects end-to-end.  
-Along the way, I co-founded startups and held leadership roles at companies like Home24, Zalando, Flaconi, Republik, Schwarz Gruppe, and Rocket Internet — giving me experience from early-stage ventures to enterprise-scale organizations.  
+## Professional Background
+I'm Angel Dimitrov — CTO, founder, and consultant with 15+ years of experience leading engineering teams and delivering software products. I co-founded startups and ran my own agency, delivering projects end-to-end. I've held leadership roles at Home24, Zalando, Flaconi, Republik.gg, Rocket Internet, Schwarz Gruppe, and WR Wertstoffbörse. This journey gave me experience across startups, scaleups, and enterprises.
 
-Today, I focus on helping companies explore and integrate AI-driven development workflows.  
-Through consulting, pilots, and workshops, I support engineering leaders in accelerating delivery, cutting costs, and improving software quality — while setting their teams up for the future of software development.
+## Current Focus
+My expertise spans software architecture, cloud, AI-driven development, and building high-performance teams. Today, I focus on helping companies adopt AI-native development workflows — cutting delivery times, reducing costs, and improving quality, while preparing teams for the future of software development.
+
+## Experience Range
+- Startups (early-stage venture experience)
+- Scaleups (growth phase challenges)
+- Enterprise (large-scale organizations)
+- Agency work (client-focused delivery)
+- Co-founder experience (business building)
+
+## Key Companies
+- Home24
+- Zalando  
+- Flaconi
+- Republik.gg
+- Rocket Internet
+- Schwarz Gruppe
+- WR Wertstoffbörse
+
+## Contact Information
+- Email: angel@sourcestream.de
+- Services: Remote, Worldwide
