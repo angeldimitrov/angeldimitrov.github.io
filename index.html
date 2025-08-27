@@ -1155,27 +1155,10 @@ function initializeAgentNetwork() {
 }
 
 
-// Smooth scroll behavior for navigation links
+// Basic smooth scroll for anchor links
 function initializeNavigation() {
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        const offset = 80; // Account for sticky nav
-        const targetPosition = targetElement.offsetTop - offset;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
+  // Enable smooth scrolling via CSS
+  document.documentElement.style.scrollBehavior = 'smooth';
 }
 
 // Initialize agent network on load and resize
