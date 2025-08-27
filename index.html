@@ -46,12 +46,8 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="./favicon.svg">
   
-  <!-- Resource Preloads for Critical Assets -->
-  <link rel="preload" href="./dist/styles.css" as="style">
-  <link rel="preload" href="./dist/d3-custom.min.js" as="script">
-  
   <!-- TailwindCSS Compiled Styles -->
-  <link rel="stylesheet" href="./dist/styles.css" media="all">
+  <link rel="stylesheet" href="./dist/styles.css">
   
   <!-- Google Fonts with optimized loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,8 +59,6 @@
   
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="dns-prefetch" href="//calendly.com">
   
   <!-- Additional SEO meta tags -->
   <meta name="theme-color" content="#2563EB">
@@ -1176,29 +1170,14 @@ function initializeNavigation() {
   document.documentElement.style.scrollBehavior = 'smooth';
 }
 
-// Initialize agent network on load and resize with performance optimization
+// Initialize agent network on load and resize
 window.addEventListener('load', () => {
-  // Use requestIdleCallback for non-critical animations
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-      initializeAgentNetwork();
-      initializeNavigation();
-    });
-  } else {
-    setTimeout(() => {
-      initializeAgentNetwork();
-      initializeNavigation();
-    }, 100);
-  }
+  initializeAgentNetwork();
+  initializeNavigation();
 });
 
-// Debounce resize events for better performance
-let resizeTimer;
 window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    initializeAgentNetwork();
-  }, 150);
+  initializeAgentNetwork();
 });
 </script>
 
