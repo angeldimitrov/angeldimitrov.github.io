@@ -142,6 +142,8 @@ text-base: 1rem;      /* 16px */
 
 **Critical Rule**: Never combine `px-[5%]` with `.container` class. The container already provides responsive padding. Using both creates inconsistent margins across sections.
 
+**Known Issue**: The footer currently incorrectly uses both `px-[5%]` and `.container` classes. This should be fixed to use only `.container` for consistency.
+
 ### Section Spacing
 ```css
 /* Section Padding */
@@ -448,7 +450,28 @@ The global CTA button system is designed for maximum impact and conversion, with
   @apply text-text-primary hover:text-primary transition-colors duration-200;
   @apply block py-3 text-md lg:px-4 lg:py-2 lg:text-base;
 }
+
+/* Mobile Navigation (Horizontal Scroll) */
+.mobile-nav {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.mobile-nav::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+.mobile-nav-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  min-width: max-content;
+}
 ```
+
+**Note**: The mobile navigation uses horizontal scrolling with hidden scrollbars for a clean appearance. The "AI Team" link was removed in recent updates.
 
 ### Image System
 ```css
@@ -546,6 +569,69 @@ The global CTA button system is designed for maximum impact and conversion, with
 }
 ```
 
+### D3.js Agent Network Animation
+```css
+/* Agent Network Container */
+#agent-network-d3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Agent Nodes */
+.agent-node {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.agent-node:hover {
+  transform: scale(1.1);
+}
+
+/* Connection Lines */
+.connection-line {
+  stroke: rgba(147, 197, 253, 0.3);
+  stroke-width: 2;
+}
+
+/* Data Flow Pulses */
+.data-pulse {
+  fill: rgba(147, 197, 253, 0.8);
+  animation: pulse-fade 2s ease-out;
+}
+
+@keyframes pulse-fade {
+  0% {
+    r: 3;
+    opacity: 1;
+  }
+  100% {
+    r: 15;
+    opacity: 0;
+  }
+}
+
+/* Agent Labels */
+.agent-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  fill: white;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+```
+
+### Animation Guidelines
+- **Agent Network**: Continuous orbital movement with smooth transitions
+- **Data Flow**: Bidirectional pulses between connected agents
+- **Hover Effects**: Scale transforms on interactive elements
+- **Performance**: Use requestAnimationFrame for smooth 60fps animations
+- **Responsive**: Scale agent sizes based on viewport dimensions
+
 ## 🎯 Conversion-Optimized Patterns
 
 ### Hero Section Pattern
@@ -626,6 +712,129 @@ The global CTA button system is designed for maximum impact and conversion, with
 /* Spacing hierarchy for enhanced cards */
 .enhanced-card-spacing {
   @apply mb-6; /* Icon to title spacing */
+}
+```
+
+### Console/Terminal Demo Components
+```css
+/* Terminal Container for AI Agent demos */
+.terminal-container {
+  @apply bg-gray-900 rounded-xl p-6 font-mono text-sm overflow-hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* Terminal Title Bar */
+.terminal-header {
+  @apply flex items-center mb-4;
+}
+
+.terminal-dots {
+  @apply flex space-x-2;
+}
+
+.terminal-dot {
+  @apply w-3 h-3 rounded-full;
+}
+
+.terminal-dot-red {
+  @apply bg-red-500;
+}
+
+.terminal-dot-yellow {
+  @apply bg-yellow-500;
+}
+
+.terminal-dot-green {
+  @apply bg-green-500;
+}
+
+/* Terminal Content */
+.terminal-line {
+  @apply text-gray-300 mb-2;
+}
+
+.terminal-agent {
+  @apply font-bold;
+}
+
+/* Agent Colors in Terminal */
+.agent-pm { @apply text-blue-400; }
+.agent-backend { @apply text-green-400; }
+.agent-frontend { @apply text-purple-400; }
+.agent-testing { @apply text-yellow-400; }
+.agent-browser { @apply text-pink-400; }
+.agent-devops { @apply text-orange-400; }
+.agent-docs { @apply text-cyan-400; }
+.agent-qa { @apply text-indigo-400; }
+
+/* Terminal Status Messages */
+.terminal-status {
+  @apply text-gray-500 italic mt-4;
+}
+
+.terminal-success {
+  @apply text-emerald-500 font-semibold mt-4 flex items-center;
+}
+```
+
+### Approach Section Layout
+```css
+/* Two-column layout for Approach section */
+.approach-grid {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.5fr] md:gap-x-12 lg:gap-x-20;
+}
+
+.approach-heading {
+  @apply text-3xl font-bold md:text-4xl lg:text-5xl mb-4;
+}
+
+.approach-content {
+  @apply space-y-4 text-neutral-600;
+}
+
+.approach-content p {
+  @apply leading-relaxed;
+}
+```
+
+### Testimonial Cards
+```css
+/* Testimonial Card Design */
+.testimonial-card {
+  @apply bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm;
+}
+
+.testimonial-header {
+  @apply flex items-center mb-6;
+}
+
+.testimonial-avatar {
+  @apply w-12 h-12 rounded-full bg-gradient-to-br flex items-center justify-center text-white font-bold;
+}
+
+.testimonial-info {
+  @apply ml-4;
+}
+
+.testimonial-name {
+  @apply text-white font-semibold;
+}
+
+.testimonial-title {
+  @apply text-neutral-400 text-sm;
+}
+
+.testimonial-quote {
+  @apply text-lg md:text-xl leading-relaxed text-neutral-300 italic;
+}
+
+/* Avatar Gradient Variants */
+.avatar-gradient-1 {
+  @apply from-blue-500 to-purple-500;
+}
+
+.avatar-gradient-2 {
+  @apply from-emerald-500 to-blue-500;
 }
 ```
 
