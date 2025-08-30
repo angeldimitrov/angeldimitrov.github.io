@@ -98,7 +98,7 @@ Alternative: Use a simple mailto link by replacing the form with:
 4. Choose branch: main (or master)
 5. Select folder: / (root)
 6. Save and wait for deployment
-7. Your site will be available at: `https://[username].github.io/[repository-name]`
+7. Your site will be available at: `https://[username].github.io/` (for username.github.io repos) or `https://[username].github.io/[repository-name]` (for other repos)
 
 ### Cloudflare Pages
 
