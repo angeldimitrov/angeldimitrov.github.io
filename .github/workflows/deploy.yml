@@ -63,6 +63,21 @@ jobs:
           echo "🏗️ Building Jekyll site..."
           export JEKYLL_ENV=production
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+          
+          # Ensure CSS file is in the final _site directory
+          echo "📋 Verifying CSS file in _site directory..."
+          if [ -f "dist/styles.css" ] && [ ! -f "_site/dist/styles.css" ]; then
+            echo "⚠️  CSS file exists in dist/ but not in _site/dist/, copying manually..."
+            mkdir -p _site/dist
+            cp dist/styles.css _site/dist/styles.css
+            echo "✅ CSS file copied to _site/dist/"
+          elif [ -f "_site/dist/styles.css" ]; then
+            echo "✅ CSS file already exists in _site/dist/"
+          else
+            echo "❌ CSS file not found in dist/ directory"
+            ls -la dist/
+            exit 1
+          fi
         env:
           JEKYLL_ENV: production
 
