@@ -30,9 +30,10 @@ exclude:
   - README.md
   - PRD.md
 
-# Include files that start with underscore
+# Include files that start with underscore and dist directory for CSS
 include:
   - _pages
+  - dist
 
 # Collections
 collections:
