@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Mount source code
+      - .:/srv/jekyll
+      # Prevent node_modules from being overwritten
+      - /srv/jekyll/node_modules
+    ports:
+      - "4000:4000"    # Jekyll server
+      - "35729:35729"  # LiveReload
+    environment:
+      - JEKYLL_ENV=development
+    command: >
+      sh -c "
+        jekyll serve --force_polling --livereload --host 0.0.0.0 &
+        npm run dev &
+        wait
+      "

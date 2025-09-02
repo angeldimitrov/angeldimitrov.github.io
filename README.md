@@ -1,30 +1,37 @@
 # AI Consulting & Workshops Landing Page
 
-A professional landing page for AI-driven software development consulting services, built with HTML, TailwindCSS, and designed for easy deployment.
+A professional landing page for AI-driven software development consulting services, built with Jekyll, TailwindCSS, and designed for GitHub Pages deployment.
 
 ## Features
 
 - Clean, modern, responsive design
 - Mobile-first approach
+- Jekyll templating for maintainable code
 - TailwindCSS for styling
-- Contact form integration ready (Formspree)
-- SEO optimized
+- Claude Code Workshop page
+- SEO optimized with structured data
 - Fast loading static site
 
 ## Project Structure
 
 ```
 ai-consulting-landing/
-├── index.html              # Main landing page
+├── index.html              # Main landing page (Jekyll)
+├── workshop.html           # Claude Code workshop page (Jekyll)
+├── _layouts/
+│   └── default.html       # Base template
+├── _includes/
+│   ├── head.html          # HTML head section
+│   ├── header.html        # Navigation
+│   └── footer.html        # Footer
+├── _config.yml            # Jekyll configuration
 ├── src/
 │   └── styles.css         # TailwindCSS input file
 ├── dist/
 │   └── styles.css         # Compiled CSS (generated)
-├── content/en/            # Content markdown files
-│   ├── hero.md
-│   ├── value-proposition.md
-│   ├── services.md
-│   └── contact.md
+├── content/en/            # Content markdown files (reference)
+├── dev.sh                 # Development script (Jekyll + TailwindCSS)
+├── Gemfile                # Ruby dependencies for Jekyll
 ├── package.json           # Node dependencies
 ├── tailwind.config.js     # TailwindCSS configuration
 └── README.md             # This file
@@ -35,6 +42,7 @@ ai-consulting-landing/
 ### Prerequisites
 - Node.js (v14 or higher)
 - npm or yarn
+- Docker (for Jekyll) OR Ruby/Jekyll installed locally
 
 ### Installation
 
@@ -56,12 +64,41 @@ npm run build
 
 ### Development
 
-For development with live CSS reloading:
+#### Quick Start (Recommended - Single Terminal)
+```bash
+./dev.sh
+```
+This runs both Jekyll (via Docker) and TailwindCSS in watch mode. Visit http://localhost:4000
+
+#### Alternative: Docker Compose
+```bash
+docker-compose -f docker-compose.dev.yml up
+```
+
+#### Alternative: Manual Setup
+Terminal 1 - Jekyll with Docker:
+```bash
+docker run --rm \
+  --volume="$PWD:/srv/jekyll" \
+  --publish 4000:4000 \
+  jekyll/jekyll:latest \
+  jekyll serve --force_polling --livereload
+```
+
+Terminal 2 - TailwindCSS:
 ```bash
 npm run dev
 ```
 
-This will watch for changes in your HTML files and rebuild the CSS automatically.
+#### Alternative: Local Jekyll (if installed)
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+### Pages
+- Homepage: http://localhost:4000
+- Workshop: http://localhost:4000/workshop/
 
 ## Configuration
 
@@ -90,7 +127,9 @@ Alternative: Use a simple mailto link by replacing the form with:
 
 ## Deployment
 
-### GitHub Pages
+### GitHub Pages (Recommended)
+
+GitHub Pages has built-in Jekyll support, so deployment is automatic:
 
 1. Push your code to a GitHub repository
 2. Go to Settings > Pages
@@ -99,6 +138,8 @@ Alternative: Use a simple mailto link by replacing the form with:
 5. Select folder: / (root)
 6. Save and wait for deployment
 7. Your site will be available at: `https://[username].github.io/` (for username.github.io repos) or `https://[username].github.io/[repository-name]` (for other repos)
+
+Note: GitHub Pages will automatically process Jekyll files, no build step needed!
 
 ### Cloudflare Pages
 

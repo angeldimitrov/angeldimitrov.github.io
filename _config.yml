@@ -1,0 +1,73 @@
+# Jekyll Configuration for AI-Native Development Consulting
+title: AI-Native Development Consulting
+description: Transform your engineering workflow with AI-native development. Expert consulting for CTOs & VPs of Engineering.
+author: Angel Dimitrov
+email: angel@sourcestream.de
+baseurl: ""
+url: "https://angeldimitrov.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude files from processing
+exclude:
+  - package.json
+  - package-lock.json
+  - node_modules/
+  - tailwind.config.js
+  - src/
+  - .playwright-mcp/
+  - context/
+  - README.md
+  - PRD.md
+
+# Include files that start with underscore
+include:
+  - _pages
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      author: "Angel Dimitrov"
+
+# SEO settings
+lang: en_US
+twitter:
+  username: 
+  card: summary_large_image
+
+social:
+  name: Angel Dimitrov
+  links:
+    - https://linkedin.com/in/angel-dimitrov-85b3b499
+    - https://github.com/angeldimitrov
+
+# Google Analytics (if needed in future)
+# google_analytics: 
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed

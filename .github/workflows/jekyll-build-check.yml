@@ -1,0 +1,200 @@
+name: Jekyll Build Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**.html'
+      - '**.md'
+      - '**.yml'
+      - '**.yaml'
+      - '_config.yml'
+      - '_includes/**'
+      - '_layouts/**'
+      - '_sass/**'
+      - 'src/**'
+      - 'package.json'
+      - 'tailwind.config.js'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    name: Build Validation
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          # Fix Gemfile.lock platform compatibility
+          bundle lock --add-platform x86_64-linux
+          
+          # Install Ruby gems
+          bundle install
+          
+          # Install Node.js dependencies
+          npm ci
+
+      - name: Build TailwindCSS
+        run: |
+          echo "🎨 Building TailwindCSS..."
+          npm run build
+          
+          # Verify CSS file was created
+          if [ ! -f "dist/styles.css" ]; then
+            echo "❌ TailwindCSS build failed - dist/styles.css not found"
+            exit 1
+          fi
+          
+          # Check if CSS file is not empty
+          if [ ! -s "dist/styles.css" ]; then
+            echo "❌ TailwindCSS build produced empty CSS file"
+            exit 1
+          fi
+          
+          echo "✅ TailwindCSS build successful"
+          echo "📊 CSS file size: $(du -h dist/styles.css | cut -f1)"
+
+      - name: Validate Jekyll Configuration
+        run: |
+          echo "🔧 Validating Jekyll configuration..."
+          
+          # Test Jekyll configuration loading (this validates YAML syntax)
+          bundle exec jekyll doctor
+          
+          echo "✅ Jekyll configuration is valid"
+
+      - name: Build Jekyll Site
+        run: |
+          echo "🏗️  Building Jekyll site..."
+          
+          # Set Jekyll environment
+          export JEKYLL_ENV=production
+          
+          # Build the site
+          bundle exec jekyll build --verbose
+          
+          # Verify _site directory was created
+          if [ ! -d "_site" ]; then
+            echo "❌ Jekyll build failed - _site directory not found"
+            exit 1
+          fi
+          
+          # Check for essential files
+          essential_files=("_site/index.html" "_site/workshop/index.html" "_site/dist/styles.css")
+          for file in "${essential_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Essential file missing: $file"
+              exit 1
+            fi
+          done
+          
+          echo "✅ Jekyll build successful"
+          echo "📊 Generated files: $(find _site -name "*.html" | wc -l) HTML files"
+
+      - name: Validate HTML Structure
+        run: |
+          echo "🔍 Performing basic HTML validation..."
+          
+          # Check for basic HTML structure in key pages
+          pages=("_site/index.html" "_site/workshop/index.html")
+          
+          for page in "${pages[@]}"; do
+            echo "Checking $page..."
+            
+            # Check for essential HTML elements
+            if ! grep -q "<html" "$page"; then
+              echo "❌ Missing <html> tag in $page"
+              exit 1
+            fi
+            
+            if ! grep -q "<head>" "$page"; then
+              echo "❌ Missing <head> tag in $page"
+              exit 1
+            fi
+            
+            if ! grep -q "<body>" "$page"; then
+              echo "❌ Missing <body> tag in $page"
+              exit 1
+            fi
+            
+            # Check for meta tags
+            if ! grep -q "<meta.*viewport" "$page"; then
+              echo "⚠️  Warning: Missing viewport meta tag in $page"
+            fi
+            
+            if ! grep -q "<title>" "$page"; then
+              echo "⚠️  Warning: Missing title tag in $page"
+            fi
+          done
+          
+          echo "✅ HTML structure validation passed"
+
+      - name: Check for Liquid Template Errors
+        run: |
+          echo "🧪 Checking for Liquid template errors in build output..."
+          
+          # Look for common Liquid error patterns in generated HTML
+          error_patterns=("Liquid Error" "Liquid Exception" "undefined method" "undefined variable")
+          
+          for pattern in "${error_patterns[@]}"; do
+            if grep -r "$pattern" _site/ --include="*.html"; then
+              echo "❌ Found Liquid template error: $pattern"
+              exit 1
+            fi
+          done
+          
+          echo "✅ No Liquid template errors found"
+
+      - name: Verify Navigation Links
+        run: |
+          echo "🔗 Checking navigation links..."
+          
+          # Check that workshop link exists in navigation
+          if ! grep -q '/workshop/' _site/index.html; then
+            echo "❌ Workshop link missing from homepage navigation"
+            exit 1
+          fi
+          
+          # Verify workshop page exists
+          if [ ! -f "_site/workshop/index.html" ]; then
+            echo "❌ Workshop page not generated"
+            exit 1
+          fi
+          
+          echo "✅ Navigation links verification passed"
+
+      - name: Build Summary
+        run: |
+          echo "📋 Build Summary:"
+          echo "===================="
+          echo "✅ TailwindCSS build: SUCCESS"
+          echo "✅ Jekyll build: SUCCESS" 
+          echo "✅ HTML validation: SUCCESS"
+          echo "✅ Template validation: SUCCESS"
+          echo "✅ Navigation check: SUCCESS"
+          echo ""
+          echo "📊 Site Statistics:"
+          echo "- HTML files: $(find _site -name "*.html" | wc -l)"
+          echo "- CSS file size: $(du -h _site/dist/styles.css | cut -f1)"
+          echo "- Total site size: $(du -sh _site | cut -f1)"
+          echo ""
+          echo "🚀 Site is ready for deployment!"
