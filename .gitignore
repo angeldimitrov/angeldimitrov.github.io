@@ -6,3 +6,9 @@ node_modules/
 .vscode/
 .idea/
 .playwright-mcp/
+
+# Jekyll build directory
+_site/
+
+# TailwindCSS output
+dist/styles.css
