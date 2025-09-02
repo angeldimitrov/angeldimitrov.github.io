@@ -9,6 +9,3 @@ node_modules/
 
 # Jekyll build directory
 _site/
-
-# TailwindCSS output
-dist/styles.css
