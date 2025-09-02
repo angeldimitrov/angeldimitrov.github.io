@@ -3,7 +3,10 @@ module.exports = {
   content: [
     "./index.html",
     "./*.{html,js}",
-    "./src/**/*.{html,js}"
+    "./src/**/*.{html,js}",
+    "./_includes/**/*.{html,js}",
+    "./_layouts/**/*.{html,js}",
+    "./workshop.html"
   ],
   safelist: [
     'bg-blue-500',
