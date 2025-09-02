@@ -123,26 +123,49 @@ text-base: 1rem;      /* 16px */
 }
 ```
 
-### Section Layout Patterns
+### Section Layout Patterns & Content Width Consistency
 ```css
-/* Standard Section - Consistent spacing across all sections */
+/* Standard Section - Consistent width across all sections */
 .section-standard {
-  /* Use ONLY container class for consistent margins */
+  /* Use ONLY container class for consistent width */
   /* ❌ AVOID: px-[5%] combined with container */
+  /* ❌ AVOID: max-w-* containers within sections */
   /* ✅ CORRECT: Use container class alone */
 }
 
 /* Example Implementation */
 <section class="py-16 md:py-24 lg:py-32">
   <div class="container">
-    <!-- Content -->
+    <!-- Content takes full container width -->
+    <div class="text-center mb-12">
+      <h2>Section Title</h2>
+      <!-- Only description text may be constrained for readability -->
+      <p class="max-w-3xl mx-auto">Section description...</p>
+    </div>
+    <!-- Main content grid uses full container width -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Cards, content areas, etc. -->
+    </div>
   </div>
 </section>
 ```
 
-**Critical Rule**: Never combine `px-[5%]` with `.container` class. The container already provides responsive padding. Using both creates inconsistent margins across sections.
+### Content Width Rules
+**✅ CONSISTENT PATTERN (Recommended):**
+- All sections use `container` class for consistent outer width
+- Main content areas (grids, cards, etc.) use full container width
+- Only description paragraphs may use `max-w-3xl mx-auto` for optimal readability
+- Never nest additional width containers inside sections
 
-**Known Issue**: The footer currently incorrectly uses both `px-[5%]` and `.container` classes. This should be fixed to use only `.container` for consistency.
+**❌ AVOID THESE PATTERNS:**
+- `px-[5%]` combined with `.container` class
+- `max-w-4xl mx-auto` or `max-w-5xl mx-auto` within section containers
+- Mixed width patterns across different sections
+- Multiple nested width containers
+
+**Critical Rule**: All sections should have identical content width. Any deviation creates visual inconsistencies and breaks the professional layout flow.
+
+**Recent Fixes Applied**: Workshop page sections (Overview, Pricing, FAQ, CTA) were standardized to remove inconsistent `max-w-*` constraints, ensuring uniform content width across all sections.
 
 ### Section Spacing
 ```css
