@@ -147,3 +147,4 @@ This codebase implements the requirements from `PRD.md`:
 - Clean, minimal design with TailwindCSS
 - Static site with direct Calendly integration
 - Mobile-responsive design
+- when creating PRs always check if the tests are successfull
