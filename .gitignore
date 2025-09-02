@@ -10,5 +10,5 @@ node_modules/
 # Jekyll build directory
 _site/
 
-# TailwindCSS build output - Needed for GitHub Pages
-# dist/
+# TailwindCSS build output - Built by GitHub Actions, don't commit
+dist/

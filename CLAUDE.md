@@ -133,19 +133,56 @@ Modify `tailwind.config.js` to change brand colors:
 - `primary`: Main accent color (buttons, links, icons)
 - `secondary`: Darker variant for hover states
 
-### Deployment
-The site uses GitHub Actions for reliable deployment:
+## **🚨 CRITICAL: CSS Deployment Process**
+
+**The CSS is ALWAYS built by GitHub Actions - NEVER commit dist/styles.css manually!**
+
+### Why This Approach?
+- ✅ Build artifacts should not be in version control
+- ✅ GitHub Actions workflow is comprehensive and reliable
+- ✅ Eliminates recurring "CSS missing" issues
+- ✅ Follows industry best practices
+
+### How It Works:
+1. **Local Development**: Run `npm run dev` - builds CSS to `dist/styles.css` (gitignored)
+2. **Production Deployment**: GitHub Actions automatically:
+   - Builds TailwindCSS (`npm run build`) - creates 28K CSS file
+   - Verifies CSS file exists and has content (fails build if missing)
+   - Jekyll includes `dist/` directory (configured in `_config.yml`)
+   - Copies CSS to `_site/dist/styles.css` for deployment
+   - Uploads artifact and deploys to GitHub Pages
+
+### **🔧 Troubleshooting "Missing CSS":**
+If styles appear missing (this should be rare):
+1. **Check GitHub Actions**: `gh run list --limit 1` - should show ✅ success
+2. **View workflow logs**: `gh run view --log` - look for "TailwindCSS build successful"
+3. **Clear browser cache**: Hard refresh (Cmd+Shift+R)
+4. **Wait for deployment**: GitHub Pages takes 1-2 minutes after successful workflow
+
+### **❌ NEVER DO THIS:**
+- Don't remove `dist/` from `.gitignore`
+- Don't commit `dist/styles.css` manually (creates false fixes)
+- Don't modify the GitHub Actions workflow without understanding it
+
+### **✅ IF CSS IS TRULY MISSING:**
+```bash
+# 1. Trigger a rebuild
+git commit --allow-empty -m "Trigger deployment rebuild"
+git push origin main
+
+# 2. Check if workflow fails
+gh run list --limit 1
+
+# 3. View detailed logs
+gh run view --log | grep -A 10 -B 5 "TailwindCSS\|CSS file"
+```
+
+### Deployment Architecture:
 - **Custom workflow**: `.github/workflows/deploy.yml` handles the full build process
 - **TailwindCSS building**: Automatically builds `src/styles.css` → `dist/styles.css`
 - **Jekyll processing**: Builds static site with proper includes
 - **CSS verification**: Ensures `dist/styles.css` is copied to `_site/dist/` directory
 - **Automatic deployment**: Deploys to GitHub Pages without manual intervention
-
-**Important troubleshooting**: If CSS is missing on production:
-1. Check that `_config.yml` includes `dist` in the `include` list
-2. Verify GitHub Actions workflow completed successfully 
-3. The workflow manually copies CSS if Jekyll doesn't include it automatically
-4. Never commit `dist/styles.css` - it should be built by GitHub Actions
 
 ## PRD Compliance
 
