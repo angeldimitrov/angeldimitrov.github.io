@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CNK0V78G7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2CNK0V78G7');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Tags - Jekyll SEO plugin will handle most of this -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CLAUDE.md | AI-Native Development Consulting</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="CLAUDE.md" />
+<meta name="author" content="Angel Dimitrov" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Transform your engineering workflow with AI-native development. Expert consulting for CTOs &amp; VPs of Engineering." />
+<meta property="og:description" content="Transform your engineering workflow with AI-native development. Expert consulting for CTOs &amp; VPs of Engineering." />
+<link rel="canonical" href="http://0.0.0.0:4000/CLAUDE/" />
+<meta property="og:url" content="http://0.0.0.0:4000/CLAUDE/" />
+<meta property="og:site_name" content="AI-Native Development Consulting" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="CLAUDE.md" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Angel Dimitrov" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Angel Dimitrov"},"description":"Transform your engineering workflow with AI-native development. Expert consulting for CTOs &amp; VPs of Engineering.","headline":"CLAUDE.md","url":"http://0.0.0.0:4000/CLAUDE/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <!-- Additional Meta Tags -->
+  <meta name="keywords" content="AI development consulting, AI-native development, engineering workflow optimization, AI agents, CTO consulting, VP engineering">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://0.0.0.0:4000/CLAUDE/">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
+  
+  <!-- TailwindCSS Compiled Styles -->
+  <link rel="stylesheet" href="/dist/styles.css">
+  
+  <!-- Google Fonts with optimized loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  
+  <!-- Performance optimizations -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  
+  <!-- Additional SEO meta tags -->
+  <meta name="theme-color" content="#2563EB">
+  <meta name="msapplication-TileColor" content="#2563EB">
+  <meta name="language" content="en">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+  
+  <!-- Geo meta tags for global reach -->
+  <meta name="geo.region" content="Worldwide">
+  <meta name="geo.placename" content="Remote Services">
+  
+  <!-- Business meta tags -->
+  <meta name="business.contact.email" content="angel@sourcestream.de">
+  <meta name="business.hours" content="Mo-Fr 09:00-17:00">
+  <meta name="business.type" content="Consulting Services">
+  
+  
+  
+  <style>
+    /* Base Styles */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    
+    /* Clean mobile navigation scroll */
+    nav .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    nav .overflow-x-auto::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Dark Section Theming */
+    .hero,
+    .section-dark {
+      background: #1e293b;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid Pattern Background */
+    .hero::after,
+    .section-dark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .section-dark > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Text Gradients */
+    .gradient-text-hero {
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-light {
+      background: linear-gradient(to right, #2563eb, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Button System */
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #2563EB, #9333EA);
+      color: white;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(to right, #1D4ED8, #7C3AED);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #F5F5F5;
+      color: #404040;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background: #E5E5E5;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-dark {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #374151;
+      color: white;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary-dark:hover {
+      background: #4B5563;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Focus States for Accessibility */
+    .btn-primary:focus-visible,
+    .btn-secondary:focus-visible,
+    .btn-secondary-dark:focus-visible {
+      outline: 2px solid #3B82F6;
+      outline-offset: 2px;
+    }
+
+    
+
+    
+  </style>
+  
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white backdrop-blur-sm" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="flex min-h-16 items-center justify-center md:min-h-18">
+      <!-- Desktop navigation - always visible -->
+      <div class="hidden sm:flex items-center justify-center">
+        <div class="flex items-center space-x-6 md:space-x-8">
+          
+            <a href="/#benefits" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Benefits</a>
+            <a href="/#services" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Services</a>
+            <a href="/#about" class="text-md lg:text-base font-medium hover:text-primary transition-colors">About</a>
+            
+              <a href="/#contact" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Contact</a>
+            
+          
+        </div>
+      </div>
+
+      <!-- Mobile navigation - simple horizontal scroll -->
+      <div class="flex sm:hidden w-full overflow-x-auto">
+        <div class="flex items-center space-x-6 px-4 min-w-max">
+          
+            <a href="/#benefits" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Benefits</a>
+            <a href="/#services" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
+            <a href="/#about" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">About</a>
+            
+              <a href="/#contact" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Contact</a>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<h1 id="claudemd">CLAUDE.md</h1>
+
+<p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
+
+<h2 id="project-overview">Project Overview</h2>
+
+<p>This is a professional landing page for AI consulting services with a dedicated Claude Code workshop page, specifically targeting CTOs, VPs of Engineering, and Heads of Product. The site showcases expertise in AI-driven development workflows, coding agents, and offers intensive Claude Code training workshops.</p>
+
+<h2 id="common-commands">Common Commands</h2>
+
+<h3 id="development-recommended">Development (Recommended)</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./dev.sh       <span class="c"># Single terminal: Runs Jekyll + TailwindCSS with live reload</span>
+</code></pre></div></div>
+<p>Visit http://localhost:4000 for the homepage, http://localhost:4000/workshop/ for the workshop page.</p>
+
+<h3 id="alternative-development-options">Alternative Development Options</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Option 1: Docker Compose</span>
+docker-compose <span class="nt">-f</span> docker-compose.dev.yml up
+
+<span class="c"># Option 2: Manual Jekyll with Docker</span>
+docker run <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/srv/jekyll"</span> <span class="nt">-p</span> 4000:4000 jekyll/jekyll:latest jekyll serve <span class="nt">--force_polling</span> <span class="nt">--livereload</span>
+
+<span class="c"># Option 3: Build CSS only</span>
+npm run dev    <span class="c"># Watch mode - rebuilds CSS on file changes</span>
+npm run build  <span class="c"># Production build - minified CSS output</span>
+</code></pre></div></div>
+
+<h3 id="build-system">Build System</h3>
+<p>The project uses Jekyll for templating and TailwindCSS for styling:</p>
+<ul>
+  <li><strong>Jekyll</strong>: Processes templates in <code class="language-plaintext highlighter-rouge">_layouts/</code> and <code class="language-plaintext highlighter-rouge">_includes/</code></li>
+  <li><strong>TailwindCSS</strong>: Input <code class="language-plaintext highlighter-rouge">src/styles.css</code> → Output <code class="language-plaintext highlighter-rouge">dist/styles.css</code></li>
+  <li><strong>GitHub Pages</strong>: Automatically builds Jekyll on deployment (no local build needed)</li>
+</ul>
+
+<h2 id="architecture--structure">Architecture &amp; Structure</h2>
+
+<h3 id="core-components">Core Components</h3>
+<ul>
+  <li><strong>Jekyll Static Site</strong>: Templated pages with shared components</li>
+  <li><strong>Main Pages</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">index.html</code> - Landing page with AI consulting services</li>
+      <li><code class="language-plaintext highlighter-rouge">workshop.html</code> - Claude Code 2-day workshop details</li>
+    </ul>
+  </li>
+  <li><strong>Jekyll Templates</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">_layouts/default.html</code> - Base template</li>
+      <li><code class="language-plaintext highlighter-rouge">_includes/head.html</code> - SEO, meta tags, styles</li>
+      <li><code class="language-plaintext highlighter-rouge">_includes/header.html</code> - Navigation</li>
+      <li><code class="language-plaintext highlighter-rouge">_includes/footer.html</code> - Footer</li>
+    </ul>
+  </li>
+  <li><strong>TailwindCSS Styling</strong>: Utility-first CSS framework with custom theme</li>
+  <li><strong>Content Management</strong>: Markdown files in <code class="language-plaintext highlighter-rouge">content/en/</code> serve as content reference (not dynamically loaded)</li>
+</ul>
+
+<h3 id="page-architecture">Page Architecture</h3>
+
+<h4 id="landing-page-indexhtml">Landing Page (<code class="language-plaintext highlighter-rouge">index.html</code>)</h4>
+<p>The landing page follows a specific flow designed for conversion:</p>
+<ol>
+  <li><strong>Hero</strong> - Main value proposition with primary CTA</li>
+  <li><strong>About Me</strong> - Credibility and background (Angel Dimitrov’s experience)</li>
+  <li><strong>Value Proposition</strong> - 4 key benefits with icons</li>
+  <li><strong>AI Agents</strong> - Comprehensive showcase of AI development team concept</li>
+  <li><strong>Services</strong> - 3 service offerings (Advisory, Pilot, Workshop)</li>
+  <li><strong>CTA</strong> - Secondary conversion point</li>
+  <li><strong>Footer</strong> - Navigation and contact</li>
+</ol>
+
+<h4 id="workshop-page-workshophtml">Workshop Page (<code class="language-plaintext highlighter-rouge">workshop.html</code>)</h4>
+<p>Dedicated Claude Code workshop page with:</p>
+<ol>
+  <li><strong>Hero</strong> - 2-day intensive workshop proposition</li>
+  <li><strong>Overview</strong> - Why Claude Code changes everything</li>
+  <li><strong>Curriculum</strong> - Day 1 &amp; Day 2 detailed breakdown</li>
+  <li><strong>Features</strong> - Plan Mode, Subagents, MCP, etc.</li>
+  <li><strong>Details</strong> - Format, prerequisites, support</li>
+  <li><strong>Pricing</strong> - Three tiers (Standard €4,900, Premium €7,900, Enterprise)</li>
+  <li><strong>Success Stories</strong> - Testimonials</li>
+  <li><strong>FAQ</strong> - Common questions</li>
+  <li><strong>CTA</strong> - Book consultation</li>
+</ol>
+
+<h2 id="visual-development">Visual Development</h2>
+
+<h3 id="design-principles">Design Principles</h3>
+<ul>
+  <li>Comprehensive design checklist in <code class="language-plaintext highlighter-rouge">/context/design-principles.md</code></li>
+  <li>Brand style guide in <code class="language-plaintext highlighter-rouge">/context/style-guide.md</code></li>
+  <li>When making visual (front-end, UI/UX) changes, always refer to these files for guidance</li>
+</ul>
+
+<h3 id="quick-visual-check">Quick Visual Check</h3>
+<p>IMMEDIATELY after implementing any front-end change:</p>
+<ol>
+  <li><strong>Identify what changed</strong> - Review the modified components/pages</li>
+  <li><strong>Navigate to affected pages</strong> - Use <code class="language-plaintext highlighter-rouge">mcp__playwright__browser_navigate</code> to visit each changed view</li>
+  <li><strong>Verify design compliance</strong> - Compare against <code class="language-plaintext highlighter-rouge">/context/design-principles.md</code> and <code class="language-plaintext highlighter-rouge">/context/style-guide.md</code></li>
+  <li><strong>Validate feature implementation</strong> - Ensure the change fulfills the user’s specific request</li>
+  <li><strong>Check acceptance criteria</strong> - Review any provided context files or requirements</li>
+  <li><strong>Capture evidence</strong> - Take full page screenshot at desktop viewport (1440px) of each changed view</li>
+  <li><strong>Check for errors</strong> - Run <code class="language-plaintext highlighter-rouge">mcp__playwright__browser_console_messages</code></li>
+</ol>
+
+<p>This verification ensures changes meet design standards and user requirements.</p>
+
+<h3 id="comprehensive-design-review">Comprehensive Design Review</h3>
+<p>Invoke the <code class="language-plaintext highlighter-rouge">@agent-design-review</code> subagent for thorough design validation when:</p>
+<ul>
+  <li>Completing significant UI/UX features</li>
+  <li>Before finalizing PRs with visual changes</li>
+  <li>Needing comprehensive accessibility and responsiveness testing</li>
+</ul>
+
+<h3 id="ai-agents-section-core-feature">AI Agents Section (Core Feature)</h3>
+<p>This is the most complex section showcasing the “AI Development Team” concept:</p>
+<ul>
+  <li><strong>8 specialized agent roles</strong>: Project Manager, Backend, Frontend, Testing, Browser, DevOps, Documentation, QA</li>
+  <li><strong>Console demos</strong>: Terminal-style examples showing parallel agent workflows</li>
+  <li><strong>Development lifecycle coverage</strong>: Planning → Development → Testing → Deployment/Monitoring</li>
+  <li><strong>Real-world impact examples</strong>: Team coordination scenarios</li>
+</ul>
+
+<h3 id="styling-system">Styling System</h3>
+<ul>
+  <li><strong>Custom colors</strong>: <code class="language-plaintext highlighter-rouge">primary</code> (#3B82F6) and <code class="language-plaintext highlighter-rouge">secondary</code> (#1E40AF) defined in <code class="language-plaintext highlighter-rouge">tailwind.config.js</code></li>
+  <li><strong>Font</strong>: Inter from Google Fonts</li>
+  <li><strong>Responsive design</strong>: Mobile-first with <code class="language-plaintext highlighter-rouge">md:</code> and <code class="language-plaintext highlighter-rouge">lg:</code> breakpoints</li>
+  <li><strong>Component patterns</strong>: Cards with gradient backgrounds and hover effects</li>
+</ul>
+
+<h3 id="content-management-strategy">Content Management Strategy</h3>
+<ul>
+  <li><strong>HTML contains actual content</strong> for performance and SEO</li>
+  <li><strong>Markdown files in <code class="language-plaintext highlighter-rouge">content/en/</code></strong> serve as content reference and backup</li>
+  <li><strong>No dynamic content loading</strong> - pure static site for fast deployment</li>
+</ul>
+
+<h2 id="key-configuration">Key Configuration</h2>
+
+<h3 id="jekyll-configuration">Jekyll Configuration</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_config.yml</code> - Site configuration, plugins, and permalinks</li>
+  <li>Pretty URLs enabled: <code class="language-plaintext highlighter-rouge">workshop.html</code> becomes <code class="language-plaintext highlighter-rouge">/workshop/</code></li>
+  <li>GitHub Pages compatible settings included</li>
+</ul>
+
+<h3 id="contact-information-updates">Contact Information Updates</h3>
+<p>When updating contact details, modify these locations:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_config.yml</code>: Site-wide email and author information</li>
+  <li>Calendly links: Replace in both <code class="language-plaintext highlighter-rouge">index.html</code> and <code class="language-plaintext highlighter-rouge">workshop.html</code></li>
+  <li>All CTA buttons point to Calendly for direct booking</li>
+</ul>
+
+<h3 id="color-scheme">Color Scheme</h3>
+<p>Modify <code class="language-plaintext highlighter-rouge">tailwind.config.js</code> to change brand colors:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">primary</code>: Main accent color (buttons, links, icons)</li>
+  <li><code class="language-plaintext highlighter-rouge">secondary</code>: Darker variant for hover states</li>
+</ul>
+
+<h3 id="deployment">Deployment</h3>
+<p>The site is GitHub Pages ready:</p>
+<ul>
+  <li>Jekyll processes automatically on push</li>
+  <li>No local build required for deployment</li>
+  <li>Alternative hosting: Cloudflare Pages, Netlify, Vercel also supported</li>
+</ul>
+
+<h2 id="prd-compliance">PRD Compliance</h2>
+
+<p>This codebase implements the requirements from <code class="language-plaintext highlighter-rouge">PRD.md</code>:</p>
+<ul>
+  <li>Target audience: Engineering leaders</li>
+  <li>Core value: Save time, cost, improve quality</li>
+  <li>Clean, minimal design with TailwindCSS</li>
+  <li>Static site with direct Calendly integration</li>
+  <li>Mobile-responsive design</li>
+</ul>
+
+
+<!-- Footer -->
+<footer class="section-dark py-12 md:py-18 lg:py-20">
+  <div class="container">
+    <div class="flex flex-col-reverse items-start justify-between pt-6 pb-4 text-sm md:flex-row md:items-center md:pt-8 md:pb-0">
+      <p class="mt-8 md:mt-0 text-neutral-400">© 2025 Angel Dimitrov. All rights reserved.</p>
+      <ul class="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0">
+        
+          <li class="underline"><a href="/" class="text-neutral-300 hover:text-white">Home</a></li>
+          <li class="underline"><a href="/#services" class="text-neutral-300 hover:text-white">Services</a></li>
+          
+          <li class="underline"><a href="mailto:angel@sourcestream.de" class="text-neutral-300 hover:text-white">Email</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+</body>
+</html>
