@@ -134,10 +134,18 @@ Modify `tailwind.config.js` to change brand colors:
 - `secondary`: Darker variant for hover states
 
 ### Deployment
-The site is GitHub Pages ready:
-- Jekyll processes automatically on push
-- No local build required for deployment
-- Alternative hosting: Cloudflare Pages, Netlify, Vercel also supported
+The site uses GitHub Actions for reliable deployment:
+- **Custom workflow**: `.github/workflows/deploy.yml` handles the full build process
+- **TailwindCSS building**: Automatically builds `src/styles.css` → `dist/styles.css`
+- **Jekyll processing**: Builds static site with proper includes
+- **CSS verification**: Ensures `dist/styles.css` is copied to `_site/dist/` directory
+- **Automatic deployment**: Deploys to GitHub Pages without manual intervention
+
+**Important troubleshooting**: If CSS is missing on production:
+1. Check that `_config.yml` includes `dist` in the `include` list
+2. Verify GitHub Actions workflow completed successfully 
+3. The workflow manually copies CSS if Jekyll doesn't include it automatically
+4. Never commit `dist/styles.css` - it should be built by GitHub Actions
 
 ## PRD Compliance
 

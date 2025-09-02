@@ -129,17 +129,20 @@ Alternative: Use a simple mailto link by replacing the form with:
 
 ### GitHub Pages (Recommended)
 
-GitHub Pages has built-in Jekyll support, so deployment is automatic:
+This project uses a custom GitHub Actions workflow for deployment to ensure TailwindCSS is properly built and included:
 
 1. Push your code to a GitHub repository
-2. Go to Settings > Pages
-3. Select source: "Deploy from a branch"
-4. Choose branch: main (or master)
-5. Select folder: / (root)
-6. Save and wait for deployment
-7. Your site will be available at: `https://[username].github.io/` (for username.github.io repos) or `https://[username].github.io/[repository-name]` (for other repos)
+2. The GitHub Actions workflow (`.github/workflows/deploy.yml`) will automatically:
+   - Build TailwindCSS from `src/styles.css` to `dist/styles.css`
+   - Build Jekyll site
+   - Ensure CSS file is copied to `_site/dist/` directory
+   - Deploy to GitHub Pages
 
-Note: GitHub Pages will automatically process Jekyll files, no build step needed!
+3. Go to Settings > Pages
+4. Select source: "Deploy from GitHub Actions"
+5. Your site will be available at: `https://[username].github.io/` (for username.github.io repos) or `https://[username].github.io/[repository-name]` (for other repos)
+
+**Important**: The workflow includes a verification step that manually copies the CSS file if Jekyll doesn't include it automatically. This ensures the CSS is always available at `/dist/styles.css` on the deployed site.
 
 ### Cloudflare Pages
 
@@ -202,6 +205,41 @@ To add privacy-friendly analytics with Plausible:
 ```html
 <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script>
 ```
+
+## Troubleshooting
+
+### CSS Not Loading on GitHub Pages
+
+If you encounter CSS 404 errors on GitHub Pages:
+
+1. **Ensure Jekyll includes dist directory**: The `_config.yml` should have:
+   ```yaml
+   include:
+     - _pages
+     - dist
+   ```
+
+2. **Check GitHub Actions workflow**: The `.github/workflows/deploy.yml` includes a verification step:
+   ```bash
+   # Ensure CSS file is in the final _site directory
+   if [ -f "dist/styles.css" ] && [ ! -f "_site/dist/styles.css" ]; then
+     mkdir -p _site/dist
+     cp dist/styles.css _site/dist/styles.css
+   fi
+   ```
+
+3. **Verify TailwindCSS build**: Check that `dist/styles.css` is generated during the workflow:
+   ```bash
+   npm run build  # Should create dist/styles.css
+   ```
+
+4. **Don't commit dist/styles.css**: The CSS should be built by GitHub Actions, not committed to the repository.
+
+### Development Issues
+
+- If styles aren't updating, try: `npm run build` to rebuild CSS
+- If Jekyll isn't recognizing changes, restart `./dev.sh`
+- Check browser console for any CSS loading errors
 
 ## Browser Support
 
