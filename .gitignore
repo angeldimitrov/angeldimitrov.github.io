@@ -9,3 +9,6 @@ node_modules/
 
 # Jekyll build directory
 _site/
+
+# TailwindCSS build output
+dist/
