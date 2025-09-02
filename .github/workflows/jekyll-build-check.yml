@@ -44,6 +44,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Fix Gemfile.lock platform compatibility
+          bundle lock --add-platform x86_64-linux
+          
           # Install Ruby gems
           bundle install
           
