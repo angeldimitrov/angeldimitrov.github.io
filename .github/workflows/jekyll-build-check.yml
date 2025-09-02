@@ -77,10 +77,7 @@ jobs:
         run: |
           echo "🔧 Validating Jekyll configuration..."
           
-          # Check _config.yml syntax
-          ruby -c _config.yml
-          
-          # Test Jekyll configuration loading
+          # Test Jekyll configuration loading (this validates YAML syntax)
           bundle exec jekyll doctor
           
           echo "✅ Jekyll configuration is valid"
