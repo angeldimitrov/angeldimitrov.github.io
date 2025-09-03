@@ -3,6 +3,14 @@
 {% include head.html %}
 <body>
 
+<script>
+  // Redirect from angeldimitrov.github.io to coding-agents.ai
+  if (window.location.hostname === 'angeldimitrov.github.io') {
+    var newUrl = 'https://coding-agents.ai' + window.location.pathname + window.location.search + window.location.hash;
+    window.location.replace(newUrl);
+  }
+</script>
+
 {% include header.html %}
 
 {{ content }}

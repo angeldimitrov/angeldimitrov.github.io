@@ -4,7 +4,7 @@ description: Transform your engineering workflow with AI-native development. Exp
 author: Angel Dimitrov
 email: angel@sourcestream.de
 baseurl: ""
-url: "https://angeldimitrov.github.io"
+url: "https://coding-agents.ai"
 
 # Build settings
 markdown: kramdown
