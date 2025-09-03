@@ -135,22 +135,19 @@ Modify `tailwind.config.js` to change brand colors:
 
 ## **🚨 CRITICAL: CSS Deployment Process**
 
-**The CSS is ALWAYS built by GitHub Actions - NEVER commit dist/styles.css manually!**
+**The CSS is now committed to the repository to avoid recurring deployment issues.**
 
 ### Why This Approach?
-- ✅ Build artifacts should not be in version control
-- ✅ GitHub Actions workflow is comprehensive and reliable
-- ✅ Eliminates recurring "CSS missing" issues
-- ✅ Follows industry best practices
+- ✅ Eliminates recurring "CSS missing" issues that plagued GitHub Actions builds
+- ✅ Ensures CSS is always available immediately after deployment
+- ✅ Simplifies deployment process and reduces build complexity
+- ✅ Trade-off: CSS file in version control is worth the reliability gain
 
 ### How It Works:
-1. **Local Development**: Run `npm run dev` - builds CSS to `dist/styles.css` (gitignored)
-2. **Production Deployment**: GitHub Actions automatically:
-   - Builds TailwindCSS (`npm run build`) - creates 28K CSS file
-   - Verifies CSS file exists and has content (fails build if missing)
-   - Jekyll includes `dist/` directory (configured in `_config.yml`)
-   - Copies CSS to `_site/dist/styles.css` for deployment
-   - Uploads artifact and deploys to GitHub Pages
+1. **Local Development**: Run `npm run dev` for watch mode
+2. **Before Committing**: Run `npm run build` to generate production CSS
+3. **Commit Changes**: Commit both source changes AND `dist/styles.css`
+4. **Production Deployment**: GitHub Actions deploys with CSS already included
 
 ### **🔧 Troubleshooting "Missing CSS":**
 If styles appear missing (this should be rare):
@@ -160,9 +157,9 @@ If styles appear missing (this should be rare):
 4. **Wait for deployment**: GitHub Pages takes 1-2 minutes after successful workflow
 
 ### **❌ NEVER DO THIS:**
-- Don't remove `dist/` from `.gitignore`
-- Don't commit `dist/styles.css` manually (creates false fixes)
-- Don't modify the GitHub Actions workflow without understanding it
+- Don't forget to run `npm run build` before committing style changes
+- Don't commit development CSS (unminified) - always use production build
+- Don't modify styles without rebuilding CSS
 
 ### **✅ IF CSS IS TRULY MISSING:**
 ```bash
@@ -178,11 +175,11 @@ gh run view --log | grep -A 10 -B 5 "TailwindCSS\|CSS file"
 ```
 
 ### Deployment Architecture:
-- **Custom workflow**: `.github/workflows/deploy.yml` handles the full build process
-- **TailwindCSS building**: Automatically builds `src/styles.css` → `dist/styles.css`
-- **Jekyll processing**: Builds static site with proper includes
-- **CSS verification**: Ensures `dist/styles.css` is copied to `_site/dist/` directory
-- **Automatic deployment**: Deploys to GitHub Pages without manual intervention
+- **Simplified workflow**: `.github/workflows/deploy.yml` deploys pre-built assets
+- **TailwindCSS building**: Done locally via `npm run build` before committing
+- **Jekyll processing**: Builds static site with committed CSS
+- **CSS availability**: Guaranteed since CSS is in repository
+- **Automatic deployment**: Deploys to GitHub Pages with all assets ready
 
 ## PRD Compliance
 
