@@ -40,21 +40,24 @@ Validate the value of AI in your development process with a tailored proof-of-co
 ---
 
 ## Hands-on Workshop
-Engage your team in a focused 2-day workshop. Through practical exercises and real-world examples, your developers learn how to use AI effectively, adopt best practices, and accelerate delivery with confidence.
+Master Claude Code in our intensive 2-day workshop. Learn Plan Mode, subagents, MCP connections, and custom commands to transform your team into AI-native developers.
 
 ### Key Benefits:
-- 2-day intensive training program
-- Practical exercises with real examples
-- Best practices implementation
-- Confidence building for developers
-- Immediate skill application
+- 2-day intensive Claude Code training program
+- Plan Mode mastery for complex project management
+- Subagent orchestration for specialized tasks
+- MCP (Model Context Protocol) connections
+- Custom command development
+- Team transformation to AI-native development
 
 ### What's Included:
-- AI-effective practices training
-- Real-world examples and exercises
-- Best practices documentation
-- Team enablement strategies
-- Post-workshop support
+- Claude Code fundamentals and advanced features
+- Plan Mode implementation strategies
+- Subagent workflow design
+- MCP integration techniques
+- Custom command creation
+- Real-world project exercises
+- Post-workshop implementation support
 
 ### Ideal For:
 - Development teams ready for AI adoption

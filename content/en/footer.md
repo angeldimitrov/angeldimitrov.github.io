@@ -11,7 +11,7 @@ Site footer with copyright, navigation links, and contact information.
 ## Navigation Links
 - **Contact**: Links to #contact section
 - **Services**: Links to #services section  
-- **Email**: Links to mailto:angel@sourcestream.de
+- **Email**: Links to mailto:angel@coding-agents.ai
 
 ## Design Notes
 - Dark background (section-dark)

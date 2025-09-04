@@ -10,13 +10,15 @@ Main site navigation with responsive design and smooth scrolling.
 ### Desktop Navigation
 - **Benefits**: Links to #benefits
 - **Services**: Links to #services  
-- **About me**: Links to #about
-- **Contact**: Links to #contact
+- **Workshop**: Links to /workshop/ page
+- **About**: Links to #about
+- **Contact**: Links to #contact (or #pricing on workshop page)
 
 ### Mobile Navigation
-- Same links as desktop
-- Horizontal scroll layout
-- Clean, minimal design
+- **Services**: Links to #services (or /#services from other pages)
+- **Workshop**: Featured with primary styling and background highlight
+- **Contact**: Links to #contact (or #pricing on workshop page)
+- Simplified layout with only priority items
 
 ## Design Features
 - **Sticky positioning**: Stays at top when scrolling
