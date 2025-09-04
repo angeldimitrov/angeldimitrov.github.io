@@ -1,5 +1,4 @@
 <!-- Video Card Component -->
-<!-- Usage: {% include video-card.html video=video %} -->
 <div class="video-card bg-white/80 rounded-xl border border-gray-200/60 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group" 
      data-language="{{ include.video.language }}" 
      data-category="{{ include.video.category }}">
@@ -40,15 +39,8 @@
   <div class="p-6">
     <!-- Language Badge and Duration -->
     <div class="flex items-center justify-between mb-3">
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-        {% if include.video.language == 'en' %}bg-blue-100 text-blue-800{% else %}bg-green-100 text-green-800{% endif %}">
-        {% if include.video.language == 'en' %}
-          🇺🇸 English
-        {% elsif include.video.language == 'de' %}
-          🇩🇪 Deutsch  
-        {% else %}
-          {{ include.video.language | upcase }}
-        {% endif %}
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {% if include.video.language == 'en' %}bg-blue-100 text-blue-800{% else %}bg-green-100 text-green-800{% endif %}">
+        {% if include.video.language == 'en' %}🇺🇸 English{% elsif include.video.language == 'de' %}🇩🇪 Deutsch{% else %}{{ include.video.language | upcase }}{% endif %}
       </span>
       <span class="text-sm text-gray-500 font-mono">{{ include.video.duration }}</span>
     </div>
@@ -79,7 +71,40 @@
   </div>
 </div>
 
-<!-- JavaScript for lazy loading YouTube videos -->
+<style>
+/* Line clamp utility classes for consistent text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Aspect ratio for video containers */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-card h3 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+  
+  .video-card p {
+    font-size: 0.875rem;
+  }
+}
+</style>
+
 <script>
 function loadVideo(thumbnailContainer) {
   const card = thumbnailContainer.closest('.video-card');
@@ -102,46 +127,3 @@ function loadVideo(thumbnailContainer) {
   }
 }
 </script>
-
-<style>
-/* Line clamp utility classes for consistent text truncation */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3; 
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Smooth transitions for video card interactions */
-.video-card {
-  will-change: transform, box-shadow;
-}
-
-.video-card:hover {
-  transform: translateY(-2px);
-}
-
-/* Ensure proper aspect ratio for thumbnails */
-.aspect-video {
-  aspect-ratio: 16 / 9;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .video-card h3 {
-    font-size: 1.125rem;
-    line-height: 1.4;
-  }
-  
-  .video-card p {
-    font-size: 0.875rem;
-  }
-}
-</style>
