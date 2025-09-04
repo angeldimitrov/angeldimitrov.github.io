@@ -23,5 +23,5 @@ My expertise spans software architecture, cloud, AI-driven development, and buil
 - WR Wertstoffbörse
 
 ## Contact Information
-- Email: angel@sourcestream.de
+- Email: angel@coding-agents.ai
 - Services: Remote, Worldwide

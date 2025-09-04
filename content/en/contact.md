@@ -9,7 +9,7 @@ Let's discuss your challenges and explore how AI can enhance your team's workflo
 **Primary CTA:** [Schedule a Consultation](https://calendly.com/angel-sourcestream/30min)
 
 ### Contact Information
-- **Email**: angel@sourcestream.de
+- **Email**: angel@coding-agents.ai
 - **Services**: Remote, Worldwide
 - **Business Hours**: Mo-Fr 09:00-17:00
 
@@ -28,7 +28,7 @@ Let's discuss your challenges and explore how AI can enhance your team's workflo
 ## Footer Information
 - **Copyright**: © 2025 Angel Dimitrov. All rights reserved.
 - **Contact Links**: Contact | Services | Email
-- **Email Link**: mailto:angel@sourcestream.de
+- **Email Link**: mailto:angel@coding-agents.ai
 
 ---
 

@@ -11,16 +11,16 @@ Engineering leaders share how AI-native development transformed their teams.
 ## Testimonials
 
 ### Testimonial 1
-**Name**: John Doe  
-**Title**: VP Engineering, E-Commerce Scaleup  
-**Avatar**: JD (initials in colored circle)  
-**Quote**: "Angel transformed our development process, cutting delivery time by 40%. His expertise made the transition seamless and our team is now more productive than ever."
+**Name**: Aleksandar Videnov  
+**Title**: CTO, 100programmers.com  
+**Avatar**: AV (initials in blue to purple gradient circle)  
+**Quote**: "Working with Angel revolutionized how we approach development at 100programmers. His deep understanding of AI-native workflows helped us reduce our sprint cycles from weeks to days while maintaining code quality. The pilot program delivered measurable ROI within the first month, and our engineering team is now more confident and efficient than ever."
 
 ### Testimonial 2  
-**Name**: Jane Smith  
-**Title**: CTO, SaaS Company  
-**Avatar**: JS (initials in colored circle)  
-**Quote**: "The AI agent pilot provided measurable productivity gains and validated ROI quickly. I highly recommend their services for any engineering team looking to scale."
+**Name**: Justus Krapp  
+**Title**: CTO & Co-Founder, ecocode GmbH  
+**Avatar**: JK (initials in emerald to blue gradient circle)  
+**Quote**: "Angel introduced us to AI-native workflows through a series of focused workshops. What impressed me most was how quickly our team was able to adapt and integrate these practices into their daily work. Within weeks, we saw a clear boost in both performance and delivery speed. Angel combines deep technical expertise with a very pragmatic approach — making the transition smooth and impactful."
 
 ---
 
