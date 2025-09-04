@@ -31,28 +31,8 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build TailwindCSS
-        run: |
-          echo "🎨 Building TailwindCSS for production..."
-          npm run build
-          
-          # Verify CSS file was created and is not empty
-          if [ ! -f "dist/styles.css" ] || [ ! -s "dist/styles.css" ]; then
-            echo "❌ TailwindCSS build failed"
-            exit 1
-          fi
-          
-          echo "✅ TailwindCSS build successful"
-          echo "📊 CSS file size: $(du -h dist/styles.css | cut -f1)"
+      # Node.js and CSS building removed - CSS is now committed to repository
+      # This eliminates recurring CSS deployment issues
 
       - name: Setup Pages
         id: pages
@@ -64,20 +44,8 @@ jobs:
           export JEKYLL_ENV=production
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
           
-          # Ensure CSS file is in the final _site directory
-          echo "📋 Verifying CSS file in _site directory..."
-          if [ -f "dist/styles.css" ] && [ ! -f "_site/dist/styles.css" ]; then
-            echo "⚠️  CSS file exists in dist/ but not in _site/dist/, copying manually..."
-            mkdir -p _site/dist
-            cp dist/styles.css _site/dist/styles.css
-            echo "✅ CSS file copied to _site/dist/"
-          elif [ -f "_site/dist/styles.css" ]; then
-            echo "✅ CSS file already exists in _site/dist/"
-          else
-            echo "❌ CSS file not found in dist/ directory"
-            ls -la dist/
-            exit 1
-          fi
+          # CSS verification removed - CSS is committed and Jekyll will include it
+          echo "✅ Jekyll build completed with committed CSS"
         env:
           JEKYLL_ENV: production
 

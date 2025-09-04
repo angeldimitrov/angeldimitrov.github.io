@@ -11,4 +11,5 @@ node_modules/
 _site/
 
 # TailwindCSS build output - Built by GitHub Actions, don't commit
-dist/
+# CSS is now committed to avoid deployment issues
+# dist/
