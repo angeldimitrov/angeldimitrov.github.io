@@ -1,0 +1,189 @@
+---
+layout: default
+title: AI Development Tutorials | Learn Claude Code & AI-Native Development | Angel Dimitrov  
+description: Master AI-native development through hands-on video tutorials. Learn Claude Code, Plan Mode, subagents, and advanced AI development techniques. Free tutorials in English and German.
+keywords: AI development tutorials, Claude Code tutorials, AI coding videos, Plan Mode tutorial, subagents tutorial, MCP connections, AI-native development learning, developer tutorials
+canonical: https://coding-agents.ai/tutorials/
+og_title: AI Development Tutorials | Master Claude Code Through Video
+og_description: Free video tutorials teaching Claude Code, AI-native development, and advanced AI coding techniques. Available in English and German.
+og_url: https://coding-agents.ai/tutorials/
+twitter_title: AI Development Tutorials | Claude Code Video Learning
+twitter_description: Master AI-native development with hands-on video tutorials. Learn Claude Code, Plan Mode, and advanced techniques.
+structured_data: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Development Video Tutorials",
+    "description": "Comprehensive video tutorials for learning AI-native development and Claude Code",
+    "numberOfItems": "{{ site.data.tutorials.videos | size }}",
+    "itemListElement": [
+      {% for video in site.data.tutorials.videos %}
+      {
+        "@type": "VideoObject",
+        "position": {{ forloop.index }},
+        "name": "{{ video.title }}",
+        "description": "{{ video.description }}",
+        "thumbnailUrl": "https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg",
+        "uploadDate": "{{ video.date | default: '2024-01-01' }}",
+        "duration": "PT{{ video.duration | replace: ':', 'M' }}S",
+        "embedUrl": "https://www.youtube.com/embed/{{ video.youtube_id }}",
+        "inLanguage": "{{ video.language }}",
+        "creator": {
+          "@type": "Person",
+          "name": "Angel Dimitrov"
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+  </script>
+---
+
+<!-- Hero Section -->
+<section class="section-dark py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="text-center text-white">
+      <p class="mb-3 font-semibold md:mb-4 text-neutral-400">Tutorials</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+        Master <span class="gradient-text-hero">AI-Native Development</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light max-w-3xl mx-auto">
+        Learn Claude Code, Plan Mode, subagents, and advanced AI development techniques through hands-on video tutorials. Available in English and German.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#video-grid" class="btn-primary">
+          Start Learning
+        </a>
+        <a href="{{ '/workshop/' | relative_url }}" class="btn-secondary-dark">
+          Join Live Workshop
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Grid Section -->
+<section id="video-grid" class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl text-neutral-900">
+        Video <span class="gradient-text-light">Tutorials</span>
+      </h2>
+      <p class="max-w-3xl mx-auto text-neutral-600">
+        Learn at your own pace with comprehensive tutorials covering everything from basics to advanced techniques.
+      </p>
+    </div>
+
+    <!-- Language Filter -->
+    <div class="flex justify-center mb-8">
+      <div class="inline-flex rounded-lg bg-gray-200 p-1">
+        <button 
+          class="filter-btn px-4 py-2 text-sm font-medium rounded-md bg-white text-gray-900 shadow transition-all duration-200" 
+          data-filter="all"
+        >
+          All Videos
+        </button>
+        <button 
+          class="filter-btn px-4 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200" 
+          data-filter="en"
+        >
+          English
+        </button>
+        <button 
+          class="filter-btn px-4 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200" 
+          data-filter="de"
+        >
+          German
+        </button>
+      </div>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="videos-container">
+      {% for video in site.data.tutorials.videos %}
+        {% include video-card.html video=video %}
+      {% endfor %}
+    </div>
+
+    <!-- Empty State (Hidden by default) -->
+    <div id="empty-state" class="text-center py-12 hidden">
+      <div class="mb-6">
+        <svg class="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">No videos found</h3>
+      <p class="text-gray-600">Try selecting a different language filter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+{% include cta-transform.html %}
+
+<!-- JavaScript for filtering -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const videosContainer = document.getElementById('videos-container');
+  const emptyState = document.getElementById('empty-state');
+  const videoCards = document.querySelectorAll('.video-card');
+
+  // Load saved filter preference
+  const savedFilter = localStorage.getItem('tutorials-filter') || 'all';
+  setActiveFilter(savedFilter);
+  filterVideos(savedFilter);
+
+  // Add click handlers to filter buttons
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const filter = this.dataset.filter;
+      setActiveFilter(filter);
+      filterVideos(filter);
+      
+      // Save preference
+      localStorage.setItem('tutorials-filter', filter);
+    });
+  });
+
+  function setActiveFilter(activeFilter) {
+    filterButtons.forEach(btn => {
+      const isActive = btn.dataset.filter === activeFilter;
+      btn.classList.toggle('bg-white', isActive);
+      btn.classList.toggle('text-gray-900', isActive);
+      btn.classList.toggle('shadow', isActive);
+      btn.classList.toggle('text-gray-700', !isActive);
+      btn.classList.toggle('bg-gray-50', false);
+    });
+  }
+
+  function filterVideos(filter) {
+    let visibleCount = 0;
+
+    videoCards.forEach(card => {
+      const videoLang = card.dataset.language;
+      const shouldShow = filter === 'all' || videoLang === filter;
+      
+      if (shouldShow) {
+        card.style.display = 'block';
+        card.style.opacity = '1';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+        card.style.opacity = '0';
+      }
+    });
+
+    // Show/hide empty state
+    if (visibleCount === 0) {
+      emptyState.classList.remove('hidden');
+      videosContainer.style.display = 'none';
+    } else {
+      emptyState.classList.add('hidden');
+      videosContainer.style.display = 'grid';
+    }
+  }
+});
+</script>
