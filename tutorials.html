@@ -51,12 +51,9 @@ structured_data: |
       <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light max-w-3xl mx-auto">
         Learn Claude Code, Plan Mode, subagents, and advanced AI development techniques through hands-on video tutorials. Available in English and German.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div class="flex justify-center">
         <a href="#video-grid" class="btn-primary">
           Start Learning
-        </a>
-        <a href="{{ '/workshop/' | relative_url }}" class="btn-secondary-dark">
-          Join Live Workshop
         </a>
       </div>
     </div>
@@ -120,11 +117,26 @@ structured_data: |
   </div>
 </section>
 
+<!-- Simple Video Modal -->
+<div id="videoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999;">
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 900px; background: black; border-radius: 8px; overflow: hidden;">
+    <button id="closeModal" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">&times;</button>
+    <div id="videoContainer" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0;">
+      <iframe id="videoFrame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div style="padding: 20px; background: white; color: black;">
+      <h3 id="videoTitle" style="margin: 0 0 10px 0; font-size: 1.5em; font-weight: bold;"></h3>
+      <p id="videoDescription" style="margin: 0; color: #666;"></p>
+    </div>
+  </div>
+</div>
+
 <!-- CTA Section -->
 {% include cta-transform.html %}
 
-<!-- JavaScript for filtering -->
+<!-- Simple filtering and modal JavaScript -->
 <script>
+// Simple video filtering
 document.addEventListener('DOMContentLoaded', function() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const videosContainer = document.getElementById('videos-container');
@@ -142,8 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const filter = this.dataset.filter;
       setActiveFilter(filter);
       filterVideos(filter);
-      
-      // Save preference
       localStorage.setItem('tutorials-filter', filter);
     });
   });
@@ -161,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function filterVideos(filter) {
     let visibleCount = 0;
-
     videoCards.forEach(card => {
       const videoLang = card.dataset.language;
       const shouldShow = filter === 'all' || videoLang === filter;
@@ -176,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Show/hide empty state
     if (visibleCount === 0) {
       emptyState.classList.remove('hidden');
       videosContainer.style.display = 'none';
@@ -184,6 +192,61 @@ document.addEventListener('DOMContentLoaded', function() {
       emptyState.classList.add('hidden');
       videosContainer.style.display = 'grid';
     }
+  }
+});
+
+// Simple modal functionality
+function showVideoModal(youtubeId, title, description) {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('videoFrame');
+  const titleEl = document.getElementById('videoTitle');
+  const descEl = document.getElementById('videoDescription');
+  
+  // Enhanced iframe URL with more parameters to ensure autoplay works
+  iframe.src = `https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
+  titleEl.textContent = title;
+  descEl.textContent = description;
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  
+  // Focus the iframe to help with autoplay
+  setTimeout(() => {
+    iframe.focus();
+  }, 100);
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('videoFrame');
+  
+  modal.style.display = 'none';
+  iframe.src = '';
+  document.body.style.overflow = '';
+}
+
+// Override the loadVideo function with our simple modal
+window.loadVideo = function(thumbnailContainer) {
+  const card = thumbnailContainer.closest('.video-card');
+  const title = card.querySelector('h3').textContent;
+  const description = card.querySelector('p').textContent;
+  
+  // Extract YouTube ID from thumbnail
+  const img = card.querySelector('img');
+  const youtubeId = img.src.match(/\/vi\/([^\/]+)\//)[1];
+  
+  showVideoModal(youtubeId, title, description);
+};
+
+// Close modal events
+document.getElementById('closeModal').addEventListener('click', closeVideoModal);
+document.getElementById('videoModal').addEventListener('click', function(e) {
+  if (e.target.id === 'videoModal') {
+    closeVideoModal();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeVideoModal();
   }
 });
 </script>

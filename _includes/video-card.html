@@ -27,7 +27,7 @@
     <iframe 
       class="youtube-iframe w-full h-full hidden" 
       src="" 
-      data-src="https://www.youtube-nocookie.com/embed/{{ include.video.youtube_id }}?autoplay=1&modestbranding=1&rel=0"
+      data-src="https://www.youtube.com/embed/{{ include.video.youtube_id }}?rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
       title="{{ include.video.title }}"
       frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -133,12 +133,17 @@ function loadVideo(thumbnailContainer) {
   const iframe = card.querySelector('.youtube-iframe');
   const thumbnail = thumbnailContainer;
   
-  // Set the iframe src to start loading the video
+  // Set the iframe src to start loading the video with autoplay
   iframe.src = iframe.dataset.src;
   
   // Hide thumbnail and show iframe
   thumbnail.style.display = 'none';
   iframe.classList.remove('hidden');
+  
+  // Focus the iframe to help with autoplay
+  setTimeout(() => {
+    iframe.focus();
+  }, 100);
   
   // Optional: Track video engagement
   if (typeof gtag !== 'undefined') {
