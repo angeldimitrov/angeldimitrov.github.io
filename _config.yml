@@ -66,8 +66,8 @@ social:
     - https://linkedin.com/in/angel-dimitrov-85b3b499
     - https://github.com/angeldimitrov
 
-# Google Analytics (if needed in future)
-# google_analytics: 
+# Google Analytics
+google_analytics: G-2CNK0V78G7 
 
 # Sass settings
 sass:

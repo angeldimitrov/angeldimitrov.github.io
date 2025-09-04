@@ -1,13 +1,26 @@
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CNK0V78G7"></script>
+  <!-- Google tag (gtag.js) with Consent Mode V2 -->
+  {% if site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-2CNK0V78G7');
+    // Set default consent state (denied until user explicitly consents)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+
+    gtag('config', '{{ site.google_analytics }}', {
+      // Ensure no data is sent until consent is granted
+      'send_page_view': false
+    });
   </script>
+  {% endif %}
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

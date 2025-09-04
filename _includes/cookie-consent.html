@@ -1,0 +1,287 @@
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-200 shadow-2xl transition-transform duration-300 transform translate-y-full" style="display: none; z-index: 9998;">
+  <div class="container py-4">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+      <div class="flex-1">
+        <div class="flex items-center mb-2">
+          <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <h3 class="font-semibold text-gray-900">Analytics Cookies</h3>
+        </div>
+        <p class="text-sm text-gray-700">
+          We use Google Analytics to understand how visitors interact with our website and improve your experience. 
+          <a href="{{ '/cookie-policy' | relative_url }}" class="text-primary hover:text-secondary underline">Learn more</a>.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+        <button id="cookie-accept" class="px-4 py-2 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition-colors text-sm whitespace-nowrap">
+          Accept Analytics
+        </button>
+        <button id="cookie-reject" class="px-4 py-2 bg-neutral-100 text-gray-700 font-medium rounded-lg hover:bg-neutral-200 transition-colors text-sm whitespace-nowrap">
+          Reject Analytics
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration constants
+  const CONFIG = {
+    GA_TRACKING_ID: '{{ site.google_analytics | default: "" }}',
+    CONSENT_EXPIRY_DAYS: 365,
+    BANNER_DELAY_MS: 1000
+  };
+  
+  // Cookie utility functions
+  const CookieConsent = {
+    // Cookie names
+    CONSENT_COOKIE: 'cookie_consent',
+    PREFERENCES_COOKIE: 'cookie_preferences',
+    
+    // Get cookie value
+    getCookie: function(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    },
+    
+    // Set cookie
+    setCookie: function(name, value, days = CONFIG.CONSENT_EXPIRY_DAYS) {
+      const expires = new Date();
+      expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+    },
+    
+    // Clear cookie (for security cleanup)
+    clearCookie: function(name) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict`;
+    },
+    
+    // Check if consent has been given
+    hasConsent: function() {
+      return this.getCookie(this.CONSENT_COOKIE) !== null;
+    },
+    
+    // Sanitize cookie value to prevent XSS attacks
+    sanitizeCookieValue: function(value) {
+      if (!value || typeof value !== 'string') {
+        return null;
+      }
+      
+      // Remove script-related dangerous characters but preserve JSON structure
+      const sanitized = value.replace(/[<>&]/g, '');
+      
+      // Validate JSON structure without parsing
+      if (!sanitized.match(/^[\{\[][\s\S]*[\}\]]$/)) {
+        return null;
+      }
+      
+      // Additional validation: ensure it only contains safe characters
+      if (!sanitized.match(/^[a-zA-Z0-9\{\}\[\]:,"'\s_-]+$/)) {
+        return null;
+      }
+      
+      return sanitized;
+    },
+    
+    // Validate preferences object structure
+    validatePreferences: function(prefs) {
+      if (!prefs || typeof prefs !== 'object') {
+        return false;
+      }
+      
+      // Ensure required properties exist and are booleans
+      if (typeof prefs.essential !== 'boolean' || typeof prefs.analytics !== 'boolean') {
+        return false;
+      }
+      
+      // Ensure no unexpected properties
+      const allowedKeys = ['essential', 'analytics'];
+      const keys = Object.keys(prefs);
+      if (keys.length > allowedKeys.length || !keys.every(key => allowedKeys.includes(key))) {
+        return false;
+      }
+      
+      return true;
+    },
+    
+    // Get preferences with security validation
+    getPreferences: function() {
+      const rawPrefs = this.getCookie(this.PREFERENCES_COOKIE);
+      if (!rawPrefs) {
+        return { essential: true, analytics: false };
+      }
+      
+      // Sanitize the cookie value first
+      const sanitizedPrefs = this.sanitizeCookieValue(rawPrefs);
+      if (!sanitizedPrefs) {
+        // Clear invalid cookie and return defaults
+        this.clearCookie(this.PREFERENCES_COOKIE);
+        return { essential: true, analytics: false };
+      }
+      
+      try {
+        const parsed = JSON.parse(sanitizedPrefs);
+        
+        // Validate the parsed object structure
+        if (!this.validatePreferences(parsed)) {
+          // Clear invalid cookie and return defaults
+          this.clearCookie(this.PREFERENCES_COOKIE);
+          return { essential: true, analytics: false };
+        }
+        
+        return parsed;
+      } catch (e) {
+        // Clear invalid cookie and return defaults
+        this.clearCookie(this.PREFERENCES_COOKIE);
+        return { essential: true, analytics: false };
+      }
+    },
+    
+    // Save preferences with validation
+    savePreferences: function(preferences) {
+      // Validate preferences before saving
+      if (!this.validatePreferences(preferences)) {
+        console.warn('Invalid preferences object provided to savePreferences');
+        return false;
+      }
+      
+      try {
+        const sanitizedPrefs = JSON.stringify(preferences);
+        this.setCookie(this.PREFERENCES_COOKIE, sanitizedPrefs);
+        this.setCookie(this.CONSENT_COOKIE, 'given');
+        return true;
+      } catch (e) {
+        console.warn('Failed to save preferences:', e);
+        return false;
+      }
+    },
+    
+    // Show banner
+    showBanner: function() {
+      const banner = document.getElementById('cookie-consent');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(() => {
+          banner.classList.remove('translate-y-full');
+        }, 100);
+      }
+    },
+    
+    // Hide banner
+    hideBanner: function() {
+      const banner = document.getElementById('cookie-consent');
+      if (banner) {
+        banner.classList.add('translate-y-full');
+        setTimeout(() => {
+          banner.style.display = 'none';
+        }, 300);
+      }
+    },
+    
+    // Accept analytics
+    acceptAnalytics: function() {
+      this.savePreferences({
+        essential: true,
+        analytics: true
+      });
+      this.hideBanner();
+      this.loadOptionalScripts();
+    },
+    
+    // Reject analytics
+    rejectAnalytics: function() {
+      this.savePreferences({
+        essential: true,
+        analytics: false
+      });
+      this.hideBanner();
+      this.loadOptionalScripts();
+    },
+    
+    // Load optional scripts based on preferences
+    loadOptionalScripts: function() {
+      const prefs = this.getPreferences();
+      
+      // Only proceed if Google Analytics is configured
+      if (!CONFIG.GA_TRACKING_ID) {
+        return;
+      }
+      
+      if (typeof gtag !== 'undefined') {
+        try {
+          if (prefs.analytics) {
+            // Grant analytics consent and send page view
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted',
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+            
+            // Send the page view now that consent is granted
+            gtag('config', CONFIG.GA_TRACKING_ID, {
+              'send_page_view': true
+            });
+          } else {
+            // Ensure analytics remains denied
+            gtag('consent', 'update', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+          }
+        } catch (error) {
+          console.warn('Failed to update Google Analytics consent:', error);
+        }
+      } else if (CONFIG.GA_TRACKING_ID) {
+        console.warn('Google Analytics (gtag) is not loaded, but GA tracking ID is configured');
+      }
+    },
+    
+    // Initialize
+    init: function() {
+      // Check if consent has been given
+      if (!this.hasConsent()) {
+        // Wait a bit before showing banner to avoid flash
+        setTimeout(() => {
+          this.showBanner();
+        }, CONFIG.BANNER_DELAY_MS);
+      } else {
+        // Load scripts based on existing preferences
+        this.loadOptionalScripts();
+      }
+      
+      // Event listeners
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => this.acceptAnalytics());
+      }
+      
+      if (rejectBtn) {
+        rejectBtn.addEventListener('click', () => this.rejectAnalytics());
+      }
+    }
+  };
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => CookieConsent.init());
+  } else {
+    CookieConsent.init();
+  }
+  
+  // Make CookieConsent available globally for manual control
+  window.CookieConsent = CookieConsent;
+})();
+</script>
