@@ -9,10 +9,10 @@
           <li class="underline"><a href="#services" class="text-neutral-300 hover:text-white">Services</a></li>
           <li class="underline"><a href="#about" class="text-neutral-300 hover:text-white">About</a></li>
           <li class="underline"><a href="mailto:{{ site.email }}" class="text-neutral-300 hover:text-white">Email</a></li>
-          <li class="underline"><a href="/imprint" class="text-neutral-300 hover:text-white">Imprint</a></li>
-          <li class="underline"><a href="/terms" class="text-neutral-300 hover:text-white">Terms</a></li>
-          <li class="underline"><a href="/privacy" class="text-neutral-300 hover:text-white">Privacy</a></li>
-          <li class="underline"><a href="/cookie-policy" class="text-neutral-300 hover:text-white">Cookies</a></li>
+          <li class="underline"><a href="{{ '/imprint' | relative_url }}" class="text-neutral-300 hover:text-white">Imprint</a></li>
+          <li class="underline"><a href="{{ '/terms' | relative_url }}" class="text-neutral-300 hover:text-white">Terms</a></li>
+          <li class="underline"><a href="{{ '/privacy' | relative_url }}" class="text-neutral-300 hover:text-white">Privacy</a></li>
+          <li class="underline"><a href="{{ '/cookie-policy' | relative_url }}" class="text-neutral-300 hover:text-white">Cookies</a></li>
         {% else %}
           <li class="underline"><a href="/" class="text-neutral-300 hover:text-white">Home</a></li>
           <li class="underline"><a href="/#services" class="text-neutral-300 hover:text-white">Services</a></li>
@@ -20,10 +20,10 @@
             <li class="underline"><a href="#pricing" class="text-neutral-300 hover:text-white">Pricing</a></li>
           {% endif %}
           <li class="underline"><a href="mailto:{{ site.email }}" class="text-neutral-300 hover:text-white">Email</a></li>
-          <li class="underline"><a href="/imprint" class="text-neutral-300 hover:text-white">Imprint</a></li>
-          <li class="underline"><a href="/terms" class="text-neutral-300 hover:text-white">Terms</a></li>
-          <li class="underline"><a href="/privacy" class="text-neutral-300 hover:text-white">Privacy</a></li>
-          <li class="underline"><a href="/cookie-policy" class="text-neutral-300 hover:text-white">Cookies</a></li>
+          <li class="underline"><a href="{{ '/imprint' | relative_url }}" class="text-neutral-300 hover:text-white">Imprint</a></li>
+          <li class="underline"><a href="{{ '/terms' | relative_url }}" class="text-neutral-300 hover:text-white">Terms</a></li>
+          <li class="underline"><a href="{{ '/privacy' | relative_url }}" class="text-neutral-300 hover:text-white">Privacy</a></li>
+          <li class="underline"><a href="{{ '/cookie-policy' | relative_url }}" class="text-neutral-300 hover:text-white">Cookies</a></li>
         {% endif %}
       </ul>
     </div>

@@ -11,7 +11,7 @@
         </div>
         <p class="text-sm text-gray-700">
           We use Google Analytics to understand how visitors interact with our website and improve your experience. 
-          <a href="/cookie-policy" class="text-primary hover:text-secondary underline">Learn more</a>.
+          <a href="{{ '/cookie-policy' | relative_url }}" class="text-primary hover:text-secondary underline">Learn more</a>.
         </p>
       </div>
       <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
@@ -31,6 +31,13 @@
 (function() {
   'use strict';
   
+  // Configuration constants
+  const CONFIG = {
+    GA_TRACKING_ID: '{{ site.google_analytics | default: "" }}',
+    CONSENT_EXPIRY_DAYS: 365,
+    BANNER_DELAY_MS: 1000
+  };
+  
   // Cookie utility functions
   const CookieConsent = {
     // Cookie names
@@ -46,7 +53,7 @@
     },
     
     // Set cookie
-    setCookie: function(name, value, days = 365) {
+    setCookie: function(name, value, days = CONFIG.CONSENT_EXPIRY_DAYS) {
       const expires = new Date();
       expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
       document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
@@ -122,29 +129,40 @@
     loadOptionalScripts: function() {
       const prefs = this.getPreferences();
       
+      // Only proceed if Google Analytics is configured
+      if (!CONFIG.GA_TRACKING_ID) {
+        return;
+      }
+      
       if (typeof gtag !== 'undefined') {
-        if (prefs.analytics) {
-          // Grant analytics consent and send page view
-          gtag('consent', 'update', {
-            'analytics_storage': 'granted',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-          });
-          
-          // Send the page view now that consent is granted
-          gtag('config', 'G-2CNK0V78G7', {
-            'send_page_view': true
-          });
-        } else {
-          // Ensure analytics remains denied
-          gtag('consent', 'update', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-          });
+        try {
+          if (prefs.analytics) {
+            // Grant analytics consent and send page view
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted',
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+            
+            // Send the page view now that consent is granted
+            gtag('config', CONFIG.GA_TRACKING_ID, {
+              'send_page_view': true
+            });
+          } else {
+            // Ensure analytics remains denied
+            gtag('consent', 'update', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+          }
+        } catch (error) {
+          console.warn('Failed to update Google Analytics consent:', error);
         }
+      } else if (CONFIG.GA_TRACKING_ID) {
+        console.warn('Google Analytics (gtag) is not loaded, but GA tracking ID is configured');
       }
     },
     
@@ -155,7 +173,7 @@
         // Wait a bit before showing banner to avoid flash
         setTimeout(() => {
           this.showBanner();
-        }, 1000);
+        }, CONFIG.BANNER_DELAY_MS);
       } else {
         // Load scripts based on existing preferences
         this.loadOptionalScripts();
