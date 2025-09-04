@@ -1,118 +1,32 @@
 # AI Development Video Tutorials
 # Structure for managing YouTube tutorials with language filtering
 videos:
-  # Claude Code Fundamentals - English
-  - id: "claude-code-basics"
-    title: "Getting Started with Claude Code"
-    description: "Learn the fundamentals of AI-native development with Claude Code. This tutorial covers installation, setup, and your first AI-powered coding session."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "en"
-    duration: "12:34"
+  # German Claude Code Tutorials
+  - id: "claude-code-german-1"
+    title: "Claude Code - AI-basierte Entwicklung revolutioniert"
+    description: "Entdecken Sie, wie Claude Code die Art und Weise, wie wir Software entwickeln, grundlegend verändert. Lernen Sie die Grundlagen der KI-unterstützten Programmierung kennen."
+    youtube_id: "Navfuj5OGzs"
+    language: "de"
+    duration: "15:23"
     category: "fundamentals"
-    date: "2024-01-15"
+    date: "2024-09-04"
     
-  - id: "plan-mode-tutorial"
-    title: "Master Plan Mode for Safe Code Exploration"
-    description: "Discover how Plan Mode lets you explore and understand codebases safely before making changes. Perfect for working with unfamiliar code."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID  
-    language: "en"
-    duration: "18:45"
-    category: "fundamentals"
-    date: "2024-01-20"
-
-  - id: "subagents-introduction"
-    title: "Subagents: Your AI Development Team"
-    description: "Learn how to use specialized subagents for different development tasks. See how to orchestrate multiple AI agents working together."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "en" 
-    duration: "22:15"
-    category: "advanced"
-    date: "2024-01-25"
-
-  - id: "mcp-connections"
-    title: "MCP Connections: Extending Claude Code"
-    description: "Understand Model Context Protocol (MCP) connections and how to integrate external tools and services with Claude Code."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "en"
-    duration: "16:30" 
-    category: "advanced"
-    date: "2024-02-01"
-
-  - id: "custom-commands"
-    title: "Creating Custom Slash Commands"
-    description: "Build your own custom slash commands to automate repetitive tasks and create personalized AI workflows."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "en"
-    duration: "14:20"
-    category: "advanced"
-    date: "2024-02-05"
-
-  - id: "real-world-refactoring"
-    title: "Real-World Refactoring with AI"
-    description: "Watch a complete refactoring session using Claude Code. Learn best practices for AI-assisted code improvement."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "en"
-    duration: "28:45"
-    category: "examples"
-    date: "2024-02-10"
-
-  # German Tutorials
-  - id: "claude-code-grundlagen"
-    title: "Claude Code Grundlagen"
-    description: "Lernen Sie die Grundlagen der KI-nativen Entwicklung mit Claude Code. Dieses Tutorial behandelt Installation, Einrichtung und Ihre erste KI-unterstützte Programmierung."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
+  - id: "claude-code-german-2"
+    title: "Advanced Claude Code Techniken"
+    description: "Vertiefen Sie Ihr Wissen über Claude Code mit fortgeschrittenen Techniken und Best Practices für die professionelle Softwareentwicklung."
+    youtube_id: "j3WrmeeqJmo"
     language: "de"
-    duration: "13:15"
-    category: "fundamentals" 
-    date: "2024-01-18"
-
-  - id: "plan-modus-tutorial"
-    title: "Plan-Modus für sichere Code-Erkundung"
-    description: "Entdecken Sie, wie der Plan-Modus es Ihnen ermöglicht, Codebasen sicher zu erkunden und zu verstehen, bevor Sie Änderungen vornehmen."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "de"
-    duration: "19:30"
-    category: "fundamentals"
-    date: "2024-01-23"
-
-  - id: "subagenten-einfuehrung" 
-    title: "Subagenten: Ihr KI-Entwicklungsteam"
-    description: "Lernen Sie, wie Sie spezialisierte Subagenten für verschiedene Entwicklungsaufgaben einsetzen. Sehen Sie, wie mehrere KI-Agenten zusammenarbeiten."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "de"
-    duration: "23:45"
+    duration: "12:45"
     category: "advanced"
-    date: "2024-01-28"
-
-  - id: "mcp-verbindungen"
-    title: "MCP-Verbindungen: Claude Code erweitern"
-    description: "Verstehen Sie Model Context Protocol (MCP) Verbindungen und wie Sie externe Tools und Services mit Claude Code integrieren."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "de"
-    duration: "17:15"
-    category: "advanced"
-    date: "2024-02-03"
-
-  - id: "echte-refactoring-beispiele"
-    title: "Echte Refactoring-Beispiele mit KI"
-    description: "Schauen Sie sich eine vollständige Refactoring-Sitzung mit Claude Code an. Lernen Sie bewährte Praktiken für KI-unterstützte Code-Verbesserung."
-    youtube_id: "dQw4w9WgXcQ"  # Replace with actual YouTube video ID
-    language: "de"
-    duration: "30:20"
-    category: "examples"
-    date: "2024-02-12"
+    date: "2024-09-04"
 
 # Categories for organization
 categories:
   - id: "fundamentals"
-    name: "Fundamentals"
-    description: "Basic concepts and getting started"
+    name: "Grundlagen"
+    description: "Grundlegende Konzepte und erste Schritte"
     order: 1
   - id: "advanced"
-    name: "Advanced Features" 
-    description: "Complex features and integrations"
+    name: "Fortgeschritten"
+    description: "Erweiterte Features und Integrationen"
     order: 2
-  - id: "examples"
-    name: "Real-World Examples"
-    description: "Complete projects and use cases"
-    order: 3
