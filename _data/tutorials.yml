@@ -8,7 +8,7 @@ videos:
     youtube_id: "JnNycAN4YE8"
     language: "de"
     duration: "24:10"
-    category: "fundamentals"
+    category: "advanced"
     date: "2024-09-04"
     
   - id: "claude-code-german-2"
@@ -17,7 +17,7 @@ videos:
     youtube_id: "cO0hZAIWdcI"
     language: "de"
     duration: "23:04"
-    category: "advanced"
+    category: "fundamentals"
     date: "2024-09-04"
 
 # Categories for organization
