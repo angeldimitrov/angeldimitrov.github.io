@@ -227,6 +227,9 @@
       });
       this.hideBanner();
       this.hideModal();
+      
+      // Explicitly deny analytics consent
+      this.loadOptionalScripts();
     },
     
     // Save custom settings
@@ -243,20 +246,37 @@
       this.hideBanner();
       this.hideModal();
       
-      if (functional || analytics) {
-        this.loadOptionalScripts();
-      }
+      // Always call loadOptionalScripts to handle consent state
+      this.loadOptionalScripts();
     },
     
     // Load optional scripts based on preferences
     loadOptionalScripts: function() {
       const prefs = this.getPreferences();
       
-      // Load Google Analytics if analytics cookies are accepted
-      if (prefs.analytics && typeof gtag !== 'undefined') {
-        gtag('consent', 'update', {
-          'analytics_storage': 'granted'
-        });
+      if (typeof gtag !== 'undefined') {
+        if (prefs.analytics) {
+          // Grant analytics consent and send page view
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'denied', // Keep ads denied
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+          
+          // Send the page view now that consent is granted
+          gtag('config', 'G-2CNK0V78G7', {
+            'send_page_view': true
+          });
+        } else {
+          // Ensure analytics remains denied
+          gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
       }
       
       // Add other optional script loading here
