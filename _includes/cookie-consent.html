@@ -75,8 +75,8 @@
         return null;
       }
       
-      // Remove any potentially dangerous characters
-      const sanitized = value.replace(/[<>'"&]/g, '');
+      // Remove script-related dangerous characters but preserve JSON structure
+      const sanitized = value.replace(/[<>&]/g, '');
       
       // Validate JSON structure without parsing
       if (!sanitized.match(/^[\{\[][\s\S]*[\}\]]$/)) {
