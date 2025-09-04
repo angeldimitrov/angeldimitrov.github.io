@@ -59,28 +59,109 @@
       document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
     },
     
+    // Clear cookie (for security cleanup)
+    clearCookie: function(name) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict`;
+    },
+    
     // Check if consent has been given
     hasConsent: function() {
       return this.getCookie(this.CONSENT_COOKIE) !== null;
     },
     
-    // Get preferences
-    getPreferences: function() {
-      const prefs = this.getCookie(this.PREFERENCES_COOKIE);
-      if (prefs) {
-        try {
-          return JSON.parse(prefs);
-        } catch (e) {
-          return { essential: true, analytics: false };
-        }
+    // Sanitize cookie value to prevent XSS attacks
+    sanitizeCookieValue: function(value) {
+      if (!value || typeof value !== 'string') {
+        return null;
       }
-      return { essential: true, analytics: false };
+      
+      // Remove any potentially dangerous characters
+      const sanitized = value.replace(/[<>'"&]/g, '');
+      
+      // Validate JSON structure without parsing
+      if (!sanitized.match(/^[\{\[][\s\S]*[\}\]]$/)) {
+        return null;
+      }
+      
+      // Additional validation: ensure it only contains safe characters
+      if (!sanitized.match(/^[a-zA-Z0-9\{\}\[\]:,"'\s_-]+$/)) {
+        return null;
+      }
+      
+      return sanitized;
     },
     
-    // Save preferences
+    // Validate preferences object structure
+    validatePreferences: function(prefs) {
+      if (!prefs || typeof prefs !== 'object') {
+        return false;
+      }
+      
+      // Ensure required properties exist and are booleans
+      if (typeof prefs.essential !== 'boolean' || typeof prefs.analytics !== 'boolean') {
+        return false;
+      }
+      
+      // Ensure no unexpected properties
+      const allowedKeys = ['essential', 'analytics'];
+      const keys = Object.keys(prefs);
+      if (keys.length > allowedKeys.length || !keys.every(key => allowedKeys.includes(key))) {
+        return false;
+      }
+      
+      return true;
+    },
+    
+    // Get preferences with security validation
+    getPreferences: function() {
+      const rawPrefs = this.getCookie(this.PREFERENCES_COOKIE);
+      if (!rawPrefs) {
+        return { essential: true, analytics: false };
+      }
+      
+      // Sanitize the cookie value first
+      const sanitizedPrefs = this.sanitizeCookieValue(rawPrefs);
+      if (!sanitizedPrefs) {
+        // Clear invalid cookie and return defaults
+        this.clearCookie(this.PREFERENCES_COOKIE);
+        return { essential: true, analytics: false };
+      }
+      
+      try {
+        const parsed = JSON.parse(sanitizedPrefs);
+        
+        // Validate the parsed object structure
+        if (!this.validatePreferences(parsed)) {
+          // Clear invalid cookie and return defaults
+          this.clearCookie(this.PREFERENCES_COOKIE);
+          return { essential: true, analytics: false };
+        }
+        
+        return parsed;
+      } catch (e) {
+        // Clear invalid cookie and return defaults
+        this.clearCookie(this.PREFERENCES_COOKIE);
+        return { essential: true, analytics: false };
+      }
+    },
+    
+    // Save preferences with validation
     savePreferences: function(preferences) {
-      this.setCookie(this.PREFERENCES_COOKIE, JSON.stringify(preferences));
-      this.setCookie(this.CONSENT_COOKIE, 'given');
+      // Validate preferences before saving
+      if (!this.validatePreferences(preferences)) {
+        console.warn('Invalid preferences object provided to savePreferences');
+        return false;
+      }
+      
+      try {
+        const sanitizedPrefs = JSON.stringify(preferences);
+        this.setCookie(this.PREFERENCES_COOKIE, sanitizedPrefs);
+        this.setCookie(this.CONSENT_COOKIE, 'given');
+        return true;
+      } catch (e) {
+        console.warn('Failed to save preferences:', e);
+        return false;
+      }
     },
     
     // Show banner
