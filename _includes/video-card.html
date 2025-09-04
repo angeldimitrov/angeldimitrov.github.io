@@ -129,28 +129,38 @@
 
 <script>
 function loadVideo(thumbnailContainer) {
-  const card = thumbnailContainer.closest('.video-card');
-  const iframe = card.querySelector('.youtube-iframe');
-  const thumbnail = thumbnailContainer;
-  
-  // Set the iframe src to start loading the video with autoplay
-  iframe.src = iframe.dataset.src;
-  
-  // Hide thumbnail and show iframe
-  thumbnail.style.display = 'none';
-  iframe.classList.remove('hidden');
-  
-  // Focus the iframe to help with autoplay
-  setTimeout(() => {
-    iframe.focus();
-  }, 100);
-  
-  // Optional: Track video engagement
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'video_play', {
-      'video_title': card.querySelector('h3').textContent,
-      'video_language': card.dataset.language
-    });
+  try {
+    const card = thumbnailContainer.closest('.video-card');
+    const iframe = card.querySelector('.youtube-iframe');
+    const thumbnail = thumbnailContainer;
+    
+    if (!card || !iframe || !thumbnail) {
+      console.error('Video loading failed: Missing required elements');
+      return;
+    }
+    
+    // Set the iframe src to start loading the video
+    iframe.src = iframe.dataset.src;
+    
+    // Hide thumbnail and show iframe
+    thumbnail.style.display = 'none';
+    iframe.classList.remove('hidden');
+    
+    // Focus the iframe for better user experience
+    setTimeout(() => {
+      iframe.focus();
+    }, 100);
+    
+    // Optional: Track video engagement
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'video_play', {
+        'video_title': card.querySelector('h3').textContent,
+        'video_language': card.dataset.language
+      });
+    }
+  } catch (error) {
+    console.error('Error loading video:', error);
+    // Fallback: Could show an error message to user
   }
 }
 </script>

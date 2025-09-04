@@ -226,15 +226,34 @@ function closeVideoModal() {
 
 // Override the loadVideo function with our simple modal
 window.loadVideo = function(thumbnailContainer) {
-  const card = thumbnailContainer.closest('.video-card');
-  const title = card.querySelector('h3').textContent;
-  const description = card.querySelector('p').textContent;
-  
-  // Extract YouTube ID from thumbnail
-  const img = card.querySelector('img');
-  const youtubeId = img.src.match(/\/vi\/([^\/]+)\//)[1];
-  
-  showVideoModal(youtubeId, title, description);
+  try {
+    const card = thumbnailContainer.closest('.video-card');
+    if (!card) {
+      console.error('Video card not found');
+      return;
+    }
+    
+    const title = card.querySelector('h3')?.textContent || 'Video';
+    const description = card.querySelector('p')?.textContent || '';
+    
+    // Extract YouTube ID from thumbnail
+    const img = card.querySelector('img');
+    if (!img || !img.src) {
+      console.error('Video thumbnail not found');
+      return;
+    }
+    
+    const youtubeMatch = img.src.match(/\/vi\/([^\/]+)\//);
+    if (!youtubeMatch) {
+      console.error('Could not extract YouTube ID from:', img.src);
+      return;
+    }
+    
+    const youtubeId = youtubeMatch[1];
+    showVideoModal(youtubeId, title, description);
+  } catch (error) {
+    console.error('Error loading video modal:', error);
+  }
 };
 
 // Close modal events
