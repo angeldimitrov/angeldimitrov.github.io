@@ -296,9 +296,8 @@ window.addEventListener('resize', () => {
 </script>
 {% endif %}
 
-{% if page.url == "/workshop.html" or page.url == "/workshop/" %}
 <script>
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links - applies to all pages
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -312,7 +311,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 </script>
-{% endif %}
 
 </body>
 </html>

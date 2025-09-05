@@ -1,0 +1,47 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/tutorials/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    {% for video in site.data.tutorials.videos %}
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>{{ video.title | xml_escape }}</video:title>
+      <video:description>{{ video.description | xml_escape }}</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v={{ video.youtube_id }}</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/{{ video.youtube_id }}</video:player_loc>
+      {% assign duration_parts = video.duration | split: ":" %}
+      {% assign minutes = duration_parts[0] | times: 1 %}
+      {% assign seconds = duration_parts[1] | times: 1 %}
+      {% assign total_seconds = minutes | times: 60 | plus: seconds %}
+      <video:duration>{{ total_seconds }}</video:duration>
+      <video:publication_date>{{ video.date | default: "2024-01-01" | date: "%Y-%m-%d" }}T00:00:00Z</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+      {% if video.language == 'de' %}
+      <video:tag>German</video:tag>
+      <video:tag>Deutsch</video:tag>
+      {% else %}
+      <video:tag>English</video:tag>
+      {% endif %}
+      <video:tag>Claude Code</video:tag>
+      <video:tag>AI Development</video:tag>
+      <video:tag>Programming</video:tag>
+      <video:tag>{{ video.category | replace: "-", " " | capitalize }}</video:tag>
+      {% if video.category == 'fundamentals' %}
+      <video:tag>Beginner</video:tag>
+      <video:tag>Tutorial</video:tag>
+      {% elsif video.category == 'advanced' %}
+      <video:tag>Advanced</video:tag>
+      <video:tag>Expert</video:tag>
+      {% endif %}
+    </video:video>
+    {% endfor %}
+  </url>
+</urlset>

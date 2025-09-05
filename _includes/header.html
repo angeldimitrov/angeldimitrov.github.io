@@ -9,18 +9,14 @@
             <a href="#benefits" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Benefits</a>
             <a href="#services" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Services</a>
             <a href="{{ '/workshop/' | relative_url }}" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Workshop</a>
+            <a href="{{ '/tutorials/' | relative_url }}" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Tutorials</a>
             <a href="#about" class="text-md lg:text-base font-medium hover:text-primary transition-colors">About</a>
-            <a href="#contact" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Contact</a>
           {% else %}
             <a href="/#benefits" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Benefits</a>
             <a href="/#services" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Services</a>
             <a href="{{ '/workshop/' | relative_url }}" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Workshop</a>
+            <a href="{{ '/tutorials/' | relative_url }}" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Tutorials</a>
             <a href="/#about" class="text-md lg:text-base font-medium hover:text-primary transition-colors">About</a>
-            {% if page.url == "/workshop.html" or page.url == "/workshop/" %}
-              <a href="#pricing" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Pricing</a>
-            {% else %}
-              <a href="/#contact" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Contact</a>
-            {% endif %}
           {% endif %}
         </div>
       </div>
@@ -31,15 +27,13 @@
           {% if page.url == "/" %}
             <a href="#services" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
             <a href="{{ '/workshop/' | relative_url }}" class="text-sm font-semibold text-primary hover:text-secondary transition-colors whitespace-nowrap bg-primary/8 px-3 py-2 rounded-lg">Workshop</a>
-            <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Contact</a>
+            <a href="{{ '/tutorials/' | relative_url }}" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Tutorials</a>
+            <a href="#about" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">About</a>
           {% else %}
             <a href="/#services" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
             <a href="{{ '/workshop/' | relative_url }}" class="text-sm font-semibold text-primary hover:text-secondary transition-colors whitespace-nowrap bg-primary/8 px-3 py-2 rounded-lg">Workshop</a>
-            {% if page.url == "/workshop.html" or page.url == "/workshop/" %}
-              <a href="#pricing" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Pricing</a>
-            {% else %}
-              <a href="/#contact" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Contact</a>
-            {% endif %}
+            <a href="{{ '/tutorials/' | relative_url }}" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Tutorials</a>
+            <a href="/#about" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">About</a>
           {% endif %}
         </div>
       </div>

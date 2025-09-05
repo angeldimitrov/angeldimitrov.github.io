@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemaps
+Sitemap: https://coding-agents.ai/sitemap-index.xml
 Sitemap: https://coding-agents.ai/sitemap.xml
+Sitemap: https://coding-agents.ai/video-sitemap.xml
 
 # Specify preferred host for search engines
 Host: coding-agents.ai

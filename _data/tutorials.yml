@@ -1,0 +1,32 @@
+# AI Development Video Tutorials
+# Structure for managing YouTube tutorials with language filtering
+videos:
+  # German Claude Code Tutorials
+  - id: "claude-code-german-1"
+    title: "KI-Agenten Team beim Claude Code: Live-Demo der Zukunft der Programmierung in 24 Minuten"
+    description: "Erlebe die Zukunft der Softwareentwicklung! In dieser Live-Demo siehst du, wie ein komplettes Team aus KI-Agenten zusammenarbeitet, um Software zu entwickeln. Von der Idee zum funktionierenden Code - alles in Echtzeit!"
+    youtube_id: "JnNycAN4YE8"
+    language: "de"
+    duration: "24:10"
+    category: "advanced"
+    date: "2024-09-04"
+    
+  - id: "claude-code-german-2"
+    title: "Vollständige App-Entwicklung mit Claude Code: .NET Finanzanwendung in 23 Minuten"
+    description: "Erlebe, wie Claude KI in nur 23 Minuten eine komplette Finanzanwendung von Grund auf entwickelt! Dieses Video zeigt die Zukunft der Softwareentwicklung mit KI-gestützten Coding-Assistenten."
+    youtube_id: "cO0hZAIWdcI"
+    language: "de"
+    duration: "23:04"
+    category: "fundamentals"
+    date: "2024-09-04"
+
+# Categories for organization
+categories:
+  - id: "fundamentals"
+    name: "Grundlagen"
+    description: "Grundlegende Konzepte und erste Schritte"
+    order: 1
+  - id: "advanced"
+    name: "Fortgeschritten"
+    description: "Erweiterte Features und Integrationen"
+    order: 2
