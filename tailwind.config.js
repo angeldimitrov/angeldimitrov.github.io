@@ -6,11 +6,13 @@ module.exports = {
     "./src/**/*.{html,js}",
     "./_includes/**/*.{html,js}",
     "./_layouts/**/*.{html,js}",
-    "./workshop.html"
+    "./workshop.html",
+    "./roi-calculator.html",
+    "./assets/js/**/*.js"
   ],
   safelist: [
     'bg-blue-500',
-    'bg-green-500', 
+    'bg-green-500',
     'bg-orange-500',
     'w-24',
     'h-24',
@@ -18,7 +20,26 @@ module.exports = {
     'h-12',
     'rounded-xl',
     'shadow-md',
-    'text-white'
+    'text-white',
+    // ROI Calculator classes
+    'bg-secondary/20',
+    'border-secondary/30',
+    'bg-primary/20',
+    'border-primary/30',
+    'bg-accent/20',
+    'border-accent/30',
+    'bg-neutral-500/20',
+    'border-neutral-500/30',
+    'bg-neutral-700/30',
+    'border-neutral-600/30',
+    'text-secondary',
+    'text-primary',
+    'text-accent',
+    'text-neutral-400',
+    'text-neutral-300',
+    'text-red-600',
+    'disabled:opacity-50',
+    'disabled:cursor-not-allowed'
   ],
   theme: {
     extend: {

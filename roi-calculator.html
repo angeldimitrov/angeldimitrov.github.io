@@ -1,0 +1,273 @@
+---
+layout: default
+title: ROI Calculator | Quantify Your AI Development Savings
+description: Calculate the exact ROI of implementing AI coding agents in your development workflow. Get precise savings estimates based on team size, costs, and development phases.
+keywords: AI development ROI, coding agents calculator, development cost savings, AI implementation ROI, engineering productivity calculator
+structured_data: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Development ROI Calculator",
+    "description": "Calculate the return on investment for implementing AI coding agents in your software development workflow",
+    "url": "https://coding-agents.ai/roi-calculator/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Angel Dimitrov",
+      "url": "https://coding-agents.ai/"
+    }
+  }
+  </script>
+---
+
+<!-- Hero Section -->
+<section class="section-dark min-h-[60vh] flex items-center py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="text-center text-white max-w-4xl mx-auto">
+      <p class="mb-4 font-semibold text-neutral-400 uppercase tracking-wider">ROI Calculator</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+        Calculate Your <span class="gradient-text-hero">AI Development ROI</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light">
+        Get precise savings estimates based on your team's development workflow and costs
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#calculator-form" class="btn-primary">
+          Start Calculating
+        </a>
+        <a href="https://calendly.com/angeldimitrov/ai-consulting" class="btn-secondary-dark">
+          Schedule Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Section -->
+<section class="bg-gray-50 py-16 md:py-24 lg:py-32" id="calculator-form">
+  <div class="container">
+    <!-- Header - Following AI Team pattern -->
+    <div class="text-center mb-12">
+      <p class="mb-3 font-semibold md:mb-4">Calculator</p>
+      <h1 class="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
+        Configure Your <span class="gradient-text-light">Development Team</span>
+      </h1>
+      <p class="mb-8 text-base md:mb-10 md:text-lg max-w-3xl mx-auto">
+        Customize your team size, costs, and time allocation to calculate precise ROI estimates for AI-native development.
+      </p>
+    </div>
+
+    <!-- Main Form Container -->
+    <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-8">
+      <!-- Total Hours Display -->
+      <div class="text-center bg-gray-50 rounded-xl p-6 mb-12">
+        <div class="flex items-center justify-center mb-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">Total Hours</h3>
+        </div>
+        <div id="totalHours" class="text-3xl font-bold text-primary mb-1">40h/week</div>
+        <div id="hoursWarning" class="text-red-600 text-sm hidden">⚠️ Exceeds 40h limit</div>
+      </div>
+
+      <!-- Time Allocation Section -->
+      <div class="mb-12">
+        <!-- Team Configuration - Same style as sliders -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <!-- Team Size -->
+          <div class="py-4">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <label class="text-sm font-semibold text-gray-900">Team Size</label>
+            </div>
+            <select
+              id="teamSize"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-sm"
+            >
+              <option value="1-5">1-5 engineers</option>
+              <option value="6-20">6-20 engineers</option>
+              <option value="21-50" selected>21-50 engineers</option>
+              <option value="51-100">51-100 engineers</option>
+              <option value="100+">100+ engineers</option>
+            </select>
+          </div>
+
+          <!-- Engineer Cost -->
+          <div class="py-4">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <label class="text-sm font-semibold text-gray-900">Engineer Cost</label>
+            </div>
+            <select
+              id="engineerCost"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-sm"
+            >
+              <option value="€80k">€80,000/year</option>
+              <option value="€100k">€100,000/year</option>
+              <option value="€130k" selected>€130,000/year</option>
+              <option value="€160k">€160,000/year</option>
+              <option value="€200k">€200,000/year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="phaseSliders">
+          <!-- Phase sliders will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Email Section -->
+      <div>
+        <div class="max-w-md mx-auto">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-3">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900">Work Email Address</h3>
+          </div>
+          <input
+            type="email"
+            id="email"
+            placeholder="you@company.com"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-base mb-3"
+          />
+          <div id="emailError" class="text-red-600 text-sm mb-4 hidden"></div>
+          <div id="formError" class="text-red-600 text-sm mb-4 hidden"></div>
+
+          <button
+            id="calculateBtn"
+            class="btn-primary w-full py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Calculate My ROI
+          </button>
+
+          <p class="text-xs text-neutral-500 mt-3 text-center">
+            Corporate email required for accurate calculations
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results Section -->
+<section class="bg-gray-50 py-16 md:py-24 lg:py-32 hidden" id="results-section">
+  <div class="container">
+    <!-- Main Metrics -->
+    <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Your AI Investment Returns</h2>
+
+      <!-- Key Metrics - 4 Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Annual Savings -->
+        <div class="text-center">
+          <div class="mb-3">
+            <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="text-sm text-gray-600 font-medium mb-1">Annual Savings</div>
+          <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="totalSavings">€0</div>
+        </div>
+
+        <!-- ROI -->
+        <div class="text-center">
+          <div class="mb-3">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mx-auto">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="text-sm text-gray-600 font-medium mb-1">Return on Investment</div>
+          <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="roiPercentage">0%</div>
+        </div>
+
+        <!-- FTE Equivalent -->
+        <div class="text-center">
+          <div class="mb-3">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="text-sm text-gray-600 font-medium mb-1">Equivalent to</div>
+          <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="fteEquivalent">0 FTEs</div>
+        </div>
+
+        <!-- Payback Period -->
+        <div class="text-center">
+          <div class="mb-3">
+            <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="text-sm text-gray-600 font-medium mb-1">Payback Period</div>
+          <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="paybackPeriod">0 months</div>
+        </div>
+      </div>
+
+      <!-- Savings Breakdown -->
+      <div class="pt-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+          Savings Breakdown by Development Phase
+        </h3>
+
+        <div id="phaseSavings" class="space-y-2">
+          <!-- Phase breakdown will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Development Process?</h3>
+      <p class="text-lg text-gray-600 mb-8">
+        See how our AI-native development consulting can achieve these savings for your team
+      </p>
+      <div class="flex justify-center">
+        <a href="https://calendly.com/angeldimitrov/ai-consulting" class="btn-primary">
+          Schedule a Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-8">
+      <button
+        onclick="showForm()"
+        class="text-gray-600 hover:text-gray-900 underline"
+      >
+        ← Adjust calculations
+      </button>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/roi-calculator-minimal.js"></script>
