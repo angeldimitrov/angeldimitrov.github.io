@@ -43,8 +43,8 @@ structured_data: |
         <a href="#calculator-form" class="btn-primary">
           Start Calculating
         </a>
-        <a href="https://calendly.com/angeldimitrov/ai-consulting" class="btn-secondary-dark">
-          Schedule Demo
+        <a href="https://calendly.com/angel-sourcestream/30min" class="btn-secondary-dark">
+          Schedule a Consultation
         </a>
       </div>
     </div>
@@ -67,18 +67,75 @@ structured_data: |
 
     <!-- Main Form Container -->
     <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-8">
-      <!-- Total Hours Display -->
-      <div class="text-center bg-gray-50 rounded-xl p-6 mb-12">
-        <div class="flex items-center justify-center mb-2">
-          <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
-            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+      <!-- Configuration Summary -->
+      <div class="mb-12">
+        <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+          Current Configuration
+        </h3>
+
+        <!-- Configuration Metrics - 4 Column Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Team Size -->
+          <div class="text-center">
+            <div class="mb-3">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 font-medium mb-1">Team Size</div>
+            <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="configTeamSize">21-50</div>
           </div>
-          <h3 class="text-lg font-bold text-gray-900">Total Hours</h3>
+
+          <!-- Engineer Cost -->
+          <div class="text-center">
+            <div class="mb-3">
+              <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 font-medium mb-1">Annual Cost</div>
+            <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="configEngineerCost">€130k</div>
+          </div>
+
+          <!-- Total Hours -->
+          <div class="text-center">
+            <div class="mb-3">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 font-medium mb-1">Total Hours</div>
+            <div class="text-2xl lg:text-3xl font-bold" id="totalHours">40h/week</div>
+          </div>
+
+          <!-- Weekly Capacity -->
+          <div class="text-center">
+            <div class="mb-3">
+              <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 font-medium mb-1">Weekly Capacity</div>
+            <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="weeklyCapacity">1,400h</div>
+          </div>
         </div>
-        <div id="totalHours" class="text-3xl font-bold text-primary mb-1">40h/week</div>
-        <div id="hoursWarning" class="text-red-600 text-sm hidden">⚠️ Exceeds 40h limit</div>
+
+        <!-- Hours Status Message - Fixed height container -->
+        <div class="text-center">
+          <div class="h-8 flex items-center justify-center">
+            <div id="hoursWarning" class="text-red-600 text-sm font-medium bg-red-50 rounded-lg px-4 py-2 opacity-0 transition-opacity duration-200">
+              ⚠️ Total hours exceed 40h limit - please adjust your time allocation
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Time Allocation Section -->
@@ -146,14 +203,21 @@ structured_data: |
             </div>
             <h3 class="text-lg font-bold text-gray-900">Work Email Address</h3>
           </div>
-          <input
-            type="email"
-            id="email"
-            placeholder="you@company.com"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-base mb-3"
-          />
-          <div id="emailError" class="text-red-600 text-sm mb-4 hidden"></div>
-          <div id="formError" class="text-red-600 text-sm mb-4 hidden"></div>
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              placeholder="you@company.com"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-base"
+            />
+            <!-- Fixed-height error containers to prevent layout shift -->
+            <div class="h-6 mt-2 mb-2">
+              <div id="emailError" class="text-red-600 text-sm font-medium opacity-0 transition-opacity duration-200"></div>
+            </div>
+            <div class="h-6 mb-4">
+              <div id="formError" class="text-red-600 text-sm font-medium opacity-0 transition-opacity duration-200"></div>
+            </div>
+          </div>
 
           <button
             id="calculateBtn"
@@ -243,6 +307,161 @@ structured_data: |
           <!-- Phase breakdown will be populated by JavaScript -->
         </div>
       </div>
+
+      <!-- Investment Breakdown -->
+      <div class="pt-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+          Investment Breakdown (Per Engineer Annually)
+        </h3>
+
+        <div id="investmentBreakdown" class="space-y-2">
+          <!-- Claude Code Max -->
+          <div class="py-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-gray-900">Claude Code Max Plan</div>
+                  <div class="text-sm text-gray-600">
+                    Enterprise AI coding assistant • Advanced features & unlimited usage
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-lg text-primary">€1,200</div>
+                <div class="text-sm text-gray-600">40% of investment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Training -->
+          <div class="py-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-gray-900">Professional AI Training</div>
+                  <div class="text-sm text-gray-600">
+                    2-day intensive workshop • Premium curriculum (amortized over 2 years)
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-lg text-primary">€600</div>
+                <div class="text-sm text-gray-600">20% of investment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Complementary Tools -->
+          <div class="py-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-gray-900">Complementary AI Tools</div>
+                  <div class="text-sm text-gray-600">
+                    GitHub Copilot Enterprise • Specialized models & extensions
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-lg text-primary">€600</div>
+                <div class="text-sm text-gray-600">20% of investment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Implementation & Support -->
+          <div class="py-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-gray-900">Implementation & Support</div>
+                  <div class="text-sm text-gray-600">
+                    Integration, maintenance • Team onboarding & ongoing optimization
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-lg text-primary">€400</div>
+                <div class="text-sm text-gray-600">13% of investment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Infrastructure & Security -->
+          <div class="py-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-gray-900">Infrastructure & Security</div>
+                  <div class="text-sm text-gray-600">
+                    Enhanced compute resources • Security compliance & governance
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-lg text-primary">€200</div>
+                <div class="text-sm text-gray-600">7% of investment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Investment Summary -->
+          <div class="py-6 border-t-2 border-primary/20 mt-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-lg font-bold text-gray-900">Total Annual Investment</div>
+                  <div class="text-sm text-gray-600">
+                    Comprehensive AI development transformation per engineer
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-2xl font-bold text-primary">€3,000</div>
+                <div class="text-sm text-gray-600">100% of investment</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Citation -->
+        <div class="mt-6 text-center">
+          <p class="text-xs text-gray-500">
+            *Investment based on current market pricing and enterprise requirements. Automation percentages validated by GitHub Copilot, McKinsey, and Stanford research studies showing 26-55% productivity gains.
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- CTA Section -->
@@ -252,8 +471,8 @@ structured_data: |
         See how our AI-native development consulting can achieve these savings for your team
       </p>
       <div class="flex justify-center">
-        <a href="https://calendly.com/angeldimitrov/ai-consulting" class="btn-primary">
-          Schedule a Demo
+        <a href="https://calendly.com/angel-sourcestream/30min" class="btn-primary">
+          Schedule a Consultation
         </a>
       </div>
     </div>

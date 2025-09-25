@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeSliders();
   setupEventListeners();
   updateTotalHours();
+  updateConfigurationSummary();
 
   // Initialize slider styles
   document.querySelectorAll('.phase-slider').forEach(slider => {
@@ -131,10 +132,12 @@ function setupEventListeners() {
   // Dropdowns
   document.getElementById('teamSize').addEventListener('change', function(e) {
     formData.teamSize = e.target.value;
+    updateConfigurationSummary();
   });
 
   document.getElementById('engineerCost').addEventListener('change', function(e) {
     formData.engineerCost = e.target.value;
+    updateConfigurationSummary();
   });
 
   // Email
@@ -182,32 +185,51 @@ function updateTotalHours() {
   if (total > 40) {
     totalElement.classList.add('text-red-600');
     totalElement.classList.remove('text-primary');
-    warningElement.classList.remove('hidden');
+    warningElement.style.opacity = '1';
     calculateBtn.disabled = true;
   } else {
     totalElement.classList.remove('text-red-600');
     totalElement.classList.add('text-primary');
-    warningElement.classList.add('hidden');
+    warningElement.style.opacity = '0';
     calculateBtn.disabled = false;
   }
+
+  // Update weekly capacity display
+  updateConfigurationSummary();
 }
 
 /**
- * Email validation
+ * Update configuration summary metrics
+ */
+function updateConfigurationSummary() {
+  const teamSize = teamSizeMap[formData.teamSize];
+  const total = Object.keys(developmentPhases).reduce((sum, phase) => {
+    return sum + formData[phase];
+  }, 0);
+  const weeklyCapacity = total * teamSize;
+
+  // Update configuration summary displays
+  document.getElementById('configTeamSize').textContent = formData.teamSize;
+  document.getElementById('configEngineerCost').textContent = formData.engineerCost;
+  document.getElementById('weeklyCapacity').textContent = `${weeklyCapacity.toLocaleString()}h`;
+}
+
+/**
+ * Email validation with smooth transitions
  */
 function validateEmail() {
   const email = formData.email;
   const emailError = document.getElementById('emailError');
 
   if (!email) {
-    emailError.classList.add('hidden');
+    emailError.style.opacity = '0';
     return false;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     emailError.textContent = 'Please enter a valid email address';
-    emailError.classList.remove('hidden');
+    emailError.style.opacity = '1';
     return false;
   }
 
@@ -216,11 +238,11 @@ function validateEmail() {
 
   if (personalProviders.includes(domain)) {
     emailError.textContent = 'Please use your work email address';
-    emailError.classList.remove('hidden');
+    emailError.style.opacity = '1';
     return false;
   }
 
-  emailError.classList.add('hidden');
+  emailError.style.opacity = '0';
   return true;
 }
 
@@ -229,11 +251,11 @@ function validateEmail() {
  */
 function handleCalculate() {
   const formError = document.getElementById('formError');
-  formError.classList.add('hidden');
+  formError.style.opacity = '0';
 
   if (!validateEmail() || !formData.email) {
     formError.textContent = 'Please enter a valid work email to view results';
-    formError.classList.remove('hidden');
+    formError.style.opacity = '1';
     return;
   }
 
