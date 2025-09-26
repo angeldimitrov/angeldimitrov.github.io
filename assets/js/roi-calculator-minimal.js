@@ -154,7 +154,7 @@ function setupEventListeners() {
       formData[phase] = value;
 
       const hoursElement = document.querySelector(`[data-phase="${phase}"].phase-hours`);
-      hoursElement.textContent = `${value}h`;
+      if (hoursElement) hoursElement.textContent = `${value}h`;
 
       // Update slider progress
       const slider = e.target;
@@ -176,25 +176,19 @@ function updateTotalHours() {
     return sum + formData[phase];
   }, 0);
 
-  const totalElement = document.getElementById('totalHours');
   const warningElement = document.getElementById('hoursWarning');
   const calculateBtn = document.getElementById('calculateBtn');
 
-  totalElement.textContent = `${total}h/week`;
-
+  // Validate 40 hour limit and show/hide warning (with error handling)
   if (total > 40) {
-    totalElement.classList.add('text-red-600');
-    totalElement.classList.remove('text-primary');
-    warningElement.style.opacity = '1';
-    calculateBtn.disabled = true;
+    if (warningElement) warningElement.style.opacity = '1';
+    if (calculateBtn) calculateBtn.disabled = true;
   } else {
-    totalElement.classList.remove('text-red-600');
-    totalElement.classList.add('text-primary');
-    warningElement.style.opacity = '0';
-    calculateBtn.disabled = false;
+    if (warningElement) warningElement.style.opacity = '0';
+    if (calculateBtn) calculateBtn.disabled = false;
   }
 
-  // Update weekly capacity display
+  // Update configuration summary (function still called for backward compatibility)
   updateConfigurationSummary();
 }
 
@@ -202,16 +196,8 @@ function updateTotalHours() {
  * Update configuration summary metrics
  */
 function updateConfigurationSummary() {
-  const teamSize = teamSizeMap[formData.teamSize];
-  const total = Object.keys(developmentPhases).reduce((sum, phase) => {
-    return sum + formData[phase];
-  }, 0);
-  const weeklyCapacity = total * teamSize;
-
-  // Update configuration summary displays
-  document.getElementById('configTeamSize').textContent = formData.teamSize;
-  document.getElementById('configEngineerCost').textContent = formData.engineerCost;
-  document.getElementById('weeklyCapacity').textContent = `${weeklyCapacity.toLocaleString()}h`;
+  // Configuration summary section has been removed from UI
+  // Function kept for backward compatibility but no longer updates displays
 }
 
 /**

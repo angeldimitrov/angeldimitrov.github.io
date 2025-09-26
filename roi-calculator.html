@@ -29,22 +29,19 @@ structured_data: |
 ---
 
 <!-- Hero Section -->
-<section class="section-dark min-h-[60vh] flex items-center py-16 md:py-24 lg:py-32">
+<section class="section-dark py-16 md:py-24 lg:py-32">
   <div class="container">
-    <div class="text-center text-white max-w-4xl mx-auto">
-      <p class="mb-4 font-semibold text-neutral-400 uppercase tracking-wider">ROI Calculator</p>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+    <div class="text-center text-white">
+      <p class="mb-3 font-semibold md:mb-4 text-neutral-400">ROI Calculator</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
         Calculate Your <span class="gradient-text-hero">AI Development ROI</span>
       </h1>
-      <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light">
+      <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light max-w-3xl mx-auto">
         Get precise savings estimates based on your team's development workflow and costs
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex justify-center">
         <a href="#calculator-form" class="btn-primary">
           Start Calculating
-        </a>
-        <a href="https://calendly.com/angel-sourcestream/30min" class="btn-secondary-dark">
-          Schedule a Consultation
         </a>
       </div>
     </div>
@@ -67,73 +64,6 @@ structured_data: |
 
     <!-- Main Form Container -->
     <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-8">
-      <!-- Configuration Summary -->
-      <div class="mb-12">
-
-        <!-- Configuration Metrics - 4 Column Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <!-- Team Size -->
-          <div class="text-center">
-            <div class="mb-3">
-              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mx-auto">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="text-sm text-gray-600 font-medium mb-1">Team Size</div>
-            <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="configTeamSize">21-50</div>
-          </div>
-
-          <!-- Engineer Cost -->
-          <div class="text-center">
-            <div class="mb-3">
-              <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="text-sm text-gray-600 font-medium mb-1">Annual Cost</div>
-            <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="configEngineerCost">€130k</div>
-          </div>
-
-          <!-- Total Hours -->
-          <div class="text-center">
-            <div class="mb-3">
-              <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="text-sm text-gray-600 font-medium mb-1">Total Hours</div>
-            <div class="text-2xl lg:text-3xl font-bold" id="totalHours">40h/week</div>
-          </div>
-
-          <!-- Weekly Capacity -->
-          <div class="text-center">
-            <div class="mb-3">
-              <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="text-sm text-gray-600 font-medium mb-1">Weekly Capacity</div>
-            <div class="text-2xl lg:text-3xl font-bold text-gray-900" id="weeklyCapacity">1,400h</div>
-          </div>
-        </div>
-
-        <!-- Hours Status Message - Fixed height container -->
-        <div class="text-center">
-          <div class="h-8 flex items-center justify-center">
-            <div id="hoursWarning" class="text-red-600 text-sm font-medium bg-red-50 rounded-lg px-4 py-2 opacity-0 transition-opacity duration-200">
-              ⚠️ Total hours exceed 40h limit - please adjust your time allocation
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Time Allocation Section -->
       <div class="mb-12">
@@ -151,7 +81,8 @@ structured_data: |
             </div>
             <select
               id="teamSize"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-sm"
+              class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-base appearance-none"
+              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1.5em 1.5em;"
             >
               <option value="1-5">1-5 engineers</option>
               <option value="6-20">6-20 engineers</option>
@@ -169,11 +100,12 @@ structured_data: |
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <label class="text-sm font-semibold text-gray-900">Engineer Cost</label>
+              <label class="text-sm font-semibold text-gray-900">Average Engineer Cost</label>
             </div>
             <select
               id="engineerCost"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-sm"
+              class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-base appearance-none"
+              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1.5em 1.5em;"
             >
               <option value="€80k">€80,000/year</option>
               <option value="€100k">€100,000/year</option>
@@ -186,6 +118,15 @@ structured_data: |
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="phaseSliders">
           <!-- Phase sliders will be populated by JavaScript -->
+        </div>
+
+        <!-- Hours Validation Message -->
+        <div class="text-center mt-8">
+          <div class="h-8 flex items-center justify-center">
+            <div id="hoursWarning" class="text-red-600 text-sm font-medium bg-red-50 rounded-lg px-4 py-2 opacity-0 transition-opacity duration-200">
+              ⚠️ Total hours exceed 40h limit - please adjust your time allocation
+            </div>
+          </div>
         </div>
       </div>
 
