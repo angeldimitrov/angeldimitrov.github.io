@@ -362,3 +362,19 @@ function showForm() {
 function downloadReport() {
   alert('PDF report generation will be implemented in the next phase. For now, please schedule a demo to receive a detailed analysis.');
 }
+
+/**
+ * Toggle collapsible sections
+ */
+function toggleSection(sectionId) {
+  const content = document.getElementById(sectionId + "-content");
+  const icon = document.getElementById(sectionId + "-icon");
+  
+  if (content.classList.contains("hidden")) {
+    content.classList.remove("hidden");
+    icon.classList.add("rotate-180");
+  } else {
+    content.classList.add("hidden");
+    icon.classList.remove("rotate-180");
+  }
+}
