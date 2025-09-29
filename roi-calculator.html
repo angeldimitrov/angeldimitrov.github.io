@@ -79,17 +79,18 @@ structured_data: |
               </div>
               <label class="text-sm font-semibold text-gray-900">Team Size</label>
             </div>
-            <select
+            <input
+              type="number"
               id="teamSize"
-              class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-base appearance-none"
-              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1.5em 1.5em;"
-            >
-              <option value="1-5">1-5 engineers</option>
-              <option value="6-20">6-20 engineers</option>
-              <option value="21-50" selected>21-50 engineers</option>
-              <option value="51-100">51-100 engineers</option>
-              <option value="100+">100+ engineers</option>
-            </select>
+              value="35"
+              min="1"
+              max="500"
+              placeholder="e.g., 35 engineers"
+              class="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-base"
+            />
+            <div class="text-xs text-gray-500 mt-2">
+              Typical ranges: 5-20 (startup), 20-100 (scale-up), 100+ (enterprise)
+            </div>
           </div>
 
           <!-- Engineer Cost -->
@@ -102,17 +103,19 @@ structured_data: |
               </div>
               <label class="text-sm font-semibold text-gray-900">Average Engineer Cost</label>
             </div>
-            <select
-              id="engineerCost"
-              class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-base appearance-none"
-              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1.5em 1.5em;"
-            >
-              <option value="€80k">€80,000/year</option>
-              <option value="€100k">€100,000/year</option>
-              <option value="€130k" selected>€130,000/year</option>
-              <option value="€160k">€160,000/year</option>
-              <option value="€200k">€200,000/year</option>
-            </select>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500">€</span>
+              <input
+                type="text"
+                id="engineerCost"
+                value="80.000"
+                placeholder="80.000"
+                class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-base"
+              />
+            </div>
+            <div class="text-xs text-gray-500 mt-2">
+              Typical ranges: €50k-€65k (junior), €60k-€80k (mid), €75k-€110k (senior)
+            </div>
           </div>
         </div>
 
@@ -120,8 +123,40 @@ structured_data: |
           <!-- Phase sliders will be populated by JavaScript -->
         </div>
 
+        <!-- Hours Summary -->
+        <div class="text-center mt-8 mb-6">
+          <div class="inline-flex items-center bg-gray-100 rounded-lg px-6 py-3">
+            <div class="mr-3">
+              <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="text-left">
+              <div class="text-sm text-gray-600 font-medium">Avg Hours per Engineer</div>
+              <div class="text-xl font-bold text-gray-900" id="avgHoursPerEngineer">40h/week</div>
+            </div>
+          </div>
+
+          <!-- Total Annual Spending -->
+          <div class="inline-flex items-center bg-blue-50 rounded-lg px-6 py-3 ml-0 sm:ml-4 mt-4 sm:mt-0">
+            <div class="mr-3">
+              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="text-left">
+              <div class="text-sm text-gray-600 font-medium">Total Annual Spending</div>
+              <div class="text-xl font-bold text-primary" id="totalAnnualSpending">€2.800.000</div>
+            </div>
+          </div>
+        </div>
+
         <!-- Hours Validation Message -->
-        <div class="text-center mt-8">
+        <div class="text-center">
           <div class="h-8 flex items-center justify-center">
             <div id="hoursWarning" class="text-red-600 text-sm font-medium bg-red-50 rounded-lg px-4 py-2 opacity-0 transition-opacity duration-200">
               ⚠️ Total hours exceed 40h limit - please adjust your time allocation
@@ -607,4 +642,4 @@ structured_data: |
   </div>
 </section>
 
-<script src="/assets/js/roi-calculator-minimal.js"></script>
+<script src="/assets/js/roi-calculator-minimal.js?v=8"></script>

@@ -49,18 +49,14 @@ const developmentPhases = {
   }
 };
 
-const teamSizeMap = {
-  '1-5': 3, '6-20': 13, '21-50': 35, '51-100': 75, '100+': 150
-};
+// Team size is now a direct number input, no mapping needed
 
-const costMap = {
-  '€80k': 80000, '€100k': 100000, '€130k': 130000, '€160k': 160000, '€200k': 200000
-};
+// Engineer cost is now a direct number input, no mapping needed
 
 // Global state
 let formData = {
-  teamSize: '21-50',
-  engineerCost: '€130k',
+  teamSize: 35,
+  engineerCost: 80000,
   email: '',
   requirements: 3, architecture: 4, coding: 15, testing: 8,
   reviews: 5, documentation: 3, devops: 2
@@ -129,15 +125,65 @@ function initializeSliders() {
  * Set up event listeners
  */
 function setupEventListeners() {
-  // Dropdowns
-  document.getElementById('teamSize').addEventListener('change', function(e) {
-    formData.teamSize = e.target.value;
+  // Team size number input with validation
+  document.getElementById('teamSize').addEventListener('input', function(e) {
+    let value = parseInt(e.target.value);
+    // Validate range and provide fallback
+    if (isNaN(value) || value < 1) {
+      value = 1;
+      e.target.value = 1;
+    } else if (value > 500) {
+      value = 500;
+      e.target.value = 500;
+    }
+    formData.teamSize = value;
     updateConfigurationSummary();
+    updateTotalHours();
   });
 
-  document.getElementById('engineerCost').addEventListener('change', function(e) {
-    formData.engineerCost = e.target.value;
+  // Engineer cost number input with validation
+  document.getElementById('engineerCost').addEventListener('input', function(e) {
+    // Remove any non-digit characters for processing
+    const cleanValue = e.target.value.replace(/\D/g, '');
+    const numericValue = parseInt(cleanValue);
+
+    // Format with German-style thousand separators (dots)
+    if (!isNaN(numericValue) && cleanValue.length > 0) {
+      const formatted = numericValue.toLocaleString('de-DE');
+      e.target.value = formatted;
+      formData.engineerCost = numericValue;
+    } else if (cleanValue.length === 0) {
+      e.target.value = '';
+    }
     updateConfigurationSummary();
+    updateTotalHours();
+  });
+
+  // Handle focus to show clean numeric value for easier editing
+  document.getElementById('engineerCost').addEventListener('focus', function(e) {
+    // Show clean number when focused for easier editing
+    if (formData.engineerCost) {
+      e.target.value = formData.engineerCost.toString();
+    }
+  });
+
+  // Validate and correct engineer cost only when user finishes editing (blur)
+  document.getElementById('engineerCost').addEventListener('blur', function(e) {
+    const cleanValue = e.target.value.replace(/\D/g, '');
+    let value = parseInt(cleanValue);
+
+    // Validate range and provide fallback
+    if (isNaN(value) || value < 40000) {
+      value = Math.max(40000, value || 80000);
+    } else if (value > 300000) {
+      value = 300000;
+    }
+
+    // Set formatted value and update data
+    e.target.value = value.toLocaleString('de-DE');
+    formData.engineerCost = value;
+    updateConfigurationSummary();
+    updateTotalHours();
   });
 
   // Email
@@ -176,8 +222,31 @@ function updateTotalHours() {
     return sum + formData[phase];
   }, 0);
 
+  const avgHoursElement = document.getElementById('avgHoursPerEngineer');
+  const totalSpendingElement = document.getElementById('totalAnnualSpending');
   const warningElement = document.getElementById('hoursWarning');
   const calculateBtn = document.getElementById('calculateBtn');
+
+  // Update average hours per engineer display
+  if (avgHoursElement) {
+    avgHoursElement.textContent = `${total}h/week`;
+
+    // Change color based on hours limit
+    if (total > 40) {
+      avgHoursElement.classList.add('text-red-600');
+      avgHoursElement.classList.remove('text-gray-900');
+    } else {
+      avgHoursElement.classList.remove('text-red-600');
+      avgHoursElement.classList.add('text-gray-900');
+    }
+  }
+
+  // Calculate and display total annual spending
+  if (totalSpendingElement) {
+    const totalAnnualSpending = formData.teamSize * formData.engineerCost;
+    const formattedSpending = totalAnnualSpending.toLocaleString('de-DE');
+    totalSpendingElement.textContent = `€${formattedSpending}`;
+  }
 
   // Validate 40 hour limit and show/hide warning (with error handling)
   if (total > 40) {
@@ -254,8 +323,8 @@ function handleCalculate() {
  * Core calculation engine
  */
 function calculateSavings() {
-  const teamSize = teamSizeMap[formData.teamSize];
-  const annualCost = costMap[formData.engineerCost];
+  const teamSize = formData.teamSize;
+  const annualCost = formData.engineerCost;
   const hourlyRate = annualCost / (52 * 40);
 
   const phaseSavings = Object.keys(developmentPhases).map(phaseKey => {
