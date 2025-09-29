@@ -62,12 +62,119 @@ let formData = {
   reviews: 5, documentation: 3, devops: 2
 };
 
+
+/**
+ * Encode form data to URL parameters
+ */
+function encodeToURL() {
+  const params = new URLSearchParams();
+
+  // Add all form data to URL parameters
+  Object.keys(formData).forEach(key => {
+    if (formData[key] !== '' && formData[key] !== undefined) {
+      params.set(key, formData[key]);
+    }
+  });
+
+  return `${window.location.pathname}?${params.toString()}`;
+}
+
+/**
+ * Decode URL parameters to form data
+ */
+function decodeFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  let hasParams = false;
+
+  // Load form data from URL parameters
+  Object.keys(formData).forEach(key => {
+    if (params.has(key)) {
+      hasParams = true;
+      const value = params.get(key);
+
+      // Parse numeric values
+      if (['teamSize', 'engineerCost', 'requirements', 'architecture', 'coding', 'testing', 'reviews', 'documentation', 'devops'].includes(key)) {
+        formData[key] = parseInt(value) || formData[key];
+      } else {
+        formData[key] = value;
+      }
+    }
+  });
+
+  return hasParams;
+}
+
+/**
+ * Update URL without page reload
+ */
+function updateURL() {
+  const url = encodeToURL();
+  window.history.replaceState({}, '', url);
+}
+
+/**
+ * Update form fields from loaded data
+ */
+function updateFormFieldsFromData() {
+  // Update team size
+  const teamSizeInput = document.getElementById('teamSize');
+  if (teamSizeInput) {
+    teamSizeInput.value = formData.teamSize;
+  }
+
+  // Update engineer cost (with formatting)
+  const engineerCostInput = document.getElementById('engineerCost');
+  if (engineerCostInput) {
+    engineerCostInput.value = formData.engineerCost.toLocaleString('de-DE');
+  }
+
+  // Update email
+  const emailInput = document.getElementById('email');
+  if (emailInput) {
+    emailInput.value = formData.email;
+  }
+
+  // Update sliders
+  Object.keys(developmentPhases).forEach(phaseKey => {
+    const slider = document.getElementById(phaseKey);
+    if (slider) {
+      slider.value = formData[phaseKey];
+
+      // Update slider visual progress
+      const percent = (formData[phaseKey] / 20) * 100;
+      slider.style.background = `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${percent}%, #E5E7EB ${percent}%, #E5E7EB 100%)`;
+
+      // Update hours display
+      const hoursElement = document.querySelector(`[data-phase="${phaseKey}"].phase-hours`);
+      if (hoursElement) {
+        hoursElement.textContent = `${formData[phaseKey]}h`;
+      }
+    }
+  });
+}
+
 /**
  * Initialize the calculator on page load
  */
 document.addEventListener('DOMContentLoaded', function() {
+  // Load data from URL if present
+  const hasUrlParams = decodeFromURL();
+
   initializeSliders();
   setupEventListeners();
+
+  // If we loaded from URL, update the form fields
+  if (hasUrlParams) {
+    updateFormFieldsFromData();
+
+    // If email is present, show results immediately
+    if (formData.email) {
+      const results = calculateSavings();
+      displayResults(results);
+      showResults();
+    }
+  }
+
   updateTotalHours();
   updateConfigurationSummary();
 
@@ -139,6 +246,7 @@ function setupEventListeners() {
     formData.teamSize = value;
     updateConfigurationSummary();
     updateTotalHours();
+    updateURL();
   });
 
   // Engineer cost number input with validation
@@ -157,6 +265,7 @@ function setupEventListeners() {
     }
     updateConfigurationSummary();
     updateTotalHours();
+    updateURL();
   });
 
   // Handle focus to show clean numeric value for easier editing
@@ -184,12 +293,14 @@ function setupEventListeners() {
     formData.engineerCost = value;
     updateConfigurationSummary();
     updateTotalHours();
+    updateURL();
   });
 
   // Email
   document.getElementById('email').addEventListener('input', function(e) {
     formData.email = e.target.value;
     validateEmail();
+    updateURL();
   });
 
   // Sliders
@@ -207,12 +318,14 @@ function setupEventListeners() {
       const percent = (value / 20) * 100;
       slider.style.background = `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${percent}%, #E5E7EB ${percent}%, #E5E7EB 100%)`;
       updateTotalHours();
+      updateURL();
     });
   });
 
   // Calculate button
   document.getElementById('calculateBtn').addEventListener('click', handleCalculate);
 }
+
 
 /**
  * Update total hours display and validation
@@ -412,6 +525,75 @@ function showForm() {
   document.querySelector('#calculator-form').style.display = 'block';
   document.querySelector('#results-section').classList.add('hidden');
   document.querySelector('#calculator-form').scrollIntoView({ behavior: 'smooth' });
+}
+
+/**
+ * Copy shareable URL to clipboard
+ */
+function copyShareableUrl() {
+  const shareableUrl = encodeToURL();
+  const fullUrl = `${window.location.origin}${shareableUrl}`;
+
+  // Try to copy to clipboard
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(fullUrl).then(() => {
+      showShareFeedback('✓ Link copied to clipboard!');
+    }).catch(() => {
+      showShareFeedback('Unable to copy. Please copy manually: ' + fullUrl);
+    });
+  } else {
+    // Fallback for older browsers or non-HTTPS
+    const textArea = document.createElement('textarea');
+    textArea.value = fullUrl;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      const result = document.execCommand('copy');
+      if (result) {
+        showShareFeedback('✓ Link copied to clipboard!');
+      } else {
+        showShareFeedback('Unable to copy. Please copy manually: ' + fullUrl);
+      }
+    } catch (err) {
+      showShareFeedback('Unable to copy. Please copy manually: ' + fullUrl);
+    }
+
+    textArea.remove();
+  }
+}
+
+/**
+ * Show feedback message for share action
+ */
+function showShareFeedback(message) {
+  const btn = document.getElementById('shareUrlBtn');
+  if (!btn) return;
+
+  const originalText = btn.innerHTML;
+
+  // Show success message
+  btn.innerHTML = `
+    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+    ${message.includes('✓') ? 'Copied!' : 'Copy failed'}
+  `;
+
+  btn.classList.remove('bg-gray-100', 'hover:bg-gray-200', 'text-gray-700');
+  btn.classList.add(message.includes('✓') ? 'bg-green-100' : 'bg-red-100');
+  btn.classList.add(message.includes('✓') ? 'text-green-700' : 'text-red-700');
+
+  // Reset after 2 seconds
+  setTimeout(() => {
+    btn.innerHTML = originalText;
+    btn.classList.remove('bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+    btn.classList.add('bg-gray-100', 'hover:bg-gray-200', 'text-gray-700');
+  }, 2000);
 }
 
 function downloadReport() {
