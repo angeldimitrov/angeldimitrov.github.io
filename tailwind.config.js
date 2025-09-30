@@ -39,7 +39,11 @@ module.exports = {
     'text-neutral-300',
     'text-red-600',
     'disabled:opacity-50',
-    'disabled:cursor-not-allowed'
+    'disabled:cursor-not-allowed',
+    // Warning icon gradient classes
+    'bg-gradient-to-br',
+    'from-amber-500',
+    'to-orange-600'
   ],
   theme: {
     extend: {
