@@ -611,6 +611,9 @@ function showResults() {
 }
 
 function showForm() {
+  // Clear URL parameters when returning to form
+  window.history.replaceState({}, '', window.location.pathname);
+
   document.querySelector('#hero-section').style.display = 'block';
   document.querySelector('#calculator-form').style.display = 'block';
   document.querySelector('#results-section').classList.add('hidden');
