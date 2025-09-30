@@ -99,12 +99,22 @@ function debounce(func, delay) {
 
 /**
  * Encode form data to URL parameters
+ *
+ * Privacy Note:
+ * - Email is excluded from URL to protect user privacy
+ * - Only calculation parameters are shared (team size, costs, hours)
+ * - Users must re-enter email when loading shared URLs
  */
 function encodeToURL() {
   const params = new URLSearchParams();
 
-  // Add all form data to URL parameters
+  // Add all form data to URL parameters, excluding email for privacy
   Object.keys(formData).forEach(key => {
+    // Skip email to protect user privacy
+    if (key === 'email') {
+      return;
+    }
+
     if (formData[key] !== '' && formData[key] !== undefined) {
       params.set(key, formData[key]);
     }
