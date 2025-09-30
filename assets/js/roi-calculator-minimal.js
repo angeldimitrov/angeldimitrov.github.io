@@ -62,6 +62,21 @@ let formData = {
   reviews: 5, documentation: 3, devops: 2
 };
 
+// Debounce timer
+let debounceTimer = null;
+
+/**
+ * Debounce function for performance optimization
+ * @param {Function} func - Function to debounce
+ * @param {number} delay - Delay in milliseconds
+ */
+function debounce(func, delay) {
+  return function(...args) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
 
 /**
  * Encode form data to URL parameters
@@ -214,6 +229,10 @@ function initializeSliders() {
           min="0"
           max="20"
           value="${phase.defaultHours}"
+          aria-label="Hours per week for ${phase.label}"
+          aria-valuemin="0"
+          aria-valuemax="20"
+          aria-valuenow="${phase.defaultHours}"
           class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer phase-slider hover:bg-gray-300 transition-colors"
           data-phase="${phaseKey}"
           style="background: linear-gradient(to right, #3B82F6 0%, #3B82F6 ${(phase.defaultHours/20)*100}%, #E5E7EB ${(phase.defaultHours/20)*100}%, #E5E7EB 100%);"
@@ -303,6 +322,10 @@ function setupEventListeners() {
     updateURL();
   });
 
+  // Create debounced functions for expensive operations
+  const debouncedUpdateURL = debounce(updateURL, 300);
+  const debouncedUpdateTotalHours = debounce(updateTotalHours, 150);
+
   // Sliders
   document.querySelectorAll('.phase-slider').forEach(slider => {
     slider.addEventListener('input', function(e) {
@@ -313,12 +336,15 @@ function setupEventListeners() {
       const hoursElement = document.querySelector(`[data-phase="${phase}"].phase-hours`);
       if (hoursElement) hoursElement.textContent = `${value}h`;
 
-      // Update slider progress
+      // Update slider progress and accessibility immediately for visual feedback
       const slider = e.target;
       const percent = (value / 20) * 100;
       slider.style.background = `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${percent}%, #E5E7EB ${percent}%, #E5E7EB 100%)`;
-      updateTotalHours();
-      updateURL();
+      slider.setAttribute('aria-valuenow', value);
+
+      // Debounce expensive operations
+      debouncedUpdateTotalHours();
+      debouncedUpdateURL();
     });
   });
 
@@ -516,54 +542,89 @@ function displayResults(results) {
  * Navigation functions
  */
 function showResults() {
+  document.querySelector('#hero-section').style.display = 'none';
   document.querySelector('#calculator-form').style.display = 'none';
   document.querySelector('#results-section').classList.remove('hidden');
   document.querySelector('#results-section').scrollIntoView({ behavior: 'smooth' });
 }
 
 function showForm() {
+  document.querySelector('#hero-section').style.display = 'block';
   document.querySelector('#calculator-form').style.display = 'block';
   document.querySelector('#results-section').classList.add('hidden');
   document.querySelector('#calculator-form').scrollIntoView({ behavior: 'smooth' });
 }
 
 /**
- * Copy shareable URL to clipboard
+ * Copy shareable URL to clipboard with improved error handling
  */
 function copyShareableUrl() {
   const shareableUrl = encodeToURL();
   const fullUrl = `${window.location.origin}${shareableUrl}`;
 
-  // Try to copy to clipboard
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(fullUrl).then(() => {
-      showShareFeedback('✓ Link copied to clipboard!');
-    }).catch(() => {
-      showShareFeedback('Unable to copy. Please copy manually: ' + fullUrl);
-    });
-  } else {
-    // Fallback for older browsers or non-HTTPS
-    const textArea = document.createElement('textarea');
-    textArea.value = fullUrl;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-999999px';
-    textArea.style.top = '-999999px';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+  // Function to handle successful copy
+  const handleSuccess = () => {
+    showShareFeedback('✓ Link copied to clipboard!');
+  };
 
+  // Function to handle failed copy with fallback
+  const handleFailure = () => {
+    // Try to show URL in a prompt for manual copying
     try {
-      const result = document.execCommand('copy');
-      if (result) {
-        showShareFeedback('✓ Link copied to clipboard!');
-      } else {
-        showShareFeedback('Unable to copy. Please copy manually: ' + fullUrl);
+      const userCopied = window.prompt(
+        'Unable to auto-copy. Please copy the URL manually:',
+        fullUrl
+      );
+      // If user didn't cancel, assume they copied
+      if (userCopied !== null) {
+        showShareFeedback('✓ Link ready to share!');
       }
-    } catch (err) {
-      showShareFeedback('Unable to copy. Please copy manually: ' + fullUrl);
+    } catch (promptErr) {
+      // Final fallback - just show the URL in the feedback
+      showShareFeedback('Copy failed. URL: ' + fullUrl);
+      console.error('Clipboard API not available:', promptErr);
     }
+  };
 
+  // Try modern clipboard API first
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(fullUrl)
+      .then(handleSuccess)
+      .catch((err) => {
+        console.warn('Clipboard API failed, trying fallback:', err);
+        fallbackCopyTextToClipboard(fullUrl, handleSuccess, handleFailure);
+      });
+  } else {
+    // Use fallback for older browsers or non-HTTPS
+    fallbackCopyTextToClipboard(fullUrl, handleSuccess, handleFailure);
+  }
+}
+
+/**
+ * Fallback method for copying text to clipboard
+ */
+function fallbackCopyTextToClipboard(text, onSuccess, onFailure) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-999999px';
+  textArea.style.top = '-999999px';
+  textArea.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    const result = document.execCommand('copy');
     textArea.remove();
+    if (result) {
+      onSuccess();
+    } else {
+      onFailure();
+    }
+  } catch (err) {
+    textArea.remove();
+    onFailure();
   }
 }
 
