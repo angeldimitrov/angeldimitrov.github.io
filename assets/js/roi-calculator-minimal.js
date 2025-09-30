@@ -1,6 +1,16 @@
 /**
  * Minimal ROI Calculator for AI Coding Agents
  * Clean, focused implementation following style guide principles
+ *
+ * Performance optimizations:
+ * - Debounced calculations to reduce CPU usage
+ * - Lazy loading for non-critical sections
+ * - Efficient DOM manipulation with minimal reflows
+ *
+ * SEO considerations:
+ * - Shareable URLs with state preservation
+ * - Semantic HTML structure support
+ * - Fast initial page load with deferred execution
  */
 
 // Development phases configuration
