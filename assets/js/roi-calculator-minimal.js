@@ -529,10 +529,25 @@ function calculateSavings() {
 }
 
 /**
+ * Format large numbers with K suffix for better readability
+ * @param {number} num - Number to format
+ * @returns {string} Formatted number (e.g., "150K" or "1.2M")
+ */
+function formatNumberWithK(num) {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(0) + 'K';
+  }
+  return num.toLocaleString();
+}
+
+/**
  * Display results
  */
 function displayResults(results) {
-  document.getElementById('totalSavings').textContent = `€${results.totalAnnualSavings.toLocaleString()}`;
+  document.getElementById('totalSavings').textContent = `€${formatNumberWithK(results.totalAnnualSavings)}`;
   document.getElementById('roiPercentage').textContent = `${results.roi}%`;
   document.getElementById('fteEquivalent').textContent = `${results.fteEquivalent} FTEs`;
   document.getElementById('paybackPeriod').textContent = `${results.paybackMonths} months`;
@@ -555,13 +570,12 @@ function displayResults(results) {
             <div class="flex-1">
               <div class="text-sm font-semibold text-gray-900">${phase.label}</div>
               <div class="text-sm text-gray-600">
-                ${phase.savedHours}h/week saved • ${phase.benchmark}% automation
+                ${phase.savedHours}h/week saved<br class="sm:hidden"> <span class="hidden sm:inline">•</span> ${phase.benchmark}% automation
               </div>
             </div>
           </div>
           <div class="text-right">
-            <div class="font-bold text-lg text-primary">€${phase.annualSavings.toLocaleString()}</div>
-            <div class="text-sm text-gray-600">${percentage}% of savings</div>
+            <div class="font-bold text-lg text-primary">€${formatNumberWithK(phase.annualSavings)}</div>
           </div>
         </div>
       </div>
@@ -581,13 +595,12 @@ function displayResults(results) {
               </svg>
             </div>
             <div class="flex-1">
-              <div class="text-sm font-semibold text-gray-900">Total Annual Savings</div>
+              <div class="text-lg font-bold text-gray-900">Total Annual Savings</div>
               <div class="text-sm text-gray-600">Combined savings across all development phases</div>
             </div>
           </div>
           <div class="text-right">
-            <div class="font-bold text-lg text-primary">€${results.totalAnnualSavings.toLocaleString()}</div>
-            <div class="text-sm text-gray-600">100% of savings</div>
+            <div class="text-2xl font-bold text-primary">€${formatNumberWithK(results.totalAnnualSavings)}</div>
           </div>
         </div>
       </div>
