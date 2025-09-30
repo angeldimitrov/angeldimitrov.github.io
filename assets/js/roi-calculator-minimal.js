@@ -11,7 +11,16 @@
  * - Shareable URLs with state preservation
  * - Semantic HTML structure support
  * - Fast initial page load with deferred execution
+ *
+ * Google Sheets Integration:
+ * - Submits email and calculation data to Google Sheets via Apps Script
+ * - See docs/google-sheets-integration.md for setup instructions
  */
+
+// Google Sheets configuration
+// Replace with your Google Apps Script Web App URL
+// See docs/google-sheets-integration.md for setup instructions
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzLKHmHT0Usj4vr0yW-K4BacSCQQIBnNkEIVjD4kfEOXPGIJ_7NrVgesteQcRlU5nCw4Q/exec';
 
 // Development phases configuration
 const developmentPhases = {
@@ -467,6 +476,9 @@ function handleCalculate() {
   const results = calculateSavings();
   displayResults(results);
   showResults();
+
+  // Submit to Google Sheets (async, non-blocking)
+  submitToGoogleSheets(results);
 }
 
 /**
@@ -712,7 +724,7 @@ function downloadReport() {
 function toggleSection(sectionId) {
   const content = document.getElementById(sectionId + "-content");
   const icon = document.getElementById(sectionId + "-icon");
-  
+
   if (content.classList.contains("hidden")) {
     content.classList.remove("hidden");
     icon.classList.add("rotate-180");
@@ -720,4 +732,69 @@ function toggleSection(sectionId) {
     content.classList.add("hidden");
     icon.classList.remove("rotate-180");
   }
+}
+
+/**
+ * Submit form data and results to Google Sheets
+ * @param {Object} results - Calculation results from calculateSavings()
+ *
+ * Business Context:
+ * - Stores email submissions for lead generation
+ * - Captures calculation parameters for analysis
+ * - Non-blocking operation - doesn't affect user experience
+ * - Silently fails if Google Sheets integration not configured
+ */
+function submitToGoogleSheets(results) {
+  // Skip if Google Sheets URL not configured
+  if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL === '') {
+    console.log('Google Sheets integration not configured. Skipping submission.');
+    return;
+  }
+
+  // Calculate total hours for submission
+  const totalHours = Object.keys(developmentPhases).reduce((sum, phase) => {
+    return sum + formData[phase];
+  }, 0);
+
+  // Prepare submission data
+  const submissionData = {
+    // Contact information
+    email: formData.email,
+
+    // Configuration parameters
+    teamSize: formData.teamSize,
+    engineerCost: formData.engineerCost,
+    totalHours: totalHours,
+
+    // Phase allocations (hours per week)
+    requirements: formData.requirements,
+    architecture: formData.architecture,
+    coding: formData.coding,
+    testing: formData.testing,
+    reviews: formData.reviews,
+    documentation: formData.documentation,
+    devops: formData.devops,
+
+    // Calculated results
+    totalAnnualSavings: results.totalAnnualSavings,
+    roiPercentage: results.roi
+  };
+
+  // Submit to Google Sheets (async, non-blocking)
+  fetch(GOOGLE_SHEETS_URL, {
+    method: 'POST',
+    mode: 'no-cors', // Google Apps Script requires no-cors mode
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(submissionData)
+  })
+  .then(() => {
+    // Success - no response available in no-cors mode
+    console.log('Submission sent to Google Sheets');
+  })
+  .catch((error) => {
+    // Silently fail - don't disrupt user experience
+    console.error('Error submitting to Google Sheets:', error);
+  });
 }
