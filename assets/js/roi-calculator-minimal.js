@@ -570,7 +570,7 @@ function displayResults(results) {
             <div class="flex-1">
               <div class="text-sm font-semibold text-gray-900">${phase.label}</div>
               <div class="text-sm text-gray-600">
-                ${phase.savedHours}h/week saved<br class="sm:hidden"> <span class="hidden sm:inline">•</span> ${phase.benchmark}% automation
+                ${phase.savedHours}h/week gained<br class="sm:hidden"> <span class="hidden sm:inline">•</span> ${phase.benchmark}% automation
               </div>
             </div>
           </div>
@@ -595,8 +595,8 @@ function displayResults(results) {
               </svg>
             </div>
             <div class="flex-1">
-              <div class="text-lg font-bold text-gray-900">Total Annual Savings</div>
-              <div class="text-sm text-gray-600">Combined savings across all development phases</div>
+              <div class="text-lg font-bold text-gray-900">Total Annual Capacity Value</div>
+              <div class="text-sm text-gray-600">Combined capacity gains across all development phases</div>
             </div>
           </div>
           <div class="text-right">

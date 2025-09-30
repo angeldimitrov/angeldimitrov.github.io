@@ -1,9 +1,9 @@
 ---
 layout: default
-title: ROI Calculator | Quantify Your AI Development Savings
+title: Impact Calculator | Quantify Your Team's Potential with AI
 skip_to_main: true
-description: Calculate the exact ROI of implementing AI coding agents in your development workflow. Get precise savings estimates based on team size, costs, and development phases.
-keywords: AI development ROI, coding agents calculator, development cost savings, AI implementation ROI, engineering productivity calculator, Claude Code ROI, GitHub Copilot savings, AI developer tools ROI
+description: Calculate the capacity gains from implementing AI coding agents in your development workflow. Measure expanded output and productivity improvements based on team size and development phases.
+keywords: AI development impact, coding agents calculator, development capacity gains, AI productivity calculator, engineering output calculator, Claude Code impact, team potential calculator, AI developer tools ROI
 image: /assets/images/roi-calculator-preview.jpg
 author: Angel Dimitrov
 structured_data: |
@@ -11,8 +11,8 @@ structured_data: |
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "AI Development ROI Calculator",
-    "description": "Calculate the return on investment for implementing AI coding agents in your software development workflow. Get precise savings estimates based on team size, costs, and development phases.",
+    "name": "AI Development Impact Calculator",
+    "description": "Calculate the capacity gains and productivity improvements from implementing AI coding agents in your software development workflow. Measure expanded team output based on team size and development phases.",
     "url": "https://coding-agents.ai/roi-calculator/",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web Browser",
@@ -46,8 +46,8 @@ structured_data: |
       "Cost per engineer calculation",
       "Development phase time allocation",
       "AI automation benchmarks",
-      "Annual savings projection",
-      "ROI percentage calculation",
+      "Annual capacity value projection",
+      "Productivity increase calculation",
       "FTE equivalent analysis",
       "Shareable results URL"
     ]
@@ -61,7 +61,7 @@ structured_data: |
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How accurate is the AI development ROI calculator?",
+        "name": "How accurate is the AI development impact calculator?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Our calculator uses industry-validated benchmarks from 2024 Gartner Enterprise Study (up to 50% productivity gains), McKinsey (35-45% improvements), and real-world implementations showing 25-67% productivity increases."
@@ -69,7 +69,7 @@ structured_data: |
       },
       {
         "@type": "Question",
-        "name": "What factors does the ROI calculator consider?",
+        "name": "What factors does the impact calculator consider?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "The calculator considers team size, average engineer cost, and time allocation across 7 development phases: requirements, architecture, coding, testing, reviews, documentation, and DevOps."
@@ -101,14 +101,14 @@ structured_data: |
         <ol class="inline-flex items-center space-x-2 text-sm text-neutral-400">
           <li><a href="/" class="hover:text-white">Home</a></li>
           <li><span>/</span></li>
-          <li aria-current="page">ROI Calculator</li>
+          <li aria-current="page">Impact Calculator</li>
         </ol>
       </nav>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-        Calculate Your <span class="gradient-text-hero">AI Development ROI</span>
+        Calculate Your <span class="gradient-text-hero">Team's Impact</span>
       </h1>
       <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light max-w-3xl mx-auto">
-        Get precise savings estimates based on your team's development workflow and costs
+        Measure how much more your team can build with AI-native development—without adding headcount
       </p>
       <div class="flex justify-center">
         <a href="#calculator-form" class="btn-primary">
@@ -131,7 +131,7 @@ structured_data: |
           Configure Your <span class="gradient-text-light">Development Team</span>
         </h2>
       <p class="mb-8 text-base md:mb-10 md:text-lg max-w-3xl mx-auto">
-        Customize your team size, costs, and time allocation to calculate precise ROI estimates for AI-native development.
+        Customize your team size, costs, and time allocation to measure the expanded capacity and productivity gains from AI-native development.
       </p>
     </div>
 
@@ -270,7 +270,7 @@ structured_data: |
               id="calculateBtn"
               class="btn-primary px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed md:w-auto whitespace-nowrap flex items-center justify-center"
             >
-              Calculate My ROI
+              Calculate My Impact
             </button>
           </div>
 
@@ -310,12 +310,12 @@ structured_data: |
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <div class="text-sm text-neutral-300 font-medium mb-2">Annual Savings</div>
+            <div class="text-sm text-neutral-300 font-medium mb-2">Annual Capacity Value</div>
           </div>
           <div class="text-2xl lg:text-3xl font-bold text-white" id="totalSavings">€0</div>
         </div>
 
-        <!-- ROI -->
+        <!-- Productivity Increase -->
         <div class="bg-neutral-800/60 rounded-xl p-8 border border-neutral-700/60 backdrop-blur-sm text-center">
           <div class="mb-6">
             <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-primary rounded-full flex items-center justify-center mx-auto mb-6">
@@ -323,7 +323,7 @@ structured_data: |
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
               </svg>
             </div>
-            <div class="text-sm text-neutral-300 font-medium mb-2">Return on Investment</div>
+            <div class="text-sm text-neutral-300 font-medium mb-2">Productivity Increase</div>
           </div>
           <div class="text-2xl lg:text-3xl font-bold text-white" id="roiPercentage">0%</div>
         </div>
@@ -379,7 +379,7 @@ structured_data: |
       <!-- Savings Breakdown -->
       <div class="mb-12">
         <div class="text-center mb-8">
-          <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-5">Savings Breakdown by <span class="gradient-text-light">Development Phase</span></h3>
+          <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-5">Capacity Gains by <span class="gradient-text-light">Development Phase</span></h3>
         </div>
         <div class="bg-white/80 rounded-2xl p-4 md:p-12 shadow-lg border border-gray-200/60 backdrop-blur-sm">
           <div id="phaseSavings" class="space-y-2">
