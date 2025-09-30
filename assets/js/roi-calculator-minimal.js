@@ -211,12 +211,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (hasUrlParams) {
     updateFormFieldsFromData();
 
-    // If email is present, show results immediately
-    if (formData.email) {
-      const results = calculateSavings();
-      displayResults(results);
-      showResults();
-    }
+    // Auto-show results for shared URLs (email not required for viewing)
+    // This allows users to see shared calculations immediately
+    const results = calculateSavings();
+    displayResults(results);
+    showResults();
   }
 
   updateTotalHours();
