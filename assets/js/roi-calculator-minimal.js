@@ -332,9 +332,8 @@ function setupEventListeners() {
     updateURL();
   });
 
-  // Create debounced functions for expensive operations
+  // Create debounced function for URL update
   const debouncedUpdateURL = debounce(updateURL, 300);
-  const debouncedUpdateTotalHours = debounce(updateTotalHours, 150);
 
   // Sliders
   document.querySelectorAll('.phase-slider').forEach(slider => {
@@ -352,8 +351,10 @@ function setupEventListeners() {
       slider.style.background = `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${percent}%, #E5E7EB ${percent}%, #E5E7EB 100%)`;
       slider.setAttribute('aria-valuenow', value);
 
-      // Debounce expensive operations
-      debouncedUpdateTotalHours();
+      // Update total hours immediately for warning/button feedback
+      updateTotalHours();
+
+      // Debounce only the URL update
       debouncedUpdateURL();
     });
   });
@@ -546,6 +547,32 @@ function displayResults(results) {
     `;
     container.innerHTML += phaseHTML;
   });
+
+  // Add total annual savings summary at the bottom (matching phase item style)
+  const totalHTML = `
+    <div class="pt-6 mt-6 border-t-2 border-gray-200">
+      <div class="py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center flex-1">
+            <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold text-gray-900">Total Annual Savings</div>
+              <div class="text-sm text-gray-600">Combined savings across all development phases</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-lg text-primary">€${results.totalAnnualSavings.toLocaleString()}</div>
+            <div class="text-sm text-gray-600">100% of savings</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  container.innerHTML += totalHTML;
 }
 
 /**
@@ -555,6 +582,10 @@ function showResults() {
   document.querySelector('#hero-section').style.display = 'none';
   document.querySelector('#calculator-form').style.display = 'none';
   document.querySelector('#results-section').classList.remove('hidden');
+  const detailsSection = document.querySelector('#details-section');
+  if (detailsSection) {
+    detailsSection.classList.remove('hidden');
+  }
   document.querySelector('#results-section').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -562,6 +593,10 @@ function showForm() {
   document.querySelector('#hero-section').style.display = 'block';
   document.querySelector('#calculator-form').style.display = 'block';
   document.querySelector('#results-section').classList.add('hidden');
+  const detailsSection = document.querySelector('#details-section');
+  if (detailsSection) {
+    detailsSection.classList.add('hidden');
+  }
   document.querySelector('#calculator-form').scrollIntoView({ behavior: 'smooth' });
 }
 
