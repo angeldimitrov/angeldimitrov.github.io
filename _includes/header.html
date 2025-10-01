@@ -1,9 +1,9 @@
 <!-- Navigation -->
 <nav class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white backdrop-blur-sm" role="navigation" aria-label="Main navigation">
   <div class="container">
-    <div class="flex min-h-16 items-center justify-between md:min-h-18">
+    <div class="flex min-h-16 items-center justify-center md:min-h-18">
       <!-- Desktop navigation - always visible -->
-      <div class="hidden sm:flex items-center justify-center flex-1">
+      <div class="hidden sm:flex items-center justify-center">
         <div class="flex items-center space-x-6 md:space-x-8">
           {% if page.url == "/" %}
             <a href="#benefits" class="text-md lg:text-base font-medium hover:text-primary transition-colors">Benefits</a>
@@ -23,37 +23,21 @@
         </div>
       </div>
 
-      <!-- Persistent CTA Button (Desktop) -->
-      <div class="hidden sm:block">
-        <a href="https://calendly.com/angel-dimitrov/ai-strategy-call"
-           class="btn-primary text-sm lg:text-base whitespace-nowrap"
-           target="_blank"
-           rel="noopener noreferrer">
-          Book Strategy Call
-        </a>
-      </div>
-
       <!-- Mobile navigation - priority items only -->
-      <div class="flex sm:hidden w-full justify-between items-center px-4">
-        <div class="flex items-center space-x-4">
+      <div class="flex sm:hidden w-full justify-center">
+        <div class="flex items-center space-x-6 px-4">
           {% if page.url == "/" %}
-            <a href="#services" class="text-xs font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
-            <a href="{{ '/workshop/' | relative_url }}" class="text-xs font-medium hover:text-primary transition-colors whitespace-nowrap">Workshop</a>
-            <a href="{{ '/roi-calculator/' | relative_url }}" class="text-xs font-medium hover:text-primary transition-colors whitespace-nowrap">ROI</a>
+            <a href="#services" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
+            <a href="{{ '/workshop/' | relative_url }}" class="text-sm font-semibold text-primary hover:text-secondary transition-colors whitespace-nowrap bg-primary/8 px-3 py-2 rounded-lg">Workshop</a>
+            <a href="{{ '/roi-calculator/' | relative_url }}" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">ROI</a>
+            <a href="{{ '/tutorials/' | relative_url }}" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Tutorials</a>
           {% else %}
-            <a href="/#services" class="text-xs font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
-            <a href="{{ '/workshop/' | relative_url }}" class="text-xs font-medium hover:text-primary transition-colors whitespace-nowrap">Workshop</a>
-            <a href="{{ '/roi-calculator/' | relative_url }}" class="text-xs font-medium hover:text-primary transition-colors whitespace-nowrap">ROI</a>
+            <a href="/#services" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Services</a>
+            <a href="{{ '/workshop/' | relative_url }}" class="text-sm font-semibold text-primary hover:text-secondary transition-colors whitespace-nowrap bg-primary/8 px-3 py-2 rounded-lg">Workshop</a>
+            <a href="{{ '/roi-calculator/' | relative_url }}" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">ROI</a>
+            <a href="{{ '/tutorials/' | relative_url }}" class="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">Tutorials</a>
           {% endif %}
         </div>
-
-        <!-- Persistent CTA Button (Mobile) -->
-        <a href="https://calendly.com/angel-dimitrov/ai-strategy-call"
-           class="btn-primary text-xs py-2 px-3 whitespace-nowrap"
-           target="_blank"
-           rel="noopener noreferrer">
-          Book Call
-        </a>
       </div>
     </div>
   </div>
