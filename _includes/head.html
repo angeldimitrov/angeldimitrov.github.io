@@ -90,6 +90,44 @@
   <meta name="business.hours" content="Mo-Fr 09:00-17:00">
   <meta name="business.type" content="Consulting Services">
   
+  <!-- Global Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Coding Agents AI",
+    "url": "https://coding-agents.ai",
+    "logo": "https://coding-agents.ai/assets/images/portrait/portrait-800w.jpg",
+    "description": "AI-native development consulting for engineering leaders. Transform your team's productivity with Claude Code workshops, pilot implementations, and strategic advisory services.",
+    "founder": {
+      "@type": "Person",
+      "name": "Angel Dimitrov",
+      "jobTitle": "AI Development Consultant",
+      "url": "https://coding-agents.ai/",
+      "sameAs": [
+        "https://github.com/angeldimitrov",
+        "https://linkedin.com/in/angeldimitrov"
+      ]
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Sales",
+      "email": "angel@coding-agents.ai",
+      "availableLanguage": ["English", "German"],
+      "areaServed": "Worldwide"
+    },
+    "sameAs": [
+      "https://github.com/angeldimitrov",
+      "https://linkedin.com/in/angeldimitrov"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Remote",
+      "addressCountry": "Worldwide"
+    }
+  }
+  </script>
+
   {% if page.structured_data %}
   <!-- Page-specific Structured Data -->
   {{ page.structured_data }}
