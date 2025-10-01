@@ -806,6 +806,12 @@ function submitToGoogleSheets(results) {
   };
 
   // Submit to Google Sheets (async, non-blocking)
+  console.log('Attempting to submit to Google Sheets...', {
+    url: GOOGLE_SHEETS_URL,
+    email: submissionData.email,
+    teamSize: submissionData.teamSize
+  });
+
   fetch(GOOGLE_SHEETS_URL, {
     method: 'POST',
     mode: 'no-cors', // Google Apps Script requires no-cors mode
@@ -816,10 +822,12 @@ function submitToGoogleSheets(results) {
   })
   .then(() => {
     // Success - no response available in no-cors mode
-    console.log('Submission sent to Google Sheets');
+    console.log('✓ Submission sent to Google Sheets successfully');
+    console.log('Data submitted:', submissionData);
   })
   .catch((error) => {
     // Silently fail - don't disrupt user experience
-    console.error('Error submitting to Google Sheets:', error);
+    console.error('✗ Error submitting to Google Sheets:', error);
+    console.log('Failed data:', submissionData);
   });
 }
