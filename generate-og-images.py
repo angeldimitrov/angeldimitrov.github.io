@@ -64,7 +64,7 @@ def create_homepage_og_image():
     add_text_centered(draw, "Expert Consulting for CTOs", 420, detail_font, WHITE)
     add_text_centered(draw, "Proven Results at Scale", 480, detail_font, WHITE)
 
-    img.save('assets/images/og-homepage-temp.jpg', 'JPEG', quality=95)
+    img.save('assets/images/og-homepage.jpg', 'JPEG', quality=95)
     print("✓ Created og-homepage.jpg")
 
 def create_workshop_og_image():
@@ -101,7 +101,7 @@ def create_workshop_og_image():
     add_text_centered(draw, "Custom Commands & Workflows", 440, detail_font, WHITE)
     add_text_centered(draw, "Production-Ready Implementations", 495, detail_font, WHITE)
 
-    img.save('assets/images/og-workshop-temp.jpg', 'JPEG', quality=95)
+    img.save('assets/images/og-workshop.jpg', 'JPEG', quality=95)
     print("✓ Created og-workshop.jpg")
 
 def create_roi_calculator_og_image():
@@ -145,7 +145,7 @@ def create_roi_calculator_og_image():
     # CTA
     add_text_centered(draw, "Free Calculator • No Signup Required", 520, detail_font, WHITE)
 
-    img.save('assets/images/og-roi-calculator-temp.jpg', 'JPEG', quality=95)
+    img.save('assets/images/og-roi-calculator.jpg', 'JPEG', quality=95)
     print("✓ Created og-roi-calculator.jpg")
 
 if __name__ == "__main__":
