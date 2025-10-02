@@ -57,8 +57,12 @@ defaults:
 # SEO settings
 lang: en_US
 twitter:
-  username: 
+  username: angeldimitrov
   card: summary_large_image
+
+# Default social media image
+logo: /assets/images/portrait/portrait-800w.jpg
+image: /assets/images/og-default.jpg
 
 social:
   name: Angel Dimitrov
