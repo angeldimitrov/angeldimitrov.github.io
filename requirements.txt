@@ -1,0 +1,4 @@
+# Python dependencies for OG image generation
+# Install with: pip install -r requirements.txt
+
+Pillow>=10.0.0
