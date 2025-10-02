@@ -115,6 +115,94 @@ This is the most complex section showcasing the "AI Development Team" concept:
 - **Markdown files in `content/en/`** serve as content reference and backup
 - **No dynamic content loading** - pure static site for fast deployment
 
+## Social Media & Open Graph Images
+
+### Overview
+The site uses custom-designed Open Graph (OG) images for social media sharing. These 1200x630px images are displayed when pages are shared on Twitter, LinkedIn, Facebook, etc.
+
+### OG Image Files
+Located in `assets/images/`:
+- `og-homepage.jpg` - Landing page preview
+- `og-workshop.jpg` - Workshop page preview
+- `og-roi-calculator.jpg` - ROI calculator preview
+- `og-default.jpg` - Fallback for other pages
+
+### How OG Images Work
+The site uses `jekyll-seo-tag` plugin to generate meta tags:
+
+1. **Page-specific images** via frontmatter:
+```yaml
+---
+image: /assets/images/og-homepage.jpg
+og_image_alt: Ship Software 3x Faster...
+twitter_image_alt: Transform your engineering team...
+---
+```
+
+2. **Fallback chain** (configured in `_config.yml`):
+   - Page `image` frontmatter (primary)
+   - Site-wide `site.image` (`og-default.jpg`)
+   - Site logo as last resort
+
+3. **Supplementary metadata** (in `_includes/head.html`):
+   - Image dimensions (1200x630)
+   - Alt text for accessibility
+   - Image type (image/jpeg)
+
+### Regenerating OG Images
+
+**When to regenerate:**
+- Brand colors change
+- Messaging updates
+- New pages added
+
+**How to regenerate:**
+```bash
+# Ensure dependencies installed
+pip install Pillow
+
+# Run generator script
+python3 generate-og-images.py
+```
+
+The script uses:
+- **Inter font** (bundled in `assets/fonts/inter/`)
+- **Brand colors** from `tailwind.config.js`
+- **Solid background** (#1e293b) matching site design
+
+**Output:**
+- 1200x630px JPEG images
+- Quality 95 (~95KB each)
+- Optimized for social platforms
+
+### Font Management
+Inter font is bundled in `assets/fonts/inter/` for OG image generation:
+- **InterVariable.ttf** - Variable font (primary)
+- **Inter.ttc** - TrueType Collection (fallback)
+- **LICENSE.txt** - SIL OFL 1.1 license
+
+**Why bundled?**
+- Ensures reproducible image generation
+- Matches website fonts (Inter from Google Fonts)
+- Legal under SIL Open Font License 1.1
+
+See `assets/fonts/inter/README.md` for details.
+
+### Validation
+After regenerating, verify OG images:
+```bash
+# Check image dimensions
+file assets/images/og-*.jpg
+
+# Visual inspection
+open assets/images/og-homepage.jpg
+```
+
+Test social previews:
+- Twitter Card Validator: https://cards-dev.twitter.com/validator
+- LinkedIn Post Inspector: https://www.linkedin.com/post-inspector/
+- Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/
+
 ## Key Configuration
 
 ### Jekyll Configuration

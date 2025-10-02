@@ -1,7 +1,35 @@
 #!/usr/bin/env python3
 """
 Generate Open Graph images for social media sharing
-Creates 1200x630px images with brand colors and messaging
+
+Creates 1200x630px images with brand colors and messaging for:
+- Homepage (og-homepage.jpg)
+- Workshop page (og-workshop.jpg)
+- ROI Calculator (og-roi-calculator.jpg)
+- Default fallback (og-default.jpg)
+
+Requirements:
+- Python 3.x
+- Pillow (PIL): pip install Pillow
+- Inter font files (bundled in assets/fonts/inter/)
+
+Usage:
+    python3 generate-og-images.py
+
+Output:
+    Generates all OG images in assets/images/ directory
+    Images are 1200x630px JPEG format, quality 95, ~95KB each
+
+Design:
+    - Background: Solid dark slate (#1e293b) matching site
+    - Fonts: Inter Variable font (same as website)
+    - Colors: White text with purple accents (#c084fc)
+    - Brand colors: Blue (#3B82F6) for stats
+
+Font License:
+    Inter font by Rasmus Andersson
+    Licensed under SIL Open Font License 1.1
+    https://github.com/rsms/inter
 """
 
 from PIL import Image, ImageDraw, ImageFont
@@ -36,18 +64,18 @@ def create_homepage_og_image():
     # Use Inter font from the website
     try:
         # Use Inter Variable font (same as website)
-        title_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 90)
+        title_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 90)
         title_font.set_variation_by_name('Bold')
-        subtitle_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 48)
+        subtitle_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 48)
         subtitle_font.set_variation_by_name('SemiBold')
-        detail_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 36)
+        detail_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 36)
         detail_font.set_variation_by_name('Medium')
     except:
         # Fallback to Inter.ttc or system fonts
         try:
-            title_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 90)
-            subtitle_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 48)
-            detail_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 36)
+            title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 90)
+            subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 48)
+            detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 36)
         except:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
@@ -73,17 +101,17 @@ def create_workshop_og_image():
     draw = ImageDraw.Draw(img)
 
     try:
-        title_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 80)
+        title_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 80)
         title_font.set_variation_by_name('Bold')
-        subtitle_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 46)
+        subtitle_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 46)
         subtitle_font.set_variation_by_name('SemiBold')
-        detail_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 34)
+        detail_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 34)
         detail_font.set_variation_by_name('Medium')
     except:
         try:
-            title_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 80)
-            subtitle_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 46)
-            detail_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 34)
+            title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 80)
+            subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 46)
+            detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 34)
         except:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
@@ -110,20 +138,20 @@ def create_roi_calculator_og_image():
     draw = ImageDraw.Draw(img)
 
     try:
-        title_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 78)
+        title_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 78)
         title_font.set_variation_by_name('Bold')
-        subtitle_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 44)
+        subtitle_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 44)
         subtitle_font.set_variation_by_name('SemiBold')
-        detail_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 36)
+        detail_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 36)
         detail_font.set_variation_by_name('Medium')
-        stat_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 120)
+        stat_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 120)
         stat_font.set_variation_by_name('Bold')
     except:
         try:
-            title_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 78)
-            subtitle_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 44)
-            detail_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 36)
-            stat_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 120)
+            title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 78)
+            subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 44)
+            detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 36)
+            stat_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 120)
         except:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
