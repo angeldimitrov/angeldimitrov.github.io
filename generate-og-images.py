@@ -36,13 +36,13 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 
 # Brand colors from tailwind.config.js
-PRIMARY = "#3B82F6"  # Blue
-SECONDARY = "#1E40AF"  # Darker blue
-DARK_BG = "#1e293b"  # Dark slate
-WHITE = "#ffffff"
-PURPLE = "#c084fc"
-GRADIENT_START = "#2563EB"  # Blue from gradient
-GRADIENT_END = "#9333EA"    # Purple from gradient
+PRIMARY = "#3B82F6"  # Blue - used for stats and key numbers
+DARK_BG = "#1e293b"  # Dark slate - background color
+WHITE = "#ffffff"    # White - primary text color
+PURPLE = "#c084fc"   # Purple - accent color for subtitles
+
+# Note: SECONDARY, GRADIENT_START, GRADIENT_END not currently used
+# Reserved for future gradient backgrounds or button styling if needed
 
 def create_gradient_background(width, height):
     """Create a solid dark background matching the site"""
@@ -176,6 +176,12 @@ def create_roi_calculator_og_image():
     img.save('assets/images/og-roi-calculator.jpg', 'JPEG', quality=95)
     print("✓ Created og-roi-calculator.jpg")
 
+def create_default_og_image():
+    """Default OG image: Copy of homepage for fallback"""
+    import shutil
+    shutil.copy('assets/images/og-homepage.jpg', 'assets/images/og-default.jpg')
+    print("✓ Created og-default.jpg (copy of homepage)")
+
 if __name__ == "__main__":
     print("Generating Open Graph images (1200x630px)...")
     print()
@@ -183,6 +189,7 @@ if __name__ == "__main__":
     create_homepage_og_image()
     create_workshop_og_image()
     create_roi_calculator_og_image()
+    create_default_og_image()
 
     print()
     print("✅ All OG images generated successfully!")
