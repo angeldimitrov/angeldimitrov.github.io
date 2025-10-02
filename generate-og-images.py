@@ -13,76 +13,62 @@ SECONDARY = "#1E40AF"  # Darker blue
 DARK_BG = "#1e293b"  # Dark slate
 WHITE = "#ffffff"
 PURPLE = "#c084fc"
+GRADIENT_START = "#2563EB"  # Blue from gradient
+GRADIENT_END = "#9333EA"    # Purple from gradient
 
 def create_gradient_background(width, height):
-    """Create a dark gradient background"""
+    """Create a clean dark background with subtle gradient accent"""
     img = Image.new('RGB', (width, height), DARK_BG)
     draw = ImageDraw.Draw(img)
 
-    # Add subtle grid pattern (matching hero section)
-    grid_color = (148, 163, 184, 20)  # rgba(148, 163, 184, 0.08) approximation
-    for x in range(0, width, 50):
-        draw.line([(x, 0), (x, height)], fill=grid_color, width=1)
-    for y in range(0, height, 50):
-        draw.line([(0, y), (width, y)], fill=grid_color, width=1)
+    # Add subtle gradient accent at top (much lighter than site)
+    for y in range(200):
+        # Very subtle blue to purple gradient at top
+        alpha = int((200 - y) / 200 * 15)  # Max 15 opacity
+        if y % 2 == 0:  # Every other line for subtlety
+            draw.line([(0, y), (width, y)], fill=(37, 99, 235, alpha))
 
     return img
 
-def add_text_with_shadow(draw, text, position, font, text_color, shadow_color):
-    """Add text with subtle shadow for depth"""
-    x, y = position
-    # Shadow
-    draw.text((x + 2, y + 2), text, font=font, fill=shadow_color)
-    # Main text
-    draw.text((x, y), text, font=font, fill=text_color)
+def add_text_centered(draw, text, y, font, color, width=1200):
+    """Add centered text at given y position"""
+    bbox = draw.textbbox((0, 0), text, font=font)
+    text_width = bbox[2] - bbox[0]
+    x = (width - text_width) // 2
+    draw.text((x, y), text, font=font, fill=color)
 
 def create_homepage_og_image():
     """Homepage: Ship Software 3x Faster"""
     img = create_gradient_background(1200, 630)
     draw = ImageDraw.Draw(img)
 
-    # Try to load system fonts, fall back to default
+    # Use Inter-like system fonts
     try:
-        title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 80)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 40)
-        cta_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 32)
+        # Try SF Pro (macOS), fallback to Arial/Helvetica
+        title_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 90)
+        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Semibold.otf", 48)
+        detail_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Text-Medium.otf", 36)
     except:
-        title_font = ImageFont.load_default()
-        subtitle_font = ImageFont.load_default()
-        cta_font = ImageFont.load_default()
+        try:
+            title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 90)
+            subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 48)
+            detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 36)
+        except:
+            title_font = ImageFont.load_default()
+            subtitle_font = ImageFont.load_default()
+            detail_font = ImageFont.load_default()
 
-    # Main headline - centered
-    headline = "Ship Software 3x Faster"
-    bbox = draw.textbbox((0, 0), headline, font=title_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-
-    add_text_with_shadow(draw, headline, (x, 150), title_font, WHITE, "#000000")
+    # Main headline
+    add_text_centered(draw, "Ship Software 3x Faster", 140, title_font, WHITE)
 
     # Subtitle
-    subtitle = "AI-Native Development Consulting"
-    bbox = draw.textbbox((0, 0), subtitle, font=subtitle_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
+    add_text_centered(draw, "AI-Native Development Consulting", 260, subtitle_font, PURPLE)
 
-    add_text_with_shadow(draw, subtitle, (x, 280), subtitle_font, PURPLE, "#000000")
+    # Value props - clean checkmarks
+    add_text_centered(draw, "40-60% Productivity Gains", 360, detail_font, WHITE)
+    add_text_centered(draw, "Expert Consulting for CTOs", 420, detail_font, WHITE)
+    add_text_centered(draw, "Proven Results at Scale", 480, detail_font, WHITE)
 
-    # Value props
-    props = [
-        "✓ 40-60% Productivity Gains",
-        "✓ Expert Consulting for CTOs",
-        "✓ Proven Results at Scale"
-    ]
-
-    y = 380
-    for prop in props:
-        bbox = draw.textbbox((0, 0), prop, font=cta_font)
-        text_width = bbox[2] - bbox[0]
-        x = (1200 - text_width) // 2
-        draw.text((x, y), prop, font=cta_font, fill=WHITE)
-        y += 50
-
-    # Save
     img.save('assets/images/og-homepage-temp.jpg', 'JPEG', quality=95)
     print("✓ Created og-homepage.jpg")
 
@@ -92,43 +78,30 @@ def create_workshop_og_image():
     draw = ImageDraw.Draw(img)
 
     try:
-        title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 72)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 42)
-        detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 32)
+        title_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 80)
+        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Semibold.otf", 46)
+        detail_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Text-Medium.otf", 34)
     except:
-        title_font = ImageFont.load_default()
-        subtitle_font = ImageFont.load_default()
-        detail_font = ImageFont.load_default()
+        try:
+            title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 80)
+            subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 46)
+            detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 34)
+        except:
+            title_font = ImageFont.load_default()
+            subtitle_font = ImageFont.load_default()
+            detail_font = ImageFont.load_default()
 
     # Title
-    title = "Claude Code Workshop"
-    bbox = draw.textbbox((0, 0), title, font=title_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    add_text_with_shadow(draw, title, (x, 120), title_font, WHITE, "#000000")
+    add_text_centered(draw, "Claude Code Workshop", 120, title_font, WHITE)
 
     # Subtitle
-    subtitle = "2-Day Intensive Training"
-    bbox = draw.textbbox((0, 0), subtitle, font=subtitle_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    add_text_with_shadow(draw, subtitle, (x, 230), subtitle_font, PURPLE, "#000000")
+    add_text_centered(draw, "2-Day Intensive Training", 230, subtitle_font, PURPLE)
 
     # Key features
-    features = [
-        "• Plan Mode & Subagents",
-        "• MCP Protocol Setup",
-        "• Custom Commands & Workflows",
-        "• Production-Ready Implementations"
-    ]
-
-    y = 340
-    for feature in features:
-        bbox = draw.textbbox((0, 0), feature, font=detail_font)
-        text_width = bbox[2] - bbox[0]
-        x = (1200 - text_width) // 2
-        draw.text((x, y), feature, font=detail_font, fill=WHITE)
-        y += 50
+    add_text_centered(draw, "Plan Mode & Subagents", 330, detail_font, WHITE)
+    add_text_centered(draw, "MCP Protocol Setup", 385, detail_font, WHITE)
+    add_text_centered(draw, "Custom Commands & Workflows", 440, detail_font, WHITE)
+    add_text_centered(draw, "Production-Ready Implementations", 495, detail_font, WHITE)
 
     img.save('assets/images/og-workshop-temp.jpg', 'JPEG', quality=95)
     print("✓ Created og-workshop.jpg")
@@ -139,50 +112,36 @@ def create_roi_calculator_og_image():
     draw = ImageDraw.Draw(img)
 
     try:
-        title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 70)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 40)
-        detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 32)
-        stat_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 60)
+        title_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 78)
+        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Semibold.otf", 44)
+        detail_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Text-Medium.otf", 36)
+        stat_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 120)
     except:
-        title_font = ImageFont.load_default()
-        subtitle_font = ImageFont.load_default()
-        detail_font = ImageFont.load_default()
-        stat_font = ImageFont.load_default()
+        try:
+            title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 78)
+            subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 44)
+            detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 36)
+            stat_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 120)
+        except:
+            title_font = ImageFont.load_default()
+            subtitle_font = ImageFont.load_default()
+            detail_font = ImageFont.load_default()
+            stat_font = ImageFont.load_default()
 
     # Title
-    title = "AI Development Impact"
-    bbox = draw.textbbox((0, 0), title, font=title_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    add_text_with_shadow(draw, title, (x, 100), title_font, WHITE, "#000000")
+    add_text_centered(draw, "AI Development Impact", 100, title_font, WHITE)
 
     # Subtitle
-    subtitle = "Calculate Your Team's Potential"
-    bbox = draw.textbbox((0, 0), subtitle, font=subtitle_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    add_text_with_shadow(draw, subtitle, (x, 200), subtitle_font, PURPLE, "#000000")
+    add_text_centered(draw, "Calculate Your Team's Potential", 200, subtitle_font, PURPLE)
 
     # Key stat
-    stat = "40-60%"
-    bbox = draw.textbbox((0, 0), stat, font=stat_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    draw.text((x, 300), stat, font=stat_font, fill=PRIMARY)
+    add_text_centered(draw, "40-60%", 300, stat_font, PRIMARY)
 
     # Description
-    desc = "Productivity Increase"
-    bbox = draw.textbbox((0, 0), desc, font=subtitle_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    draw.text((x, 390), desc, font=subtitle_font, fill=WHITE)
+    add_text_centered(draw, "Productivity Increase", 440, subtitle_font, WHITE)
 
     # CTA
-    cta = "Free Calculator • No Signup Required"
-    bbox = draw.textbbox((0, 0), cta, font=detail_font)
-    text_width = bbox[2] - bbox[0]
-    x = (1200 - text_width) // 2
-    draw.text((x, 500), cta, font=detail_font, fill=WHITE)
+    add_text_centered(draw, "Free Calculator • No Signup Required", 520, detail_font, WHITE)
 
     img.save('assets/images/og-roi-calculator-temp.jpg', 'JPEG', quality=95)
     print("✓ Created og-roi-calculator.jpg")
