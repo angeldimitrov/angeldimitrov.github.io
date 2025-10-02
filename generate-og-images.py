@@ -17,17 +17,8 @@ GRADIENT_START = "#2563EB"  # Blue from gradient
 GRADIENT_END = "#9333EA"    # Purple from gradient
 
 def create_gradient_background(width, height):
-    """Create a clean dark background with subtle gradient accent"""
+    """Create a solid dark background matching the site"""
     img = Image.new('RGB', (width, height), DARK_BG)
-    draw = ImageDraw.Draw(img)
-
-    # Add subtle gradient accent at top (much lighter than site)
-    for y in range(200):
-        # Very subtle blue to purple gradient at top
-        alpha = int((200 - y) / 200 * 15)  # Max 15 opacity
-        if y % 2 == 0:  # Every other line for subtlety
-            draw.line([(0, y), (width, y)], fill=(37, 99, 235, alpha))
-
     return img
 
 def add_text_centered(draw, text, y, font, color, width=1200):
@@ -42,17 +33,21 @@ def create_homepage_og_image():
     img = create_gradient_background(1200, 630)
     draw = ImageDraw.Draw(img)
 
-    # Use Inter-like system fonts
+    # Use Inter font from the website
     try:
-        # Try SF Pro (macOS), fallback to Arial/Helvetica
-        title_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 90)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Semibold.otf", 48)
-        detail_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Text-Medium.otf", 36)
+        # Use Inter Variable font (same as website)
+        title_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 90)
+        title_font.set_variation_by_name('Bold')
+        subtitle_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 48)
+        subtitle_font.set_variation_by_name('SemiBold')
+        detail_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 36)
+        detail_font.set_variation_by_name('Medium')
     except:
+        # Fallback to Inter.ttc or system fonts
         try:
-            title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 90)
-            subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 48)
-            detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 36)
+            title_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 90)
+            subtitle_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 48)
+            detail_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 36)
         except:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
@@ -78,14 +73,17 @@ def create_workshop_og_image():
     draw = ImageDraw.Draw(img)
 
     try:
-        title_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 80)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Semibold.otf", 46)
-        detail_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Text-Medium.otf", 34)
+        title_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 80)
+        title_font.set_variation_by_name('Bold')
+        subtitle_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 46)
+        subtitle_font.set_variation_by_name('SemiBold')
+        detail_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 34)
+        detail_font.set_variation_by_name('Medium')
     except:
         try:
-            title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 80)
-            subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 46)
-            detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 34)
+            title_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 80)
+            subtitle_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 46)
+            detail_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 34)
         except:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
@@ -112,16 +110,20 @@ def create_roi_calculator_og_image():
     draw = ImageDraw.Draw(img)
 
     try:
-        title_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 78)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Semibold.otf", 44)
-        detail_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Text-Medium.otf", 36)
-        stat_font = ImageFont.truetype("/System/Library/Fonts/SF-Pro-Display-Bold.otf", 120)
+        title_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 78)
+        title_font.set_variation_by_name('Bold')
+        subtitle_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 44)
+        subtitle_font.set_variation_by_name('SemiBold')
+        detail_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 36)
+        detail_font.set_variation_by_name('Medium')
+        stat_font = ImageFont.truetype("/tmp/inter-font/InterVariable.ttf", 120)
+        stat_font.set_variation_by_name('Bold')
     except:
         try:
-            title_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 78)
-            subtitle_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 44)
-            detail_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 36)
-            stat_font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 120)
+            title_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 78)
+            subtitle_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 44)
+            detail_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 36)
+            stat_font = ImageFont.truetype("/tmp/inter-font/Inter.ttc", 120)
         except:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
