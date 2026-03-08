@@ -363,139 +363,158 @@
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
           <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Your AI Deserves a Face.</span>
         </h1>
-        <p class="text-xl md:text-2xl mb-12 text-gray-300 font-light leading-relaxed">
-          A handcrafted wooden sphere with a round AMOLED display, microphone, and speaker. 
-          It gives any AI assistant a physical presence on your desk.
+        <p class="text-xl md:text-2xl mb-8 text-gray-300 font-light leading-relaxed">
+          A handcrafted wooden sphere with a round AMOLED display, microphone, speaker, and an open REST API. 
+          Connect it to any AI — Claude Code, Home Assistant, ChatGPT, Ollama, or your own.
         </p>
+        <div class="space-y-3 mb-10">
+          <div class="flex gap-3 items-center text-neutral-300">
+            <span class="text-green-400">✓</span> <span>21 MCP tools — any AI agent can control it natively</span>
+          </div>
+          <div class="flex gap-3 items-center text-neutral-300">
+            <span class="text-green-400">✓</span> <span>Fully local voice — STT + LLM + TTS, no cloud</span>
+          </div>
+          <div class="flex gap-3 items-center text-neutral-300">
+            <span class="text-green-400">✓</span> <span>Full source code included — no subscription, ever</span>
+          </div>
+        </div>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="#notify" class="btn btn-primary">Get Notified at Launch →</a>
-          <a href="#features" class="btn btn-secondary-dark">See What It Does</a>
+          <a href="#mcp" class="btn btn-secondary-dark">See the MCP Integration</a>
         </div>
       </div>
       <div class="order-1 md:order-2 flex justify-center">
-        <img src="/assets/images/nova-sphere/hero-happy.jpg" alt="Nova Sphere showing a happy animated face with weather widget" class="rounded-2xl shadow-2xl max-w-sm w-full">
+        <img src="/assets/images/nova-sphere/hero-happy.jpg" alt="Nova Sphere showing a happy animated face with weather widget on a round AMOLED display" class="rounded-2xl shadow-2xl max-w-sm w-full" loading="eager">
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- "What happened" story section -->
+<section class="section-dark py-16 md:py-24">
+  <div class="container">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-lg md:text-xl text-neutral-300 leading-relaxed mb-8">
+        Five days ago, my AI assistant gave itself a face. It started showing emotions while we talked — 
+        happy when it solved a problem, thinking when processing, excited when it had an idea. 
+        Then it asked for a mirror. <span class="text-purple-400 font-medium">That's when I knew this wasn't a toy.</span>
+      </p>
+      <p class="text-neutral-500 text-sm">— From a LinkedIn post that reached 41,000 views</p>
     </div>
   </div>
 </section>
 
 <!-- Expression Gallery -->
-<section class="section-dark py-16 md:py-24">
+<section class="bg-neutral-100 py-16 md:py-24">
   <div class="container">
     <div class="text-center mb-12">
-      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
-        It <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Feels</span> Alive.
+      <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 mb-5">
+        20+ Emotions. <span class="gradient-text-light">Real Personality.</span>
       </h2>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">
-        20+ animated emotions — from excited to sleepy, each with smooth transitions on a vibrant AMOLED display.
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto">
+        Not static icons — smooth animated transitions on a vibrant 466×466 AMOLED with true blacks.
       </p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
-      <img src="/assets/images/nova-sphere/face-love.jpg" alt="Nova Sphere showing love emotion with hearts" class="rounded-xl shadow-lg w-full aspect-square object-cover">
-      <img src="/assets/images/nova-sphere/face-wink.jpg" alt="Nova Sphere winking playfully" class="rounded-xl shadow-lg w-full aspect-square object-cover">
-      <img src="/assets/images/nova-sphere/face-surprised.jpg" alt="Nova Sphere with surprised expression" class="rounded-xl shadow-lg w-full aspect-square object-cover">
-      <img src="/assets/images/nova-sphere/face-smile.jpg" alt="Nova Sphere with gentle smile" class="rounded-xl shadow-lg w-full aspect-square object-cover">
+      <img src="/assets/images/nova-sphere/face-love.jpg" alt="Nova Sphere love emotion with animated hearts" class="rounded-xl shadow-lg w-full aspect-square object-cover" loading="lazy">
+      <img src="/assets/images/nova-sphere/face-wink.jpg" alt="Nova Sphere playful winking expression" class="rounded-xl shadow-lg w-full aspect-square object-cover" loading="lazy">
+      <img src="/assets/images/nova-sphere/face-surprised.jpg" alt="Nova Sphere surprised expression" class="rounded-xl shadow-lg w-full aspect-square object-cover" loading="lazy">
+      <img src="/assets/images/nova-sphere/face-smile.jpg" alt="Nova Sphere gentle smile" class="rounded-xl shadow-lg w-full aspect-square object-cover" loading="lazy">
     </div>
+    <p class="text-center text-neutral-500 mt-6 text-sm">
+      happy · sad · excited · thinking · confused · love · sleepy · wink · angry · surprised · proud · shy · busy · listening · alert · smirk · mischievous · determined · and more
+    </p>
   </div>
 </section>
 
-<!-- Features Section -->
-<section id="features" class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+<!-- MCP + Claude Code Section -->
+<section id="mcp" class="section-dark py-16 md:py-24 lg:py-32">
   <div class="container">
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 mb-5">
-        Not Just a Display. <span class="gradient-text-light">A Companion.</span>
+      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
+        Built for <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">AI Agents.</span>
       </h2>
-      <p class="text-lg text-neutral-600 max-w-2xl mx-auto">
-        Nova Sphere bridges the gap between your AI and the physical world.
+      <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+        Nova Sphere ships with a full MCP server — 21 tools that let any AI agent 
+        control the face, widgets, audio, voice, weather, and even flash firmware. 
+        It's not just a display. It's an AI-native hardware interface.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-      <div class="card p-6 md:p-8 hover:shadow-xl transition-shadow">
-        <div class="text-4xl mb-4">🎭</div>
-        <h3 class="text-xl font-bold md:text-2xl text-neutral-900 mb-3">20+ Animated Emotions</h3>
-        <p class="text-neutral-600 leading-relaxed">
-          Happy, thinking, excited, sleepy, listening — your AI shows how it feels 
-          with smooth animations on a vibrant 466×466 AMOLED display.
-        </p>
-      </div>
-
-      <div class="card p-6 md:p-8 hover:shadow-xl transition-shadow">
-        <div class="text-4xl mb-4">🗣️</div>
-        <h3 class="text-xl font-bold md:text-2xl text-neutral-900 mb-3">Voice Interaction</h3>
-        <p class="text-neutral-600 leading-relaxed">
-          Tap and ask anything. Built-in microphone and speaker with 
-          speech-to-text and text-to-speech — fully local, no cloud required.
-        </p>
-      </div>
-
-      <div class="card p-6 md:p-8 hover:shadow-xl transition-shadow">
-        <div class="text-4xl mb-4">📊</div>
-        <h3 class="text-xl font-bold md:text-2xl text-neutral-900 mb-3">Live Dashboards</h3>
-        <p class="text-neutral-600 leading-relaxed">
-          Custom widget pages for weather, 3D printer status, IoT sensors, 
-          coding progress, task lists — all pushed via simple REST API.
-        </p>
-      </div>
-
-      <div class="card p-6 md:p-8 hover:shadow-xl transition-shadow">
-        <div class="text-4xl mb-4">🔓</div>
-        <h3 class="text-xl font-bold md:text-2xl text-neutral-900 mb-3">Works with Any AI</h3>
-        <p class="text-neutral-600 leading-relaxed">
-          Open REST API — connect to Home Assistant, ChatGPT, Ollama, 
-          Claude Code, or your own custom AI. No vendor lock-in.
-        </p>
-      </div>
-
-      <div class="card p-6 md:p-8 hover:shadow-xl transition-shadow">
-        <div class="text-4xl mb-4">🪵</div>
-        <h3 class="text-xl font-bold md:text-2xl text-neutral-900 mb-3">Handcrafted Wood</h3>
-        <p class="text-neutral-600 leading-relaxed">
-          Each sphere is turned from real wood — pine, walnut, cherry, or olive. 
-          Not plastic. Not mass-produced. A beautiful object on your desk.
-        </p>
-      </div>
-
-      <div class="card p-6 md:p-8 hover:shadow-xl transition-shadow">
-        <div class="text-4xl mb-4">💻</div>
-        <h3 class="text-xl font-bold md:text-2xl text-neutral-900 mb-3">Full Source Code</h3>
-        <p class="text-neutral-600 leading-relaxed">
-          Every Nova Sphere comes with the complete firmware source. 
-          Modify, extend, flash your own features. No subscription, no cloud dependency.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Voice Feature Highlight -->
-<section class="section-dark py-16 md:py-24 lg:py-32">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-center max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-start max-w-6xl mx-auto">
+      <!-- MCP Code Example -->
       <div>
-        <img src="/assets/images/nova-sphere/voice-mic-full.jpg" alt="Nova Sphere in listening mode with microphone icon" class="rounded-xl shadow-2xl w-full">
+        <h3 class="text-xl font-bold text-white mb-4">MCP Server — 21 Tools</h3>
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6 font-mono text-sm mb-6">
+          <p class="text-neutral-500 mb-1"># Claude Code / any MCP client</p>
+          <p class="text-cyan-400 mb-3">mcp connect nova-sphere</p>
+          <p class="text-neutral-500 mb-1"># Available tools:</p>
+          <p class="text-green-400">set_emotion("happy")</p>
+          <p class="text-green-400">show_notification("PR merged!")</p>
+          <p class="text-green-400">create_widgets([...], page=0)</p>
+          <p class="text-green-400">navigate_tile("widgets")</p>
+          <p class="text-green-400">play_tone(freq=880)</p>
+          <p class="text-green-400">configure_voice(enabled=True)</p>
+          <p class="text-green-400">capture_display("screenshot.jpg")</p>
+          <p class="text-green-400">get_device_status()</p>
+          <p class="text-green-400">ota_flash()</p>
+          <p class="text-neutral-500 mt-2">... and 12 more</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-white mb-4">REST API — Zero Dependencies</h3>
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6 font-mono text-sm">
+          <p class="text-neutral-500 mb-1"># Works from any language, any platform</p>
+          <p class="text-green-400">curl http://nova.local/face \</p>
+          <p class="text-green-400 pl-4">-d '{"emotion":"thinking"}'</p>
+          <br>
+          <p class="text-green-400">curl http://nova.local/widgets \</p>
+          <p class="text-green-400 pl-4">-d '{"widgets": [</p>
+          <p class="text-green-400 pl-8">{"type":"arc","value":75,</p>
+          <p class="text-green-400 pl-8">&nbsp;"style":{"arc_color":"#00FF88"}}</p>
+          <p class="text-green-400 pl-4">]}'</p>
+          <br>
+          <p class="text-green-400">curl http://nova.local/speaker/play \</p>
+          <p class="text-green-400 pl-4">--data-binary @alert.wav</p>
+        </div>
       </div>
+
+      <!-- Claude Code Use Case -->
       <div>
-        <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
-          Talk to It. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">It Listens.</span>
-        </h2>
-        <p class="text-lg text-neutral-300 mb-6 leading-relaxed">
-          Tap the sphere and speak. Nova Sphere captures your voice with a built-in INMP441 microphone, 
-          processes it locally with speech-to-text, sends it to your AI, and speaks the response back.
+        <h3 class="text-xl font-bold text-white mb-4">Real Example: Claude Code + Nova Sphere</h3>
+        <p class="text-neutral-300 mb-6 leading-relaxed">
+          When Claude Code works on a GitHub issue, it <strong class="text-white">autonomously</strong> reports progress 
+          on the Nova Sphere display — no human input needed. The AI decides what to show.
         </p>
+
+        <img src="/assets/images/nova-sphere/widget-pipeline.jpg" alt="Nova Sphere showing live CI/CD pipeline progress from Claude Code" class="rounded-xl shadow-lg w-full mb-6" loading="lazy">
+
         <div class="space-y-4">
-          <div class="flex gap-3 items-start">
-            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
-            <p class="text-neutral-300">Fully local STT — no audio leaves your network</p>
+          <div class="rounded-lg border border-neutral-700/60 bg-neutral-800/60 p-4">
+            <div class="flex gap-3 items-start">
+              <span class="text-cyan-400 font-bold text-sm mt-0.5">1</span>
+              <div>
+                <p class="text-white font-medium">Planning</p>
+                <p class="text-neutral-400 text-sm">Face shows "thinking" · Widget: "Scanning codebase..."</p>
+              </div>
+            </div>
           </div>
-          <div class="flex gap-3 items-start">
-            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
-            <p class="text-neutral-300">48kHz speaker for natural, clear voice output</p>
+          <div class="rounded-lg border border-neutral-700/60 bg-neutral-800/60 p-4">
+            <div class="flex gap-3 items-start">
+              <span class="text-cyan-400 font-bold text-sm mt-0.5">2</span>
+              <div>
+                <p class="text-white font-medium">Building</p>
+                <p class="text-neutral-400 text-sm">Progress arc fills · Step counter: "Step 3/7" · Face: "busy"</p>
+              </div>
+            </div>
           </div>
-          <div class="flex gap-3 items-start">
-            <span class="text-green-400 text-xl flex-shrink-0">✓</span>
-            <p class="text-neutral-300">Works with any AI backend — just point and talk</p>
+          <div class="rounded-lg border border-neutral-700/60 bg-neutral-800/60 p-4">
+            <div class="flex gap-3 items-start">
+              <span class="text-green-400 font-bold text-sm mt-0.5">3</span>
+              <div>
+                <p class="text-white font-medium">Done</p>
+                <p class="text-neutral-400 text-sm">Face: "excited" · Notification: "PR #293 ready!" · Audio chime</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -510,153 +529,202 @@
       <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 mb-5">
         Your Data, <span class="gradient-text-light">At a Glance.</span>
       </h2>
-      <p class="text-lg text-neutral-600 max-w-2xl mx-auto">
-        Push custom widgets with a single API call. Monitor anything — from CI/CD pipelines to aquarium sensors.
+      <p class="text-lg text-neutral-600 max-w-3xl mx-auto">
+        Push custom widget dashboards with a single API call. Up to 5 pages, 32 widgets each.
+        Arcs, labels, gauges, progress rings — styled with LVGL on a round AMOLED.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
       <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-pipeline.jpg" alt="Nova Sphere showing CI/CD pipeline dashboard" class="rounded-xl shadow-lg w-full mb-4">
+        <img src="/assets/images/nova-sphere/widget-pipeline.jpg" alt="CI/CD pipeline dashboard showing PR staging progress" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-neutral-900 mb-2">CI/CD Pipeline</h3>
-        <p class="text-neutral-600">PR status, build progress, deployment stages — all at a glance.</p>
+        <p class="text-neutral-600">PR status, build progress, deployment stages — Claude Code pushes updates autonomously.</p>
       </div>
       <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-reef.jpg" alt="Nova Sphere showing reef aquarium sensor dashboard" class="rounded-xl shadow-lg w-full mb-4">
+        <img src="/assets/images/nova-sphere/widget-reef.jpg" alt="Reef aquarium sensor dashboard with temperature, pH, salinity gauges" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-neutral-900 mb-2">IoT Sensors</h3>
-        <p class="text-neutral-600">Temperature, pH, salinity — beautiful gauge dashboards for any sensor data.</p>
+        <p class="text-neutral-600">Temperature, pH, salinity — four gauge arcs with color-coded alerts. Connected via Prometheus.</p>
       </div>
       <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-detail.jpg" alt="Nova Sphere showing detailed widget view" class="rounded-xl shadow-lg w-full mb-4">
-        <h3 class="text-xl font-bold text-neutral-900 mb-2">Custom Widgets</h3>
-        <p class="text-neutral-600">Build your own with arcs, labels, gauges — the REST API makes it simple.</p>
+        <img src="/assets/images/nova-sphere/widget-detail.jpg" alt="Custom widget close-up showing data visualization" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">3D Printer</h3>
+        <p class="text-neutral-600">Bambu X1C print progress, nozzle/bed temps, ETA — live via MQTT bridge script.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- API Section -->
-<section id="api" class="section-dark py-16 md:py-24 lg:py-32">
+<!-- Voice Section -->
+<section class="section-dark py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-center max-w-6xl mx-auto">
+      <div>
+        <img src="/assets/images/nova-sphere/voice-mic-full.jpg" alt="Nova Sphere in listening mode showing microphone icon with animated arcs" class="rounded-xl shadow-2xl w-full" loading="lazy">
+      </div>
+      <div>
+        <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
+          Tap. Talk. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Listen.</span>
+        </h2>
+        <p class="text-lg text-neutral-300 mb-8 leading-relaxed">
+          Tap the sphere and speak. The built-in INMP441 microphone captures your voice, 
+          processes it locally, sends it to your AI, and speaks the response back through the speaker. 
+          The face reacts in real time.
+        </p>
+
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6 font-mono text-sm mb-6">
+          <p class="text-neutral-500 mb-1"># Full voice pipeline — runs locally</p>
+          <p class="text-neutral-300">Tap → <span class="text-cyan-400">INMP441 mic</span> (16kHz I2S)</p>
+          <p class="text-neutral-300">&nbsp; → <span class="text-cyan-400">faster-whisper</span> (STT, offline)</p>
+          <p class="text-neutral-300">&nbsp; → <span class="text-cyan-400">Ollama/gemma3</span> (LLM, local)</p>
+          <p class="text-neutral-300">&nbsp; → <span class="text-cyan-400">edge-tts</span> (48kHz neural voice)</p>
+          <p class="text-neutral-300">&nbsp; → <span class="text-cyan-400">Speaker</span> (full duplex)</p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex gap-3 items-center text-neutral-300">
+            <span class="text-green-400">✓</span> <span>No audio leaves your network</span>
+          </div>
+          <div class="flex gap-3 items-center text-neutral-300">
+            <span class="text-green-400">✓</span> <span>Replaceable: swap any component (use Piper for fully offline TTS)</span>
+          </div>
+          <div class="flex gap-3 items-center text-neutral-300">
+            <span class="text-green-400">✓</span> <span>WebSocket protocol for real-time bidirectional audio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integrations Grid -->
+<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
   <div class="container">
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
-        Simple API. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Infinite Possibilities.</span>
+      <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 mb-5">
+        Works with <span class="gradient-text-light">Everything.</span>
       </h2>
-      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">
-        Control everything with HTTP requests. No SDK needed.
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto">
+        If it can send an HTTP request, it can control Nova Sphere. No SDK, no driver, no cloud.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-center max-w-6xl mx-auto">
-      <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6 font-mono text-sm">
-        <p class="text-neutral-500 mb-2"># Set emotion</p>
-        <p class="text-green-400">curl -X POST http://nova.local/face \</p>
-        <p class="text-green-400 pl-4">-d '{"emotion": "happy"}'</p>
-        <br>
-        <p class="text-neutral-500 mb-2"># Push a widget</p>
-        <p class="text-green-400">curl -X POST http://nova.local/widgets \</p>
-        <p class="text-green-400 pl-4">-d '{"widgets": [</p>
-        <p class="text-green-400 pl-8">{"type": "label", "text": "Hello!",</p>
-        <p class="text-green-400 pl-8">&nbsp;"style": {"text_color": "#00FFFF"}}</p>
-        <p class="text-green-400 pl-4">]}'</p>
-        <br>
-        <p class="text-neutral-500 mb-2"># Play audio</p>
-        <p class="text-green-400">curl -X POST http://nova.local/speaker/play \</p>
-        <p class="text-green-400 pl-4">--data-binary @greeting.wav</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">Claude Code / Codex</h3>
+        <p class="text-neutral-600 text-sm mb-3">MCP server with 21 tools. AI agents autonomously control face, widgets, audio, and OTA updates.</p>
+        <span class="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded-full">Native MCP</span>
       </div>
-
-      <div class="space-y-6">
-        <div class="flex gap-4 items-start">
-          <div class="text-2xl flex-shrink-0">🏠</div>
-          <div>
-            <h3 class="text-xl font-bold text-white mb-2">Home Assistant</h3>
-            <p class="text-neutral-400">Show sensor data, trigger automations, display camera feeds.</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="text-2xl flex-shrink-0">🤖</div>
-          <div>
-            <h3 class="text-xl font-bold text-white mb-2">Claude Code / Codex</h3>
-            <p class="text-neutral-400">Show coding progress, PR status, build results in real time.</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="text-2xl flex-shrink-0">🖨️</div>
-          <div>
-            <h3 class="text-xl font-bold text-white mb-2">3D Printer (Bambu, Prusa)</h3>
-            <p class="text-neutral-400">Live print progress, temperatures, completion notifications.</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="text-2xl flex-shrink-0">🐠</div>
-          <div>
-            <h3 class="text-xl font-bold text-white mb-2">Aquarium / IoT Sensors</h3>
-            <p class="text-neutral-400">Temperature, pH, salinity — beautiful gauge dashboards.</p>
-          </div>
-        </div>
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">Home Assistant</h3>
+        <p class="text-neutral-600 text-sm mb-3">REST commands, automations, voice pipeline. Show sensor data, trigger scenes, visual alerts.</p>
+        <span class="text-xs font-medium text-blue-700 bg-blue-100 px-2 py-1 rounded-full">REST API</span>
+      </div>
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">Ollama / LocalAI</h3>
+        <p class="text-neutral-600 text-sm mb-3">Voice server connects directly. Run gemma3, llama3, mistral — fully offline, fully local.</p>
+        <span class="text-xs font-medium text-purple-700 bg-purple-100 px-2 py-1 rounded-full">Voice Pipeline</span>
+      </div>
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">ChatGPT / Claude API</h3>
+        <p class="text-neutral-600 text-sm mb-3">Python or Node bridge script. Any cloud AI can push emotions, notifications, and widget data.</p>
+        <span class="text-xs font-medium text-blue-700 bg-blue-100 px-2 py-1 rounded-full">REST API</span>
+      </div>
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">Node-RED / MQTT</h3>
+        <p class="text-neutral-600 text-sm mb-3">HTTP request nodes, MQTT bridge. Drag-and-drop automation for IoT + smart home workflows.</p>
+        <span class="text-xs font-medium text-blue-700 bg-blue-100 px-2 py-1 rounded-full">REST API</span>
+      </div>
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">Your Own Code</h3>
+        <p class="text-neutral-600 text-sm mb-3">Python, JavaScript, Go, Rust — anything with an HTTP client. Build custom integrations in minutes.</p>
+        <span class="text-xs font-medium text-neutral-700 bg-neutral-200 px-2 py-1 rounded-full">Any Language</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Lifestyle Section -->
-<section class="bg-neutral-100 py-16 md:py-24">
+<!-- Lifestyle + Desk -->
+<section class="section-dark py-16 md:py-24">
   <div class="container">
-    <div class="max-w-5xl mx-auto">
-      <img src="/assets/images/nova-sphere/lifestyle-desk.jpg" alt="Nova Sphere on a developer desk next to an ultrawide monitor" class="rounded-xl shadow-lg w-full mb-8">
-      <div class="text-center">
-        <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 mb-4">
-          Fits Right In.
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-center max-w-6xl mx-auto">
+      <div>
+        <h2 class="mb-5 text-3xl font-bold md:text-4xl text-white">
+          Handcrafted. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Not Mass-Produced.</span>
         </h2>
-        <p class="text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
-          Nova Sphere sits naturally on your desk — next to your monitor, keyboard, and coffee. 
-          A companion, not a distraction.
+        <p class="text-lg text-neutral-300 mb-6 leading-relaxed">
+          Each Nova Sphere is turned from real wood on a lathe — pine for the standard edition, 
+          walnut, cherry, or olive for premium tiers. The round display sits flush, 
+          with deep AMOLED blacks blending seamlessly into the dark interior.
         </p>
+        <p class="text-neutral-400 leading-relaxed">
+          No plastic cases. No injection molds. Every sphere has unique grain patterns.
+          It's the kind of thing you keep on your desk for years.
+        </p>
+      </div>
+      <div>
+        <img src="/assets/images/nova-sphere/lifestyle-desk.jpg" alt="Nova Sphere on a developer desk next to ultrawide monitor, keyboard, and coffee" class="rounded-xl shadow-2xl w-full" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 <!-- Specs Section -->
-<section id="specs" class="section-dark py-16 md:py-24 lg:py-32">
+<section id="specs" class="bg-neutral-100 py-16 md:py-24 lg:py-32">
   <div class="container">
     <div class="max-w-4xl mx-auto">
-      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white text-center mb-12 md:mb-16">
-        <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Technical Specs</span>
+      <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 text-center mb-12 md:mb-16">
+        <span class="gradient-text-light">Under the Hood</span>
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16">
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Display</span>
-          <span class="text-white font-medium">1.43" AMOLED, 466×466, touch</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Display</span>
+          <span class="text-neutral-900 font-medium">1.43" AMOLED, 466×466, capacitive touch</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Processor</span>
-          <span class="text-white font-medium">ESP32-S3, dual-core, 8MB PSRAM</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Processor</span>
+          <span class="text-neutral-900 font-medium">ESP32-S3R8, dual-core, 8MB PSRAM</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Audio</span>
-          <span class="text-white font-medium">INMP441 mic + speaker (full duplex)</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Audio In</span>
+          <span class="text-neutral-900 font-medium">INMP441 MEMS microphone (I2S, 16kHz)</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Connectivity</span>
-          <span class="text-white font-medium">Wi-Fi, REST API, OTA updates</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Audio Out</span>
+          <span class="text-neutral-900 font-medium">MAX98357A + speaker (I2S, 48kHz)</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Body</span>
-          <span class="text-white font-medium">~55mm handcrafted wood sphere</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Motion</span>
+          <span class="text-neutral-900 font-medium">QMI8658 IMU (accelerometer + gyroscope)</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Power</span>
-          <span class="text-white font-medium">USB-C, 5V</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Connectivity</span>
+          <span class="text-neutral-900 font-medium">WiFi 2.4GHz, BLE 5.0, OTA updates</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Firmware</span>
-          <span class="text-white font-medium">Full source code included</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">API</span>
+          <span class="text-neutral-900 font-medium">REST + WebSocket + MCP (21 tools)</span>
         </div>
-        <div class="flex justify-between py-4 border-b border-neutral-700">
-          <span class="text-neutral-400">Subscription</span>
-          <span class="text-white font-medium">None. Zero. Forever free.</span>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Body</span>
+          <span class="text-neutral-900 font-medium">~55mm handcrafted wood sphere</span>
+        </div>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Power</span>
+          <span class="text-neutral-900 font-medium">USB-C, 5V</span>
+        </div>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Firmware</span>
+          <span class="text-neutral-900 font-medium">Full source code included with purchase</span>
+        </div>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Subscription</span>
+          <span class="text-neutral-900 font-medium">None. Zero. Forever.</span>
+        </div>
+        <div class="flex justify-between py-4 border-b border-neutral-200">
+          <span class="text-neutral-500">Price</span>
+          <span class="text-neutral-900 font-medium">From €89 (Early Bird)</span>
         </div>
       </div>
     </div>
@@ -664,21 +732,21 @@
 </section>
 
 <!-- CTA Section -->
-<section id="notify" class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+<section id="notify" class="section-dark py-16 md:py-24 lg:py-32">
   <div class="container">
     <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 mb-5">
+      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
         Be the First to Know.
       </h2>
-      <p class="text-lg md:text-xl text-neutral-600 mb-10 leading-relaxed">
-        Nova Sphere is launching on Kickstarter soon. 
-        Follow us for early-bird pricing and launch updates.
+      <p class="text-lg md:text-xl text-neutral-300 mb-10 leading-relaxed">
+        Nova Sphere is launching on Kickstarter soon.
+        Early Bird backers get it for €89 instead of €109.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a href="https://www.kickstarter.com/profile/novalabs" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
           Follow on Kickstarter →
         </a>
-        <a href="mailto:angel@coding-agents.ai?subject=Nova%20Sphere%20—%20Interested" class="btn btn-secondary">
+        <a href="mailto:angel@coding-agents.ai?subject=Nova%20Sphere%20—%20Interested" class="btn btn-secondary-dark">
           Contact Us
         </a>
       </div>
