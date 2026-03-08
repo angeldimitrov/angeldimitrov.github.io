@@ -110,6 +110,50 @@ image: /assets/images/nova-sphere/hero-happy.jpg
   </div>
 </section>
 
+<!-- Coding Agent Integration -->
+<section class="bg-white py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <!-- Animation -->
+        <div>
+          <picture>
+            <source srcset="/assets/images/nova-sphere/mcp-demo.webp" type="image/webp">
+            <img src="/assets/images/nova-sphere/mcp-demo.gif" alt="Claude Code MCP demo — real-time progress on Nova Sphere display" class="rounded-xl shadow-2xl w-full" loading="lazy">
+          </picture>
+        </div>
+        <!-- Text -->
+        <div>
+          <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 mb-5">
+            Watch your AI <span class="gradient-text-light">work.</span>
+          </h2>
+          <p class="text-lg text-neutral-600 mb-6">
+            Claude Code picks up GitHub issue #265. Nova Sphere shows every step — scanning files, writing code, running tests. Then it deploys to staging and confirms: <strong>LIVE</strong>.
+          </p>
+          <div class="space-y-3 text-neutral-600">
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Real-time progress ring fills as steps complete</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Step counter, file names, status updates — all via MCP</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Face emotion syncs with agent state (thinking → excited → done)</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Works with any MCP-compatible agent: Claude Code, OpenClaw, custom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MCP + API Section -->
 <section id="mcp" class="section-dark py-16 md:py-24 lg:py-32">
   <div class="container">
@@ -121,15 +165,6 @@ image: /assets/images/nova-sphere/hero-happy.jpg
         21 MCP tools for AI agents. 15+ REST endpoints for scripts and automations. 
         WebSocket protocol for real-time voice. If it speaks HTTP, it controls Nova Sphere.
       </p>
-    </div>
-
-    <!-- MCP Demo Animation -->
-    <div class="max-w-md mx-auto mb-12">
-      <picture>
-        <source srcset="/assets/images/nova-sphere/mcp-demo.webp" type="image/webp">
-        <img src="/assets/images/nova-sphere/mcp-demo.gif" alt="Claude Code MCP demo — real-time progress on Nova Sphere display" class="rounded-xl shadow-2xl w-full" loading="lazy">
-      </picture>
-      <p class="text-neutral-500 text-sm text-center mt-3">Live demo: Claude Code working on issue #265, then deploying to staging</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-start max-w-6xl mx-auto">
