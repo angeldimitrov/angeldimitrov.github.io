@@ -8,7 +8,7 @@ image: /assets/images/nova-sphere/hero-happy.jpg
 
 <!-- Hero Section -->
 <section id="hero" class="hero min-h-[calc(100vh-4rem)] flex items-center">
-  <div class="container">
+  <div class="container relative" style="z-index: 2;">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 items-center">
       <div class="hero-content text-white order-2 md:order-1">
         <p class="text-sm font-semibold tracking-wider uppercase mb-6 text-purple-400">Coming Soon to Kickstarter</p>
@@ -76,6 +76,47 @@ image: /assets/images/nova-sphere/hero-happy.jpg
     <p class="text-center text-neutral-500 mt-6 text-sm">
       happy · sad · excited · thinking · confused · love · sleepy · wink · angry · surprised · proud · shy · busy · listening · alert · smirk · mischievous · determined · and more
     </p>
+  </div>
+</section>
+
+<!-- Agent Face Styles -->
+<section class="section-dark py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
+        One Sphere. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Every AI.</span>
+      </h2>
+      <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+        Nova Sphere ships with built-in face styles for popular AI platforms. 
+        Switch between them with a single API call — or create your own in C++.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-openclaw-photo.jpg" alt="Nova Sphere showing OpenClaw agent face" class="rounded-xl shadow-lg w-full mb-4 aspect-square object-cover" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-2">OpenClaw</h3>
+        <p class="text-neutral-400 text-sm">Native integration. Emotion sync, voice, notifications — your OpenClaw agent gets a physical body.</p>
+        <div class="rounded-lg border border-neutral-700/60 bg-neutral-800/60 p-3 mt-3 font-mono text-xs">
+          <span class="text-green-400">{"style": "openclaw"}</span>
+        </div>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-ollama-photo.jpg" alt="Nova Sphere showing Ollama llama face" class="rounded-xl shadow-lg w-full mb-4 aspect-square object-cover" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-2">Ollama</h3>
+        <p class="text-neutral-400 text-sm">Run local LLMs (gemma3, llama3, mistral) with a face. Fully offline, fully private.</p>
+        <div class="rounded-lg border border-neutral-700/60 bg-neutral-800/60 p-3 mt-3 font-mono text-xs">
+          <span class="text-green-400">{"style": "ollama"}</span>
+        </div>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-default-photo.jpg" alt="Nova Sphere showing default face with cyan eyes" class="rounded-xl shadow-lg w-full mb-4 aspect-square object-cover" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-2">Default + Claude</h3>
+        <p class="text-neutral-400 text-sm">The default Nova face, plus a dedicated Claude Code style for coding sessions. 4 styles built-in, unlimited custom.</p>
+        <div class="rounded-lg border border-neutral-700/60 bg-neutral-800/60 p-3 mt-3 font-mono text-xs">
+          <span class="text-green-400">{"style": "claude"}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -188,7 +229,7 @@ image: /assets/images/nova-sphere/hero-happy.jpg
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto mb-16">
       <div class="text-center">
         <img src="/assets/images/nova-sphere/widget-pipeline.jpg" alt="CI/CD pipeline dashboard showing PR staging progress" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-neutral-900 mb-2">CI/CD Pipeline</h3>
@@ -203,6 +244,101 @@ image: /assets/images/nova-sphere/hero-happy.jpg
         <img src="/assets/images/nova-sphere/widget-detail.jpg" alt="Custom widget close-up showing data visualization" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-neutral-900 mb-2">3D Printer</h3>
         <p class="text-neutral-600">Bambu X1C print progress, nozzle/bed temps, ETA — live via MQTT bridge script.</p>
+      </div>
+    </div>
+
+    <!-- Widget API Deep Dive -->
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-2xl font-bold text-neutral-900 mb-6 text-center">Build Dashboards with MCP or REST</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Widget Types -->
+        <div class="card p-6">
+          <h4 class="text-lg font-bold text-neutral-900 mb-4">Widget Types</h4>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between py-2 border-b border-neutral-100">
+              <span class="font-mono text-blue-600">arc</span>
+              <span class="text-neutral-600">Progress rings, gauges (value/max_value)</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-neutral-100">
+              <span class="font-mono text-blue-600">label</span>
+              <span class="text-neutral-600">Text with fonts up to 48px</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-neutral-100">
+              <span class="font-mono text-blue-600">bar</span>
+              <span class="text-neutral-600">Horizontal/vertical bars</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-neutral-100">
+              <span class="font-mono text-blue-600">spinner</span>
+              <span class="text-neutral-600">Loading indicators</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-neutral-100">
+              <span class="font-mono text-blue-600">line</span>
+              <span class="text-neutral-600">Charts via [x,y] point arrays</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-neutral-100">
+              <span class="font-mono text-blue-600">obj</span>
+              <span class="text-neutral-600">Containers with flex layout</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="font-mono text-blue-600">slider</span>
+              <span class="text-neutral-600">Interactive value controls</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MCP Widget Example -->
+        <div class="card p-6 bg-neutral-900 border-neutral-700">
+          <h4 class="text-lg font-bold text-white mb-4">MCP Example: Sensor Dashboard</h4>
+          <div class="font-mono text-xs text-green-400 space-y-1 overflow-x-auto">
+            <p class="text-neutral-500"># Claude Code builds a dashboard:</p>
+            <p>create_widgets([</p>
+            <p class="pl-2">{"id": "title", "type": "label",</p>
+            <p class="pl-3">"text": "REEF MONITOR",</p>
+            <p class="pl-3">"align": "top_mid", "y": 20,</p>
+            <p class="pl-3">"style": {"text_color": "#00FFFF",</p>
+            <p class="pl-4">"text_font": "montserrat_14",</p>
+            <p class="pl-4">"text_letter_space": 4}},</p>
+            <p class="pl-2">{"id": "temp", "type": "arc",</p>
+            <p class="pl-3">"value": 26, "max_value": 35,</p>
+            <p class="pl-3">"width": 200, "height": 200,</p>
+            <p class="pl-3">"align": "center",</p>
+            <p class="pl-3">"style": {"arc_color": "#333",</p>
+            <p class="pl-4">"arc_width": 12},</p>
+            <p class="pl-3">"indicator_style": {</p>
+            <p class="pl-4">"arc_color": "#00FF88",</p>
+            <p class="pl-4">"arc_width": 12}},</p>
+            <p class="pl-2">{"id": "val", "type": "label",</p>
+            <p class="pl-3">"text": "26.0°C",</p>
+            <p class="pl-3">"align": "center",</p>
+            <p class="pl-3">"style": {"text_color": "#00FF88",</p>
+            <p class="pl-4">"text_font": "montserrat_48"}}</p>
+            <p>], page=0)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Styling capabilities -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+        <div class="card p-4 text-center">
+          <p class="text-2xl mb-2">🎨</p>
+          <p class="text-sm font-medium text-neutral-900">Full RGB Colors</p>
+          <p class="text-xs text-neutral-500">#RRGGBB hex values</p>
+        </div>
+        <div class="card p-4 text-center">
+          <p class="text-2xl mb-2">🔤</p>
+          <p class="text-sm font-medium text-neutral-900">5 Font Sizes</p>
+          <p class="text-xs text-neutral-500">14px to 48px Montserrat</p>
+        </div>
+        <div class="card p-4 text-center">
+          <p class="text-2xl mb-2">📐</p>
+          <p class="text-sm font-medium text-neutral-900">Flex Layout</p>
+          <p class="text-xs text-neutral-500">Row, column, wrap</p>
+        </div>
+        <div class="card p-4 text-center">
+          <p class="text-2xl mb-2">📄</p>
+          <p class="text-sm font-medium text-neutral-900">Multi-Page</p>
+          <p class="text-xs text-neutral-500">Up to 5 pages, swipe</p>
+        </div>
       </div>
     </div>
   </div>
