@@ -17,7 +17,7 @@ image: /assets/images/nova-sphere/hero-happy.jpg
         </h1>
         <p class="text-xl md:text-2xl mb-8 text-gray-300 font-light leading-relaxed">
           A compact sphere with a round AMOLED display, microphone, speaker, and an open REST API. 
-          Connect it to any AI — Claude Code, Home Assistant, ChatGPT, Ollama, or your own.
+          Connect it to any AI — OpenClaw, Claude Code, Home Assistant, ChatGPT, Ollama, or your own.
         </p>
         <div class="space-y-3 mb-10">
           <div class="flex gap-3 items-center text-neutral-300">
@@ -87,8 +87,9 @@ image: /assets/images/nova-sphere/hero-happy.jpg
         Built for <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">AI Agents.</span>
       </h2>
       <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
-        Nova Sphere ships with a full MCP server — 21 tools that let any AI agent 
-        control the face, widgets, audio, voice, weather, and even flash firmware. 
+        Nova Sphere ships with a full MCP server (21 tools) and native OpenClaw integration. 
+        Any AI agent can control the face, widgets, audio, voice, weather, and even flash firmware. 
+        OpenClaw syncs emotions automatically. Claude Code reports coding progress in real time. 
         It's not just a display. It's an AI-native hardware interface.
       </p>
     </div>
@@ -132,10 +133,10 @@ image: /assets/images/nova-sphere/hero-happy.jpg
 
       <!-- Claude Code Use Case -->
       <div>
-        <h3 class="text-xl font-bold text-white mb-4">Real Example: Claude Code + Nova Sphere</h3>
+        <h3 class="text-xl font-bold text-white mb-4">Real Example: OpenClaw + Claude Code</h3>
         <p class="text-neutral-300 mb-6 leading-relaxed">
-          When Claude Code works on a GitHub issue, it <strong class="text-white">autonomously</strong> reports progress 
-          on the Nova Sphere display — no human input needed. The AI decides what to show.
+          OpenClaw spawns Claude Code to work on a GitHub issue. The AI <strong class="text-white">autonomously</strong> reports progress 
+          on the Nova Sphere display — emotion sync, widget updates, audio alerts. No human input needed.
         </p>
 
         <img src="/assets/images/nova-sphere/widget-pipeline.jpg" alt="Nova Sphere showing live CI/CD pipeline progress from Claude Code" class="rounded-xl shadow-lg w-full mb-6" loading="lazy">
@@ -262,6 +263,11 @@ image: /assets/images/nova-sphere/hero-happy.jpg
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="card p-6 hover:shadow-xl transition-shadow">
+        <h3 class="text-xl font-bold text-neutral-900 mb-2">OpenClaw</h3>
+        <p class="text-neutral-600 text-sm mb-3">Native integration — emotion sync, voice, notifications, heartbeat monitoring. Nova Sphere was born on OpenClaw.</p>
+        <span class="text-xs font-medium text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">Native</span>
+      </div>
       <div class="card p-6 hover:shadow-xl transition-shadow">
         <h3 class="text-xl font-bold text-neutral-900 mb-2">Claude Code / Codex</h3>
         <p class="text-neutral-600 text-sm mb-3">MCP server with 21 tools. AI agents autonomously control face, widgets, audio, and OTA updates.</p>
