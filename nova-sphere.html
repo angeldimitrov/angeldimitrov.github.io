@@ -473,7 +473,7 @@ image: /assets/images/nova-sphere/hero-happy.jpg
   </div>
 </section>
 
-<!-- Emotions -->
+<!-- Emotions — Interactive SVG Face Demo -->
 <section class="bg-neutral-100 py-16 md:py-24">
   <div class="container">
     <div class="text-center">
@@ -483,31 +483,637 @@ image: /assets/images/nova-sphere/hero-happy.jpg
       <p class="text-neutral-600 max-w-2xl mx-auto mb-8">
         Set any of 20+ emotions via MCP or REST API. Emotions can also be streamed together with AI-generated audio — your agent's voice and face stay in sync automatically.
       </p>
-      <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Happy</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Excited</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Love</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Thinking</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Surprised</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Confused</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Sad</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Angry</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Wink</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Sleepy</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Sleep</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Alert</span>
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neutral-700 shadow-sm border border-neutral-200">Shy</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Neutral</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Determined</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Proud</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Busy</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Listening</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Smirk</span>
-        <span class="px-4 py-2 bg-neutral-50 rounded-full text-sm text-neutral-400 border border-neutral-200">Mischievous</span>
+
+      <!-- Interactive face demo -->
+      <div class="flex flex-col items-center">
+        <!-- Face container: circular with dark background, matching the real AMOLED sphere -->
+        <div id="nova-face-container" style="width:280px;height:280px;border-radius:50%;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.2);">
+          <svg id="face" width="280" height="280" viewBox="0 0 466 466">
+            <defs>
+              <clipPath id="roundClip"><circle cx="233" cy="233" r="233"/></clipPath>
+            </defs>
+            <g clip-path="url(#roundClip)">
+              <rect width="466" height="466" fill="#000"/>
+              <!-- Effect rings -->
+              <g id="determinedRing" opacity="0"></g>
+              <g id="busyRing" opacity="0"></g>
+              <g id="listeningRing" opacity="0"></g>
+              <g id="alertRing" opacity="0"></g>
+              <!-- Left eye -->
+              <g id="leftEyeGroup">
+                <ellipse id="leftEyeRing" cx="146" cy="184" rx="56" ry="70" fill="#424142"/>
+                <ellipse id="leftSclera" cx="146" cy="184" rx="54" ry="68" fill="#FFFFFF"/>
+                <circle id="leftIris" cx="146" cy="184" r="21" fill="#008284"/>
+                <circle id="leftPupil" cx="146" cy="184" r="16" fill="#000000"/>
+                <circle id="leftPupilRing" cx="146" cy="184" r="18" fill="none" stroke="#212021" stroke-width="1"/>
+                <circle id="leftHighlight" cx="138" cy="176" r="7" fill="#FFFFFF"/>
+                <circle id="leftHighlight2" cx="151" cy="189" r="3" fill="#C5C2C5"/>
+                <path id="leftClosed" d="M92,184 Q146,194 200,184" stroke="#FFFFFF" stroke-width="6" fill="none" stroke-linecap="round" opacity="0"/>
+              </g>
+              <!-- Right eye -->
+              <g id="rightEyeGroup">
+                <ellipse id="rightEyeRing" cx="320" cy="184" rx="56" ry="70" fill="#424142"/>
+                <ellipse id="rightSclera" cx="320" cy="184" rx="54" ry="68" fill="#FFFFFF"/>
+                <circle id="rightIris" cx="320" cy="184" r="21" fill="#008284"/>
+                <circle id="rightPupil" cx="320" cy="184" r="16" fill="#000000"/>
+                <circle id="rightPupilRing" cx="320" cy="184" r="18" fill="none" stroke="#212021" stroke-width="1"/>
+                <circle id="rightHighlight" cx="312" cy="176" r="7" fill="#FFFFFF"/>
+                <circle id="rightHighlight2" cx="325" cy="189" r="3" fill="#C5C2C5"/>
+                <path id="rightClosed" d="M266,184 Q320,194 374,184" stroke="#FFFFFF" stroke-width="6" fill="none" stroke-linecap="round" opacity="0"/>
+              </g>
+              <!-- Eyebrows -->
+              <path id="leftBrow" d="" stroke="#00FFFF" stroke-width="12" fill="none" stroke-linecap="round"/>
+              <path id="rightBrow" d="" stroke="#00FFFF" stroke-width="12" fill="none" stroke-linecap="round"/>
+              <!-- Mouth -->
+              <path id="mouthCurve" d="" stroke="#00FFFF" stroke-width="14" fill="none" stroke-linecap="round"/>
+              <g id="mouthOpen" opacity="0">
+                <ellipse id="mouthOpenRing" cx="233" cy="330" rx="45" ry="35" fill="#008284"/>
+                <ellipse id="mouthOpenFill" cx="233" cy="330" rx="43" ry="33" fill="#00FFFF"/>
+                <ellipse id="mouthOpenInner" cx="233" cy="330" rx="37" ry="27" fill="#000000"/>
+              </g>
+              <!-- Blush -->
+              <g id="blushGroup" opacity="0">
+                <ellipse cx="123" cy="266" rx="42" ry="22" fill="#FF3594" opacity="0.5"/>
+                <ellipse cx="343" cy="266" rx="42" ry="22" fill="#FF3594" opacity="0.5"/>
+                <ellipse cx="123" cy="266" rx="30" ry="16" fill="#FF009C" opacity="0.45"/>
+                <ellipse cx="343" cy="266" rx="30" ry="16" fill="#FF009C" opacity="0.45"/>
+              </g>
+              <!-- Hearts -->
+              <g id="heartsGroup" opacity="0">
+                <g id="heart0" transform="translate(87,107)">
+                  <circle cx="-15" cy="-8" r="15" fill="#FF0000"/>
+                  <circle cx="15" cy="-8" r="15" fill="#FF0000"/>
+                  <polygon points="-30,-8 30,-8 0,30" fill="#FF0000"/>
+                  <circle cx="-13" cy="-10" r="7" fill="#FF797B" opacity="0.7"/>
+                </g>
+                <g id="heart1" transform="translate(378,117)">
+                  <circle cx="-12" cy="-6" r="12" fill="#FF0000"/>
+                  <circle cx="12" cy="-6" r="12" fill="#FF0000"/>
+                  <polygon points="-24,-6 24,-6 0,24" fill="#FF0000"/>
+                  <circle cx="-10" cy="-8" r="6" fill="#FF797B" opacity="0.7"/>
+                </g>
+              </g>
+              <!-- Sparkles -->
+              <g id="sparklesGroup" opacity="0">
+                <g id="sparkle0" transform="translate(78,97)">
+                  <line x1="-35" y1="-1" x2="35" y2="-1" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-35" y1="0" x2="35" y2="0" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-35" y1="1" x2="35" y2="1" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-1" y1="-35" x2="-1" y2="35" stroke="#FFFF00" stroke-width="1"/>
+                  <line x1="0" y1="-35" x2="0" y2="35" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="1" y1="-35" x2="1" y2="35" stroke="#FFFF00" stroke-width="1"/>
+                  <line x1="-24" y1="-24" x2="24" y2="24" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-24" y1="24" x2="24" y2="-24" stroke="#FFFF00" stroke-width="3"/>
+                </g>
+                <g id="sparkle1" transform="translate(388,107)">
+                  <line x1="-30" y1="0" x2="30" y2="0" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="0" y1="-30" x2="0" y2="30" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-21" y1="-21" x2="21" y2="21" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-21" y1="21" x2="21" y2="-21" stroke="#FFFF00" stroke-width="3"/>
+                </g>
+                <g id="sparkle2" transform="translate(369,349)">
+                  <line x1="-26" y1="0" x2="26" y2="0" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="0" y1="-26" x2="0" y2="26" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-18" y1="-18" x2="18" y2="18" stroke="#FFFF00" stroke-width="3"/>
+                  <line x1="-18" y1="18" x2="18" y2="-18" stroke="#FFFF00" stroke-width="3"/>
+                </g>
+              </g>
+              <!-- Zzz -->
+              <g id="zzzGroup" opacity="0">
+                <g id="zzz0" fill="none" stroke-width="3" stroke-linecap="round">
+                  <line id="zzz0a" x1="310" y1="126" x2="345" y2="126" stroke="#00FFFF"/>
+                  <line id="zzz0b" x1="345" y1="126" x2="310" y2="161" stroke="#00FFFF"/>
+                  <line id="zzz0c" x1="310" y1="161" x2="345" y2="161" stroke="#00FFFF"/>
+                </g>
+                <g id="zzz1" fill="none" stroke-width="2.5" stroke-linecap="round">
+                  <line id="zzz1a" x1="349" y1="83" x2="373" y2="83" stroke="#00BAFF"/>
+                  <line id="zzz1b" x1="373" y1="83" x2="349" y2="107" stroke="#00BAFF"/>
+                  <line id="zzz1c" x1="349" y1="107" x2="373" y2="107" stroke="#00BAFF"/>
+                </g>
+                <g id="zzz2" fill="none" stroke-width="2" stroke-linecap="round">
+                  <line id="zzz2a" x1="380" y1="48" x2="398" y2="48" stroke="#0075FF"/>
+                  <line id="zzz2b" x1="398" y1="48" x2="380" y2="66" stroke="#0075FF"/>
+                  <line id="zzz2c" x1="380" y1="66" x2="398" y2="66" stroke="#0075FF"/>
+                </g>
+              </g>
+              <!-- Tear -->
+              <g id="tearGroup" opacity="0">
+                <g id="tearDrop">
+                  <circle cx="343" cy="219" r="14" fill="#52B6FF"/>
+                  <polygon points="333,215 353,215 343,201" fill="#52B6FF"/>
+                  <circle cx="341" cy="215" r="3" fill="#FFFFFF"/>
+                </g>
+              </g>
+              <!-- Thought dots -->
+              <g id="thoughtDotsGroup" opacity="0">
+                <circle id="thought0" cx="369" cy="106" r="6" fill="#00FFFF"/>
+                <circle id="thought1" cx="392" cy="90" r="10" fill="#00FFFF"/>
+                <circle id="thought2" cx="415" cy="74" r="14" fill="#00FFFF"/>
+              </g>
+              <!-- Question mark -->
+              <g id="questionMarkGroup" opacity="0">
+                <g id="questionInner">
+                  <path id="questionArc" d="" stroke="#FFFF00" stroke-width="12" fill="none" stroke-linecap="round"/>
+                  <line id="questionStem" x1="378" y1="138" x2="378" y2="148" stroke="#FFFF00" stroke-width="12" stroke-linecap="round"/>
+                  <circle id="questionDot" cx="378" cy="163" r="11" fill="#FFFF00"/>
+                </g>
+              </g>
+              <!-- Angry vein -->
+              <g id="angryVeinGroup" opacity="0">
+                <g id="angryVeinInner">
+                  <line x1="339" y1="106" x2="379" y2="146" stroke="#FF0000" stroke-width="4"/>
+                  <line x1="379" y1="106" x2="339" y2="146" stroke="#FF0000" stroke-width="4"/>
+                  <circle cx="339" cy="106" r="8" fill="#FF0000"/>
+                  <circle cx="379" cy="106" r="8" fill="#FF0000"/>
+                  <circle cx="339" cy="146" r="8" fill="#FF0000"/>
+                  <circle cx="379" cy="146" r="8" fill="#FF0000"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Current emotion label -->
+        <div id="nova-emotion-label" class="mt-4 text-lg font-bold tracking-wider uppercase text-neutral-900" style="transition:color 0.3s;">neutral</div>
+
+        <!-- Clickable emotion pills -->
+        <div class="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto mt-6" id="nova-emotion-pills">
+          <button data-emotion="happy" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Happy</button>
+          <button data-emotion="excited" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Excited</button>
+          <button data-emotion="love" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Love</button>
+          <button data-emotion="thinking" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Thinking</button>
+          <button data-emotion="surprised" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Surprised</button>
+          <button data-emotion="confused" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Confused</button>
+          <button data-emotion="sad" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Sad</button>
+          <button data-emotion="angry" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Angry</button>
+          <button data-emotion="wink" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Wink</button>
+          <button data-emotion="sleepy" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Sleepy</button>
+          <button data-emotion="sleep" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Sleep</button>
+          <button data-emotion="alert" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Alert</button>
+          <button data-emotion="shy" class="nova-pill px-3 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-all bg-white text-neutral-700 shadow-sm border-neutral-200 hover:border-purple-400 hover:text-purple-600">Shy</button>
+          <button data-emotion="neutral" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Neutral</button>
+          <button data-emotion="determined" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Determined</button>
+          <button data-emotion="proud" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Proud</button>
+          <button data-emotion="busy" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Busy</button>
+          <button data-emotion="listening" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Listening</button>
+          <button data-emotion="smirk" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Smirk</button>
+          <button data-emotion="mischievous" class="nova-pill px-3 py-1.5 rounded-full text-sm border cursor-pointer transition-all bg-neutral-50 text-neutral-400 border-neutral-200 hover:border-purple-400 hover:text-purple-600">Mischievous</button>
+        </div>
+        <p class="text-xs text-neutral-400 mt-3">Click any emotion or watch them auto-cycle • This is the actual face rendering from the device</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Nova Face Animation Engine -->
+<script>
+(function() {
+  /**
+   * Nova Face SVG Animation Engine
+   * Ported from the nova-face ESP32 web interface (web-face-animation branch).
+   * Renders 20 emotion states with LERP transitions, autonomous blinking,
+   * saccades, and breathing. All SVG element IDs are scoped to the inline SVG above.
+   */
+
+  // ============ EMOTIONS ============
+  // Colors: exact RGB565->RGB888 conversions from C++ source
+  const EMOTIONS = {
+    neutral:     { eyeOpen:1.0, mouthWidth:93, mouthCurve:0.4, mouthOpen:0, lookX:0, lookY:0, pupilSize:16, leftBrowHeight:0.1, rightBrowHeight:0.1, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#00FFFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    happy:       { eyeOpen:0.85, mouthWidth:101, mouthCurve:1.2, mouthOpen:0, lookX:0, lookY:0, pupilSize:16, leftBrowHeight:0.3, rightBrowHeight:0.3, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#29FFC5', showBlush:true, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    excited:     { eyeOpen:1.1, mouthWidth:113, mouthCurve:1.5, mouthOpen:0, lookX:0, lookY:0, pupilSize:19, leftBrowHeight:0.6, rightBrowHeight:0.6, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#4AFFC5', showBlush:true, showHearts:false, showSparkles:true, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    thinking:    { eyeOpen:1.0, mouthWidth:58, mouthCurve:0.15, mouthOpen:0, lookX:0.8, lookY:-0.8, pupilSize:16, leftBrowHeight:0.6, rightBrowHeight:-0.3, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#008EFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:true, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    surprised:   { eyeOpen:1.3, mouthWidth:78, mouthCurve:0.4, mouthOpen:1.0, lookX:0, lookY:0, pupilSize:10, leftBrowHeight:1.0, rightBrowHeight:1.0, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#08FFFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    confused:    { eyeOpen:1.0, mouthWidth:68, mouthCurve:-0.3, mouthOpen:0, lookX:0.6, lookY:0.3, pupilSize:16, leftBrowHeight:0.5, rightBrowHeight:-0.3, leftBrowAngle:0.4, rightBrowAngle:-0.3, faceColor:'#00EFFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    sad:         { eyeOpen:0.7, mouthWidth:87, mouthCurve:-1.0, mouthOpen:0, lookX:0, lookY:0.5, pupilSize:16, leftBrowHeight:0.3, rightBrowHeight:0.3, leftBrowAngle:0.7, rightBrowAngle:0.7, faceColor:'#0075FF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:true, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    sleepy:      { eyeOpen:0.2, mouthWidth:68, mouthCurve:0.0, mouthOpen:0.4, lookX:0, lookY:0, pupilSize:16, leftBrowHeight:-0.3, rightBrowHeight:-0.3, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#00B2FF', showBlush:false, showHearts:false, showSparkles:false, showZzz:true, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    love:        { eyeOpen:0.7, mouthWidth:97, mouthCurve:1.2, mouthOpen:0, lookX:0, lookY:0, pupilSize:16, leftBrowHeight:0.4, rightBrowHeight:0.4, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#E62884', showBlush:true, showHearts:true, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    wink:        { eyeOpen:1.0, mouthWidth:97, mouthCurve:1.0, mouthOpen:0, lookX:0, lookY:0, pupilSize:16, leftBrowHeight:0.5, rightBrowHeight:0.2, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#29FFC5', showBlush:true, showHearts:false, showSparkles:false, showZzz:false, leftWink:true, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    angry:       { eyeOpen:0.65, mouthWidth:87, mouthCurve:-0.9, mouthOpen:0, lookX:0, lookY:-0.3, pupilSize:10, leftBrowHeight:-0.4, rightBrowHeight:-0.4, leftBrowAngle:-1.0, rightBrowAngle:-1.0, faceColor:'#F74100', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:true, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    sleep:       { eyeOpen:0.0, mouthWidth:68, mouthCurve:0.3, mouthOpen:0, lookX:0, lookY:0, pupilSize:16, leftBrowHeight:-0.4, rightBrowHeight:-0.4, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#0071FF', showBlush:false, showHearts:false, showSparkles:false, showZzz:true, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    determined:  { eyeOpen:0.85, mouthWidth:82, mouthCurve:-0.4, mouthOpen:0, lookX:0, lookY:-0.2, pupilSize:12, leftBrowHeight:-0.2, rightBrowHeight:-0.2, leftBrowAngle:-0.6, rightBrowAngle:-0.6, faceColor:'#08FFFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:true, showBusyRing:false, showListening:false, showAlert:false },
+    proud:       { eyeOpen:0.8, mouthWidth:97, mouthCurve:1.0, mouthOpen:0, lookX:0, lookY:0, pupilSize:17, leftBrowHeight:0.4, rightBrowHeight:0.4, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#4AFFC5', showBlush:true, showHearts:false, showSparkles:true, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    busy:        { eyeOpen:0.85, mouthWidth:68, mouthCurve:0.1, mouthOpen:0, lookX:0.3, lookY:-0.3, pupilSize:16, leftBrowHeight:-0.1, rightBrowHeight:-0.1, leftBrowAngle:-0.3, rightBrowAngle:-0.3, faceColor:'#008EFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:true, showListening:false, showAlert:false },
+    listening:   { eyeOpen:1.1, mouthWidth:82, mouthCurve:0.4, mouthOpen:0, lookX:0, lookY:0, pupilSize:17, leftBrowHeight:0.3, rightBrowHeight:0.3, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#08FFFF', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:true, showAlert:false },
+    alert:       { eyeOpen:1.3, mouthWidth:74, mouthCurve:0.4, mouthOpen:0.5, lookX:0, lookY:0, pupilSize:10, leftBrowHeight:0.7, rightBrowHeight:0.7, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#F74100', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:true },
+    smirk:       { eyeOpen:0.85, mouthWidth:78, mouthCurve:0.6, mouthOpen:0, lookX:0.4, lookY:0, pupilSize:14, leftBrowHeight:0.5, rightBrowHeight:0.0, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#29FFC5', showBlush:false, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    shy:         { eyeOpen:0.65, mouthWidth:68, mouthCurve:0.5, mouthOpen:0, lookX:-0.3, lookY:0.6, pupilSize:17, leftBrowHeight:0.2, rightBrowHeight:0.2, leftBrowAngle:0, rightBrowAngle:0, faceColor:'#E62884', showBlush:true, showHearts:false, showSparkles:false, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false },
+    mischievous: { eyeOpen:0.8, mouthWidth:82, mouthCurve:0.7, mouthOpen:0, lookX:-0.5, lookY:0, pupilSize:12, leftBrowHeight:0.6, rightBrowHeight:-0.1, leftBrowAngle:0, rightBrowAngle:-0.3, faceColor:'#4AFFC5', showBlush:false, showHearts:false, showSparkles:true, showZzz:false, leftWink:false, showTear:false, showThoughtDots:false, showQuestionMark:false, showAngryVein:false, showDetermined:false, showBusyRing:false, showListening:false, showAlert:false }
+  };
+
+  const EMOTION_ORDER = Object.keys(EMOTIONS);
+
+  // ============ STATE ============
+  const state = {
+    eyeOpen: 1.0, mouthWidth: 93, mouthCurve: 0.4, mouthOpen: 0,
+    lookX: 0, lookY: 0, pupilSize: 16,
+    leftBrowHeight: 0.1, rightBrowHeight: 0.1,
+    leftBrowAngle: 0, rightBrowAngle: 0,
+    faceColor: [0, 255, 255],
+    blushOpa: 0, heartsOpa: 0, sparklesOpa: 0, zzzOpa: 0,
+    tearOpa: 0, thoughtDotsOpa: 0, questionMarkOpa: 0, angryVeinOpa: 0,
+    determinedOpa: 0, busyRingOpa: 0, listeningOpa: 0, alertOpa: 0,
+    leftWink: false
+  };
+  const target = { ...state, faceColor: [0, 255, 255] };
+
+  // Autonomous state
+  let breathPhase = 0, saccadeX = 0, saccadeY = 0, nextSaccadeTime = 0;
+  let blinkState = 'none', blinkFrame = 0, blinkOrigEyeOpen = 1.0, lastBlinkStep = 0;
+  let nextBlinkTime = rr(2000, 5000);
+  let tearAnimY = 0, sleepAnimFrame = 0, sparklePhase = 0, now = 0;
+  let currentEmotionIdx = 0, lastEmotionChange = 0;
+  const CYCLE_INTERVAL = 3000;
+  let autoCycle = true;
+  let animFrameId = null;
+
+  // ============ HELPERS ============
+  function rr(min, max) { return min + Math.random() * (max - min); }
+  function lerp(c, t, s) { const d = t - c; return Math.abs(d) < 0.01 ? t : c + d * s; }
+  function lerpColor(c, t, s) { return [lerp(c[0],t[0],s), lerp(c[1],t[1],s), lerp(c[2],t[2],s)]; }
+  function hexToRgb(h) { return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)]; }
+  function rgbToHex(rgb) { return '#' + rgb.map(c => Math.round(Math.max(0,Math.min(255,c))).toString(16).padStart(2,'0')).join(''); }
+
+  // ============ SET EMOTION ============
+  function setEmotion(name) {
+    const e = EMOTIONS[name];
+    if (!e) return;
+    target.eyeOpen = e.eyeOpen; target.mouthWidth = e.mouthWidth;
+    target.mouthCurve = e.mouthCurve; target.mouthOpen = e.mouthOpen;
+    target.lookX = e.lookX; target.lookY = e.lookY; target.pupilSize = e.pupilSize;
+    target.leftBrowHeight = e.leftBrowHeight; target.rightBrowHeight = e.rightBrowHeight;
+    target.leftBrowAngle = e.leftBrowAngle; target.rightBrowAngle = e.rightBrowAngle;
+    target.faceColor = hexToRgb(e.faceColor);
+    target.blushOpa = e.showBlush ? 1 : 0; target.heartsOpa = e.showHearts ? 1 : 0;
+    target.sparklesOpa = e.showSparkles ? 1 : 0; target.zzzOpa = e.showZzz ? 1 : 0;
+    target.tearOpa = e.showTear ? 1 : 0; target.thoughtDotsOpa = e.showThoughtDots ? 1 : 0;
+    target.questionMarkOpa = e.showQuestionMark ? 1 : 0; target.angryVeinOpa = e.showAngryVein ? 1 : 0;
+    target.determinedOpa = e.showDetermined ? 1 : 0; target.busyRingOpa = e.showBusyRing ? 1 : 0;
+    target.listeningOpa = e.showListening ? 1 : 0; target.alertOpa = e.showAlert ? 1 : 0;
+    state.leftWink = e.leftWink;
+    currentEmotionIdx = EMOTION_ORDER.indexOf(name);
+
+    // Update label
+    const label = document.getElementById('nova-emotion-label');
+    label.textContent = name;
+    label.style.color = e.faceColor;
+
+    // Update pill active states
+    document.querySelectorAll('.nova-pill').forEach(function(btn) {
+      if (btn.dataset.emotion === name) {
+        btn.style.borderColor = e.faceColor;
+        btn.style.color = e.faceColor;
+        btn.style.fontWeight = '700';
+      } else {
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        btn.style.fontWeight = '';
+      }
+    });
+  }
+
+  // ============ TRANSITIONS ============
+  const LS = 0.12, LF = 0.25, FS = 0.08;
+  function updateTransitions() {
+    state.eyeOpen = lerp(state.eyeOpen, target.eyeOpen, LS);
+    state.mouthWidth = lerp(state.mouthWidth, target.mouthWidth, LS);
+    state.mouthCurve = lerp(state.mouthCurve, target.mouthCurve, LS);
+    state.mouthOpen = lerp(state.mouthOpen, target.mouthOpen, LS);
+    state.lookX = lerp(state.lookX, target.lookX, LF);
+    state.lookY = lerp(state.lookY, target.lookY, LF);
+    state.pupilSize = lerp(state.pupilSize, target.pupilSize, LS);
+    state.leftBrowHeight = lerp(state.leftBrowHeight, target.leftBrowHeight, LS);
+    state.rightBrowHeight = lerp(state.rightBrowHeight, target.rightBrowHeight, LS);
+    state.leftBrowAngle = lerp(state.leftBrowAngle, target.leftBrowAngle, LS);
+    state.rightBrowAngle = lerp(state.rightBrowAngle, target.rightBrowAngle, LS);
+    state.faceColor = lerpColor(state.faceColor, target.faceColor, LS);
+    state.blushOpa = lerp(state.blushOpa, target.blushOpa, FS);
+    state.heartsOpa = lerp(state.heartsOpa, target.heartsOpa, FS);
+    state.sparklesOpa = lerp(state.sparklesOpa, target.sparklesOpa, FS);
+    state.zzzOpa = lerp(state.zzzOpa, target.zzzOpa, FS);
+    state.tearOpa = lerp(state.tearOpa, target.tearOpa, FS);
+    state.thoughtDotsOpa = lerp(state.thoughtDotsOpa, target.thoughtDotsOpa, FS);
+    state.questionMarkOpa = lerp(state.questionMarkOpa, target.questionMarkOpa, FS);
+    state.angryVeinOpa = lerp(state.angryVeinOpa, target.angryVeinOpa, FS);
+    state.determinedOpa = lerp(state.determinedOpa, target.determinedOpa, FS);
+    state.busyRingOpa = lerp(state.busyRingOpa, target.busyRingOpa, FS);
+    state.listeningOpa = lerp(state.listeningOpa, target.listeningOpa, FS);
+    state.alertOpa = lerp(state.alertOpa, target.alertOpa, FS);
+  }
+
+  // ============ AUTONOMOUS BEHAVIORS ============
+  function updateBlink() {
+    const closeF = [0.7, 0.35, 0.1, 0.02];
+    const openF = [0.05, 0.2, 0.5, 0.8, 1.0];
+    if (blinkState === 'none') {
+      if (now > nextBlinkTime && state.eyeOpen >= 0.5) {
+        blinkOrigEyeOpen = state.eyeOpen; blinkState = 'closing'; blinkFrame = 0; lastBlinkStep = now;
+      }
+      return;
+    }
+    if (blinkState === 'closing') {
+      if (now - lastBlinkStep >= 20) {
+        lastBlinkStep = now; state.eyeOpen = blinkOrigEyeOpen * closeF[blinkFrame]; blinkFrame++;
+        if (blinkFrame >= 4) { blinkState = 'hold'; blinkFrame = 0; }
+      }
+    } else if (blinkState === 'hold') {
+      if (now - lastBlinkStep >= 30) { lastBlinkStep = now; blinkState = 'opening'; blinkFrame = 0; }
+    } else if (blinkState === 'opening') {
+      if (now - lastBlinkStep >= 18) {
+        lastBlinkStep = now; state.eyeOpen = blinkOrigEyeOpen * openF[blinkFrame]; blinkFrame++;
+        if (blinkFrame >= 5) { state.eyeOpen = blinkOrigEyeOpen; blinkState = 'none'; nextBlinkTime = now + rr(4000, 8000); }
+      }
+    }
+  }
+
+  function updateSaccades() {
+    if (now > nextSaccadeTime) { saccadeX = rr(-0.35, 0.35); saccadeY = rr(-0.25, 0.25); nextSaccadeTime = now + rr(2000, 4000); }
+  }
+
+  function updateBreathing() {
+    breathPhase += 0.003 * 33;
+    if (breathPhase > Math.PI * 2) breathPhase -= Math.PI * 2;
+  }
+
+  // ============ RENDER ============
+  const EYE_Y = 184, LEFT_EYE_X = 146, RIGHT_EYE_X = 320, CX = 233, CY = 233, MOUTH_Y = 330;
+
+  function renderEye(prefix, ex, ey, openness, isWinking) {
+    const open = isWinking ? 0 : openness;
+    const maxH = 68, eyeW = 54, eyeH = Math.max(4, maxH * open);
+    const ring = document.getElementById(prefix + 'EyeRing');
+    const sclera = document.getElementById(prefix + 'Sclera');
+    const iris = document.getElementById(prefix + 'Iris');
+    const pupil = document.getElementById(prefix + 'Pupil');
+    const pupilRing = document.getElementById(prefix + 'PupilRing');
+    const hl = document.getElementById(prefix + 'Highlight');
+    const hl2 = document.getElementById(prefix + 'Highlight2');
+    const closed = document.getElementById(prefix + 'Closed');
+    if (open < 0.1) {
+      ring.setAttribute('opacity','0'); sclera.setAttribute('opacity','0');
+      iris.setAttribute('opacity','0'); pupil.setAttribute('opacity','0');
+      pupilRing.setAttribute('opacity','0'); hl.setAttribute('opacity','0'); hl2.setAttribute('opacity','0');
+      closed.setAttribute('opacity','1');
+      closed.setAttribute('d', 'M'+(ex-eyeW)+','+ey+' Q'+ex+','+(ey+10)+' '+(ex+eyeW)+','+ey);
+      closed.setAttribute('stroke','#FFFFFF');
+    } else {
+      ring.setAttribute('opacity','1'); sclera.setAttribute('opacity','1');
+      iris.setAttribute('opacity','1'); pupil.setAttribute('opacity','1');
+      pupilRing.setAttribute('opacity','1'); hl.setAttribute('opacity','1'); hl2.setAttribute('opacity','1');
+      closed.setAttribute('opacity','0');
+      ring.setAttribute('cy',ey); ring.setAttribute('ry',eyeH+2); ring.setAttribute('rx',eyeW+2);
+      sclera.setAttribute('cy',ey); sclera.setAttribute('ry',eyeH);
+      const totalLookX = state.lookX + saccadeX;
+      const totalLookY = state.lookY + saccadeY;
+      const px = ex + totalLookX * 19;
+      const py = ey + totalLookY * 12 * open;
+      const ps = state.pupilSize * Math.min(open + 0.3, 1.0);
+      const irisR = ps + 5;
+      iris.setAttribute('cx',px); iris.setAttribute('cy',py); iris.setAttribute('r',irisR);
+      pupil.setAttribute('cx',px); pupil.setAttribute('cy',py); pupil.setAttribute('r',ps);
+      pupilRing.setAttribute('cx',px); pupilRing.setAttribute('cy',py); pupilRing.setAttribute('r',ps+2);
+      hl.setAttribute('cx',px-ps/2-2); hl.setAttribute('cy',py-ps/2-2);
+      hl2.setAttribute('cx',px+ps/3); hl2.setAttribute('cy',py+ps/3);
+    }
+  }
+
+  function renderBrow(id, ex, ey, height, angle, isLeft) {
+    const browY = ey - 87 - height * 23;
+    const browWidth = 54;
+    const pts = [];
+    for (let i = 0; i <= browWidth; i += 3) {
+      const t = i / browWidth;
+      const curve = Math.sin(t * Math.PI) * 10;
+      let ho;
+      if (isLeft) ho = angle * 16 * (1 - t) + (-angle * 8) * t;
+      else ho = (-angle * 8) * (1 - t) + angle * 16 * t;
+      const px = isLeft ? (ex - browWidth/2 + i) : (ex + browWidth/2 - i);
+      const py = browY - curve - ho;
+      pts.push(px.toFixed(1)+','+py.toFixed(1));
+    }
+    document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+  }
+
+  function renderMouth() {
+    const adjustedCurve = state.mouthCurve + Math.sin(breathPhase) * 0.2;
+    const mouthCurveEl = document.getElementById('mouthCurve');
+    const mouthOpenGroup = document.getElementById('mouthOpen');
+    if (state.mouthOpen > 0.3) {
+      mouthCurveEl.setAttribute('opacity','0'); mouthOpenGroup.setAttribute('opacity','1');
+      const h = 35 * state.mouthOpen;
+      const mw = state.mouthWidth / 2 + 4;
+      document.getElementById('mouthOpenRing').setAttribute('rx',mw+2);
+      document.getElementById('mouthOpenRing').setAttribute('ry',h+2);
+      document.getElementById('mouthOpenFill').setAttribute('rx',mw);
+      document.getElementById('mouthOpenFill').setAttribute('ry',h);
+      document.getElementById('mouthOpenInner').setAttribute('rx',Math.max(0,mw-6));
+      document.getElementById('mouthOpenInner').setAttribute('ry',Math.max(0,h-6));
+      document.getElementById('mouthOpenFill').setAttribute('fill',rgbToHex(state.faceColor));
+    } else {
+      mouthCurveEl.setAttribute('opacity','1'); mouthOpenGroup.setAttribute('opacity','0');
+      const w = state.mouthWidth;
+      const curveAmt = adjustedCurve * 23;
+      const x1 = CX - w/2, x2 = CX + w/2;
+      mouthCurveEl.setAttribute('d', 'M'+x1+','+MOUTH_Y+' Q'+CX+','+(MOUTH_Y+curveAmt)+' '+x2+','+MOUTH_Y);
+    }
+  }
+
+  function renderEffectRings() {
+    const col = rgbToHex(state.faceColor);
+    const detGroup = document.getElementById('determinedRing');
+    detGroup.setAttribute('opacity', state.determinedOpa);
+    if (state.determinedOpa > 0.01) {
+      const pulse = Math.sin((now/3)*Math.PI/180)*0.4+0.6;
+      detGroup.innerHTML = '<circle cx="'+CX+'" cy="'+CY+'" r="216" fill="none" stroke="'+col+'" stroke-width="'+(2+pulse*4).toFixed(1)+'"/>';
+    } else detGroup.innerHTML = '';
+
+    const busyGroup = document.getElementById('busyRing');
+    busyGroup.setAttribute('opacity', state.busyRingOpa);
+    if (state.busyRingOpa > 0.01) {
+      const baseDeg = (now/2)%360; const radius = 217; let html = '';
+      let d1 = '';
+      for (let i=0;i<=90;i+=3){const a=((baseDeg+i)%360)*Math.PI/180;d1+=(i===0?'M':'L')+((CX+Math.cos(a)*radius).toFixed(1)+','+(CY+Math.sin(a)*radius).toFixed(1));}
+      html += '<path d="'+d1+'" fill="none" stroke="'+col+'" stroke-width="3"/>';
+      let d2 = '';
+      for (let i=0;i<=60;i+=3){const a=((baseDeg+180+i)%360)*Math.PI/180;d2+=(i===0?'M':'L')+((CX+Math.cos(a)*radius).toFixed(1)+','+(CY+Math.sin(a)*radius).toFixed(1));}
+      html += '<path d="'+d2+'" fill="none" stroke="'+col+'" stroke-width="1.5"/>';
+      busyGroup.innerHTML = html;
+    } else busyGroup.innerHTML = '';
+
+    const lisGroup = document.getElementById('listeningRing');
+    lisGroup.setAttribute('opacity', state.listeningOpa);
+    if (state.listeningOpa > 0.01) {
+      const baseDeg = (now/2)%360; const rc = '#FF0000'; let html = '';
+      let d1 = '';
+      for (let i=0;i<=120;i+=3){const a=((baseDeg+i)%360)*Math.PI/180;d1+=(i===0?'M':'L')+((CX+Math.cos(a)*219).toFixed(1)+','+(CY+Math.sin(a)*219).toFixed(1));}
+      html += '<path d="'+d1+'" fill="none" stroke="'+rc+'" stroke-width="3"/>';
+      let d2 = '';
+      for (let i=0;i<=80;i+=3){const a=((baseDeg+180+i)%360)*Math.PI/180;d2+=(i===0?'M':'L')+((CX+Math.cos(a)*219).toFixed(1)+','+(CY+Math.sin(a)*219).toFixed(1));}
+      html += '<path d="'+d2+'" fill="none" stroke="'+rc+'" stroke-width="3"/>';
+      lisGroup.innerHTML = html;
+    } else lisGroup.innerHTML = '';
+
+    const alertGroup = document.getElementById('alertRing');
+    alertGroup.setAttribute('opacity', state.alertOpa);
+    if (state.alertOpa > 0.01) {
+      const pulse = (Math.sin((now/1)*Math.PI/180)+1.0)*0.5;
+      alertGroup.innerHTML = '<circle cx="'+CX+'" cy="'+CY+'" r="223" fill="none" stroke="#FF0000" stroke-width="'+(2+pulse*4).toFixed(1)+'"/>';
+    } else alertGroup.innerHTML = '';
+  }
+
+  function renderEffects() {
+    const col = rgbToHex(state.faceColor);
+    document.getElementById('leftBrow').setAttribute('stroke', col);
+    document.getElementById('rightBrow').setAttribute('stroke', col);
+    document.getElementById('mouthCurve').setAttribute('stroke', col);
+    document.getElementById('blushGroup').setAttribute('opacity', state.blushOpa);
+    document.getElementById('heartsGroup').setAttribute('opacity', state.heartsOpa);
+
+    sparklePhase += 0.05;
+    document.getElementById('sparklesGroup').setAttribute('opacity', state.sparklesOpa);
+    for (let i=0;i<3;i++){document.getElementById('sparkle'+i).setAttribute('opacity',0.7+0.3*Math.sin(sparklePhase+i*2.1));}
+
+    const zzzGroup = document.getElementById('zzzGroup');
+    zzzGroup.setAttribute('opacity', state.zzzOpa);
+    sleepAnimFrame++;
+    const phase = sleepAnimFrame * 0.105;
+    const floatY = Math.sin(phase) * 4;
+    const baseX = 310, baseY = 126;
+    document.getElementById('zzz0a').setAttribute('y1',baseY-floatY); document.getElementById('zzz0a').setAttribute('y2',baseY-floatY);
+    document.getElementById('zzz0a').setAttribute('x1',baseX); document.getElementById('zzz0a').setAttribute('x2',baseX+35);
+    document.getElementById('zzz0b').setAttribute('x1',baseX+35); document.getElementById('zzz0b').setAttribute('y1',baseY-floatY);
+    document.getElementById('zzz0b').setAttribute('x2',baseX); document.getElementById('zzz0b').setAttribute('y2',baseY+35-floatY);
+    document.getElementById('zzz0c').setAttribute('x1',baseX); document.getElementById('zzz0c').setAttribute('y1',baseY+35-floatY);
+    document.getElementById('zzz0c').setAttribute('x2',baseX+35); document.getElementById('zzz0c').setAttribute('y2',baseY+35-floatY);
+    document.getElementById('zzz0a').setAttribute('stroke',col);
+    document.getElementById('zzz0b').setAttribute('stroke',col);
+    document.getElementById('zzz0c').setAttribute('stroke',col);
+    document.getElementById('zzz1a').setAttribute('x1',baseX+39); document.getElementById('zzz1a').setAttribute('y1',baseY-43-floatY);
+    document.getElementById('zzz1a').setAttribute('x2',baseX+63); document.getElementById('zzz1a').setAttribute('y2',baseY-43-floatY);
+    document.getElementById('zzz1b').setAttribute('x1',baseX+63); document.getElementById('zzz1b').setAttribute('y1',baseY-43-floatY);
+    document.getElementById('zzz1b').setAttribute('x2',baseX+39); document.getElementById('zzz1b').setAttribute('y2',baseY-19-floatY);
+    document.getElementById('zzz1c').setAttribute('x1',baseX+39); document.getElementById('zzz1c').setAttribute('y1',baseY-19-floatY);
+    document.getElementById('zzz1c').setAttribute('x2',baseX+63); document.getElementById('zzz1c').setAttribute('y2',baseY-19-floatY);
+    document.getElementById('zzz2a').setAttribute('x1',baseX+70); document.getElementById('zzz2a').setAttribute('y1',baseY-78-floatY);
+    document.getElementById('zzz2a').setAttribute('x2',baseX+88); document.getElementById('zzz2a').setAttribute('y2',baseY-78-floatY);
+    document.getElementById('zzz2b').setAttribute('x1',baseX+88); document.getElementById('zzz2b').setAttribute('y1',baseY-78-floatY);
+    document.getElementById('zzz2b').setAttribute('x2',baseX+70); document.getElementById('zzz2b').setAttribute('y2',baseY-60-floatY);
+    document.getElementById('zzz2c').setAttribute('x1',baseX+70); document.getElementById('zzz2c').setAttribute('y1',baseY-60-floatY);
+    document.getElementById('zzz2c').setAttribute('x2',baseX+88); document.getElementById('zzz2c').setAttribute('y2',baseY-60-floatY);
+
+    const tearGroup = document.getElementById('tearGroup');
+    tearGroup.setAttribute('opacity', state.tearOpa);
+    if (state.tearOpa > 0.01) {
+      tearAnimY += 1.6; if (tearAnimY > 155) tearAnimY = 0;
+      document.getElementById('tearDrop').setAttribute('transform','translate(0,'+tearAnimY+')');
+    }
+
+    const thoughtGroup = document.getElementById('thoughtDotsGroup');
+    thoughtGroup.setAttribute('opacity', state.thoughtDotsOpa);
+    if (state.thoughtDotsOpa > 0.01) {
+      const tp = now * 0.002;
+      const sizes = [6, 10, 14];
+      for (let i=0;i<3;i++){
+        const bob = Math.sin(tp+i*0.8)*6;
+        const el = document.getElementById('thought'+i);
+        el.setAttribute('cx',369+i*23); el.setAttribute('cy',106-i*16+bob); el.setAttribute('r',sizes[i]); el.setAttribute('fill',col);
+      }
+    }
+
+    const qGroup = document.getElementById('questionMarkGroup');
+    qGroup.setAttribute('opacity', state.questionMarkOpa);
+    if (state.questionMarkOpa > 0.01) {
+      const bob = Math.sin(now*0.003)*12;
+      const qx=378, arcCY=103+bob, arcR=34;
+      let arcD='';
+      for(let a=180;a<=450;a+=2){const rad=a*Math.PI/180;arcD+=(a===180?'M':'L')+(qx+Math.cos(rad)*arcR).toFixed(1)+','+(arcCY+Math.sin(rad)*arcR).toFixed(1);}
+      document.getElementById('questionArc').setAttribute('d',arcD);
+      document.getElementById('questionStem').setAttribute('x1',qx); document.getElementById('questionStem').setAttribute('y1',arcCY+arcR);
+      document.getElementById('questionStem').setAttribute('x2',qx); document.getElementById('questionStem').setAttribute('y2',arcCY+arcR+10);
+      document.getElementById('questionDot').setAttribute('cx',qx); document.getElementById('questionDot').setAttribute('cy',arcCY+60);
+    }
+
+    const vGroup = document.getElementById('angryVeinGroup');
+    vGroup.setAttribute('opacity', state.angryVeinOpa);
+    if (state.angryVeinOpa > 0.01) {
+      const pulse = Math.sin(now*0.004)*0.3+0.7;
+      const vc = pulse > 0.5 ? '#FF0000' : '#C50000';
+      document.querySelectorAll('#angryVeinInner line').forEach(function(l){l.setAttribute('stroke',vc);});
+      document.querySelectorAll('#angryVeinInner circle').forEach(function(c){c.setAttribute('fill',vc);});
+    }
+
+    renderEffectRings();
+  }
+
+  // ============ MAIN LOOP ============
+  // Only animate when section is visible (IntersectionObserver for perf)
+  let isVisible = false;
+
+  function frame(timestamp) {
+    now = timestamp;
+    if (autoCycle && now - lastEmotionChange > CYCLE_INTERVAL) {
+      lastEmotionChange = now;
+      currentEmotionIdx = (currentEmotionIdx + 1) % EMOTION_ORDER.length;
+      setEmotion(EMOTION_ORDER[currentEmotionIdx]);
+    }
+    updateBlink(); updateSaccades(); updateBreathing(); updateTransitions();
+    renderEye('left', LEFT_EYE_X, EYE_Y, state.eyeOpen, state.leftWink);
+    renderEye('right', RIGHT_EYE_X, EYE_Y, state.eyeOpen, false);
+    renderBrow('leftBrow', LEFT_EYE_X, EYE_Y, state.leftBrowHeight, state.leftBrowAngle, true);
+    renderBrow('rightBrow', RIGHT_EYE_X, EYE_Y, state.rightBrowHeight, state.rightBrowAngle, false);
+    renderMouth(); renderEffects();
+    if (isVisible) animFrameId = requestAnimationFrame(frame);
+  }
+
+  // ============ INIT ============
+  function init() {
+    // Wire up pill buttons
+    document.querySelectorAll('.nova-pill').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        autoCycle = false;
+        setEmotion(btn.dataset.emotion);
+        // Resume auto-cycle after 8 seconds of inactivity
+        clearTimeout(window._novaAutoResumeTimer);
+        window._novaAutoResumeTimer = setTimeout(function() {
+          autoCycle = true;
+          lastEmotionChange = performance.now();
+        }, 8000);
+      });
+    });
+
+    setEmotion('neutral');
+    lastEmotionChange = performance.now();
+
+    // IntersectionObserver: only run animation loop when the face is in viewport
+    var container = document.getElementById('nova-face-container');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !isVisible) {
+            isVisible = true;
+            lastEmotionChange = performance.now();
+            animFrameId = requestAnimationFrame(frame);
+          } else if (!entry.isIntersecting && isVisible) {
+            isVisible = false;
+            if (animFrameId) cancelAnimationFrame(animFrameId);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(container);
+    } else {
+      // Fallback: always animate
+      isVisible = true;
+      animFrameId = requestAnimationFrame(frame);
+    }
+  }
+
+  // Wait for DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 <!-- Integrations -->
 <section class="section-dark py-16 md:py-24">
