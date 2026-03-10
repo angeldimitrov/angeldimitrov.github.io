@@ -442,76 +442,117 @@ image: /assets/images/nova-sphere/hero-happy.jpg
   </div>
 </section>
 
-<!-- Faces & Emotions (merged) -->
-<section id="faces" class="section-dark py-16 md:py-24">
+<!-- Agent Faces -->
+<section class="section-dark py-16 md:py-24">
   <div class="container">
     <div class="text-center mb-12">
       <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
-        4 Face Styles. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">20 Emotions.</span>
+        Your AI. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Your Face.</span>
       </h2>
       <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
-        Switch face styles with a single API call. Set any of 20 animated emotions via MCP or REST. Emotions sync with AI-generated audio — your agent's voice and face stay in sync automatically.
+        4 built-in face styles. Switch with <code class="text-sm bg-neutral-800 px-2 py-0.5 rounded text-green-400">{"style":"openclaw"}</code> or add your own in C++.
       </p>
     </div>
-
-    <!-- Emotions demo video -->
-    <div class="max-w-lg mx-auto mb-14">
-      <video autoplay loop muted playsinline class="rounded-2xl shadow-2xl w-full" poster="/assets/images/nova-sphere/demo-poster.jpg">
-        <source src="/assets/images/nova-sphere/emotions-demo.mp4" type="video/mp4">
-      </video>
-      <p class="text-center text-neutral-500 text-sm mt-3">Emotions cycling live on Nova Sphere — each transition is a smooth parametric animation</p>
-    </div>
-
-    <!-- Face styles as compact cards -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-14">
-      <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-4 text-center">
-        <span class="text-2xl mb-2 block">🦞</span>
-        <p class="text-white font-bold text-sm">OpenClaw</p>
-        <p class="text-neutral-500 text-xs">Native emotion sync</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-openclaw-enhanced.jpg" alt="OpenClaw agent face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-1">OpenClaw</h3>
+        <p class="text-neutral-400 text-sm">Native emotion sync, voice, heartbeats</p>
       </div>
-      <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-4 text-center">
-        <span class="text-2xl mb-2 block">⚡</span>
-        <p class="text-white font-bold text-sm">Claude</p>
-        <p class="text-neutral-500 text-xs">MCP-native progress</p>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-claude-enhanced.jpg" alt="Claude Code face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-1">Claude Code</h3>
+        <p class="text-neutral-400 text-sm">MCP-native, shows coding progress</p>
       </div>
-      <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-4 text-center">
-        <span class="text-2xl mb-2 block">🦙</span>
-        <p class="text-white font-bold text-sm">Ollama</p>
-        <p class="text-neutral-500 text-xs">Local LLM, offline</p>
-      </div>
-      <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-4 text-center">
-        <span class="text-2xl mb-2 block">🎨</span>
-        <p class="text-white font-bold text-sm">Custom</p>
-        <p class="text-neutral-500 text-xs">Build your own in C++</p>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-ollama-enhanced.jpg" alt="Ollama llama face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-1">Ollama</h3>
+        <p class="text-neutral-400 text-sm">Local LLMs, fully offline voice</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Emotion grid — compact, no photos -->
-    <div class="grid grid-cols-4 md:grid-cols-5 gap-3 max-w-3xl mx-auto">
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😊</span><p class="text-neutral-300 text-xs mt-1">Happy</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">🤩</span><p class="text-neutral-300 text-xs mt-1">Excited</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😍</span><p class="text-neutral-300 text-xs mt-1">Love</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">🤔</span><p class="text-neutral-300 text-xs mt-1">Thinking</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😮</span><p class="text-neutral-300 text-xs mt-1">Surprised</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😕</span><p class="text-neutral-300 text-xs mt-1">Confused</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😢</span><p class="text-neutral-300 text-xs mt-1">Sad</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😠</span><p class="text-neutral-300 text-xs mt-1">Angry</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😉</span><p class="text-neutral-300 text-xs mt-1">Wink</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😴</span><p class="text-neutral-300 text-xs mt-1">Sleepy</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">💤</span><p class="text-neutral-300 text-xs mt-1">Sleep</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">🔔</span><p class="text-neutral-300 text-xs mt-1">Alert</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">🥺</span><p class="text-neutral-300 text-xs mt-1">Shy</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😐</span><p class="text-neutral-300 text-xs mt-1">Neutral</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😤</span><p class="text-neutral-300 text-xs mt-1">Determined</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">🤗</span><p class="text-neutral-300 text-xs mt-1">Proud</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">🔴</span><p class="text-neutral-300 text-xs mt-1">Busy</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">📡</span><p class="text-neutral-300 text-xs mt-1">Listening</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😏</span><p class="text-neutral-300 text-xs mt-1">Smirk</p></div>
-      <div class="rounded-lg bg-neutral-800/60 border border-neutral-700/40 px-3 py-2.5 text-center"><span class="text-lg">😈</span><p class="text-neutral-300 text-xs mt-1">Mischievous</p></div>
+<!-- Emotions -->
+<section class="bg-neutral-100 py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 mb-5">
+        20 Emotions. <span class="gradient-text-light">Smooth Animations.</span>
+      </h2>
+      <p class="text-neutral-600 max-w-2xl mx-auto">
+        Set any of 20+ emotions via MCP or REST API. Emotions can also be streamed together with AI-generated audio — your agent's voice and face stay in sync automatically.
+      </p>
     </div>
-
-    <p class="text-center text-neutral-500 text-sm mt-6 max-w-2xl mx-auto">
-      Each emotion is a parametric animation with smooth LERP transitions. Your agent sets them via <code class="text-xs bg-neutral-800 px-1.5 py-0.5 rounded text-green-400">set_emotion("thinking")</code>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto mb-8">
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-happy.jpg" alt="Happy emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Happy</p>
+        <p class="text-neutral-500 text-sm">Default greeting, task complete</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-excited.jpg" alt="Excited emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Excited</p>
+        <p class="text-neutral-500 text-sm">PR merged, build succeeded</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-love.jpg" alt="Love emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Love</p>
+        <p class="text-neutral-500 text-sm">Positive feedback, compliments</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-thinking.jpg" alt="Thinking emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Thinking</p>
+        <p class="text-neutral-500 text-sm">Processing, analyzing code</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-confused.jpg" alt="Confused emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Confused</p>
+        <p class="text-neutral-500 text-sm">Ambiguous input, clarification needed</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-sad.jpg" alt="Sad emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Sad</p>
+        <p class="text-neutral-500 text-sm">Test failed, deploy error</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-wink.jpg" alt="Wink emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Wink</p>
+        <p class="text-neutral-500 text-sm">Playful response, easter egg</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-angry.jpg" alt="Angry emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Angry</p>
+        <p class="text-neutral-500 text-sm">Critical error, sensor alert</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-sleepy.jpg" alt="Sleepy emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Sleepy</p>
+        <p class="text-neutral-500 text-sm">Low activity, idle mode</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-sleep.jpg" alt="Sleep emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Sleep</p>
+        <p class="text-neutral-500 text-sm">Night mode, do not disturb</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-alert.jpg" alt="Alert emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Alert</p>
+        <p class="text-neutral-500 text-sm">Threshold breach, urgent notification</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-surprised.jpg" alt="Surprised emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Surprised</p>
+        <p class="text-neutral-500 text-sm">Unexpected result, new discovery</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/emotion-shy.jpg" alt="Shy emotion on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Shy</p>
+        <p class="text-neutral-500 text-sm">Uncertain response, low confidence</p>
+      </div>
+    </div>
+    <p class="text-center text-neutral-400 text-sm max-w-3xl mx-auto">
+      + neutral · determined · proud · busy · listening · smirk · mischievous
     </p>
   </div>
 </section>
