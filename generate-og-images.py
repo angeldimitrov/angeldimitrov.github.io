@@ -6,6 +6,7 @@ Creates 1200x630px images with brand colors and messaging for:
 - Homepage (og-homepage.jpg)
 - Workshop page (og-workshop.jpg)
 - ROI Calculator (og-roi-calculator.jpg)
+- Nova Sphere (og-nova-sphere.jpg)
 - Default fallback (og-default.jpg)
 
 Requirements:
@@ -176,6 +177,48 @@ def create_roi_calculator_og_image():
     img.save('assets/images/og-roi-calculator.jpg', 'JPEG', quality=95)
     print("✓ Created og-roi-calculator.jpg")
 
+def create_nova_sphere_og_image():
+    """Nova Sphere: AI hardware Kickstarter campaign"""
+    img = create_gradient_background(1200, 630)
+    draw = ImageDraw.Draw(img)
+
+    try:
+        title_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 82)
+        title_font.set_variation_by_name('Bold')
+        subtitle_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 44)
+        subtitle_font.set_variation_by_name('SemiBold')
+        detail_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 34)
+        detail_font.set_variation_by_name('Medium')
+        tagline_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 54)
+        tagline_font.set_variation_by_name('SemiBold')
+    except:
+        try:
+            title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 82)
+            subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 44)
+            detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 34)
+            tagline_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 54)
+        except:
+            title_font = ImageFont.load_default()
+            subtitle_font = ImageFont.load_default()
+            detail_font = ImageFont.load_default()
+            tagline_font = ImageFont.load_default()
+
+    # Product name
+    add_text_centered(draw, "Nova Sphere", 100, title_font, WHITE)
+
+    # Tagline
+    add_text_centered(draw, "Your AI Deserves a Face", 210, tagline_font, PURPLE)
+
+    # Key features
+    add_text_centered(draw, "AMOLED Display  •  MCP Server  •  Voice Pipeline", 330, detail_font, WHITE)
+    add_text_centered(draw, "20+ Tools  •  REST API  •  Open Hardware", 390, detail_font, WHITE)
+
+    # CTA
+    add_text_centered(draw, "Coming Soon to Kickstarter", 490, subtitle_font, PRIMARY)
+
+    img.save('assets/images/og-nova-sphere.jpg', 'JPEG', quality=95)
+    print("✓ Created og-nova-sphere.jpg")
+
 def create_default_og_image():
     """Default OG image: Copy of homepage for fallback"""
     import shutil
@@ -189,6 +232,7 @@ if __name__ == "__main__":
     create_homepage_og_image()
     create_workshop_og_image()
     create_roi_calculator_og_image()
+    create_nova_sphere_og_image()
     create_default_og_image()
 
     print()
