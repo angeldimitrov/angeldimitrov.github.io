@@ -43,21 +43,116 @@ image: /assets/images/nova-sphere/hero-happy.jpg
 </section>
 
 <!-- Demo Video -->
-<section id="demo" class="section-dark pt-0 pb-16 md:pb-24">
+<section id="demo" class="bg-neutral-50 min-h-screen flex items-center py-16 md:py-24">
   <div class="container">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="text-sm font-medium text-purple-400 tracking-wider uppercase mb-3">See it in action</p>
-      <h2 class="mb-4 text-2xl font-bold md:text-3xl text-white">
-        A Morning with Nova Sphere
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-16 items-center">
+      <div class="order-2 md:order-1">
+        <p class="text-sm font-semibold text-purple-600 tracking-wider uppercase mb-4">See it in action</p>
+        <h2 class="mb-6 text-4xl font-bold md:text-5xl text-neutral-900 leading-tight">
+          A Morning with Nova Sphere
+        </h2>
+        <p class="text-lg md:text-xl text-neutral-600 mb-8 leading-relaxed">
+          Not a concept. This is an OpenClaw agent running live — reporting on
+          other running agents, reviewing tasks, reading emails, and listening
+          for voice commands. All powered by OpenClaw.
+        </p>
+        <div class="space-y-4 text-base text-neutral-700 mb-10">
+          <div class="flex items-center gap-3">
+            <span class="text-green-600 text-lg">✓</span> <span>Emails, sensors, APIs, calendars — all on the display</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-green-600 text-lg">✓</span> <span>Voice interaction via wake word</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-green-600 text-lg">✓</span> <span>Emotions sync with agent state in real time</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-green-600 text-lg">✓</span> <span>AI generates custom widgets on the fly via MCP &amp; REST API</span>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-500">1:04 · Real hardware, real AI, no edits</p>
+      </div>
+      <div class="order-1 md:order-2">
+        <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-2xl">
+          <video controls playsinline preload="metadata" class="w-full" poster="/assets/images/nova-sphere/demo-poster.jpg">
+            <source src="/assets/video/nova-sphere-demo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Agent Faces -->
+<section class="section-dark py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
+        Your AI. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Your Face.</span>
       </h2>
-      <p class="text-neutral-400 text-sm md:text-base mb-8 max-w-xl mx-auto">
-        Not a concept. This is an OpenClaw agent running live — waking up, checking weather,
-        reading emails, and listening for voice commands.
+      <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+        4 built-in face styles. Switch with <code class="text-sm bg-neutral-800 px-2 py-0.5 rounded text-green-400">{"style":"openclaw"}</code> or add your own in C++.
       </p>
-      <div class="max-w-sm mx-auto rounded-xl overflow-hidden border border-neutral-700/60 shadow-2xl">
-        <video controls playsinline preload="metadata" class="w-full" poster="/assets/images/nova-sphere/demo-poster.jpg">
-          <source src="/assets/video/nova-sphere-demo.mp4" type="video/mp4">
-        </video>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-openclaw-enhanced.jpg" alt="OpenClaw agent face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-1">OpenClaw</h3>
+        <p class="text-neutral-400 text-sm">Native emotion sync, voice, heartbeats</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-claude-enhanced.jpg" alt="Claude Code face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-1">Claude Code</h3>
+        <p class="text-neutral-400 text-sm">MCP-native, shows coding progress</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/style-ollama-enhanced.jpg" alt="Ollama llama face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <h3 class="text-xl font-bold text-white mb-1">Ollama</h3>
+        <p class="text-neutral-400 text-sm">Local LLMs, fully offline voice</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coding Agent Integration -->
+<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
+  <div class="container">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <!-- Animation -->
+        <div>
+          <picture>
+            <source srcset="/assets/images/nova-sphere/mcp-demo-enhanced.webp" type="image/webp">
+            <img src="/assets/images/nova-sphere/mcp-demo-enhanced.webp" alt="Claude Code MCP demo — real-time progress on Nova Sphere display" class="rounded-xl shadow-2xl w-full" loading="lazy">
+          </picture>
+        </div>
+        <!-- Text -->
+        <div>
+          <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 mb-5">
+            Watch your AI <span class="gradient-text-light">work.</span>
+          </h2>
+          <p class="text-lg text-neutral-600 mb-6">
+            Claude Code picks up GitHub issue #265. Nova Sphere shows every step — scanning files, writing code, running tests. Then it deploys to staging and confirms: <strong>LIVE</strong>.
+          </p>
+          <div class="space-y-3 text-neutral-600">
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Real-time progress ring fills as steps complete</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Step counter, file names, status updates — all via MCP</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Face emotion syncs with agent state (thinking → excited → done)</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Works with any MCP-compatible agent: Claude Code, OpenClaw, custom</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -71,14 +166,9 @@ image: /assets/images/nova-sphere/hero-happy.jpg
         <img src="/assets/images/nova-sphere/hero-kickstarter.jpg" alt="Nova Sphere on a developer desk with keyboard and coffee" class="rounded-xl shadow-lg w-full" loading="lazy">
       </div>
       <div>
-        <p class="text-lg text-neutral-700 leading-relaxed mb-4 italic">
-          "Five days ago, my AI assistant gave itself a face. It started showing emotions while we talked — 
-          happy when it solved a problem, thinking when processing, excited when it had an idea. 
-          Then it asked for a mirror."
-        </p>
-        <p class="text-neutral-500 text-sm mb-6">— LinkedIn post, 41,000 views</p>
         <p class="text-neutral-600">
-          Nova Sphere started as an internal tool — a way to give our OpenClaw agent a physical presence. 
+          Nova Sphere started as an internal tool — a way to give our OpenClaw agent a physical presence,
+          monitor coding agents in real time, and get notified the moment something needs attention.
           The response convinced us to make it a product.
         </p>
       </div>
@@ -86,8 +176,50 @@ image: /assets/images/nova-sphere/hero-happy.jpg
   </div>
 </section>
 
+<!-- Widget Showcase -->
+<section class="bg-white py-16 md:py-24">
+  <div class="container">
+    <div class="text-center mb-10 md:mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">Widgets for Everything.</h2>
+      <p class="text-neutral-600 max-w-2xl mx-auto">Every widget is built with the same API. Your AI agent creates them, your scripts update them, you swipe between pages.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/widget-staging-scan.jpg" alt="CI/CD staging scan progress on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Staging Scan</p>
+        <p class="text-neutral-500 text-sm">CI/CD progress, step counter, error tracking</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/widget-reef-monitor.jpg" alt="Reef aquarium sensor dashboard on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Reef Monitor</p>
+        <p class="text-neutral-500 text-sm">Prometheus sensors, 4 gauge arcs, alerts</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/widget-bambu-x1c.jpg" alt="Bambu X1C 3D printer monitor on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Bambu X1C</p>
+        <p class="text-neutral-500 text-sm">MQTT bridge, nozzle + bed temps, print status</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/widget-weekly-commits.jpg" alt="GitHub weekly commits chart on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Weekly Commits</p>
+        <p class="text-neutral-500 text-sm">GitHub API, pushed vs. merged PRs</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/widget-btc-chart.jpg" alt="BTC/USD 90-day price chart on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">BTC / USD</p>
+        <p class="text-neutral-500 text-sm">90-day chart, live price, line widget</p>
+      </div>
+      <div class="text-center">
+        <img src="/assets/images/nova-sphere/widget-focus-timer.jpg" alt="Pomodoro focus timer on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
+        <p class="font-bold text-neutral-900">Focus Timer</p>
+        <p class="text-neutral-500 text-sm">Pomodoro sessions, break countdown</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Emotions -->
-<section class="bg-neutral-100 py-16 md:py-24">
+<section class="bg-white py-16 md:py-24">
   <div class="container">
     <div class="text-center">
       <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 mb-5">
@@ -129,81 +261,8 @@ image: /assets/images/nova-sphere/hero-happy.jpg
   </div>
 </section>
 
-<!-- Agent Faces -->
-<section class="section-dark py-16 md:py-24">
-  <div class="container">
-    <div class="text-center mb-12">
-      <h2 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl text-white">
-        Your AI. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Your Face.</span>
-      </h2>
-      <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
-        4 built-in face styles. Switch with <code class="text-sm bg-neutral-800 px-2 py-0.5 rounded text-green-400">{"style":"openclaw"}</code> or add your own in C++.
-      </p>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/style-openclaw-enhanced.jpg" alt="OpenClaw agent face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <h3 class="text-xl font-bold text-white mb-1">OpenClaw</h3>
-        <p class="text-neutral-400 text-sm">Native emotion sync, voice, heartbeats</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/style-claude-enhanced.jpg" alt="Claude Code face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <h3 class="text-xl font-bold text-white mb-1">Claude Code</h3>
-        <p class="text-neutral-400 text-sm">MCP-native, shows coding progress</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/style-ollama-enhanced.jpg" alt="Ollama llama face on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <h3 class="text-xl font-bold text-white mb-1">Ollama</h3>
-        <p class="text-neutral-400 text-sm">Local LLMs, fully offline voice</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Widget Showcase -->
-<section class="bg-neutral-100 py-16 md:py-24">
-  <div class="container">
-    <div class="text-center mb-10 md:mb-14">
-      <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">Widgets for Everything.</h2>
-      <p class="text-neutral-600 max-w-2xl mx-auto">Every widget is built with the same API. Your AI agent creates them, your scripts update them, you swipe between pages.</p>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-staging-scan.jpg" alt="CI/CD staging scan progress on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <p class="font-bold text-neutral-900">Staging Scan</p>
-        <p class="text-neutral-500 text-sm">CI/CD progress, step counter, error tracking</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-reef-monitor.jpg" alt="Reef aquarium sensor dashboard on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <p class="font-bold text-neutral-900">Reef Monitor</p>
-        <p class="text-neutral-500 text-sm">Prometheus sensors, 4 gauge arcs, alerts</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-bambu-x1c.jpg" alt="Bambu X1C 3D printer monitor on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <p class="font-bold text-neutral-900">Bambu X1C</p>
-        <p class="text-neutral-500 text-sm">MQTT bridge, nozzle + bed temps, print status</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-weekly-commits.jpg" alt="GitHub weekly commits chart on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <p class="font-bold text-neutral-900">Weekly Commits</p>
-        <p class="text-neutral-500 text-sm">GitHub API, pushed vs. merged PRs</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-btc-chart.jpg" alt="BTC/USD 90-day price chart on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <p class="font-bold text-neutral-900">BTC / USD</p>
-        <p class="text-neutral-500 text-sm">90-day chart, live price, line widget</p>
-      </div>
-      <div class="text-center">
-        <img src="/assets/images/nova-sphere/widget-focus-timer.jpg" alt="Pomodoro focus timer on Nova Sphere" class="rounded-xl shadow-lg w-full mb-4" loading="lazy">
-        <p class="font-bold text-neutral-900">Focus Timer</p>
-        <p class="text-neutral-500 text-sm">Pomodoro sessions, break countdown</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- What It Does — Dev Scenarios -->
-<section class="bg-white py-16 md:py-24 lg:py-32">
+<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
   <div class="container">
     <div class="text-center mb-12 md:mb-16">
       <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl text-neutral-900 mb-5">
@@ -309,50 +368,6 @@ image: /assets/images/nova-sphere/hero-happy.jpg
     <p class="text-center text-neutral-400 text-sm mt-8 max-w-2xl mx-auto">
       These are building blocks, not pre-built features. Your AI agent combines them however it wants — that's the point.
     </p>
-  </div>
-</section>
-
-<!-- Coding Agent Integration -->
-<section class="bg-neutral-100 py-16 md:py-24 lg:py-32">
-  <div class="container">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-        <!-- Animation -->
-        <div>
-          <picture>
-            <source srcset="/assets/images/nova-sphere/mcp-demo-enhanced.webp" type="image/webp">
-            <img src="/assets/images/nova-sphere/mcp-demo-enhanced.webp" alt="Claude Code MCP demo — real-time progress on Nova Sphere display" class="rounded-xl shadow-2xl w-full" loading="lazy">
-          </picture>
-        </div>
-        <!-- Text -->
-        <div>
-          <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 mb-5">
-            Watch your AI <span class="gradient-text-light">work.</span>
-          </h2>
-          <p class="text-lg text-neutral-600 mb-6">
-            Claude Code picks up GitHub issue #265. Nova Sphere shows every step — scanning files, writing code, running tests. Then it deploys to staging and confirms: <strong>LIVE</strong>.
-          </p>
-          <div class="space-y-3 text-neutral-600">
-            <div class="flex items-start gap-3">
-              <span class="text-green-500 mt-1">✓</span>
-              <span>Real-time progress ring fills as steps complete</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-green-500 mt-1">✓</span>
-              <span>Step counter, file names, status updates — all via MCP</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-green-500 mt-1">✓</span>
-              <span>Face emotion syncs with agent state (thinking → excited → done)</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-green-500 mt-1">✓</span>
-              <span>Works with any MCP-compatible agent: Claude Code, OpenClaw, custom</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
