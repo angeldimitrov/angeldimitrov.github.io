@@ -2,7 +2,7 @@
 layout: default
 title: Nova Sphere — Your AI Deserves a Face
 description: Open hardware AI interface with AMOLED display, MCP server (21 tools), voice pipeline, and REST API. Give your AI agent a physical presence. Coming soon to Kickstarter.
-keywords: Nova Sphere, AI hardware, MCP server, Claude Code, OpenClaw, ESP32, AMOLED, Ollama, voice assistant, Kickstarter, REST API, Home Assistant, IoT display, open source hardware
+keywords: Nova Sphere, AI hardware, MCP server, Claude Code, OpenClaw, ESP32, AMOLED, Ollama, voice assistant, Kickstarter, REST API, Home Assistant, IoT display, hardware interface
 image: /assets/images/nova-sphere/hero-happy.jpg
 ---
 
@@ -275,8 +275,8 @@ image: /assets/images/nova-sphere/hero-happy.jpg
             <p class="text-neutral-300">Tap → <span class="text-cyan-400">INMP441</span> (16kHz I2S)</p>
             <p class="text-neutral-300"> → <span class="text-cyan-400">faster-whisper</span> (STT, local)</p>
             <p class="text-neutral-300"> → <span class="text-cyan-400">Ollama/gemma3</span> (LLM, local)</p>
-            <p class="text-neutral-300"> → <span class="text-cyan-400">edge-tts</span> (48kHz neural)</p>
-            <p class="text-neutral-300"> → <span class="text-cyan-400">Speaker</span> (full duplex)</p>
+            <p class="text-neutral-300"> → <span class="text-cyan-400">edge-tts</span> (neural TTS)</p>
+            <p class="text-neutral-300"> → <span class="text-cyan-400">Speaker</span> (I2S, 48kHz playback)</p>
             <p class="text-neutral-500 mt-2 text-xs">Each component is swappable. Use Piper for fully offline TTS, any OpenAI-compatible API for LLM, etc.</p>
           </div>
         </div>
@@ -592,6 +592,97 @@ image: /assets/images/nova-sphere/hero-happy.jpg
   </div>
 </section>
 
+<!-- Timeline -->
+<section class="bg-neutral-100 py-16 md:py-24">
+  <div class="container">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold md:text-4xl text-neutral-900 text-center mb-10">
+        <span class="gradient-text-light">Timeline</span>
+      </h2>
+      <div class="space-y-0">
+        <div class="flex gap-6 items-start">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full bg-green-500 mt-1.5"></div>
+            <div class="w-0.5 h-full bg-neutral-300 min-h-[60px]"></div>
+          </div>
+          <div class="pb-8">
+            <p class="font-bold text-neutral-900">✅ Now — Firmware Complete</p>
+            <p class="text-neutral-600 text-sm">Production-ready firmware running daily. MCP server (21 tools), voice pipeline, widget system, OTA updates — all working on the creator's desk.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full bg-purple-500 mt-1.5"></div>
+            <div class="w-0.5 h-full bg-neutral-300 min-h-[60px]"></div>
+          </div>
+          <div class="pb-8">
+            <p class="font-bold text-neutral-900">🚀 May 2026 — Kickstarter Launch</p>
+            <p class="text-neutral-600 text-sm">30-day campaign. Early Bird pricing available for the first 100 backers.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full bg-neutral-300 mt-1.5"></div>
+            <div class="w-0.5 h-full bg-neutral-300 min-h-[60px]"></div>
+          </div>
+          <div class="pb-8">
+            <p class="font-bold text-neutral-900">Jun–Jul 2026 — Production & Assembly</p>
+            <p class="text-neutral-600 text-sm">Component sourcing, enclosure production, assembly, quality testing. Regular backer updates with photos and progress.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full bg-neutral-300 mt-1.5"></div>
+            <div class="w-0.5 h-full bg-neutral-300 min-h-[60px]"></div>
+          </div>
+          <div class="pb-8">
+            <p class="font-bold text-neutral-900">Aug 2026 — Shipping Begins</p>
+            <p class="text-neutral-600 text-sm">Early Bird and Standard tiers ship first. Worldwide delivery from Germany.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 rounded-full bg-neutral-300 mt-1.5"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-bold text-neutral-900">Sep 2026 — Late Pledges & Stretch Goals</p>
+            <p class="text-neutral-600 text-sm">Late pledge fulfillment and stretch goal delivery (if unlocked).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Risks & Challenges -->
+<section class="section-dark py-16 md:py-24">
+  <div class="container">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-white text-center mb-10">
+        Risks & <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Challenges</span>
+      </h2>
+      <div class="space-y-6">
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6">
+          <h3 class="font-bold text-white mb-2">Manufacturing & Assembly</h3>
+          <p class="text-neutral-300 text-sm">This is a first production run. While the firmware is proven (running daily for months), scaling from prototype to hundreds of units introduces assembly and quality challenges. We've sourced all components from established suppliers and designed the assembly process to minimize complexity. Each unit will be tested before shipping.</p>
+        </div>
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6">
+          <h3 class="font-bold text-white mb-2">Component Supply Chain</h3>
+          <p class="text-neutral-300 text-sm">The ESP32-S3 and Waveshare AMOLED module are widely available. However, global supply chain disruptions can affect lead times. We've identified backup suppliers and will order components immediately after funding to lock in availability.</p>
+        </div>
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6">
+          <h3 class="font-bold text-white mb-2">Shipping & Logistics</h3>
+          <p class="text-neutral-300 text-sm">International shipping from Germany is well-established, but customs delays and regional logistics vary. We're working with experienced fulfillment partners and will provide tracking for every shipment. Shipping costs are clearly listed per region.</p>
+        </div>
+        <div class="rounded-xl border border-neutral-700/60 bg-neutral-800/60 p-6">
+          <h3 class="font-bold text-white mb-2">Timeline</h3>
+          <p class="text-neutral-300 text-sm">Hardware projects can experience delays. Our advantage: the firmware is already complete and battle-tested. The remaining work is physical production and assembly. If delays occur, we'll communicate openly through backer updates. We'd rather ship a great product late than a rushed product on time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="bg-neutral-100 py-16 md:py-24">
   <div class="container">
@@ -629,6 +720,16 @@ image: /assets/images/nova-sphere/hero-happy.jpg
         <div class="card p-6">
           <h3 class="font-bold text-neutral-900 mb-2">Is the firmware open source?</h3>
           <p class="text-neutral-600">Every Nova Sphere comes with the full firmware source code. You can modify, extend, and flash your own builds via OTA or USB. It's not "open source" in the public repo sense — the source is included with your purchase, not published freely.</p>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-bold text-neutral-900 mb-2">What's the source code license?</h3>
+          <p class="text-neutral-600">The source code is licensed for personal use, modification, and learning. You can customize it, build your own face styles, add integrations, and flash custom firmware. Redistribution and resale of the source code is not permitted. Think of it like buying a book — you own your copy and can do what you want with it, but you can't republish it.</p>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-bold text-neutral-900 mb-2">What about privacy? There's a microphone in it.</h3>
+          <p class="text-neutral-600">Nova Sphere does not listen by default — the mic only activates when you tap the sphere. All voice processing happens on YOUR server (or locally via Ollama). No audio is sent to any cloud service unless you explicitly configure it that way. There's no account, no telemetry, no always-on listening. You control the entire pipeline.</p>
         </div>
 
         <div class="card p-6">
