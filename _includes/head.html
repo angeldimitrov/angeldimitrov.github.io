@@ -1,5 +1,5 @@
 <head>
-  <!-- Google tag (gtag.js) with Consent Mode V2 -->
+  <!-- Google tag (gtag.js) -->
   {% if site.google_analytics %}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>
@@ -7,17 +7,8 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    // Set default consent state (denied until user explicitly consents)
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
-    });
-
     gtag('config', '{{ site.google_analytics }}', {
-      // Ensure no data is sent until consent is granted
-      'send_page_view': false
+      'send_page_view': true
     });
   </script>
   {% endif %}
