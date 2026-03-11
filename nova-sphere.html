@@ -38,7 +38,7 @@ structured_data: |
 
 <!-- Hero -->
 <section id="hero" class="hero md:min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-0">
-  <div class="container relative" style="z-index: 2;">
+  <div class="container relative z-[2]">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-12 items-center">
       <div class="hero-content text-white order-1 md:order-1">
         <p class="text-sm font-semibold tracking-wider uppercase mb-4 md:mb-6 text-purple-400">Coming May 2026 to Kickstarter</p>
@@ -109,6 +109,7 @@ structured_data: |
         <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-2xl">
           <video controls playsinline preload="auto" class="w-full" poster="/assets/images/nova-sphere/demo-poster.jpg">
             <source src="/assets/video/nova-sphere-demo.mp4" type="video/mp4">
+            <track kind="captions" label="English" srclang="en" default>
           </video>
         </div>
       </div>
@@ -124,7 +125,7 @@ structured_data: |
         Your AI. <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Your Face.</span>
       </h2>
       <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
-        4 built-in face styles. Switch with <code class="text-sm bg-neutral-800 px-2 py-0.5 rounded text-green-400">{"style":"openclaw"}</code> or add your own in C++.
+        3 built-in face styles + a default. Switch with <code class="text-sm bg-neutral-800 px-2 py-0.5 rounded text-green-400">{"style":"openclaw"}</code> or add your own in C++.
       </p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
@@ -163,6 +164,7 @@ structured_data: |
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <!-- Animation -->
         <div>
+          <!-- WebP-only: animated image, no JPG equivalent exists -->
           <img src="/assets/images/nova-sphere/mcp-demo-enhanced.webp" alt="Claude Code MCP demo - real-time progress on Nova Sphere display" class="rounded-xl shadow-2xl w-full" loading="lazy">
         </div>
         <!-- Text -->
@@ -394,7 +396,7 @@ structured_data: |
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-purple-600"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
         </div>
         <h3 class="text-base font-bold text-neutral-900 mb-1">Wear any face</h3>
-        <p class="text-neutral-500 text-sm">4 built-in face styles (OpenClaw, Claude, Ollama, default). Add your own in C++ - eyes, mouth, eyebrows, extras are all customizable.</p>
+        <p class="text-neutral-500 text-sm">3 built-in face styles + a default (OpenClaw, Claude, Ollama, default). Add your own in C++ - eyes, mouth, eyebrows, extras are all customizable.</p>
       </div>
 
       <!-- OTA -->
@@ -738,7 +740,7 @@ structured_data: |
           <thead>
             <tr class="border-b-2 border-neutral-200">
               <th class="text-left py-3 px-4 text-neutral-500 font-medium"></th>
-              <th class="py-3 px-4 text-neutral-900 font-bold bg-purple-50 rounded-t-lg">Nova Sphere<br><span class="text-purple-600 font-normal">€109</span></th>
+              <th class="py-3 px-4 text-neutral-900 font-bold bg-purple-50 rounded-t-lg">Nova Sphere<br><span class="text-purple-600 font-normal">from €109</span></th>
               <th class="py-3 px-4 text-neutral-500 font-medium">Dipal D1<br><span class="font-normal">$379</span></th>
               <th class="py-3 px-4 text-neutral-500 font-medium">Tidbyt<br><span class="font-normal">$199</span></th>
               <th class="py-3 px-4 text-neutral-500 font-medium">Echo Show 5<br><span class="font-normal">$90</span></th>
@@ -1026,7 +1028,7 @@ structured_data: |
 
         <div class="card p-6">
           <h3 class="font-bold text-neutral-900 mb-2">Can I build my own face styles?</h3>
-          <p class="text-neutral-600">Yes. Face styles are C++ classes in the firmware. Each style defines how eyes, mouth, eyebrows, and extras are drawn. The code includes 4 built-in styles (default, OpenClaw, Claude, Ollama) that you can use as templates.</p>
+          <p class="text-neutral-600">Yes. Face styles are C++ classes in the firmware. Each style defines how eyes, mouth, eyebrows, and extras are drawn. The code includes 3 built-in styles + a default (OpenClaw, Claude, Ollama, default) that you can use as templates.</p>
         </div>
 
         <div class="card p-6">

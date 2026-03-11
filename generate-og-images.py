@@ -35,6 +35,7 @@ Font License:
 
 from PIL import Image, ImageDraw, ImageFont
 import os
+import shutil
 
 # Brand colors from tailwind.config.js
 PRIMARY = "#3B82F6"  # Blue - used for stats and key numbers
@@ -45,7 +46,7 @@ PURPLE = "#c084fc"   # Purple - accent color for subtitles
 # Note: SECONDARY, GRADIENT_START, GRADIENT_END not currently used
 # Reserved for future gradient backgrounds or button styling if needed
 
-def create_gradient_background(width, height):
+def create_solid_background(width, height):
     """Create a solid dark background matching the site"""
     img = Image.new('RGB', (width, height), DARK_BG)
     return img
@@ -59,7 +60,7 @@ def add_text_centered(draw, text, y, font, color, width=1200):
 
 def create_homepage_og_image():
     """Homepage: Ship Software 3x Faster"""
-    img = create_gradient_background(1200, 630)
+    img = create_solid_background(1200, 630)
     draw = ImageDraw.Draw(img)
 
     # Use Inter font from the website
@@ -71,13 +72,13 @@ def create_homepage_og_image():
         subtitle_font.set_variation_by_name('SemiBold')
         detail_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 36)
         detail_font.set_variation_by_name('Medium')
-    except:
+    except Exception:
         # Fallback to Inter.ttc or system fonts
         try:
             title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 90)
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 48)
             detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 36)
-        except:
+        except Exception:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
             detail_font = ImageFont.load_default()
@@ -98,7 +99,7 @@ def create_homepage_og_image():
 
 def create_workshop_og_image():
     """Workshop page: Claude Code Workshop"""
-    img = create_gradient_background(1200, 630)
+    img = create_solid_background(1200, 630)
     draw = ImageDraw.Draw(img)
 
     try:
@@ -113,7 +114,7 @@ def create_workshop_og_image():
             title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 80)
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 46)
             detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 34)
-        except:
+        except Exception:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
             detail_font = ImageFont.load_default()
@@ -135,7 +136,7 @@ def create_workshop_og_image():
 
 def create_roi_calculator_og_image():
     """ROI Calculator: Impact Calculator"""
-    img = create_gradient_background(1200, 630)
+    img = create_solid_background(1200, 630)
     draw = ImageDraw.Draw(img)
 
     try:
@@ -153,7 +154,7 @@ def create_roi_calculator_og_image():
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 44)
             detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 36)
             stat_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 120)
-        except:
+        except Exception:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
             detail_font = ImageFont.load_default()
@@ -179,7 +180,7 @@ def create_roi_calculator_og_image():
 
 def create_nova_sphere_og_image():
     """Nova Sphere: AI hardware Kickstarter campaign"""
-    img = create_gradient_background(1200, 630)
+    img = create_solid_background(1200, 630)
     draw = ImageDraw.Draw(img)
 
     try:
@@ -197,7 +198,7 @@ def create_nova_sphere_og_image():
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 44)
             detail_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 34)
             tagline_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 54)
-        except:
+        except Exception:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()
             detail_font = ImageFont.load_default()
@@ -221,7 +222,6 @@ def create_nova_sphere_og_image():
 
 def create_default_og_image():
     """Default OG image: Copy of homepage for fallback"""
-    import shutil
     shutil.copy('assets/images/og-homepage.jpg', 'assets/images/og-default.jpg')
     print("✓ Created og-default.jpg (copy of homepage)")
 
