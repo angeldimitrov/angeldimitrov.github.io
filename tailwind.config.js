@@ -8,6 +8,7 @@ module.exports = {
     "./_layouts/**/*.{html,js}",
     "./workshop.html",
     "./roi-calculator.html",
+    "./nova-sphere.html",
     "./assets/js/**/*.js"
   ],
   safelist: [
