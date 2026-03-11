@@ -109,7 +109,7 @@ def create_workshop_og_image():
         subtitle_font.set_variation_by_name('SemiBold')
         detail_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 34)
         detail_font.set_variation_by_name('Medium')
-    except:
+    except Exception:
         try:
             title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 80)
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 46)
@@ -148,7 +148,7 @@ def create_roi_calculator_og_image():
         detail_font.set_variation_by_name('Medium')
         stat_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 120)
         stat_font.set_variation_by_name('Bold')
-    except:
+    except Exception:
         try:
             title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 78)
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 44)
@@ -192,7 +192,7 @@ def create_nova_sphere_og_image():
         detail_font.set_variation_by_name('Medium')
         tagline_font = ImageFont.truetype("assets/fonts/inter/InterVariable.ttf", 54)
         tagline_font.set_variation_by_name('SemiBold')
-    except:
+    except Exception:
         try:
             title_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 82)
             subtitle_font = ImageFont.truetype("assets/fonts/inter/Inter.ttc", 44)

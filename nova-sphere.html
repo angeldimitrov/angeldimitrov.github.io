@@ -28,8 +28,8 @@ structured_data: |
     },
     "category": "Electronics > IoT Devices",
     "manufacturer": {
-      "@type": "Person",
-      "name": "Angel Dimitrov",
+      "@type": "Organization",
+      "name": "Nova Sphere",
       "url": "https://coding-agents.ai/"
     }
   }
@@ -40,7 +40,7 @@ structured_data: |
 <section id="hero" class="hero md:min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-0">
   <div class="container relative z-[2]">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-12 items-center">
-      <div class="hero-content text-white order-1 md:order-1">
+      <div class="hero-content text-white order-1">
         <p class="text-sm font-semibold tracking-wider uppercase mb-4 md:mb-6 text-purple-400">Coming May 2026 to Kickstarter</p>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-8 leading-tight">
           <span class="bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Give Your AI Agent a Face.</span>
@@ -65,10 +65,10 @@ structured_data: |
           <a href="#demo" class="btn btn-secondary-dark">Watch the Demo ↓</a>
         </div>
       </div>
-      <div class="order-2 md:order-2 flex justify-center">
+      <div class="order-2 flex justify-center">
         <picture>
           <source srcset="/assets/images/nova-sphere/hero-happy.webp" type="image/webp">
-          <img src="/assets/images/nova-sphere/hero-happy.jpg" alt="Nova Sphere with animated AI face on round AMOLED display" class="rounded-2xl shadow-2xl max-w-sm w-full" loading="eager">
+          <img src="/assets/images/nova-sphere/hero-happy.jpg" alt="Nova Sphere with animated AI face on round AMOLED display" class="rounded-2xl shadow-2xl max-w-sm w-full" width="384" height="384" loading="eager">
         </picture>
       </div>
     </div>
@@ -109,7 +109,6 @@ structured_data: |
         <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-2xl">
           <video controls playsinline preload="auto" class="w-full" poster="/assets/images/nova-sphere/demo-poster.jpg">
             <source src="/assets/video/nova-sphere-demo.mp4" type="video/mp4">
-            <track kind="captions" label="English" srclang="en" default>
           </video>
         </div>
       </div>
@@ -210,6 +209,7 @@ structured_data: |
         </picture>
       </div>
       <div>
+        <h2 class="text-2xl font-bold md:text-3xl text-neutral-900 mb-4">From Internal Tool to Product.</h2>
         <p class="text-neutral-600">
           Nova Sphere started as an internal tool - a way to give our OpenClaw agent a physical presence,
           monitor coding agents in real time, and get notified the moment something needs attention.
@@ -290,7 +290,8 @@ structured_data: |
       <p class="text-neutral-600 max-w-2xl mx-auto mb-8">
         Set any of 20+ emotions via MCP or REST API. Emotions can also be streamed together with AI-generated audio - your agent's voice and face stay in sync automatically.
       </p>
-      <div class="grid grid-cols-5 gap-3 mb-8 max-w-4xl mx-auto">
+      <!-- WebP-only: photo gallery images, no JPG equivalents exist -->
+      <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mb-8 max-w-4xl mx-auto">
         <img src="/assets/images/nova-sphere/emotion-wink-photo.webp" alt="Nova Sphere showing wink emotion" class="rounded-2xl shadow-lg w-full object-cover" width="500" height="750" loading="lazy">
         <img src="/assets/images/nova-sphere/emotion-confused-photo.webp" alt="Nova Sphere showing confused emotion" class="rounded-2xl shadow-lg w-full object-cover" width="500" height="750" loading="lazy">
         <img src="/assets/images/nova-sphere/emotion-excited-photo.webp" alt="Nova Sphere showing excited emotion" class="rounded-2xl shadow-lg w-full object-cover" width="500" height="750" loading="lazy">
@@ -756,38 +757,38 @@ structured_data: |
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="text-left py-3 px-4 text-neutral-600">Voice</td>
-              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Local STT + TTS</span></td>
-              <td class="py-3 px-4 text-neutral-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Cloud only</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-neutral-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Cloud only</span></td>
+              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Local STT + TTS</span></td>
+              <td class="py-3 px-4 text-neutral-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Cloud only</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-neutral-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Cloud only</span></td>
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="text-left py-3 px-4 text-neutral-600">Open API</td>
-              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> REST + MCP</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-amber-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/></svg> Limited</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> REST + MCP</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-amber-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/></svg> Limited</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="text-left py-3 px-4 text-neutral-600">Local AI</td>
-              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Any LLM</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Any LLM</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="text-left py-3 px-4 text-neutral-600">Source Code</td>
-              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Full</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-amber-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/></svg> Partial</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> Full</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-amber-500"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/></svg> Partial</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="text-left py-3 px-4 text-neutral-600">AI Agent Skills</td>
-              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> OpenClaw + Claude</span></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
-              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 bg-purple-50 font-medium"><span class="inline-flex items-center gap-1"><svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg> OpenClaw + Claude</span></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
+              <td class="py-3 px-4 text-neutral-400"><svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" role="img" aria-label="No"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg></td>
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="text-left py-3 px-4 text-neutral-600">Subscription</td>
@@ -831,9 +832,9 @@ structured_data: |
         Based in Berlin, Germany. This isn't my first product, and it's not a concept - it's running on my desk right now.
       </p>
       <div class="flex flex-wrap gap-4 justify-center text-sm text-neutral-500">
-        <a href="https://github.com/angeldimitrov" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub ↗</a>
-        <a href="https://linkedin.com/in/angeldimitrov" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn ↗</a>
-        <a href="https://coding-agents.ai" target="_blank" rel="noopener" class="hover:text-white transition-colors">coding-agents.ai ↗</a>
+        <a href="https://github.com/angeldimitrov" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub ↗</a>
+        <a href="https://linkedin.com/in/angeldimitrov" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn ↗</a>
+        <a href="https://coding-agents.ai" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">coding-agents.ai ↗</a>
       </div>
     </div>
   </div>
@@ -1108,7 +1109,7 @@ structured_data: |
 
     <p class="text-center text-neutral-500 text-sm mt-8">
       Digital: instant delivery · Hardware: Q4 2026 · Shipping: EU €15, US/World €25 ·
-      <a href="https://www.kickstarter.com/profile/novalabs" target="_blank" rel="noopener" class="text-purple-400 hover:text-purple-300">Follow on Kickstarter</a> for launch notification
+      <a href="https://www.kickstarter.com/profile/novalabs" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">Follow on Kickstarter</a> for launch notification
     </p>
   </div>
 </section>
