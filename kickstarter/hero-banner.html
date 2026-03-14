@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1024">
+  <title>Nova Sphere - Kickstarter Hero Banner Variants</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { font-family: 'Inter', system-ui, sans-serif; background: #ffffff; }
+
+    .grid-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+
+    .product-glow { position: relative; }
+    .product-glow::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(192,132,252,0.35) 0%, rgba(192,132,252,0.1) 40%, transparent 70%);
+      border-radius: 50%; pointer-events: none; z-index: 0;
+    }
+
+    .product-img {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%, black 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 25%, black 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .banner { width: 1024px; position: relative; overflow: hidden; background-color: #1e293b; }
+    .banner-fixed { height: 576px; }
+
+    .variants-stack { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px; }
+    .variant-cell .variant-label {
+      padding: 8px 12px; background: #f1f5f9; color: #64748b;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+  </style>
+</head>
+<body>
+<div class="variants-stack">
+
+<!-- ============================================================ -->
+<!-- PANEL 1: Hero Banner                                          -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner banner-fixed grid-bg">
+  <div class="absolute inset-0 flex items-center z-10">
+    <div class="pl-14 pr-4" style="max-width: 660px;">
+      <p class="text-lg font-bold tracking-[0.2em] uppercase mb-3" style="color: #c084fc;">Nova Sphere</p>
+      <h1 class="text-[60px] font-extrabold leading-[1.08] mb-3">
+        <span class="gradient-text">Give Your AI<br>Agent a Face.</span>
+      </h1>
+      <p class="text-xl leading-relaxed mb-4" style="color: #cbd5e1;">
+        Emotions, voice, and live dashboards on a touch display.<br>
+        Round AMOLED, mic, speaker &mdash; all in a 60mm (2.4&quot;) sphere.
+      </p>
+      <div class="flex gap-x-4 mb-8 text-[15px]">
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> Any AI Agent</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> Offline Capable</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> MCP 20+ Tools</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> Source Included</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="flex items-center gap-2"><svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 10 C30 10 15 35 15 55 C15 75 30 95 45 100 L45 110 L55 110 L55 100 C55 100 60 102 65 100 L65 110 L75 110 L75 100 C90 95 105 75 105 55 C105 35 90 10 60 10Z" fill="#EF4444"/><path d="M20 45 C5 40 0 50 5 60 C10 70 20 65 25 55 C28 48 25 45 20 45Z" fill="#EF4444"/><path d="M100 45 C115 40 120 50 115 60 C110 70 100 65 95 55 C92 48 95 45 100 45Z" fill="#EF4444"/><path d="M45 15 Q35 5 30 8" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/><path d="M75 15 Q85 5 90 8" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="35" r="6" fill="#050810"/><circle cx="75" cy="35" r="6" fill="#050810"/><circle cx="46" cy="34" r="2.5" fill="#00e5cc"/><circle cx="76" cy="34" r="2.5" fill="#00e5cc"/></svg><span class="text-[17px] font-bold" style="color: #EF4444;">OpenClaw</span></span>
+        <span class="mx-2" style="width: 1px; height: 28px; background: rgba(148,163,184,0.3); display: inline-block;"></span>
+        <span class="flex items-center gap-2.5"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 509.64"><path fill="#D77655" fill-rule="nonzero" d="M142.27 316.619l73.655-41.326 1.238-3.589-1.238-1.996-3.589-.001-12.31-.759-42.084-1.138-36.498-1.516-35.361-1.896-8.897-1.895-8.34-10.995.859-5.484 7.482-5.03 10.717.935 23.683 1.617 35.537 2.452 25.782 1.517 38.193 3.968h6.064l.86-2.451-2.073-1.517-1.618-1.517-36.776-24.922-39.81-26.338-20.852-15.166-11.273-7.683-5.687-7.204-2.451-15.721 10.237-11.273 13.75.935 3.513.936 13.928 10.716 29.749 23.027 38.848 28.612 5.687 4.727 2.275-1.617.278-1.138-2.553-4.271-21.13-38.193-22.546-38.848-10.035-16.101-2.654-9.655c-.935-3.968-1.617-7.304-1.617-11.374l11.652-15.823 6.445-2.073 15.545 2.073 6.547 5.687 9.655 22.092 15.646 34.78 24.265 47.291 7.103 14.028 3.791 12.992 1.416 3.968 2.449-.001v-2.275l1.997-26.641 3.69-32.707 3.589-42.084 1.239-11.854 5.863-14.206 11.652-7.683 9.099 4.348 7.482 10.716-1.036 6.926-4.449 28.915-8.72 45.294-5.687 30.331h3.313l3.792-3.791 15.342-20.372 25.782-32.227 11.374-12.789 13.27-14.129 8.517-6.724 16.1-.001 11.854 17.617-5.307 18.199-16.581 21.029-13.75 17.819-19.716 26.54-12.309 21.231 1.138 1.694 2.932-.278 44.536-9.479 24.062-4.347 28.714-4.928 12.992 6.066 1.416 6.167-5.106 12.613-30.71 7.583-36.018 7.204-53.636 12.689-.657.48.758.935 24.164 2.275 10.337.556h25.301l47.114 3.514 12.309 8.139 7.381 9.959-1.238 7.583-18.957 9.655-25.579-6.066-59.702-14.205-20.474-5.106-2.83-.001v1.694l17.061 16.682 31.266 28.233 39.152 36.397 1.997 8.999-5.03 7.102-5.307-.758-34.401-25.883-13.27-11.651-30.053-25.302-1.996-.001v2.654l6.926 10.136 36.574 54.975 1.895 16.859-2.653 5.485-9.479 3.311-10.414-1.895-21.408-30.054-22.092-33.844-17.819-30.331-2.173 1.238-10.515 113.261-4.929 5.788-11.374 4.348-9.478-7.204-5.03-11.652 5.03-23.027 6.066-30.052 4.928-23.886 4.449-29.674 2.654-9.858-.177-.657-2.173.278-22.37 30.71-34.021 45.977-26.919 28.815-6.445 2.553-11.173-5.789 1.037-10.337 6.243-9.2 37.257-47.392 22.47-29.371 14.508-16.961-.101-2.451h-.859l-98.954 64.251-17.618 2.275-7.583-7.103.936-11.652 3.589-3.791 29.749-20.474-.101.102.024.101z"/></svg><span class="text-[17px] font-bold whitespace-nowrap" style="color: #D77655;">Claude Code</span></span>
+        <span class="mx-2" style="width: 1px; height: 28px; background: rgba(148,163,184,0.3); display: inline-block;"></span>
+        <span class="flex items-center gap-2.5"><svg width="28" height="32" viewBox="0 0 28 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.256 0.114C7.611 0.223 7.933 0.401 8.224 0.636C8.71 1.026 9.12 1.583 9.433 2.244C9.748 2.908 9.952 3.644 10.029 4.382C11.066 3.928 12.217 3.652 13.404 3.572L13.488 3.567C14.921 3.478 16.338 3.678 17.573 4.17C17.739 4.238 17.902 4.31 18.062 4.387C18.144 3.663 18.345 2.944 18.655 2.294C18.968 1.633 19.378 1.077 19.862 0.686C20.133 0.46 20.464 0.282 20.832 0.164C21.256 0.037 21.705 0.014 22.143 0.111C22.804 0.256 23.37 0.579 23.817 1.049C24.225 1.477 24.532 2.027 24.741 2.686C25.12 3.875 25.186 5.439 24.93 7.325L25.018 7.376L25.06 7.401C26.307 8.134 27.175 9.179 27.635 10.391C28.351 12.284 27.991 14.407 26.755 15.594L26.726 15.621L26.729 15.625C27.416 16.595 27.832 17.619 27.921 18.679L27.925 18.718C28.03 20.073 27.595 21.437 26.584 22.777L26.572 22.79L26.589 22.821C27.366 24.293 27.61 25.776 27.31 27.257L27.3 27.307C27.254 27.523 27.098 27.717 26.868 27.845C26.637 27.972 26.35 28.025 26.07 27.989C25.931 27.972 25.798 27.935 25.678 27.878C25.559 27.822 25.454 27.747 25.372 27.66C25.289 27.572 25.23 27.473 25.197 27.367C25.164 27.261 25.159 27.152 25.181 27.045C25.456 25.73 25.197 24.412 24.39 23.07C24.315 22.946 24.281 22.808 24.293 22.671C24.304 22.534 24.36 22.401 24.456 22.285L24.462 22.277C25.457 21.101 25.869 19.948 25.78 18.816C25.704 17.824 25.245 16.85 24.462 15.923C24.31 15.742 24.256 15.523 24.312 15.312C24.367 15.101 24.528 14.915 24.759 14.795L24.774 14.787C25.174 14.585 25.543 14.068 25.729 13.362C25.934 12.527 25.881 11.666 25.573 10.85C25.235 9.959 24.617 9.215 23.753 8.708C22.773 8.13 21.475 7.851 19.833 7.931C19.618 7.942 19.404 7.903 19.218 7.819C19.033 7.735 18.884 7.609 18.792 7.459C18.274 6.613 17.52 6.007 16.58 5.632C15.677 5.283 14.666 5.137 13.661 5.209C11.61 5.335 9.802 6.228 9.263 7.355C9.187 7.513 9.05 7.65 8.871 7.747C8.691 7.843 8.477 7.895 8.259 7.896C6.501 7.898 5.141 8.216 4.146 8.79C3.286 9.287 2.7 9.98 2.39 10.811C2.11 11.594 2.072 12.416 2.278 13.212C2.463 13.922 2.823 14.51 3.237 14.827L3.25 14.836C3.599 15.099 3.673 15.51 3.429 15.835C2.837 16.626 2.393 17.806 2.321 18.94C2.239 20.236 2.627 21.361 3.505 22.168L3.532 22.192C3.664 22.311 3.749 22.458 3.777 22.613C3.805 22.769 3.774 22.928 3.688 23.07C2.739 24.643 2.448 25.936 2.762 26.955C2.819 27.166 2.766 27.387 2.616 27.569C2.465 27.751 2.229 27.881 1.956 27.93C1.684 27.98 1.397 27.945 1.157 27.833C0.918 27.722 0.744 27.543 0.672 27.334C0.272 26.038 0.544 24.554 1.451 22.882L1.474 22.837L1.461 22.822C1.015 22.313 0.682 21.75 0.476 21.156L0.468 21.132C0.218 20.391 0.12 19.624 0.177 18.86C0.249 17.702 0.634 16.516 1.201 15.564L1.221 15.531L1.217 15.528C0.735 14.996 0.377 14.315 0.18 13.562L0.172 13.531C-0.101 12.48 -0.048 11.395 0.325 10.362C0.756 9.198 1.605 8.197 2.855 7.474C2.953 7.417 3.057 7.36 3.161 7.306C2.899 5.406 2.965 3.832 3.345 2.636C3.555 1.976 3.863 1.426 4.271 0.998C4.716 0.529 5.282 0.206 5.943 0.06C6.381 -0.037 6.832 -0.014 7.256 0.114ZM14.035 11.683C15.577 11.683 17 12.082 18.064 12.771C19.101 13.442 19.719 14.343 19.719 15.241C19.719 16.371 19.05 17.251 17.853 17.814C16.832 18.291 15.463 18.523 13.895 18.523C12.233 18.523 10.813 18.193 9.789 17.589C8.773 16.99 8.203 16.15 8.203 15.241C8.203 14.341 8.858 13.437 9.942 12.764C11.042 12.08 12.495 11.683 14.035 11.683ZM14.035 12.824C12.892 12.816 11.78 13.108 10.879 13.651C10.12 14.122 9.69 14.714 9.69 15.242C9.69 15.787 10.036 16.297 10.695 16.685C11.444 17.127 12.546 17.382 13.895 17.382C15.211 17.382 16.321 17.195 17.077 16.84C17.84 16.484 18.23 15.967 18.23 15.241C18.23 14.702 17.825 14.108 17.105 13.642C16.308 13.127 15.227 12.824 14.035 12.824ZM15.125 14.364L15.132 14.369C15.33 14.561 15.288 14.84 15.04 14.992L14.559 15.285V15.853C14.558 15.979 14.492 16.1 14.376 16.189C14.26 16.278 14.103 16.328 13.939 16.327C13.776 16.328 13.619 16.278 13.503 16.189C13.387 16.1 13.321 15.979 13.32 15.853V15.267L12.874 14.99C12.815 14.953 12.766 14.908 12.73 14.857C12.694 14.806 12.671 14.75 12.663 14.692C12.655 14.634 12.662 14.575 12.683 14.519C12.705 14.463 12.74 14.411 12.788 14.366C12.885 14.275 13.025 14.217 13.178 14.204C13.33 14.192 13.482 14.227 13.602 14.301L13.956 14.52L14.318 14.299C14.437 14.226 14.588 14.192 14.739 14.204C14.89 14.217 15.028 14.274 15.125 14.364ZM6.824 11.921C7.611 11.921 8.252 12.418 8.252 13.03C8.252 13.323 8.102 13.605 7.834 13.813C7.566 14.021 7.202 14.138 6.822 14.138C6.443 14.137 6.08 14.02 5.812 13.813C5.545 13.605 5.394 13.324 5.394 13.031C5.394 12.738 5.543 12.456 5.811 12.248C6.079 12.04 6.444 11.922 6.824 11.921ZM21.163 11.921C21.954 11.921 22.593 12.418 22.593 13.03C22.594 13.323 22.443 13.605 22.175 13.813C21.907 14.021 21.543 14.138 21.163 14.138C20.784 14.137 20.421 14.02 20.153 13.813C19.886 13.605 19.735 13.324 19.735 13.031C19.735 12.738 19.884 12.456 20.152 12.248C20.42 12.04 20.784 11.922 21.163 11.921ZM6.49 1.654L6.485 1.657C6.294 1.721 6.131 1.826 6.015 1.96L6.007 1.967C5.78 2.208 5.582 2.562 5.434 3.026C5.154 3.907 5.078 5.102 5.23 6.567C5.938 6.404 6.71 6.302 7.542 6.265L7.559 6.264L7.59 6.221C7.666 6.116 7.746 6.016 7.834 5.917C8.036 4.935 7.87 3.763 7.417 2.806C7.196 2.343 6.928 1.979 6.671 1.771C6.618 1.728 6.559 1.69 6.495 1.657L6.49 1.654ZM21.6 1.705L21.597 1.706C21.533 1.739 21.473 1.778 21.42 1.821C21.163 2.028 20.893 2.394 20.674 2.857C20.197 3.868 20.037 5.117 20.295 6.13L20.391 6.254L20.404 6.272H20.454C21.271 6.272 22.084 6.363 22.868 6.542C23.01 5.111 22.931 3.941 22.657 3.077C22.509 2.613 22.311 2.259 22.082 2.018L22.076 2.011C21.96 1.877 21.798 1.771 21.606 1.706L21.6 1.705Z"/></svg><span class="text-[17px] font-bold" style="color: #f8f8f8;">Ollama</span></span>
+        <span class="mx-2" style="width: 1px; height: 28px; background: rgba(148,163,184,0.3); display: inline-block;"></span>
+        <span class="flex items-center gap-2.5"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 260"><path fill="#10A37F" d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"/></svg><span class="text-[17px] font-bold" style="color: #10A37F;">Codex</span></span>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/images/nova-sphere/emotion-excited-photo.webp" alt="Nova Sphere excited" class="product-img absolute right-0 top-1/2 -translate-y-1/2 z-[1]" style="height: 100%; width: auto; border-radius: 0;">
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 2: Watch Your AI Think (MCP Demo)                      -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; background: #ffffff;">
+  <!-- Two-column: image left, content right -->
+  <div style="display: flex; gap: 0; align-items: center; min-height: 520px;">
+    <!-- Animated demo image -->
+    <div style="flex: 0 0 440px; border-radius: 12px; overflow: hidden; margin-left: 24px;">
+      <img src="../assets/images/nova-sphere/mcp-demo-enhanced.webp" alt="Claude Code MCP demo — real-time progress on Nova Sphere" style="width: 100%; display: block;">
+    </div>
+    <!-- Content — hero-style typography -->
+    <div style="flex: 1; padding: 0 36px;">
+      <p class="text-[15px] font-bold tracking-[0.2em] uppercase mb-4" style="color: #7c3aed;">Watch Your AI Think</p>
+      <h2 class="text-[38px] font-extrabold leading-[1.12] mb-5">
+        <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Add One Line. Get a Face.</span>
+      </h2>
+      <p class="text-[18px] leading-relaxed mb-5" style="color: #64748b;">
+        Connect Nova Sphere to your agent via MCP. While your agent works, it autonomously draws its progress on the display. No app to open. No dashboard to check. Your agent just... shows you.
+      </p>
+      <p class="text-[18px] mb-5" style="color: #0f172a; font-weight: 600;">You watch your AI think. In real time. On your desk.</p>
+      <p class="text-[15px]" style="color: #7c3aed; font-weight: 600; font-style: italic;">This is not a mockup. This runs on real hardware today.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 3: Emotions Showcase                                    -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; justify-content: flex-start; background: #ffffff;">
+  <!-- Title -->
+  <div style="text-align: center; padding: 28px 0 20px;">
+    <h2 class="text-[34px] font-extrabold leading-tight">
+      <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Expressive AI Emotions</span>
+    </h2>
+    <p class="text-xl mt-1.5" style="color: #64748b;">20+ animated emotions &mdash; your AI agent communicates with personality</p>
+  </div>
+  <!-- 5 images — capped height so object-fit: cover shows more of the sphere sides -->
+  <div style="display: flex; gap: 6px; padding: 0 6px; height: 470px;">
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/emotion-excited-photo.webp" alt="Excited" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); white-space: nowrap;">Excited</span>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/emotion-love-photo.webp" alt="Love" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #f472b6; border: 1px solid rgba(244,114,182,0.3); white-space: nowrap;">Love</span>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/emotion-thinking-photo.webp" alt="Thinking" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); white-space: nowrap;">Thinking</span>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/emotion-confused-photo.webp" alt="Confused" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); white-space: nowrap;">Confused</span>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/emotion-wink-photo.webp" alt="Wink" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #34d399; border: 1px solid rgba(52,211,153,0.3); white-space: nowrap;">Wink</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 4: Widgets — 3x2 Grid                                   -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; justify-content: flex-start; background: #ffffff;">
+  <!-- Title -->
+  <div style="text-align: center; padding: 28px 0 20px;">
+    <h2 class="text-[34px] font-extrabold leading-tight">
+      <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Live Dashboard Widgets</span>
+    </h2>
+    <p class="text-xl mt-1.5" style="color: #64748b;">Real-time data on a round AMOLED &mdash; build your own or use built-in widgets</p>
+  </div>
+  <!-- 3x2 grid of all 6 widgets -->
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 6px 6px;">
+    <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/widget-btc-chart.webp" alt="Live Chart" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 12px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); white-space: nowrap;">Live Chart</span>
+    </div>
+    <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/widget-staging-scan.webp" alt="Progress Ring" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 12px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #34d399; border: 1px solid rgba(52,211,153,0.3); white-space: nowrap;">Progress Ring</span>
+    </div>
+    <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/widget-reef-monitor.webp" alt="Data Dashboard" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 12px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); white-space: nowrap;">Data Dashboard</span>
+    </div>
+    <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/widget-bambu-x1c.webp" alt="Status Monitor" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 12px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #f472b6; border: 1px solid rgba(244,114,182,0.3); white-space: nowrap;">Status Monitor</span>
+    </div>
+    <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/widget-weekly-commits.webp" alt="Bar Chart" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 12px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); white-space: nowrap;">Bar Chart</span>
+    </div>
+    <div style="position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/widget-focus-timer.webp" alt="Timer" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 12px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); white-space: nowrap;">Timer</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 5: Faces / Agent Styles                                 -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; justify-content: flex-start; background: #ffffff;">
+  <!-- Title -->
+  <div style="text-align: center; padding: 28px 0 20px;">
+    <h2 class="text-[34px] font-extrabold leading-tight">
+      <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">One Sphere, Many Faces</span>
+    </h2>
+    <p class="text-xl mt-1.5" style="color: #64748b;">Each AI agent gets its own unique look &mdash; swap faces with a single command</p>
+  </div>
+  <!-- 3 face images — wider columns -->
+  <div style="display: flex; gap: 6px; padding: 0 6px; height: 470px;">
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/style-openclaw-enhanced.webp" alt="OpenClaw" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); white-space: nowrap;">OpenClaw</span>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/style-claude-enhanced.webp" alt="Claude Code" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #D77655; border: 1px solid rgba(215,118,85,0.3); white-space: nowrap;">Claude Code</span>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
+      <img src="../assets/images/nova-sphere/style-ollama-enhanced.webp" alt="Ollama" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;">
+      <span style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 999px; background: rgba(15,23,42,0.85); color: #f8f8f8; border: 1px solid rgba(248,248,248,0.3); white-space: nowrap;">Ollama</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 6: Your Agent Decides (inline rows)                     -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; background: #ffffff; padding: 48px 40px;">
+  <div style="text-align: center; margin-bottom: 36px;">
+    <h2 class="text-[38px] font-extrabold leading-[1.12] mb-4">
+      <span style="color: #0f172a;">Your Agent </span><span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Decides What It Does.</span>
+    </h2>
+    <p class="text-[17px]" style="color: #64748b; max-width: 580px; margin: 0 auto;">
+      Nova Sphere is an interface, not an app. Your AI agent decides what to show, say, and do.
+    </p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 880px; margin: 0 auto; width: 100%;">
+    <!-- Row 1 -->
+    <div style="display: flex; gap: 12px;">
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Show anything on the display</h3>
+          <p class="text-[12px]" style="color: #64748b;">Widgets, dashboards, charts — 5 swipeable pages</p>
+        </div>
+      </div>
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Express emotions</h3>
+          <p class="text-[12px]" style="color: #64748b;">20+ animated face states reflect mood &amp; status</p>
+        </div>
+      </div>
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Listen and speak</h3>
+          <p class="text-[12px]" style="color: #64748b;">Mic + speaker, STT/LLM/TTS all local</p>
+        </div>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div style="display: flex; gap: 12px;">
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Push notifications</h3>
+          <p class="text-[12px]" style="color: #64748b;">Alerts, reminders — chime + face reaction</p>
+        </div>
+      </div>
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Play sounds</h3>
+          <p class="text-[12px]" style="color: #64748b;">Tones, WAV, TTS — built-in speaker</p>
+        </div>
+      </div>
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Sense touch and motion</h3>
+          <p class="text-[12px]" style="color: #64748b;">Touch + 6-axis IMU for gestures</p>
+        </div>
+      </div>
+    </div>
+    <!-- Row 3 -->
+    <div style="display: flex; gap: 12px;">
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Wear any face</h3>
+          <p class="text-[12px]" style="color: #64748b;">4 built-in + fully customizable</p>
+        </div>
+      </div>
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">Flash firmware over WiFi</h3>
+          <p class="text-[12px]" style="color: #64748b;">OTA updates — agent can self-update</p>
+        </div>
+      </div>
+      <div style="flex: 1; background: #f8fafc; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#7c3aed" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+        </div>
+        <div>
+          <h3 class="text-[14px] font-bold" style="color: #0f172a;">No lock-in, no cloud</h3>
+          <p class="text-[12px]" style="color: #64748b;">REST, MCP, WebSocket — you own it all</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-[13px] text-center mt-5" style="color: #94a3b8;">
+    These are building blocks, not pre-built features. Your AI agent combines them however it wants — that's the point.
+  </p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 7: Desk Photo — Full bleed lifestyle shot               -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner banner-fixed" style="background: #1e293b; border-radius: 16px;">
+  <!-- Full bleed desk photo -->
+  <img src="../assets/images/nova-sphere/hero-kickstarter.webp" alt="Nova Sphere on a developer desk" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+  <!-- Dark gradient overlay for text readability -->
+  <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.5) 50%, transparent 100%);"></div>
+  <!-- Text content -->
+  <div class="absolute inset-0 flex items-center z-10">
+    <div class="pl-14 pr-4" style="max-width: 550px;">
+      <p class="text-lg font-bold tracking-[0.2em] uppercase mb-3" style="color: #c084fc;">Nova Sphere</p>
+      <h1 class="text-[52px] font-extrabold leading-[1.08] mb-4">
+        <span class="gradient-text">Your AI on<br>Your Desk.</span>
+      </h1>
+      <p class="text-xl leading-relaxed mb-6" style="color: #cbd5e1;">
+        One glance shows your AI&rsquo;s progress. One word starts a conversation. No app, no screen unlock &mdash; just a calm presence on your desk.
+      </p>
+      <div class="flex gap-x-4 text-[15px]">
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> Any AI Agent</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> Offline Capable</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> MCP 20+ Tools</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap" style="color: #d1d5db;"><span style="color: #34d399;">&#10003;</span> Source Included</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 8: Specs                                                -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; background: #ffffff; padding: 48px 40px;">
+  <div style="text-align: center; margin-bottom: 32px;">
+    <h2 class="text-[38px] font-extrabold leading-[1.12]">
+      <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Specs</span>
+    </h2>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; max-width: 820px; margin: 0 auto; width: 100%;">
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Display</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">1.43" AMOLED, 466×466, touch</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">MCU</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">ESP32-S3, 8MB PSRAM, 16MB Flash</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Mic</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">INMP441 MEMS (I2S, 16kHz)</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Speaker</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">MAX98357A amp (I2S, 48kHz)</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">IMU</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">QMI8658 (accel + gyro)</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Connectivity</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">WiFi 2.4GHz, BLE 5.0</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">API</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">REST + WebSocket + MCP (20+ tools)</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Body</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">~60mm sphere, 3D printed</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Power</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">USB-C, 5V / 500mA</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Draw</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">~80mA active, ~10µA deep sleep</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Firmware</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">Full source code included</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Updates</span>
+      <span class="text-[14px] font-medium" style="color: #0f172a;">OTA via WiFi (also via MCP)</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+      <span class="text-[14px]" style="color: #94a3b8;">Subscription</span>
+      <span class="text-[14px] font-medium" style="color: #7c3aed; font-weight: 700;">None. Ever.</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 9: Reward Tiers                                        -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; background: #ffffff; padding: 48px 40px;">
+  <div style="text-align: center; margin-bottom: 36px;">
+    <h2 class="text-[38px] font-extrabold leading-[1.12] mb-4">
+      <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Reward Tiers</span>
+    </h2>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 920px; margin: 0 auto;">
+    <!-- Digital -->
+    <div style="background: #f8fafc; border-radius: 16px; padding: 28px 24px; display: flex; flex-direction: column;">
+      <p class="text-[13px] font-bold tracking-[0.15em] uppercase mb-2" style="color: #3b82f6;">Digital</p>
+      <p class="text-[36px] font-extrabold leading-none mb-1" style="color: #0f172a;">€39</p>
+      <p class="text-[13px] mb-4" style="color: #94a3b8;">Build your own</p>
+      <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Full firmware source code</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> 3D printable STL files</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> MCP server + voice server</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> OpenClaw + Claude Code skills</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> BOM list + assembly guide</p>
+      </div>
+      <p class="text-[12px] mt-4" style="color: #94a3b8;">No hardware included</p>
+    </div>
+
+    <!-- Early Bird -->
+    <div style="background: #f8fafc; border-radius: 16px; padding: 28px 24px; border: 2px solid #7c3aed; display: flex; flex-direction: column; position: relative;">
+      <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #7c3aed; color: white; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; white-space: nowrap;">BEST VALUE</div>
+      <p class="text-[13px] font-bold tracking-[0.15em] uppercase mb-2" style="color: #7c3aed;">Early Bird</p>
+      <p class="text-[36px] font-extrabold leading-none mb-1" style="color: #0f172a;">€109</p>
+      <p class="text-[13px] mb-4" style="color: #94a3b8;">Save €90 vs. retail</p>
+      <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Nova Sphere (assembled)</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Full source code</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> MCP server + voice server</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> OpenClaw + Claude Code skills</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Free OTA updates</p>
+      </div>
+      <p class="text-[12px] mt-4" style="color: #7c3aed; font-weight: 600;">Limited to first 100 backers</p>
+    </div>
+
+    <!-- Standard -->
+    <div style="background: #f8fafc; border-radius: 16px; padding: 28px 24px; display: flex; flex-direction: column;">
+      <p class="text-[13px] font-bold tracking-[0.15em] uppercase mb-2" style="color: #7c3aed;">Standard</p>
+      <p class="text-[36px] font-extrabold leading-none mb-1" style="color: #0f172a;">€149</p>
+      <p class="text-[13px] mb-4" style="color: #94a3b8;">Save €50 vs. retail</p>
+      <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Nova Sphere (assembled)</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Full source code</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> MCP server + voice server</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> OpenClaw + Claude Code skills</p>
+        <p class="text-[14px]" style="color: #374151;"><span style="color: #22c55e;">&#10003;</span> Free OTA updates</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-[13px] text-center mt-6" style="color: #94a3b8;">
+    Digital: instant delivery · Hardware: Q3 2026 · Shipping: EU €15, US/World €25
+  </p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PANEL 10: Timeline                                            -->
+<!-- ============================================================ -->
+<div class="variant-cell">
+
+<div class="banner" style="display: flex; flex-direction: column; background: #ffffff; border-radius: 16px; padding: 40px 0;">
+  <div class="mx-auto" style="max-width: 700px; width: 100%; padding: 0 40px;">
+    <h2 class="text-[34px] font-extrabold leading-tight text-center mb-10">
+      <span style="background: linear-gradient(to right, #1e293b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Timeline</span>
+    </h2>
+    <div style="display: flex; flex-direction: column; gap: 0;">
+      <!-- Now -->
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="width: 16px; height: 16px; border-radius: 50%; background: #22c55e; margin-top: 4px; flex-shrink: 0;"></div>
+          <div style="width: 2px; flex: 1; min-height: 50px; background: #d1d5db;"></div>
+        </div>
+        <div style="padding-bottom: 24px;">
+          <p style="font-weight: 700; color: #0f172a; font-size: 16px;">Now — Firmware Complete</p>
+          <p style="color: #64748b; font-size: 14px; margin-top: 2px;">Production-ready firmware running daily. MCP server (20+ tools), voice pipeline, widget system, OTA updates — all working on the creator's desk.</p>
+        </div>
+      </div>
+      <!-- Mar 2026 -->
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="width: 16px; height: 16px; border-radius: 50%; background: #a855f7; margin-top: 4px; flex-shrink: 0;"></div>
+          <div style="width: 2px; flex: 1; min-height: 50px; background: #d1d5db;"></div>
+        </div>
+        <div style="padding-bottom: 24px;">
+          <p style="font-weight: 700; color: #0f172a; font-size: 16px;">Mar 2026 — Kickstarter Launch</p>
+          <p style="color: #64748b; font-size: 14px; margin-top: 2px;">30-day campaign. Early Bird pricing available for the first 100 backers.</p>
+        </div>
+      </div>
+      <!-- May-Jun 2026 -->
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="width: 16px; height: 16px; border-radius: 50%; background: #d1d5db; margin-top: 4px; flex-shrink: 0;"></div>
+          <div style="width: 2px; flex: 1; min-height: 50px; background: #d1d5db;"></div>
+        </div>
+        <div style="padding-bottom: 24px;">
+          <p style="font-weight: 700; color: #0f172a; font-size: 16px;">May–Jun 2026 — Production &amp; Assembly</p>
+          <p style="color: #64748b; font-size: 14px; margin-top: 2px;">Component sourcing, enclosure production, assembly, quality testing. Regular backer updates with photos and progress.</p>
+        </div>
+      </div>
+      <!-- Jul 2026 -->
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="width: 16px; height: 16px; border-radius: 50%; background: #d1d5db; margin-top: 4px; flex-shrink: 0;"></div>
+          <div style="width: 2px; flex: 1; min-height: 50px; background: #d1d5db;"></div>
+        </div>
+        <div style="padding-bottom: 24px;">
+          <p style="font-weight: 700; color: #0f172a; font-size: 16px;">Jul 2026 — Shipping Begins</p>
+          <p style="color: #64748b; font-size: 14px; margin-top: 2px;">Early Bird and Standard tiers ship first. Worldwide delivery from Germany.</p>
+        </div>
+      </div>
+      <!-- Aug 2026 -->
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="width: 16px; height: 16px; border-radius: 50%; background: #d1d5db; margin-top: 4px; flex-shrink: 0;"></div>
+        </div>
+        <div>
+          <p style="font-weight: 700; color: #0f172a; font-size: 16px;">Aug 2026 — Late Pledges &amp; Stretch Goals</p>
+          <p style="color: #64748b; font-size: 14px; margin-top: 2px;">Late pledge fulfillment and stretch goal delivery (if unlocked).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- end variants-stack -->
+</body>
+</html>
